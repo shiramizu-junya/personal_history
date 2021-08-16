@@ -87,3 +87,7 @@
 ## アプリケーションのイメージ画像
 ---
 ![image](https://user-images.githubusercontent.com/45684938/128819212-e09b8782-f5e7-4380-b166-c27b71027395.jpg)
+
+## 画面遷移図
+---
+https://www.figma.com/file/tpd5guOIGeBcx2N1hK30O4/Wireframe?node-id=0%3A1
