@@ -91,3 +91,7 @@
 ## 画面遷移図
 ---
 https://www.figma.com/file/tpd5guOIGeBcx2N1hK30O4/Wireframe?node-id=0%3A1
+
+## ER図
+---
+https://drive.google.com/file/d/1VuTSIdLMgvtgosmCS90aHUxXr0jZjm2B/view?usp=sharing
