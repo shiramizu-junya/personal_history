@@ -23,6 +23,8 @@ module TrajectoryLife
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
@@ -31,5 +33,19 @@ module TrajectoryLife
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # ジェネレータの設定
+    config.generators do |g|
+      g.assets false          # CSS, JavaScriptファイル生成しない
+      g.skip_routes true     # trueならroutes.rb変更せず、falseなら通常通り変更
+      g.helper false          # helperファイル生成しない
+      g.test_framework false  # testファイル生成しない
+      g.test_framework :rspec,    # RSpecを使用
+        controller_specs: false,  # controller specは作らない
+        view_specs: false,        # view specは作らない
+        helper_specs: false,      # helper specは作らない
+        routing_specs: false      # routing specは作らない
+      end
+    end
   end
 end
