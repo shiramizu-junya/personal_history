@@ -1,0 +1,108 @@
+# 将来的に対応する規約の読込(ファイル内が空になったら、この行は削除)
+# inherit_from: .rubocop_todo.yml
+
+require:
+  - rubocop-rails
+
+# 全体に適応する項目を定義
+# ここで Exclude に設定したファイルは、チェック対象外になる
+AllCops:
+  # 除外するディレクトリ（自動生成されたファイル）
+  Exclude:
+    - 'vendor/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'lib/**/*'
+    - 'spec/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'Gemfile'
+  DisplayCopNames: true
+  NewCops: enable
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
+
+# ブロックの改行チェック
+Layout/MultilineBlockLayout:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# ソースコードの行の長さチェック
+Layout/LineLength:
+  Enabled: false
+
+# メソッドのABCサイズチェック
+Metrics/AbcSize:
+  Max: 30
+
+# ブロックの長さチェック
+Metrics/BlockLength:
+  Max: 30
+  Exclude:
+    - 'Gemfile'
+    - 'config/**/*'
+    - 'spec/**/*_spec.rb'
+
+# クラスの長さチェック
+Metrics/ClassLength:
+  CountComments: false
+  Max: 300
+
+# メソッドの複雑さチェック
+Metrics/CyclomaticComplexity:
+  Max: 30
+
+# メソッドの長さチェック
+Metrics/MethodLength:
+  CountComments: false
+  Max: 30
+
+# アクセサ・メソッドの命名チェック
+Naming/AccessorMethodName:
+  Exclude:
+    - 'app/controllers/**/*'
+
+# 日本語のコメントを許可する
+Style/AsciiComments:
+  Enabled: false
+
+# 中括弧や do/end が一行または複数行のブロックに使用されているかチェック
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*_spec.rb'
+
+# クラスやモジュールの子定義のスタイルチェック
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# ドキュメントの無い public class を許可する
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/HashEachMethods:
+  Enabled: false
+
+Style/HashTransformKeys:
+  Enabled: false
+
+Style/HashTransformValues:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/WhileUntilModifier:
+  Enabled: false
+
+# dependentオプションを指定しないアソシエーションを探す
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+# アルファベット順にソートチェック
+Bundler/OrderedGems:
+  Enabled: false
