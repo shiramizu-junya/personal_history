@@ -1,5 +1,5 @@
 # 将来的に対応する規約の読込(ファイル内が空になったら、この行は削除)
-inherit_from: .rubocop_todo.yml
+# inherit_from: .rubocop_todo.yml
 
 require:
   - rubocop-rails
@@ -18,6 +18,8 @@ AllCops:
     - 'node_modules/**/*'
     - 'Gemfile'
   DisplayCopNames: true
+  NewCops: enable
+  SuggestExtensions: false
 
 Rails:
   Enabled: true
