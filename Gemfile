@@ -29,6 +29,9 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # アセット
 gem 'bulma-rails'
 
+# 認証
+gem 'sorcery'
+
 group :development, :test do
   # デバッグ
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
