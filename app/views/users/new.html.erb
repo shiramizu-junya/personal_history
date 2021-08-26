@@ -1,32 +1,29 @@
 <header>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-spaced has-background-primary-light" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <a class="navbar-item" href="https://bulma.io">
         <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
       </a>
 
-      <a role="button" class="navbar-burger is-active" aria-label="menu" aria-expanded="false">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu is-active">
-      <div class="navbar-start">
-        <a class="navbar-item" href="#">
-          軌跡一覧
-        </a>
-      </div>
-
+    <div id="navbarBasicExample" class="navbar-menu">
       <div class="navbar-end">
         <div class="navbar-item">
+          <a class="navbar-item" href="#">
+            <strong>軌跡一覧</strong>
+          </a>
           <div class="buttons">
-            <a class="button is-primary">
+            <a class="button box is-warning">
               <strong>ユーザー登録</strong>
             </a>
-            <a class="button is-light">
-              ログイン
+            <a class="button box is-warning">
+              <strong>ログイン</strong>
             </a>
           </div>
         </div>
@@ -34,15 +31,58 @@
     </div>
   </nav>
 </header>
-<main>
 
+<main class="Site-content">
+  <div class="columns is-centered">
+    <div class="column is-one-fifth my-6 p-5 box">
+      <h1 class="title has-text-centered">ユーザー登録</h1>
+      <form action="#" method="post">
+        <div class="field">
+          <label class="label">ユーザー名</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="たなか たろう">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">メールアドレス</label>
+          <div class="control">
+            <input class="input" type="email" placeholder="sample@example.com">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">パスワード</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="パスワード">
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">パスワード（再入力）</label>
+          <div class="control">
+            <input class="input" type="password" placeholder="パスワード再入力">
+          </div>
+        </div>
+
+        <div class="field my-5">
+          <div class="control">
+            <button class="button is-warning box ">
+              登録
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
 </main>
-<footer class="footer">
+
+<footer class="footer has-background-primary-light p-4">
   <div class="content has-text-centered">
     <p>
-      <a href="#" class="p-3 has-text-grey-darker">利用規約</a>
-      <a href="#" class="p-3 has-text-grey-darker">プライバシーポリシー</a>
-      <a href="#" class="p-3 has-text-grey-darker">お問い合わせ</a>
+      <a href="#" class="p-3">利用規約</a>
+      <a href="#" class="p-3">プライバシーポリシー</a>
+      <a href="#" class="p-3">お問い合わせ</a>
     </p>
     <p>
       &copy; 2021 人生の軌跡
