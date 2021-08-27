@@ -23,13 +23,21 @@ module TrajectoryLife
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+
+    # アプリケーションやアクティブレコード(created_atなど)で使用するデフォルトのタイムゾーンの設定
     config.time_zone = 'Tokyo'
+
+    # DBを読み書きする際に、DBに記録されている時間をどのタイムゾーンで解釈するかの設定
     config.active_record.default_timezone = :local
 
-    # Settings in config/environments/* take precedence over those specified here.
-    # Application configuration can go into files in config/initializers
-    # -- all .rb files in that directory are automatically loaded after loading
-    # the framework and any gems in your application.
+    # I18nライブラリに訳文の探索場所を指示する設定
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
+
+    # アプリケーションが対応している言語のホワイトリスト(ja = 日本語, en = 英語)
+    config.i18n.available_locales = %i[ja]
+
+    # デフォルトのlocaleを日本語(:ja)に設定
+    config.i18n.default_locale = :ja
 
     # Don't generate system test files.
     config.generators.system_tests = nil

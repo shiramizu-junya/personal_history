@@ -32,6 +32,9 @@ gem 'bulma-rails'
 # 認証
 gem 'sorcery'
 
+# UI/UX
+gem 'rails-i18n'
+
 group :development, :test do
   # デバッグ
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
