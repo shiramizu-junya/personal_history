@@ -1,0 +1,33 @@
+<header>
+  <nav class="navbar is-spaced has-background-primary-light" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to "#", class: "navbar-item" do %>
+        <%= image_tag "https://bulma.io/images/bulma-logo.png" %>
+      <% end %>
+      <%# ハンバーガーメニュー %>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <%= link_to "#", class: "navbar-item" do %>
+            <strong><%= t("tracks.index.title") %></strong>
+          <% end %>
+          <div class="buttons">
+            <%= link_to "#", class: "button box is-warning" do %>
+              <strong><%= t("users.new.title") %></strong>
+            <% end %>
+            <%= link_to "#", class: "button box is-warning" do %>
+              <strong><%= t("user_sessions.new.title") %></strong>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

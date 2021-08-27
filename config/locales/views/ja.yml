@@ -1,0 +1,12 @@
+ja:
+  defaults:
+    register: "登録"
+  users:
+    new:
+      title: "ユーザー登録"
+  tracks:
+    index:
+      title: "軌跡一覧"
+  user_sessions:
+    new:
+      title: 'ログイン'
