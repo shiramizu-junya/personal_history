@@ -1,6 +1,6 @@
 ja:
   defaults:
-    register: "登録"
+    register: '登録'
   users:
     new:
       title: "ユーザー登録"
