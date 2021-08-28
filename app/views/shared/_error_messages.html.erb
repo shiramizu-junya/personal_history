@@ -1,9 +1,7 @@
-<% if model.errors.any? %>
+<% if object.errors.include?(attribute) %>
   <div class="has-text-danger">
     <ul>
-      <% model.errors.full_messages_for(attribute).each do |message| %>
-        <li><%= message %></li>
-      <% end %>
+      <li><%= object.errors.full_messages_for(attribute).first %></li>
     </ul>
   </div>
 <% end %>

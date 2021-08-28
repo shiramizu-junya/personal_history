@@ -8,7 +8,7 @@
           <div class="control">
             <%= f.text_field :name, class: "input", placeholder: "たなか たろう" %>
           </div>
-          <%= render "shared/error_messages", model: @user, attribute: :name %>
+          <%= render "shared/error_messages", object: @user, attribute: :name %>
         </div>
 
         <div class="field">
@@ -16,7 +16,7 @@
           <div class="control">
             <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
           </div>
-          <%= render "shared/error_messages", model: @user, attribute: :email %>
+          <%= render "shared/error_messages", object: @user, attribute: :email %>
         </div>
 
         <div class="field">
@@ -24,7 +24,7 @@
           <div class="control">
             <%= f.password_field :password, class: "input", placeholder: "password" %>
           </div>
-          <%= render "shared/error_messages", model: @user, attribute: :password %>
+          <%= render "shared/error_messages", object: @user, attribute: :password %>
         </div>
 
         <div class="field">
@@ -32,7 +32,7 @@
           <div class="control">
             <%= f.password_field :password_confirmation, class: "input", placeholder: "password" %>
           </div>
-          <%= render "shared/error_messages", model: @user, attribute: :password_confirmation %>
+          <%= render "shared/error_messages", object: @user, attribute: :password_confirmation %>
         </div>
 
         <div class="field my-5">
