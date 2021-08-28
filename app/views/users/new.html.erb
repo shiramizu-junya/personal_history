@@ -1,91 +1,46 @@
-<header>
-  <nav class="navbar is-spaced has-background-primary-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="https://bulma.io">
-        <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: Free, open source, and modern CSS framework based on Flexbox" width="112" height="28">
-      </a>
-
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <a class="navbar-item" href="#">
-            <strong>軌跡一覧</strong>
-          </a>
-          <div class="buttons">
-            <a class="button box is-warning">
-              <strong>ユーザー登録</strong>
-            </a>
-            <a class="button box is-warning">
-              <strong>ログイン</strong>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </nav>
-</header>
-
 <main class="Site-content">
   <div class="columns is-centered">
     <div class="column is-one-fifth my-6 p-5 box">
-      <h1 class="title has-text-centered">ユーザー登録</h1>
-      <form action="#" method="post">
+      <h1 class="title has-text-centered"><%= t(".title") %></h1>
+      <%= form_with model: @user, local: true do |f| %>
         <div class="field">
-          <label class="label">ユーザー名</label>
+          <%= f.label :name %>
           <div class="control">
-            <input class="input" type="text" placeholder="たなか たろう">
+            <%= f.text_field :name, class: "input", placeholder: "たなか たろう" %>
           </div>
+          <%= render "shared/error_messages", model: @user, attribute: :name %>
         </div>
 
         <div class="field">
-          <label class="label">メールアドレス</label>
+          <%= f.label :email %>
           <div class="control">
-            <input class="input" type="email" placeholder="sample@example.com">
+            <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
           </div>
+          <%= render "shared/error_messages", model: @user, attribute: :email %>
         </div>
 
         <div class="field">
-          <label class="label">パスワード</label>
+          <%= f.label :password %>
           <div class="control">
-            <input class="input" type="password" placeholder="パスワード">
+            <%= f.password_field :password, class: "input", placeholder: "password" %>
           </div>
+          <%= render "shared/error_messages", model: @user, attribute: :password %>
         </div>
 
         <div class="field">
-          <label class="label">パスワード（再入力）</label>
+          <%= f.label :password_confirmation %>
           <div class="control">
-            <input class="input" type="password" placeholder="パスワード再入力">
+            <%= f.password_field :password_confirmation, class: "input", placeholder: "password" %>
           </div>
+          <%= render "shared/error_messages", model: @user, attribute: :password_confirmation %>
         </div>
 
         <div class="field my-5">
           <div class="control">
-            <button class="button is-warning box ">
-              登録
-            </button>
+            <%= f.submit t("defaults.register"), class: "button is-warning box" %>
           </div>
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </main>
-
-<footer class="footer has-background-primary-light p-4">
-  <div class="content has-text-centered">
-    <p>
-      <a href="#" class="p-3">利用規約</a>
-      <a href="#" class="p-3">プライバシーポリシー</a>
-      <a href="#" class="p-3">お問い合わせ</a>
-    </p>
-    <p>
-      &copy; 2021 人生の軌跡
-    </p>
-  </div>
-</footer>
