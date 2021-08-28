@@ -1,3 +1,4 @@
+<% content_for(:title, t('.title')) %>
 <main class="Site-content">
   <div class="columns is-centered">
     <div class="column is-one-fifth my-6 p-5 box">
@@ -35,10 +36,10 @@
           <%= render "shared/error_messages", object: @user, attribute: :password_confirmation %>
         </div>
 
-        <div class="field my-5">
-          <div class="control">
+        <div class="field is-grouped is-grouped-right">
+          <p class="control">
             <%= f.submit t("defaults.register"), class: "button is-warning box" %>
-          </div>
+          </p>
         </div>
       <% end %>
     </div>
