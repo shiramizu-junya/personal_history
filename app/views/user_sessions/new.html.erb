@@ -1,0 +1,37 @@
+<% content_for(:title, t('.title')) %>
+<main class="Site-content">
+  <div class="columns is-centered">
+    <div class="column is-one-fifth my-6 p-5 box">
+      <h1 class="title has-text-centered"><%= t(".title") %></h1>
+      <%= form_with url: login_path, local: true do |f| %>
+        <div class="field">
+          <%= f.label :email, User.human_attribute_name(:email) %>
+          <div class="control">
+            <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+          </div>
+        </div>
+
+        <div class="field">
+          <%= f.label :password, User.human_attribute_name(:password) %>
+          <div class="control">
+            <%= f.password_field :password, class: "input", placeholder: "password" %>
+          </div>
+        </div>
+
+        <label class="checkbox">
+          <input type="checkbox">
+          次回ログインを省略
+        </label>
+
+        <div class="field is-grouped is-grouped-right">
+          <p class="control">
+            <%= f.submit t("defaults.login"), class: "button is-warning box" %>
+          </p>
+        </div>
+      <% end %>
+      <div class="has-text-right">
+        パスワードを忘れた方は<a href="#">こちら</a>
+      </div>
+    </div>
+  </div>
+</main>
