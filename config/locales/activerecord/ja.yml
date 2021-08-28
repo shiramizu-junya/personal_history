@@ -11,6 +11,6 @@ ja:
         gender: "性別"
         avatar: "プロフィール画像"
         password: "パスワード"
-        password_confirmation: "パスワード(再入力)"
+        password_confirmation: "パスワード再入力"
         created_at: '登録日時'
         updated_at: '更新日時'
