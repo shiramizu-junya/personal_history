@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root 'static_pages#top'
   # ユーザー登録
   resources :users, only: %i[new create]
   # ログイン/ログアウト
