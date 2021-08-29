@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
 
   #  ユーザー新規作成画面
   def new
@@ -12,8 +13,9 @@ class UsersController < ApplicationController
     if @user.save
       # ユーザー登録後の自動ログイン
       auto_login(@user)
-      redirect_to tracks_path
+      redirect_to tracks_path, success: "ユーザー登録に成功しました" #t('.success')
     else
+      flash.now[:danger] = "ユーザー登録に失敗しました" #t('.fail')
       render :new
     end
   end
