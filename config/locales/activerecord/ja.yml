@@ -10,6 +10,7 @@ ja:
         age: "年齢"
         gender: "性別"
         avatar: "プロフィール画像"
+        remember: "次回ログインを省略"
         password: "パスワード"
         password_confirmation: "パスワード再入力"
         created_at: '登録日時'

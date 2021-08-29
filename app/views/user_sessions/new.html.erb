@@ -18,10 +18,8 @@
           </div>
         </div>
 
-        <label class="checkbox">
-          <input type="checkbox">
-          次回ログインを省略
-        </label>
+        <%= check_box_tag :remember, params[:remember], false %>
+        <%= label_tag :remember, User.human_attribute_name(:remember) %>
 
         <div class="field is-grouped is-grouped-right">
           <p class="control">
