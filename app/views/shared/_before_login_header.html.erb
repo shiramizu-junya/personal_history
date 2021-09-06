@@ -1,0 +1,21 @@
+<header>
+  <nav class="navbar is-spaced is-fixed-top js-get-height" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: "navbar-item" do %>
+        <%= image_tag "https://bulma.io/images/bulma-logo.png", alt: "人生の軌跡" %>
+      <% end %>
+      <a role="button" class="navbar-burger js-toggle-is-active" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        <%= link_to t("tracks.index.title"), tracks_path, class: "navbar-item" %>
+        <%= link_to t("defaults.signup"), new_user_path, class: "navbar-item" %>
+        <%= link_to t("defaults.login"), login_path, class: "navbar-item" %>
+      </div>
+    </div>
+  </nav>
+</header>

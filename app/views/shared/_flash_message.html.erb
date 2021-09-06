@@ -1,0 +1,5 @@
+<% flash.each do |message_type, message| %>
+  <div class="has-text-centered msg-slide is-<%= message_type %>" id="js-show-msg">
+  <%= message %>
+  </div>
+<% end %>

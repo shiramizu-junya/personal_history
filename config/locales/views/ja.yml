@@ -1,0 +1,27 @@
+ja:
+  defaults:
+    login: "ログイン"
+    register: "登録"
+    logout: "ログアウト"
+    signup: "新規登録"
+    message:
+      require_login: "ログインしてください"
+  users:
+    new:
+      title: "ユーザー登録"
+    create:
+      success: "ユーザー登録が完了しました。"
+      fail: 'ユーザー登録に失敗しました。'
+  user_sessions:
+    new:
+      title: "ログイン"
+    create:
+      success: 'ログインしました。'
+      fail: 'ログインに失敗しました。'
+    destroy:
+      success: 'ログアウトしました。'
+  tracks:
+    index:
+      title: "軌跡一覧"
+    new:
+      title: "軌跡新規作成"
