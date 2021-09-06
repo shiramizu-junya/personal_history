@@ -1,32 +1,43 @@
 <header>
-  <nav class="navbar is-spaced has-background-primary-light" role="navigation" aria-label="main navigation">
+  <nav class="navbar is-spaced is-fixed-top js-get-height" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <%= link_to "#", class: "navbar-item" do %>
-        <%= image_tag "https://bulma.io/images/bulma-logo.png" %>
+      <%= link_to root_path, class: "navbar-item" do %>
+        <%= image_tag "https://bulma.io/images/bulma-logo.png", alt: "人生の軌跡" %>
       <% end %>
-      <%# ハンバーガーメニュー %>
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <a role="button" class="navbar-burger js-toggle-is-active" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
       </a>
     </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item">
-          <%= link_to "#", class: "navbar-item" do %>
-            <strong><%= t("tracks.index.title") %></strong>
-          <% end %>
-          <%= link_to "#", class: "navbar-item" do %>
-            <strong>軌跡新規作成</strong>
-          <% end %>
-          <%= link_to logout_path, method: :delete, class: "navbar-item" do %>
-            <strong>ログアウト</strong>
-          <% end %>
-          <%= link_to "#", class: "navbar-item" do %>
-            <strong>ユーザー名</strong>
-          <% end %>
+        <%= link_to t("tracks.index.title"), tracks_path, class: "navbar-item" %>
+        <a href="#" class="navbar-item"><%= "軌跡新規作成" %></a>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            田中
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item">
+              マイページ
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              プロフィール編集
+            </a>
+            <hr class="navbar-divider">
+            <a class="navbar-item">
+              退会
+            </a>
+          </div>
+        </div>
+        <%= link_to t("defaults.logout"), logout_path, method: :delete, class: "navbar-item" %>
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
         </div>
       </div>
     </div>
