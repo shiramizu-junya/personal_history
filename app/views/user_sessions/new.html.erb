@@ -24,7 +24,7 @@
         </div>
         <div class="field mb-5">
           <div class="control">
-            <%= check_box_tag :remember, params[:remember], false %>
+            <%= check_box_tag :remember, params[:remember], true %>
             <%= label_tag :remember, User.human_attribute_name(:remember), class: "label is-inline has-text-weight-medium" %>
           </div>
         </div>
