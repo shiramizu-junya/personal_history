@@ -14,15 +14,31 @@
  *= require_self
  */
 
+/*========================================
+  FontAwesome
+========================================*/
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";
+@import "@fortawesome/fontawesome-free/scss/fontawesome";
+@import "@fortawesome/fontawesome-free/scss/solid";
+@import "@fortawesome/fontawesome-free/scss/regular";
+@import "@fortawesome/fontawesome-free/scss/brands";
+@import "@fortawesome/fontawesome-free/scss/v4-shims";
+
+/*========================================
+  リセットCSS
+========================================*/
+/* 画面の右にできる余白を削除 */
+.wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+/*========================================
+  Bulmaカスタマイズ
+========================================*/
+/* ブレークポイントの修正 */
+$tablet: 768px !default;
+
+@import "header_footer";
+@import "parts";
 @import "bulma";
-
-// Sticky Footer
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}

@@ -1,0 +1,60 @@
+/*==================================
+  base
+==================================*/
+.wrap-content {
+  background-color: #fafbfc;
+  .column {
+    background-color: #fff;
+  }
+}
+
+/*========================================
+  form
+========================================*/
+$label-color: #272343;
+$title-color: #272343;
+$button-color: #272343;
+$button-hover-color: #141222;
+
+div.pd-sm {
+  padding: 1.5rem;
+  @media screen and (max-width: 350px) {
+    padding: 1rem;
+    .ft-size-sm {
+      font-size: 0.9rem;
+    }
+  }
+  .has-link {
+    color: #272343;
+    a:hover {
+      color: #3273dc;
+      text-decoration: underline;
+    }
+  }
+}
+
+/* エラーフォームにボーダーを付与 */
+.field_with_errors > input {
+  border: 1px solid #f14668;
+}
+
+/*==================================
+  btn
+==================================*/
+input.is-btn-yellow {
+  background-color: #ffe036;
+  border: none;
+  &:hover {
+    color: $button-hover-color;
+    border: none;
+    background-color: #ffd803;
+  }
+  &:active {
+    border: none;
+  }
+}
+
+input.btn-design {
+  width: 100px;
+  height: 40px;
+}
