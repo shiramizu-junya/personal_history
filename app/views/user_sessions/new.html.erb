@@ -1,34 +1,46 @@
-<% content_for(:title, t('.title')) %>
-<main class="Site-content">
-  <div class="columns is-centered">
-    <div class="column is-one-fifth my-6 p-5 box">
-      <h1 class="title has-text-centered"><%= t(".title") %></h1>
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-quarter-fullhd">
+      <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
       <%= form_with url: login_path, local: true do |f| %>
-        <div class="field">
-          <%= f.label :email, User.human_attribute_name(:email) %>
-          <div class="control">
+        <div class="field mb-5">
+          <%= f.label :email, User.human_attribute_name(:email), class: "label" %>
+          <div class="control has-icons-left">
             <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
           </div>
         </div>
-
-        <div class="field">
-          <%= f.label :password, User.human_attribute_name(:password) %>
-          <div class="control">
+        <div class="field mb-5">
+          <%= f.label :password, User.human_attribute_name(:password), class: "label" %>
+          <div class="control has-icons-left">
             <%= f.password_field :password, class: "input", placeholder: "password" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
           </div>
         </div>
-
-        <%= check_box_tag :remember, params[:remember], false %>
-        <%= label_tag :remember, User.human_attribute_name(:remember) %>
-
-        <div class="field is-grouped is-grouped-right">
-          <p class="control">
-            <%= f.submit t("defaults.login"), class: "button is-warning box" %>
-          </p>
+        <div class="field mb-5">
+          <div class="control">
+            <%= check_box_tag :remember, params[:remember], false %>
+            <%= label_tag :remember, User.human_attribute_name(:remember), class: "label is-inline has-text-weight-medium" %>
+          </div>
+        </div>
+        <div class="field has-text-centered mb-5">
+          <div class="control">
+            <%= f.submit t("defaults.login"), class: "button is-btn-yellow btn-design" %>
+          </div>
         </div>
       <% end %>
-      <div class="has-text-right">
-        パスワードを忘れた方は<a href="#">こちら</a>
+      <div class="has-text-centered mb-4">
+        <p class="mb-4 ft-size-sm has-link">
+          アカウントをお持ちでない方は<%= link_to "こちら", new_user_path %>
+        </p>
+        <p class="ft-size-sm has-link">
+          パスワードを忘れた方は<a href="#">こちら</a>
+        </p>
       </div>
     </div>
   </div>
