@@ -1,5 +1,5 @@
 <% flash.each do |message_type, message| %>
-<div class="alert alert-<%= message_type %>">
+  <div class="has-text-centered msg-slide is-<%= message_type %>" id="js-show-msg">
   <%= message %>
-</div>
+  </div>
 <% end %>
