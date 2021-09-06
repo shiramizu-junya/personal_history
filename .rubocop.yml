@@ -106,3 +106,7 @@ Rails/HasManyOrHasOneDependent:
 # アルファベット順にソートチェック
 Bundler/OrderedGems:
   Enabled: false
+
+# ダブルクオートを使う
+StringLiterals:
+  EnforcedStyle: double_quotes
