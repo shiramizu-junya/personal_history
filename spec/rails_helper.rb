@@ -64,4 +64,6 @@ RSpec.configure do |config|
 
   # FactoryBotの記載を省略できる設定
   config.include FactoryBot::Syntax::Methods
+  # ログインのモジュールの読み込み
+  config.include LoginMacros
 end
