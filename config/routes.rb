@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
   # 軌跡関係
-  resources :tracks, only: %i[index]
+  resources :tracks
 end
