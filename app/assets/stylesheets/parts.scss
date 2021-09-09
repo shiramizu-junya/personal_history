@@ -15,6 +15,7 @@ $label-color: #272343;
 $title-color: #272343;
 $button-color: #272343;
 $button-hover-color: #141222;
+$input-background-color: #f6f5f4;
 
 div.pd-sm {
   padding: 1.5rem;
@@ -30,6 +31,28 @@ div.pd-sm {
       color: #3273dc;
       text-decoration: underline;
     }
+  }
+}
+
+/* 軌跡の作成や編集画面の入力フォーム */
+.control .is-sm-form-size {
+  width: 26%;
+  max-width: 82px;
+  @media screen and (min-width:768px) and (max-width:1407px) {
+    width: 16%;
+    max-width: 76px;
+  }
+
+  @media screen and (min-width: 1408px) {
+    width: 10%;
+    min-width: 65px;
+  }
+}
+
+.is-text-size {
+  font-size: 1rem;
+  @media screen and (max-width: 450px) {
+    font-size: 0.75rem;
   }
 }
 
