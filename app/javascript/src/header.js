@@ -19,6 +19,6 @@ $(function () {
     $jsShowMsg.slideToggle("slow");
     setTimeout(function () {
       $jsShowMsg.slideToggle("slow");
-    }, 5000);
+    }, 3000);
   }
 });

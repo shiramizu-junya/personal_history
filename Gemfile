@@ -35,6 +35,9 @@ gem 'sorcery'
 # UI/UX
 gem 'rails-i18n'
 
+# モデル
+gem 'active_hash'
+
 group :development, :test do
   # デバッグ
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
