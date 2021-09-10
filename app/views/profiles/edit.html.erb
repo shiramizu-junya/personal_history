@@ -1,0 +1,68 @@
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-quarter-fullhd">
+      <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
+      <%= form_with model: @user, local: true do |f| %>
+        <div class="field mb-5">
+          <%= f.label :name, class: "label" %>
+          <div class="control">
+            <%= f.text_field :name, class: "input", placeholder: "たなか たろう" %>
+          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :name %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :email, class: "label" %>
+          <div class="control">
+            <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :email %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :age, class: "label" %>
+          <div class="control">
+            <%= f.text :age, class: "input is-sm-form-size", placeholder: "20" %>
+          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :password %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.radio_button :password_confirmation, class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.password_field :password_confirmation, class: "input", placeholder: "password" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :password_confirmation %>
+        </div>
+
+        <div class="field mb-5">
+          <div class="mb-4">
+            <p class="label is-size-5">公開・非公開 設定</p>
+          </div>
+          <div class="control">
+            <label class="radio mb-2">
+              <input type="radio" name="question">
+              公開
+            </label>
+          </div>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="question">
+              非公開
+            </label>
+          </div>
+        </div>
+
+        <div class="field has-text-centered mb-4">
+          <div class="control is-centered">
+            <%= f.submit t("defaults.register"), class: "button is-btn-yellow btn-design" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
