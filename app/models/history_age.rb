@@ -1,4 +1,7 @@
 class HistoryAge < ActiveHash::Base
+  include ActiveHash::Associations
+  has_many :events
+
   self.data = [
     {:id => 1, :age => "0〜5歳"},
     {:id => 2, :age => "6〜10歳"},
