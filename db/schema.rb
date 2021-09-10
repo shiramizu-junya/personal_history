@@ -16,10 +16,9 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
     t.text "episode", null: false
     t.integer "happiness", null: false
     t.bigint "track_id", null: false
-    t.bigint "history_age_id", null: false
+    t.integer "history_age_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["history_age_id"], name: "index_events_on_history_age_id"
     t.index ["track_id"], name: "index_events_on_track_id"
   end
 

@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration[6.0]
       t.text :episode, null: false
       t.integer :happiness, null: false
       t.references :track, null: false, foreign_key: true
-      t.references :history_age, null: false
+      t.integer :history_age_id, null: false
 
       t.timestamps
     end
