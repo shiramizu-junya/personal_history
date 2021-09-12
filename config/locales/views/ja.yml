@@ -4,6 +4,7 @@ ja:
     register: "登録"
     logout: "ログアウト"
     signup: "新規登録"
+    edit: "編集"
     message:
       require_login: "ログインしてください"
   users:
@@ -25,3 +26,9 @@ ja:
       title: "軌跡一覧"
     new:
       title: "軌跡新規作成"
+  profiles:
+    edit:
+      title: "プロフィール編集"
+      men: "男性"
+      women: "女性"
+      select_file: "ファイルを選択"

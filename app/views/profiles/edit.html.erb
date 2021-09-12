@@ -1,21 +1,27 @@
 <% content_for(:title, t(".title")) %>
 <main class="wrap-content">
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-quarter-fullhd">
+    <div class="column pd-sm box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
       <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
-      <%= form_with model: @user, local: true do |f| %>
+      <%= form_with model: @user, url: profile_path, local: true do |f| %>
         <div class="field mb-5">
           <%= f.label :name, class: "label" %>
-          <div class="control">
+          <div class="control has-icons-left">
             <%= f.text_field :name, class: "input", placeholder: "たなか たろう" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
           </div>
           <%= render "shared/error_messages", object: @user, attribute: :name %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :email, class: "label" %>
-          <div class="control">
+          <div class="control has-icons-left">
             <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
           </div>
           <%= render "shared/error_messages", object: @user, attribute: :email %>
         </div>
@@ -23,43 +29,50 @@
         <div class="field mb-5">
           <%= f.label :age, class: "label" %>
           <div class="control">
-            <%= f.text :age, class: "input is-sm-form-size", placeholder: "20" %>
+            <%= f.number_field :age, class: "input is-sm-form-size", placeholder: "20" %>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :password %>
+          <%= render "shared/error_messages", object: @user, attribute: :age %>
         </div>
 
         <div class="field mb-5">
-          <%= f.radio_button :password_confirmation, class: "label" %>
-          <div class="control has-icons-left">
-            <%= f.password_field :password_confirmation, class: "input", placeholder: "password" %>
-            <span class="icon is-small is-left">
-              <i class="fas fa-lock"></i>
-            </span>
+          <%= f.label :gender, class: "label", for: "user_gender_men" %>
+          <div class="control">
+            <%= f.radio_button :gender, :men %>
+            <%= f.label :gender_men, t("profiles.edit.men"), class: "radio" %>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :password_confirmation %>
+          <div class="control">
+            <%= f.radio_button :gender, :women %>
+            <%= f.label :gender_women, t("profiles.edit.women"), class: "radio" %>
+          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :gender %>
         </div>
 
         <div class="field mb-5">
-          <div class="mb-4">
-            <p class="label is-size-5">公開・非公開 設定</p>
-          </div>
-          <div class="control">
-            <label class="radio mb-2">
-              <input type="radio" name="question">
-              公開
+          <%= f.label :avatar, class: "label" %>
+          <div class="file">
+            <label class="file-label">
+              <%= f.file_field :avatar, class: "file-input", accept: "image/*" %>
+              <%= f.hidden_field :avatar_cache %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  <%= t("profiles.edit.select_file") %>
+                </span>
+              </span>
             </label>
           </div>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" name="question">
-              非公開
-            </label>
-          </div>
+          <%= render "shared/error_messages", object: @user, attribute: :avatar %>
         </div>
+
+        <figure class="image is-128x128 mb-5 ml-4">
+          <%= image_tag "https://bulma.io/images/placeholders/128x128.png", id: "preview", size: "128x128" %>
+        </figure>
 
         <div class="field has-text-centered mb-4">
           <div class="control is-centered">
-            <%= f.submit t("defaults.register"), class: "button is-btn-yellow btn-design" %>
+            <%= f.submit t("defaults.edit"), class: "button is-btn-yellow btn-design" %>
           </div>
         </div>
       <% end %>
