@@ -1,4 +1,17 @@
 /*==================================
+  変数
+==================================*/
+/* form関係 */
+$label-color: #272343;
+$title-color: #272343;
+$button-color: #272343;
+$button-hover-color: #141222;
+$input-background-color: #f6f5f4;
+$file-cta-background-color: #f6f5f4;
+$file-cta-color: #272343;
+$file-cta-hover-color: #141222;
+
+/*==================================
   base
 ==================================*/
 .wrap-content {
@@ -8,15 +21,15 @@
   }
 }
 
+@media screen and (min-width: 1408px) {
+  .column.is-one-third-fullhd {
+    max-width: 500px;
+  }
+}
+
 /*========================================
   form
 ========================================*/
-$label-color: #272343;
-$title-color: #272343;
-$button-color: #272343;
-$button-hover-color: #141222;
-$input-background-color: #f6f5f4;
-
 div.pd-sm {
   padding: 1.5rem;
   @media screen and (max-width: 350px) {
@@ -34,7 +47,7 @@ div.pd-sm {
   }
 }
 
-/* 軌跡の作成や編集画面の入力フォーム */
+// 軌跡の作成や編集画面の入力フォーム
 .control .is-sm-form-size {
   width: 26%;
   max-width: 82px;
@@ -42,7 +55,6 @@ div.pd-sm {
     width: 16%;
     max-width: 76px;
   }
-
   @media screen and (min-width: 1408px) {
     width: 10%;
     min-width: 65px;
@@ -56,13 +68,13 @@ div.pd-sm {
   }
 }
 
-/* エラーフォームにボーダーを付与 */
+// エラーフォームにボーダーを付与
 .field_with_errors > input {
   border: 1px solid #f14668;
 }
 
 /*==================================
-  btn
+  button
 ==================================*/
 input.is-btn-yellow {
   background-color: #ffe036;
