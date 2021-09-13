@@ -29,6 +29,4 @@ ja:
   profiles:
     edit:
       title: "プロフィール編集"
-      men: "男性"
-      women: "女性"
       select_file: "ファイルを選択"

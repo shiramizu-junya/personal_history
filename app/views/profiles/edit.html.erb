@@ -35,16 +35,12 @@
         </div>
 
         <div class="field mb-5">
-          <%= f.label :gender, class: "label", for: "user_gender_men" %>
-          <div class="control">
-            <%= f.radio_button :gender, :men %>
-            <%= f.label :gender_men, t("profiles.edit.men"), class: "radio" %>
-          </div>
-          <div class="control">
-            <%= f.radio_button :gender, :women %>
-            <%= f.label :gender_women, t("profiles.edit.women"), class: "radio" %>
-          </div>
-          <%= render "shared/error_messages", object: @user, attribute: :gender %>
+          <%= f.label :gender, class: "label" %>
+          <%= f.collection_radio_buttons :gender, User.genders_i18n, :first, :last, include_hidden: false do |b| %>
+            <%= content_tag(:div, class: "control") do %>
+              <%= b.radio_button(class: "radio") + b.label(class: "radio") %>
+            <% end %>
+          <% end %>
         </div>
 
         <div class="field mb-5">
