@@ -4,9 +4,11 @@ ja:
     register: "登録"
     logout: "ログアウト"
     signup: "新規登録"
-    edit: "編集"
+    edit: "更新"
     message:
-      require_login: "ログインしてください"
+      require_login: "ログインしてください。"
+      update: "%{item}を更新しました。"
+      not_updated: "%{item}を更新できませんでした。"
   users:
     new:
       title: "ユーザー登録"
@@ -29,4 +31,5 @@ ja:
   profiles:
     edit:
       title: "プロフィール編集"
+      profile: "プロフィール"
       select_file: "ファイルを選択"
