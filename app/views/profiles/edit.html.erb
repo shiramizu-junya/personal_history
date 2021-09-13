@@ -51,7 +51,7 @@
           <%= f.label :avatar, class: "label" %>
           <div class="file">
             <label class="file-label">
-              <%= f.file_field :avatar, class: "file-input", accept: "image/*" %>
+              <%= f.file_field :avatar, class: "file-input js-file-input", accept: "image/*" %>
               <%= f.hidden_field :avatar_cache %>
               <span class="file-cta">
                 <span class="file-icon">
@@ -67,7 +67,7 @@
         </div>
 
         <figure class="image is-128x128 mb-5 ml-4">
-          <%= image_tag "https://bulma.io/images/placeholders/128x128.png", id: "preview", size: "128x128" %>
+          <%= image_tag "https://bulma.io/images/placeholders/128x128.png", class: "js-preview-image prev-img" %>
         </figure>
 
         <div class="field has-text-centered mb-4">
