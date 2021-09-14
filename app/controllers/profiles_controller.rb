@@ -6,12 +6,7 @@ class ProfilesController < ApplicationController
   def edit; end
 
   def update
-
-    @user.assign_attributes(user_params)
-    # 画像ファイル名を一意に変更
-    @user.unique_image_name(@user)
-
-    if @user.save
+    if @user.update(user_params)
       redirect_to profile_path, success: t("defaults.message.updated", item: t("profiles.edit.profile"))
     else
       flash.now[:danger] = t("defaults.message.not_updated", item: t("profiles.edit.profile"))
