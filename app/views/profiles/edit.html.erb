@@ -38,7 +38,7 @@
           <%= f.label :gender, class: "label" %>
           <%= f.collection_radio_buttons :gender, User.genders_i18n, :first, :last, include_hidden: false do |b| %>
             <%= content_tag(:div, class: "control") do %>
-              <%= b.radio_button(class: "radio") + b.label(class: "radio") %>
+              <%= b.radio_button(class: "radio") + b.label(class: "radio ml-2") %>
             <% end %>
           <% end %>
           <%= render "shared/error_messages", object: @user, attribute: :gender %>
