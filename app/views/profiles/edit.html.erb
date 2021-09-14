@@ -41,6 +41,7 @@
               <%= b.radio_button(class: "radio") + b.label(class: "radio") %>
             <% end %>
           <% end %>
+          <%= render "shared/error_messages", object: @user, attribute: :gender %>
         </div>
 
         <div class="field mb-5">
