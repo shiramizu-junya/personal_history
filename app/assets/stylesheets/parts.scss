@@ -83,8 +83,11 @@ input.is-btn-yellow {
     color: $button-hover-color;
     border: none;
     background-color: #ffd803;
+    transition: 0.3s;
   }
   &:active {
+    color: $button-hover-color;
+    background-color: #ffd803;
     border: none;
   }
 }
