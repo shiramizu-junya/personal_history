@@ -40,6 +40,15 @@ $button-background-color-sub1: #ffd803;
   border: 3px solid $button-background-color;
 }
 
+/*==================================
+  title
+==================================*/
+h1.ft-size-md {
+  @media screen and (max-width: 350px) {
+    font-size: 1.9rem;
+  }
+}
+
 /*========================================
   form
 ========================================*/
