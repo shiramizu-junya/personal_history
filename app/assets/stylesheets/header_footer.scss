@@ -4,7 +4,7 @@
 // Bulma変数
 $navbar-background-color: #E4F5F5;
 $navbar-item-color: #272343;
-$navbar-item-hover-color: #141222;
+$navbar-item-hover-color: #0d0c16;
 $navbar-item-hover-background-color: #ffd803;
 $navbar-dropdown-item-hover-color: #141222;
 $navbar-dropdown-item-hover-background-color: #ffd803;
@@ -19,10 +19,6 @@ $font-color-sub1: #47407b;
 /*========================================
   header
 ========================================*/
-.navbar-menu .navbar-item:hover {
-  font-weight: bold;
-}
-
 // フラッシュメッセージ
 .msg-slide {
   position: fixed;
