@@ -16,16 +16,12 @@
         <a href="#" class="navbar-item"><%= "軌跡新規作成" %></a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
-            田中
+            <%= current_user.name %>
           </a>
           <div class="navbar-dropdown">
-            <a class="navbar-item">
-              マイページ
-            </a>
+            <%= link_to t("profiles.show.title"), profile_path, class: "navbar-item" %>
             <hr class="navbar-divider">
-            <a class="navbar-item">
-              プロフィール編集
-            </a>
+            <%= link_to t("profiles.edit.title"), edit_profile_path, class: "navbar-item" %>
             <hr class="navbar-divider">
             <a class="navbar-item">
               退会
