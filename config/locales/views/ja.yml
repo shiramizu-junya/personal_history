@@ -9,6 +9,7 @@ ja:
       require_login: "ログインしてください。"
       updated: "%{item}を更新しました。"
       not_updated: "%{item}を更新できませんでした。"
+      logged_in: "既にログイン済みです。"
   users:
     new:
       title: "ユーザー登録"

@@ -1,7 +1,10 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
-  def new; end
+  def new
+    # ログイン済みユーザーの場合はログイン画面を表示しない
+    login_decision
+  end
 
   def create
     @user = login(params[:email], params[:password], params[:remember])
