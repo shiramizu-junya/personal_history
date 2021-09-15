@@ -7,7 +7,7 @@ ja:
     edit: "更新"
     message:
       require_login: "ログインしてください。"
-      update: "%{item}を更新しました。"
+      updated: "%{item}を更新しました。"
       not_updated: "%{item}を更新できませんでした。"
   users:
     new:
@@ -33,3 +33,5 @@ ja:
       title: "プロフィール編集"
       profile: "プロフィール"
       select_file: "ファイルを選択"
+    show:
+      title: "マイページ"
