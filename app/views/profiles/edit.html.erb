@@ -1,13 +1,13 @@
 <% content_for(:title, t(".title")) %>
 <main class="wrap-content">
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+    <div class="column pd-sm form-wrap box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
       <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
       <%= form_with model: @user, url: profile_path, local: true do |f| %>
         <div class="field mb-5">
           <%= f.label :name, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.text_field :name, class: "input", placeholder: "たなか たろう" %>
+            <%= f.text_field :name, class: "input #{error_if(@user, :name)}", placeholder: "たなか たろう" %>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -18,7 +18,7 @@
         <div class="field mb-5">
           <%= f.label :email, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+            <%= f.email_field :email, class: "input #{error_if(@user, :email)}", placeholder: "***@example.com" %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -29,7 +29,7 @@
         <div class="field mb-5">
           <%= f.label :age, class: "label" %>
           <div class="control">
-            <%= f.number_field :age, class: "input is-sm-form-size", placeholder: "20" %>
+            <%= f.number_field :age, class: "input is-sm-form-size #{error_if(@user, :age)}", placeholder: "20" %>
           </div>
           <%= render "shared/error_messages", object: @user, attribute: :age %>
         </div>
@@ -69,7 +69,7 @@
 
         <div class="field has-text-centered mb-4">
           <div class="control is-centered">
-            <%= f.submit t("defaults.edit"), class: "button is-btn-yellow btn-design" %>
+            <%= f.submit t("defaults.edit"), class: "button is-info btn-design has-text-weight-semibold" %>
           </div>
         </div>
       <% end %>

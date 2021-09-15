@@ -54,9 +54,9 @@ module TrajectoryLife
         routing_specs: false      # routing specは作らない
     end
 
-    # formのエラー時はspanタグ囲うように設定
+    # formのエラー時はdivタグを作らない
     config.action_view.field_error_proc = Proc.new { |html_tag, instance|
-      "<span class='field_with_errors'>#{html_tag}</span>".html_safe
+      %Q(#{html_tag}).html_safe
     }
   end
 end
