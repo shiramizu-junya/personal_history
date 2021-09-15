@@ -7,46 +7,46 @@
         <div class="field mb-5">
           <%= f.label :name, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.text_field :name, class: "input #{error_if(@user, :name)}", placeholder: "たなか たろう" %>
+            <%= f.text_field :name, class: "input #{error_if(f.object, :name)}", placeholder: "たなか たろう" %>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :name %>
+          <%= render "shared/error_messages", object: f.object, attribute: :name %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :email, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.email_field :email, class: "input #{error_if(@user, :email)}", placeholder: "***@example.com" %>
+            <%= f.email_field :email, class: "input #{error_if(f.object, :email)}", placeholder: "***@example.com" %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :email %>
+          <%= render "shared/error_messages", object: f.object, attribute: :email %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :password, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.password_field :password, class: "input #{error_if(@user, :password)}", placeholder: "password" %>
+            <%= f.password_field :password, class: "input #{error_if(f.object, :password)}", placeholder: "password" %>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :password %>
+          <%= render "shared/error_messages", object: f.object, attribute: :password %>
           <p class="help has-text-grey-dark">＊半角英数字8文字以上で入力してください</p>
         </div>
 
         <div class="field mb-5">
           <%= f.label :password_confirmation, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.password_field :password_confirmation, class: "input #{error_if(@user, :password_confirmation)}", placeholder: "password" %>
+            <%= f.password_field :password_confirmation, class: "input #{error_if(f.object, :password_confirmation)}", placeholder: "password" %>
             <span class="icon is-small is-left">
               <i class="fas fa-lock"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :password_confirmation %>
+          <%= render "shared/error_messages", object: f.object, attribute: :password_confirmation %>
         </div>
 
         <div class="field has-text-centered mb-4">

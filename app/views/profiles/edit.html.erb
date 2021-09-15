@@ -7,31 +7,31 @@
         <div class="field mb-5">
           <%= f.label :name, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.text_field :name, class: "input #{error_if(@user, :name)}", placeholder: "たなか たろう" %>
+            <%= f.text_field :name, class: "input #{error_if(f.object, :name)}", placeholder: "たなか たろう" %>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :name %>
+          <%= render "shared/error_messages", object: f.object, attribute: :name %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :email, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.email_field :email, class: "input #{error_if(@user, :email)}", placeholder: "***@example.com" %>
+            <%= f.email_field :email, class: "input #{error_if(f.object, :email)}", placeholder: "***@example.com" %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :email %>
+          <%= render "shared/error_messages", object: f.object, attribute: :email %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :age, class: "label" %>
           <div class="control">
-            <%= f.number_field :age, class: "input is-sm-form-size #{error_if(@user, :age)}", placeholder: "20" %>
+            <%= f.number_field :age, class: "input is-sm-form-size #{error_if(f.object, :age)}", placeholder: "20" %>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :age %>
+          <%= render "shared/error_messages", object: f.object, attribute: :age %>
         </div>
 
         <div class="field mb-5">
@@ -41,7 +41,7 @@
               <%= b.radio_button(class: "radio") + b.label(class: "radio ml-2") %>
             <% end %>
           <% end %>
-          <%= render "shared/error_messages", object: @user, attribute: :gender %>
+          <%= render "shared/error_messages", object: f.object, attribute: :gender %>
         </div>
 
         <div class="field mb-5">
@@ -60,7 +60,7 @@
               </span>
             </label>
           </div>
-          <%= render "shared/error_messages", object: @user, attribute: :avatar %>
+          <%= render "shared/error_messages", object: f.object, attribute: :avatar %>
         </div>
 
         <figure class="image is-128x128 mb-5 ml-4">
