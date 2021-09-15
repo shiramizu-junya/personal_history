@@ -1,7 +1,7 @@
 /*==================================
   変数
 ==================================*/
-/* form関係 */
+// Bulma変数
 $label-color: #272343;
 $title-color: #272343;
 $button-color: #272343;
@@ -11,13 +11,22 @@ $file-cta-background-color: #f6f5f4;
 $file-cta-color: #272343;
 $file-cta-hover-color: #141222;
 
+// 独自変数
+$font-color: #272343;
+$font-color-hover: #3273dc;
+$background-color: #fafbfc;
+$background-color-sub1: #fff;
+$button-background-color: #ffe036;
+$button-background-color-sub1: #ffd803;
+
+
 /*==================================
   base
 ==================================*/
 .wrap-content {
-  background-color: #fafbfc;
+  background-color: $background-color;
   .column {
-    background-color: #fff;
+    background-color: $background-color-sub1;
   }
 }
 
@@ -25,6 +34,10 @@ $file-cta-hover-color: #141222;
   .column.is-one-third-fullhd {
     max-width: 500px;
   }
+}
+
+.form-wrap {
+  border: 3px solid $button-background-color;
 }
 
 /*========================================
@@ -39,9 +52,9 @@ div.pd-sm {
     }
   }
   .has-link {
-    color: #272343;
+    color: $font-color;
     a:hover {
-      color: #3273dc;
+      color: $font-color-hover;
       text-decoration: underline;
     }
   }
@@ -68,8 +81,7 @@ div.pd-sm {
   }
 }
 
-// エラーフォームにボーダーを付与
-.field_with_errors > input {
+input.error {
   border: 1px solid #f14668;
 }
 
@@ -77,17 +89,20 @@ div.pd-sm {
   button
 ==================================*/
 input.is-btn-yellow {
-  background-color: #ffe036;
+  background-color: $button-background-color;
   border: none;
+  // font-weight: 700;
   &:hover {
     color: $button-hover-color;
     border: none;
-    background-color: #ffd803;
+    background-color: $button-background-color-sub1;
     transition: 0.3s;
   }
-  &:active {
+  &:active,
+  &:focus,
+  &[disabled] {
     color: $button-hover-color;
-    background-color: #ffd803;
+    background-color: $button-background-color-sub1;
     border: none;
   }
 }
