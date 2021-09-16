@@ -11,8 +11,6 @@ class ApplicationController < ActionController::Base
 
   # ログイン済みユーザーはリダイレクトさせる
   def login_decision
-    if logged_in?
-      redirect_to tracks_path, danger: t("defaults.message.logged_in")
-    end
+    redirect_to tracks_path, danger: t("defaults.message.logged_in") if logged_in?
   end
 end
