@@ -1,0 +1,78 @@
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm form-wrap box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+      <h1 class="title has-text-centered mb-5 ft-size-md"><%= t(".title") %></h1>
+      <%= form_with model: @user, url: profile_path, local: true do |f| %>
+        <div class="field mb-5">
+          <%= f.label :name, class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.text_field :name, class: "input #{error_if(f.object, :name)}", placeholder: "たなか たろう" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :name %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :email, class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.email_field :email, class: "input #{error_if(f.object, :email)}", placeholder: "***@example.com" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :email %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :age, class: "label" %>
+          <div class="control">
+            <%= f.number_field :age, class: "input is-sm-form-size #{error_if(f.object, :age)}", placeholder: "20" %>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :age %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :gender, class: "label" %>
+          <%= f.collection_radio_buttons :gender, User.genders_i18n, :first, :last, include_hidden: false do |b| %>
+            <%= content_tag(:div, class: "control") do %>
+              <%= b.radio_button(class: "radio") + b.label(class: "radio ml-2") %>
+            <% end %>
+          <% end %>
+          <%= render "shared/error_messages", object: f.object, attribute: :gender %>
+        </div>
+
+        <div class="field mb-5">
+          <%= f.label :avatar, class: "label" %>
+          <div class="file">
+            <label class="file-label">
+              <%= f.file_field :avatar, class: "file-input js-file-input", accept: "image/*" %>
+              <%= f.hidden_field :avatar_cache %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label">
+                  <%= t("profiles.edit.select_file") %>
+                </span>
+              </span>
+            </label>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :avatar %>
+        </div>
+
+        <figure class="image is-128x128 mb-5 ml-4">
+          <%= image_tag @user.avatar.url, class: "js-preview-image prev-img" %>
+        </figure>
+
+        <div class="field has-text-centered mb-4">
+          <div class="control is-centered">
+            <%= f.submit t("defaults.edit"), class: "button is-btn-edit btn-design has-text-weight-semibold" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

@@ -1,22 +1,59 @@
 /*==================================
+  変数
+==================================*/
+// Bulma変数
+$label-color: #272343;
+$title-color: #272343;
+$button-color: #272343;
+$button-hover-color: #141222;
+$input-background-color: #f6f5f4;
+$file-cta-background-color: #f6f5f4;
+$file-cta-color: #272343;
+$file-cta-hover-color: #141222;
+
+// 独自変数
+$font-color: #272343;
+$font-color-hover: #3273dc;
+$background-color: #fafbfc;
+$background-color-sub1: #fff;
+$button-background-color: #ffe036;
+$button-background-color-sub1: #ffd803;
+$button-background-color-sub2: #f9bc60;
+$button-background-color-sub3: #faae2b;
+
+
+/*==================================
   base
 ==================================*/
 .wrap-content {
-  background-color: #fafbfc;
+  background-color: $background-color;
   .column {
-    background-color: #fff;
+    background-color: $background-color-sub1;
+  }
+}
+
+@media screen and (min-width: 1408px) {
+  .column.is-one-third-fullhd {
+    max-width: 550px;
+  }
+}
+
+.form-wrap {
+  border: 3px solid $button-background-color;
+}
+
+/*==================================
+  title
+==================================*/
+h1.ft-size-md {
+  @media screen and (max-width: 350px) {
+    font-size: 1.9rem;
   }
 }
 
 /*========================================
   form
 ========================================*/
-$label-color: #272343;
-$title-color: #272343;
-$button-color: #272343;
-$button-hover-color: #141222;
-$input-background-color: #f6f5f4;
-
 div.pd-sm {
   padding: 1.5rem;
   @media screen and (max-width: 350px) {
@@ -26,15 +63,15 @@ div.pd-sm {
     }
   }
   .has-link {
-    color: #272343;
+    color: $font-color;
     a:hover {
-      color: #3273dc;
+      color: $font-color-hover;
       text-decoration: underline;
     }
   }
 }
 
-/* 軌跡の作成や編集画面の入力フォーム */
+// 軌跡の作成や編集画面の入力フォーム
 .control .is-sm-form-size {
   width: 26%;
   max-width: 82px;
@@ -42,7 +79,6 @@ div.pd-sm {
     width: 16%;
     max-width: 76px;
   }
-
   @media screen and (min-width: 1408px) {
     width: 10%;
     min-width: 65px;
@@ -56,23 +92,47 @@ div.pd-sm {
   }
 }
 
-/* エラーフォームにボーダーを付与 */
-.field_with_errors > input {
+input.error {
   border: 1px solid #f14668;
 }
 
 /*==================================
-  btn
+  button
 ==================================*/
-input.is-btn-yellow {
-  background-color: #ffe036;
+input.is-btn-login,
+input.is-btn-signup {
+  background-color: $button-background-color;
   border: none;
   &:hover {
     color: $button-hover-color;
     border: none;
-    background-color: #ffd803;
+    background-color: $button-background-color-sub1;
+    transition: 0.3s;
   }
-  &:active {
+  &:active,
+  &:focus,
+  &[disabled] {
+    color: $button-hover-color;
+    background-color: $button-background-color-sub1;
+    border: none;
+  }
+}
+
+input.is-btn-edit {
+  background-color: $button-background-color-sub2;
+  border: none;
+  &:hover {
+    color: $button-hover-color;
+    border: none;
+    background-color: $button-background-color-sub3;
+    transition: 0.3s;
+  }
+
+  &:active,
+  &:focus,
+  &[disabled] {
+    color: $button-hover-color;
+    background-color: $button-background-color-sub3;
     border: none;
   }
 }
@@ -80,4 +140,12 @@ input.is-btn-yellow {
 input.btn-design {
   width: 100px;
   height: 40px;
+}
+
+/*==================================
+  画像
+==================================*/
+.image .prev-img {
+  width: 100%;
+  height: 100%;
 }

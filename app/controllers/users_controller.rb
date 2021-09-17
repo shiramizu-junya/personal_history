@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
 
   def new
+    # ログイン済みユーザーの場合はユーザー登録画面を表示しない
+    login_decision
     @user = User.new
   end
 

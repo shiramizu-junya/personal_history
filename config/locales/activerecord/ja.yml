@@ -15,3 +15,8 @@ ja:
         password_confirmation: "パスワード再入力"
         created_at: "登録日時"
         updated_at: "更新日時"
+  enums:
+    user:
+      gender:
+        men: "男性"
+        women: "女性"

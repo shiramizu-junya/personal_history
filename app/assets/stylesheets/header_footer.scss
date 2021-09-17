@@ -1,24 +1,31 @@
 /*========================================
-  header
+  変数
 ========================================*/
+// Bulma変数
 $navbar-background-color: #E4F5F5;
 $navbar-item-color: #272343;
-$navbar-item-hover-color: #141222;
+$navbar-item-hover-color: #0d0c16;
 $navbar-item-hover-background-color: #ffd803;
 $navbar-dropdown-item-hover-color: #141222;
 $navbar-dropdown-item-hover-background-color: #ffd803;
+$footer-background-color: #E4F5F5;
+$footer-padding: 1.5rem 0 1.5rem;
+$footer-color: #272343;
 
-.navbar-menu .navbar-item:hover {
-  font-weight: bold;
-}
+// 独自変数
+$font-color: #272343;
+$font-color-sub1: #47407b;
 
+/*========================================
+  header
+========================================*/
 // フラッシュメッセージ
 .msg-slide {
   position: fixed;
   top: 0;
   z-index: 40;
   width: 100%;
-  color: #272343;
+  color: $font-color;
   display: none;
   &.is-success {
     background: rgba(122, 206, 230, 0.8);
@@ -31,12 +38,6 @@ $navbar-dropdown-item-hover-background-color: #ffd803;
 /*========================================
   footer
 ========================================*/
-
-$footer-background-color: #E4F5F5;
-$footer-padding: 1.5rem 0 1.5rem;
-$footer-color: #272343;
-$font-color_sub1: #47407b;
-
 .footer {
   .is-navy,
   .copy-right {
@@ -44,7 +45,7 @@ $font-color_sub1: #47407b;
   }
 
   .is-navy:hover {
-    color: $font-color_sub1;
+    color: $font-color-sub1;
     text-decoration: underline;
   }
 
@@ -56,7 +57,7 @@ $font-color_sub1: #47407b;
   }
 }
 
-/* footerを１番下に固定 */
+// footerを１番下に固定
 .wrap {
   display: flex;
   min-height: 100vh;
