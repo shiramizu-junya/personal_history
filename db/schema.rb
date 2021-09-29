@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_09_09_060312) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.integer "age", null: false
     t.text "episode", null: false
     t.integer "happiness", null: false
     t.bigint "track_id", null: false
-    t.integer "history_age_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["track_id"], name: "index_events_on_track_id"

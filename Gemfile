@@ -38,7 +38,6 @@ gem "sorcery"
 gem "rails-i18n"
 
 # モデル
-gem "active_hash"
 gem "enum_help"
 
 group :development, :test do
