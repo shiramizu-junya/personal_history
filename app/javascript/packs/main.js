@@ -32,18 +32,30 @@
 // </div>
 
 
-import Vue from 'vue/dist/vue.esm'
-import App from '../app.vue'
+// import Vue from 'vue/dist/vue.esm'
+// import App from '../App.vue'
 
-document.addEventListener('DOMContentLoaded', () => {
+// document.addEventListener('DOMContentLoaded', () => {
+//   const app = new Vue({
+//     el: '#hello',
+//     data: {
+//       message: "Can you say hello?"
+//     },
+//     components: { App }
+//   })
+// })
+
+import Vue from "vue/dist/vue.esm";
+import App from "../App.vue";
+
+Vue.config.productionTip = false;
+
+document.addEventListener("DOMContentLoaded", () => {
   const app = new Vue({
-    el: '#hello',
-    data: {
-      message: "Can you say hello?"
-    },
-    components: { App }
-  })
+    render: (h) => h(App),
+  }).$mount("#app");
 })
+
 //
 //
 //
