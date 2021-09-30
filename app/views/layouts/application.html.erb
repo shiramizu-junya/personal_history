@@ -10,15 +10,15 @@
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_pack_tag "application" %>
 
-    <%= javascript_pack_tag 'hello_vue' %>
-    <%= stylesheet_pack_tag 'hello_vue' %>
+    <%= javascript_pack_tag "main" %>
+    <%= stylesheet_pack_tag "main" %>
   </head>
 
   <body class="wrap">
     <% if logged_in? %>
-      <%= render 'shared/header' %>
+      <%= render "shared/header" %>
     <% else %>
-      <%= render 'shared/before_login_header' %>
+      <%= render "shared/before_login_header" %>
     <% end %>
 
     <%= render "shared/flash_message" %>
