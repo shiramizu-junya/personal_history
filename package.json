@@ -1,12 +1,16 @@
 {
   "name": "trajectory_life",
   "private": true,
+  "scripts": {
+    "lint": "yarn run eslint --ext .vue --ext .js app/javascript"
+  },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "4.3.0",
+    "eslint-plugin-vue-libs": "^4.0.0",
     "jquery": "^3.6.0",
     "vue": "^2.6.14",
     "vue-loader": "^15.9.8",
@@ -14,6 +18,9 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-vue": "^7.18.0",
     "webpack-dev-server": "^3.11.2"
   }
 }

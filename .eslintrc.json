@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:vue/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "jquery" : true,
+    "node": true
+  },
+  "rules": {
+    // 不要なカッコは消す
+    "no-extra-parens": 1,
+    // 無駄なスペースは削除
+    "no-multi-spaces": 2,
+    // 不要な空白行は削除。2行開けてたらエラー
+    "no-multiple-empty-lines": [2, {"max": 1}],
+    // セミコロン
+    "semi": "error",
+    // jsのインデントは２
+    "indent": ["error", 2],
+    // 文字列はダブルクオートのみ
+    "quotes": ["error", "double"],
+    // varは禁止
+    "no-var": 2,
+    // コンソールは許可
+    "no-console": 0
+  }
+}
