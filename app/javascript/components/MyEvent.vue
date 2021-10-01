@@ -1,7 +1,10 @@
 <template>
   <li>
     <span v-if="isEdit">
-      <input type="text" v-model="updatedEvent.title" />
+      <input
+        v-model="updatedEvent.title"
+        type="text"
+      >
       <button @click="handleSubmit">確定</button>
     </span>
     <span v-else>
@@ -15,16 +18,19 @@
 export default {
   name: "MyEvent",
   props: {
-    event: Object,
-  },
-  created() {
-    this.updatedEvent = this.event;
+    event: {
+      type: Object,
+      required: true
+    }
   },
   data() {
     return {
       isEdit: false,
       updatedEvent: {},
     };
+  },
+  created() {
+    this.updatedEvent = this.event;
   },
   methods: {
     handleSubmit() {

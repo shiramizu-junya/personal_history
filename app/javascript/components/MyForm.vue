@@ -2,8 +2,16 @@
   <div>
     <form>
       <label>タイトル</label>
-      <input type="text" v-model="event.title" />
-      <button type="button" @click.stop="handleClick">登録</button>
+      <input
+        v-model="event.title"
+        type="text"
+      >
+      <button
+        type="button"
+        @click.stop="handleClick"
+      >
+        登録
+      </button>
     </form>
   </div>
 </template>

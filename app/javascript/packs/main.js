@@ -17,7 +17,6 @@
 //   console.log(app)
 // })
 
-
 // The above code uses Vue without the compiler, which means you cannot
 // use Vue to target elements in your existing html templates. You would
 // need to always use single file components.
@@ -30,7 +29,6 @@
 //   {{message}}
 //   <app></app>
 // </div>
-
 
 // import Vue from 'vue/dist/vue.esm'
 // import App from '../App.vue'
@@ -51,10 +49,10 @@ import App from "../App.vue";
 Vue.config.productionTip = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  const app = new Vue({
+  new Vue({
     render: (h) => h(App),
   }).$mount("#app");
-})
+});
 
 //
 //

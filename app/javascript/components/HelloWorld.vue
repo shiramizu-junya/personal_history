@@ -3,13 +3,21 @@
     <ul>
       <my-event
         v-for="event in events"
-        :event="event"
         :key="event.id"
+        :event="event"
         @update="update"
       />
     </ul>
-    <my-form v-if="isNewFormShown" @add="add" />
-    <button type="button" @click="isNewFormShown = true">追加</button>
+    <my-form
+      v-if="isNewFormShown"
+      @add="add"
+    />
+    <button
+      type="button"
+      @click="isNewFormShown = true"
+    >
+      追加
+    </button>
   </div>
 </template>
 
