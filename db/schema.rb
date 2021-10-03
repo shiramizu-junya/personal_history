@@ -19,19 +19,19 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
     t.string "memory_image"
     t.text "episode", null: false
     t.integer "happiness", null: false
-    t.bigint "track_id", null: false
+    t.bigint "personal_history_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["track_id"], name: "index_events_on_track_id"
+    t.index ["personal_history_id"], name: "index_events_on_personal_history_id"
   end
 
-  create_table "tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "personal_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "published", null: false
     t.string "title", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tracks_on_user_id"
+    t.index ["user_id"], name: "index_personal_histories_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -50,6 +50,6 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
-  add_foreign_key "events", "tracks"
-  add_foreign_key "tracks", "users"
+  add_foreign_key "events", "personal_histories"
+  add_foreign_key "personal_histories", "users"
 end
