@@ -13,7 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_09_09_060312) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.integer "age", null: false
+    t.date "memory_date", null: false
+    t.integer "category_id", null: false
+    t.string "title", null: false
+    t.string "memory_image"
     t.text "episode", null: false
     t.integer "happiness", null: false
     t.bigint "track_id", null: false
@@ -24,16 +27,17 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
 
   create_table "tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "published", null: false
+    t.string "title", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_tracks_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.integer "age"
+    t.date "birthday"
     t.integer "gender"
     t.string "avatar"
     t.string "crypted_password"
