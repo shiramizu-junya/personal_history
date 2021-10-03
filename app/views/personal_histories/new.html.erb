@@ -1,0 +1,85 @@
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-two-fifths-fullhd">
+      <h1 class="title has-text-centered mb-5">軌跡新規作成</h1>
+
+      <div id="app"></div>
+
+        <%
+=begin%>
+ <button class="button is-rounded">新しい軌跡</button>
+
+        <div class="modal">
+          <div class="modal-background"></div>
+          <div class="modal-content">
+            <form action="#" method="post" class="box">
+              <div class="field mb-5">
+                <label class="label">年齢</label>
+                <div class="control">
+                  <input type="text" class="input is-sm-form-size" placeholder="20">
+                </div>
+                <p class="help has-text-grey-dark">＊0〜100の半角数値を入力してください</p>
+              </div>
+
+              <div class="field mb-5">
+                <label class="label">充実度</label>
+                <div class="control">
+                  <input type="text" class="input is-sm-form-size" placeholder="100">
+                </div>
+                <p class="help has-text-grey-dark">＊充実度を半角数値「-100〜100」で入力してください</p>
+              </div>
+
+              <div class="field mb-5">
+                <label class="label">出来事</label>
+                <div class="control">
+                  <textarea class="textarea" placeholder="〇〇があった"></textarea>
+                </div>
+                <p class="help has-text-danger is-text-size">＊ 個人を特定できる情報は載せないようご注意ください</p>
+              </div>
+
+              <div class="field is-grouped is-justify-content-right mb-5">
+                <div class="control">
+                  <input type="submit" name="commit" value="保存" class="button is-btn-yellow btn-design has-text-weight-semibold">
+                </div>
+                <div class="control">
+                  <input type="submit" name="commit" value="キャンセル" class="button is-btn-yellow btn-design has-text-weight-semibold">
+                </div>
+              </div>
+            </form>
+          </div>
+          <button class="modal-close is-large" aria-label="close"></button>
+        </div>
+<%
+=end%>
+
+
+
+      <form action="">
+        <div class="field mb-5">
+          <div class="mb-4">
+            <p class="label is-size-5">公開・非公開 設定</p>
+          </div>
+          <div class="control">
+            <label class="radio mb-2">
+              <input type="radio" name="question">
+              公開
+            </label>
+          </div>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="question">
+              非公開
+            </label>
+          </div>
+        </div>
+
+        <div class="field has-text-centered mb-5">
+          <div class="control">
+            <input type="submit" name="commit" value="軌跡作成" class="button is-btn-yellow btn-design has-text-weight-semibold">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

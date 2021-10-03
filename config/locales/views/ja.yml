@@ -24,7 +24,7 @@ ja:
       fail: "ログインに失敗しました。"
     destroy:
       success: "ログアウトしました。"
-  tracks:
+  personal_histories:
     index:
       title: "軌跡一覧"
     new:
