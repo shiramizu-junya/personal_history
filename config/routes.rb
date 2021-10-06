@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   # プロフィール関係
   resource :profile, only: %i[show edit update]
   # 軌跡関係
-  resources :tracks
+  resources :personal_histories
 end

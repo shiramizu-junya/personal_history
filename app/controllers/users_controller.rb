@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.save
       # ユーザー登録後の自動ログイン
       auto_login(@user)
-      redirect_to tracks_path, success: t(".success")
+      redirect_to personal_histories_path, success: t(".success")
     else
       flash.now[:danger] = t(".fail")
       render :new
