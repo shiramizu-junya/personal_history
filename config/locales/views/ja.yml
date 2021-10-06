@@ -26,9 +26,9 @@ ja:
       success: "ログアウトしました。"
   personal_histories:
     index:
-      title: "軌跡一覧"
+      title: "自分史一覧"
     new:
-      title: "軌跡新規作成"
+      title: "自分史作成"
   profiles:
     edit:
       title: "プロフィール編集"

@@ -13,13 +13,14 @@ $file-cta-hover-color: #141222;
 
 // 独自変数
 $font-color: #272343;
-$font-color-hover: #3273dc;
+$font-color-hover: #ffe036;
 $background-color: #fafbfc;
 $background-color-sub1: #fff;
 $button-background-color: #ffe036;
 $button-background-color-sub1: #ffd803;
 $button-background-color-sub2: #f9bc60;
 $button-background-color-sub3: #faae2b;
+$border-color: #d4e3f2;
 
 
 /*==================================
@@ -39,7 +40,8 @@ $button-background-color-sub3: #faae2b;
 }
 
 .form-wrap {
-  border: 3px solid $button-background-color;
+  border: 2px solid #bac8d6;
+  border-radius: 10px;
 }
 
 /*==================================
@@ -49,6 +51,13 @@ h1.ft-size-md {
   @media screen and (max-width: 350px) {
     font-size: 1.9rem;
   }
+}
+
+/*========================================
+  link
+========================================*/
+.btn-link {
+  color: #272343;
 }
 
 /*========================================
@@ -62,9 +71,9 @@ div.pd-sm {
       font-size: 0.9rem;
     }
   }
-  .has-link {
+  .has-link a{
     color: $font-color;
-    a:hover {
+    &:hover {
       color: $font-color-hover;
       text-decoration: underline;
     }

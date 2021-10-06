@@ -12,7 +12,7 @@ ja:
         avatar: "プロフィール画像"
         remember: "次回ログインを省略"
         password: "パスワード"
-        password_confirmation: "パスワード再入力"
+        password_confirmation: "パスワード（確認用）"
         created_at: "登録日時"
         updated_at: "更新日時"
   enums:
