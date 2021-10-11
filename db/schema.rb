@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_09_09_060312) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.date "memory_date", null: false
+    t.string "age", null: false
     t.integer "category_id", null: false
     t.string "title", null: false
     t.string "memory_image"
