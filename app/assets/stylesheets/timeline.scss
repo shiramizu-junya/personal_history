@@ -1,0 +1,61 @@
+/*========================================
+  自分史のタイムライン
+========================================*/
+.time {
+  display: var(--timeDisplay, inline-flex);
+  padding: var(--timePadding, .25rem 1.25rem .25rem);
+  background-color: var(--timeBackgroundColor, #f0f0f0);
+  font-size: var(--timeFontSize, .75rem);
+  font-weight: var(--timeFontWeight, 700);
+  text-transform: var(--timeTextTransform, uppercase);
+  color: var(--timeColor, currentColor);
+}
+
+.timeline {
+  --timelineMainColor: #4557bb;
+  display: var(--timelineDisplay, grid);
+  grid-row-gap: var(--timelineGroupsGap, 2rem);
+  --uiTimelineMainColor: var(--timelineMainColor, #222);
+  --uiTimelineSecondaryColor: var(--timelineSecondaryColor, #fff);
+  border-left: var(--timelineLineWidth, 3px) solid var(--timelineLineBackgroundColor, var(--uiTimelineMainColor));
+  padding-bottom: 1.5rem;
+}
+
+.timeline-age {
+  width: 100%;
+  margin-bottom: 1.25rem;
+  --timePadding: var(--timelineYearPadding, .5rem 1.5rem);
+  --timeColor: var(--uiTimelineSecondaryColor);
+  --timeBackgroundColor: var(--uiTimelineMainColor);
+  --timeFontWeight: var(--timelineYearFontWeight, 400);
+}
+
+.timeline-card {
+  border-left: 3px solid #4557bb;
+  border-radius: none;
+  background-color: white;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .12);
+  color: #4a4a4a;
+  display: block;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.content figure.timeline-image {
+  margin: 0;
+  text-align: center;
+}
+
+.content h4 {
+  font-size: 1.25em;
+  margin-bottom: 0.5em;
+}
+
+.timeline .columns:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.media-content {
+  overflow: hidden;
+}
