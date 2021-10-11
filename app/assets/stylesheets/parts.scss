@@ -18,8 +18,6 @@ $background-color: #fafbfc;
 $background-color-sub1: #fff;
 $button-background-color: #ffe036;
 $button-background-color-sub1: #ffd803;
-$button-background-color-sub2: #f9bc60;
-$button-background-color-sub3: #faae2b;
 $border-color: #d4e3f2;
 
 
@@ -28,7 +26,7 @@ $border-color: #d4e3f2;
 ==================================*/
 .wrap-content {
   background-color: $background-color;
-  .column {
+  .form-wrap {
     background-color: $background-color-sub1;
   }
 }
@@ -128,12 +126,12 @@ input.is-btn-signup {
 }
 
 input.is-btn-edit {
-  background-color: $button-background-color-sub2;
+  background-color: $button-background-color;
   border: none;
   &:hover {
     color: $button-hover-color;
     border: none;
-    background-color: $button-background-color-sub3;
+    background-color: $button-background-color-sub1;
     transition: 0.3s;
   }
 
@@ -141,7 +139,7 @@ input.is-btn-edit {
   &:focus,
   &[disabled] {
     color: $button-hover-color;
-    background-color: $button-background-color-sub3;
+    background-color: $button-background-color-sub1;
     border: none;
   }
 }

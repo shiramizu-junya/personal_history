@@ -28,6 +28,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 # アセット
 gem "bulma-rails"
+gem "bulma-extensions-rails"
 gem "carrierwave"
 gem "mini_magick"
 
