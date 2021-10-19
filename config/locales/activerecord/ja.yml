@@ -7,7 +7,7 @@ ja:
         id: "ID"
         name: "ユーザー名"
         email: "メールアドレス"
-        age: "年齢"
+        birthday: "生年月日"
         gender: "性別"
         avatar: "プロフィール画像"
         remember: "次回ログインを省略"
