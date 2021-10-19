@@ -10,4 +10,8 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   # 軌跡関係
   resources :personal_histories
+  # API通信関係
+  namespace :api, {format: "json"} do
+    resource :profile, only: %i[show update]
+  end
 end

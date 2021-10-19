@@ -1,27 +1,17 @@
+<!-- １、templateタグにはブラウザ上に表示させたい内容をHTMLで記述することが可能 -->
 <template>
   <div id="app">
-    <HelloWorld />
+    <PersonalHistory />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
+import PersonalHistory from "./components/PersonalHistory";
 
 export default {
   name: "App",
   components: {
-    HelloWorld
+    PersonalHistory
   }
 };
 </script>
-
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

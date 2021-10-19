@@ -45,6 +45,11 @@
 
 import Vue from "vue/dist/vue.esm";
 import App from "../App.vue";
+import axios from "axios";
+import { csrfToken } from "rails-ujs";
+import VueAxiosPlugin from "./plugins/vue-axios";
+
+Vue.use(VueAxiosPlugin, { axios: axios, csrfToken: csrfToken });
 
 Vue.config.productionTip = false;
 
