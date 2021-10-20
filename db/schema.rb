@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2021_10_20_043829) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.string "age", null: false
+    t.integer "age", null: false
     t.string "title", null: false
     t.text "episode", null: false
     t.integer "happiness", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_10_20_043829) do
 
   create_table "my_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "published", default: 0, null: false
-    t.string "title", null: false
+    t.string "title"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
