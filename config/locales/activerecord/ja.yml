@@ -20,3 +20,7 @@ ja:
       gender:
         men: "男性"
         women: "女性"
+    my_history:
+      status:
+        published: "公開"
+        unpublished: "非公開"
