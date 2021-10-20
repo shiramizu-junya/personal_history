@@ -1,4 +1,4 @@
-class PersonalHistory < ApplicationRecord
+class MyHistory < ApplicationRecord
   belongs_to :user
   has_many :events, dependent: :destroy
 end

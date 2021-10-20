@@ -10,26 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_060312) do
+ActiveRecord::Schema.define(version: 2021_10_20_043829) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "age", null: false
     t.string "title", null: false
     t.text "episode", null: false
     t.integer "happiness", null: false
-    t.bigint "personal_history_id", null: false
+    t.bigint "my_history_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["personal_history_id"], name: "index_events_on_personal_history_id"
+    t.index ["my_history_id"], name: "index_events_on_my_history_id"
   end
 
-  create_table "personal_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+  create_table "my_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "published", default: 0, null: false
     t.string "title", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_personal_histories_on_user_id"
+    t.index ["user_id"], name: "index_my_histories_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
@@ -48,6 +48,6 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
-  add_foreign_key "events", "personal_histories"
-  add_foreign_key "personal_histories", "users"
+  add_foreign_key "events", "my_histories"
+  add_foreign_key "my_histories", "users"
 end

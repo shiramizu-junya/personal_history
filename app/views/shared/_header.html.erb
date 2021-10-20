@@ -12,8 +12,8 @@
     </div>
     <div class="navbar-menu">
       <div class="navbar-end">
-        <%= link_to t("personal_histories.index.title"), personal_histories_path, class: "navbar-item" %>
-        <a href="http://localhost:3000/personal_histories/new" class="navbar-item"><%= "自分史作成" %></a>
+        <%= link_to t("my_histories.index.title"), my_histories_path, class: "navbar-item" %>
+        <a href="http://localhost:3000/my_histories/new" class="navbar-item"><%= "自分史作成" %></a>
         <div class="navbar-item has-dropdown is-hoverable">
           <a class="navbar-link">
             <%= current_user.name %>

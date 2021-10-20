@@ -2,8 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
 
-  has_many :personal_histories, dependent: :destroy
-  has_many :events, through: :personal_histories
+  has_many :my_histories, dependent: :destroy
+  has_many :events, through: :my_histories
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, uniqueness: { case_sensitive: true }, presence: true

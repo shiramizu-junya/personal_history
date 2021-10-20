@@ -24,7 +24,7 @@ ja:
       fail: "ログインに失敗しました。"
     destroy:
       success: "ログアウトしました。"
-  personal_histories:
+  my_histories:
     index:
       title: "自分史一覧"
     new:

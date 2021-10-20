@@ -11,6 +11,6 @@ class ApplicationController < ActionController::Base
 
   # ログイン済みユーザーはリダイレクトさせる
   def login_decision
-    redirect_to personal_histories_path, danger: t("defaults.message.logged_in") if logged_in?
+    redirect_to my_histories_path, danger: t("defaults.message.logged_in") if logged_in?
   end
 end

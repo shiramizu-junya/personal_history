@@ -1,3 +1,3 @@
 class Event < ApplicationRecord
-  belongs_to :personal_history
+  belongs_to :my_history
 end
