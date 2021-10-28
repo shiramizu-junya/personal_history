@@ -16,6 +16,7 @@
     /> -->
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
+      @updateProfileSuccess="profileModalFlagChange"
     />
   </div>
 </template>
@@ -41,15 +42,18 @@ export default {
   },
   mounted() {
     this.$store.dispatch("getUserProfile").then(() => {
-      this.profileModalFlagChange();
+      this.profileAndTitleModalFlagChange();
     });
   },
   methods: {
-    profileModalFlagChange() {
+    profileAndTitleModalFlagChange() {
       if(this.getUserProfile.birthday === null || this.getUserProfile.gender === null){
         this.profileModalFlag = !this.profileModalFlag;
       }
     },
+    profileModalFlagChange() {
+      this.profileModalFlag = !this.profileModalFlag;
+    }
   //   profileUpdate() {
   //     this.axios.patch("/api/profile",{
   //       birthday: this.profiles.birthday,

@@ -32,15 +32,12 @@ export default new Vuex.Store({
     },
     // プロフィール更新
     updateProfile({ commit }, profile) {
-      console.log(commit);
       return new Promise((resolve, reject) => {
         axios
           .patch("/api/profile", {
             profile,
           })
           .then((response) => {
-            // this.profile.birthday = response.data.birthday;
-            // this.profileModalToggleFlug = false;
             commit("setUserProfile", response.data);
             resolve();
           })

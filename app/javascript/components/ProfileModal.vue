@@ -12,72 +12,59 @@
           <div class="field">
             <label class="label">生年月日</label>
             <div class="control">
-              <!-- <input
-                v-model="userProfiles.birthday"
-                :class="{ 'error': errors['birthday'] }"
-                class="input"
-                type="date"
-                name="birthday"
-              > -->
               <input
+                v-model="profile.birthday"
+                :class="{ 'error' : formError['birthday'] }"
                 class="input"
                 type="date"
                 name="birthday"
               >
             </div>
-            <!-- <div class="has-text-danger">
+            <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!errors['birthday']"
+                  v-if="!!formError['birthday']"
                 >
-                  {{ errors["birthday"][0] }}
+                  {{ formError["birthday"][0] }}
                 </li>
               </ul>
-            </div> -->
+            </div>
           </div>
           <div class="field">
             <label class="label">性別</label>
             <div class="control">
               <label class="radio">
-                <!-- <input
-                  v-model="userProfiles.gender"
-                  value="men"
-                  type="radio"
-                  name="men"
-                > -->
                 <input
+                  v-model="profile.gender"
+                  :class="{ 'error' : formError['gender'] }"
                   value="men"
                   type="radio"
-                  name="men"
+                  name="gender"
                 >
                 男性
               </label>
             </div>
             <div class="control">
               <label class="radio">
-                <!-- <input
-                  v-model="userProfiles.gender"
-                  value="women"
-                  type="radio"
-                  name="women"
-                > -->
                 <input
+                  v-model="profile.gender"
+                  :class="{ 'error' : formError['gender'] }"
                   value="women"
                   type="radio"
-                  name="women"
+                  name="gender"
                 >
                 女性
               </label>
             </div>
-            <!-- <div class="has-text-danger">
+            <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!errors['gender']"
+                  v-if="!!formError['gender']"
                 >
-                  {{ errors["gender"][0] }}
+                  {{ formError["gender"][0] }}
                 </li>
               </ul>
-            </div> -->
+            </div>
           </div>
         </form>
       </section>
@@ -88,6 +75,7 @@
         > -->
         <button
           class="button is-success"
+          @click="updateProfile"
         >
           更新
         </button>
@@ -109,18 +97,32 @@ export default {
   //     required: true
   //   }
   // },
-  // data() {
-  //   return {
-  //     userProfiles: null,
-  //   };
-  // },
+  data() {
+    return {
+      profile: {
+        birthday: "",
+        gender: ""
+      },
+      formError: {},
+    };
+  },
   // created() {
   //   this.userProfiles = this.profiles;
   // },
-  // methods: {
-  //   profileSubmit() {
-  //     this.$emit("profileUpdate", this.userProfiles);
-  //   }
-  // }
+  methods: {
+    updateProfile() {
+      this.$store.dispatch("updateProfile", this.profile)
+        .then(() => {
+          console.log("updateProfile");
+          this.profile.birthday = "";
+          this.profile.gender = "";
+          this.formError = {};
+          this.$emit("updateProfileSuccess");
+        })
+        .catch((error) => {
+          this.formError = error;
+        });
+    }
+  }
 };
 </script>
