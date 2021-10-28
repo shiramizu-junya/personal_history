@@ -1,68 +1,70 @@
 <template>
   <div>
-    <history-card
+    <!-- <history-card
       v-if="profiles != null"
       :profiles="profiles"
-    />
-    <!-- <time-line-modal /> -->
+    /> -->
+    <history-card />
+    <time-line-modal />
     <time-line />
-    <profile-modal
+    <!-- <profile-modal
       v-if="profiles != null"
       :profiles="profiles"
       :errors="errors"
       :class="{ 'is-active': profileModalToggleFlug }"
       @profileUpdate="profileUpdate"
+    /> -->
+    <profile-modal
+      :class="{ 'is-active': profileModalFlag }"
     />
   </div>
 </template>
 
 <script>
-// import axios from "axios";
 import HistoryCard from "./HistoryCard.vue";
-// import TimeLineModal from "./TimeLineModal.vue";
+import TimeLineModal from "./TimeLineModal.vue";
 import TimeLine from "./TimeLine.vue";
 import ProfileModal from "./ProfileModal.vue";
 
 export default {
-  name: "HelloWorld",
-  components: { HistoryCard, TimeLine, ProfileModal },
+  name: "PersonalHistory",
+  components: { HistoryCard, TimeLineModal, TimeLine, ProfileModal },
   data() {
     return {
-      profiles: null,
-      profileModalToggleFlug: false,
-      errors: {}
+      profileModalFlag: false,
     };
   },
-  created() {
-    this.axios.get("/api/profile")
-      .then(response => {
-        this.profiles = response.data;
-        this.profileModalToggleChange();
-      })
-      .catch(error => console.log(error)); // エラー時にどのように対応するか検討
+  computed: {
+    getUserProfile: function() {
+      return this.$store.getters.getUserProfile;
+    }
+  },
+  mounted() {
+    this.$store.dispatch("getUserProfile").then(() => {
+      this.profileModalFlagChange();
+    });
   },
   methods: {
-    profileModalToggleChange() {
-      if(this.profiles.birthday === null || this.profiles.gender === null){
-        this.profileModalToggleFlug = true;
+    profileModalFlagChange() {
+      if(this.getUserProfile.birthday === null || this.getUserProfile.gender === null){
+        this.profileModalFlag = !this.profileModalFlag;
       }
     },
-    profileUpdate() {
-      this.axios.patch("/api/profile",{
-        birthday: this.profiles.birthday,
-        gender: this.profiles.gender
-      })
-        .then((response) => {
-          this.profiles.birthday = response.data.birthday;
-          this.profileModalToggleFlug = false;
-        })
-        .catch((error) => {
-          console.log(error.response);
-          if (error.response.data && error.response.data.errors) {
-            this.errors = error.response.data.errors;
-          }
-        });
-    }
+  //   profileUpdate() {
+  //     this.axios.patch("/api/profile",{
+  //       birthday: this.profiles.birthday,
+  //       gender: this.profiles.gender
+  //     })
+  //       .then((response) => {
+  //         this.profiles.birthday = response.data.birthday;
+  //         this.profileModalToggleFlug = false;
+  //       })
+  //       .catch((error) => {
+  //         if (error.response.data && error.response.data.errors) {
+  //           this.errors = error.response.data.errors;
+  //         }
+  //       });
+  //   }
   }
 };
 </script>
