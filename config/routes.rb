@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]
     resources :events, only: %i[create]
+    resources :my_histories, only: %i[create update]
   end
 end
