@@ -8,7 +8,7 @@ class Api::ProfilesController < ApplicationController
 
   def update
     if @user.update(user_params)
-      render json: @user, status: :ok
+      render json: @user, each_serializer: UserSerializer, status: :ok
     else
       render json: { errors: @user.errors.keys.map { |key| [key, @user.errors.full_messages_for(key)]}.to_h }, status: :bad_request
     end

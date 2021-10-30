@@ -40,6 +40,7 @@ gem "rails-i18n"
 
 # モデル
 gem "enum_help"
+gem "active_model_serializers"
 
 group :development, :test do
   # デバッグ
