@@ -27,6 +27,7 @@ ja:
       gender:
         men: "男性"
         women: "女性"
+        no_answer: "未回答"
     my_history:
       status:
         published: "公開"

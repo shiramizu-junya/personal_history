@@ -56,6 +56,18 @@
                 女性
               </label>
             </div>
+            <div class="control">
+              <label class="radio">
+                <input
+                  v-model="profile.gender"
+                  :class="{ 'error' : formError['gender'] }"
+                  value="no_answer"
+                  type="radio"
+                  name="gender"
+                >
+                未回答
+              </label>
+            </div>
             <div class="has-text-danger">
               <ul>
                 <li
@@ -113,7 +125,6 @@ export default {
     updateProfile() {
       this.$store.dispatch("updateProfile", this.profile)
         .then(() => {
-          console.log("updateProfile");
           this.profile.birthday = "";
           this.profile.gender = "";
           this.formError = {};
