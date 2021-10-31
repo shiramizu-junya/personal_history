@@ -23,8 +23,7 @@
               <span class="card">
                 <i class="fas fa-user" />
               </span>
-              <!-- 現在の年齢：{{ userProfiles.birthday ? calcAge(userProfiles.birthday ) : "" }}歳 -->
-              現在の年齢：25歳
+              現在の年齢：{{ getUserProfile.birthday ? calcAge(getUserProfile.birthday): "" }}歳
             </p>
           </div>
           <footer class="card-footer">
@@ -35,8 +34,6 @@
                 タイトル編集
               </button>
             </p>
-            <!-- タイトル編集モーダル -->
-
             <p class="card-footer-item">
               <!-- <button
                 class="button is-add-event"
@@ -61,43 +58,48 @@
 
 export default {
   name: "HistoryCard",
-//   components: { TimeLineModal, TimeLine },
-//   props: {
-//     profiles: {
-//       type: Object,
-//       required: true
-//     }
-//   },
-//   data() {
-//     return {
-//       isTimeLineModalShown: false,
-//       userProfiles: null,
-//       events: [],
-//       timeLineModalErrors: {},
-//     };
-//   },
-//   created() {
-//     this.userProfiles = this.profiles;
-//   },
-//   methods: {
-//     hideTimeLineModal() {
-//       this.isTimeLineModalShown = false;
-//       this.timeLineModalErrors = {};
-//     },
-//     // 生年月日から年齢を計算するためのフォーマットの修正
-//     formatDate(value) {
-//       const y = value.getFullYear();
-//       const m = ("00" + (value.getMonth() + 1)).slice(-2);
-//       const d = ("00" + value.getDate()).slice(-2);
-//       return y + m + d;
-//     },
-//     // 生年月日から年齢を計算
-//     calcAge(value){
-//       const today = new Date();
-//       const formated_today = this.formatDate(today);
-//       const birth = value.replace(/-/g, "");
-//       return Math.floor((parseInt(formated_today) - parseInt(birth)) / 10000);
-//     },
-//   }
+  //   components: { TimeLineModal, TimeLine },
+  //   props: {
+  //     profiles: {
+  //       type: Object,
+  //       required: true
+  //     }
+  //   },
+  //   data() {
+  //     return {
+  //       isTimeLineModalShown: false,
+  //       userProfiles: null,
+  //       events: [],
+  //       timeLineModalErrors: {},
+  //     };
+  //   },
+  //   created() {
+  //     this.userProfiles = this.profiles;
+  //   },
+  computed: {
+    getUserProfile: function() {
+      return this.$store.getters.getUserProfile;
+    }
+  },
+  methods: {
+    hideTimeLineModal() {
+      this.isTimeLineModalShown = false;
+      this.timeLineModalErrors = {};
+    },
+    // 生年月日から年齢を計算するためのフォーマットの修正
+    formatDate(value) {
+      const y = value.getFullYear();
+      const m = ("00" + (value.getMonth() + 1)).slice(-2);
+      const d = ("00" + value.getDate()).slice(-2);
+      return y + m + d;
+    },
+    // 生年月日から年齢を計算
+    calcAge(value){
+      const today = new Date();
+      const formated_today = this.formatDate(today);
+      const birth = value.replace(/-/g, "");
+      return Math.floor((parseInt(formated_today) - parseInt(birth)) / 10000);
+    },
+  }
 };
 </script>

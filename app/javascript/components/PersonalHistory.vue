@@ -7,13 +7,6 @@
     <history-card />
     <time-line-modal />
     <time-line />
-    <!-- <profile-modal
-      v-if="profiles != null"
-      :profiles="profiles"
-      :errors="errors"
-      :class="{ 'is-active': profileModalToggleFlug }"
-      @profileUpdate="profileUpdate"
-    /> -->
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
       @updateProfileSuccess="profileModalFlagChange"
@@ -54,21 +47,6 @@ export default {
     profileModalFlagChange() {
       this.profileModalFlag = !this.profileModalFlag;
     }
-  //   profileUpdate() {
-  //     this.axios.patch("/api/profile",{
-  //       birthday: this.profiles.birthday,
-  //       gender: this.profiles.gender
-  //     })
-  //       .then((response) => {
-  //         this.profiles.birthday = response.data.birthday;
-  //         this.profileModalToggleFlug = false;
-  //       })
-  //       .catch((error) => {
-  //         if (error.response.data && error.response.data.errors) {
-  //           this.errors = error.response.data.errors;
-  //         }
-  //       });
-  //   }
   }
 };
 </script>

@@ -32,41 +32,23 @@
           </div>
           <div class="field">
             <label class="label">性別</label>
-            <div class="control">
-              <label class="radio">
-                <input
-                  v-model="profile.gender"
-                  :class="{ 'error' : formError['gender'] }"
-                  value="men"
-                  type="radio"
-                  name="gender"
+            <div
+              class="select"
+              :class="{ 'error' : formError['birthday'] }"
+            >
+              <select
+                id="user_gender"
+                v-model="profile.gender"
+                name="gender"
+              >
+                <option
+                  v-for="gender in genders"
+                  :key="gender.value"
+                  :value="gender.value"
                 >
-                男性
-              </label>
-            </div>
-            <div class="control">
-              <label class="radio">
-                <input
-                  v-model="profile.gender"
-                  :class="{ 'error' : formError['gender'] }"
-                  value="women"
-                  type="radio"
-                  name="gender"
-                >
-                女性
-              </label>
-            </div>
-            <div class="control">
-              <label class="radio">
-                <input
-                  v-model="profile.gender"
-                  :class="{ 'error' : formError['gender'] }"
-                  value="no_answer"
-                  type="radio"
-                  name="gender"
-                >
-                未回答
-              </label>
+                  {{ gender.text }}
+                </option>
+              </select>
             </div>
             <div class="has-text-danger">
               <ul>
@@ -115,6 +97,13 @@ export default {
         birthday: "",
         gender: ""
       },
+      genders: [
+        { text: "選択してください", value: "" },
+        { text: "男性", value: "men" },
+        { text: "女性", value: "women" },
+        { text: "その他", value: "other" },
+        { text: "未回答", value: "no_answer" },
+      ],
       formError: {},
     };
   },

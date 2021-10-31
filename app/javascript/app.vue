@@ -1,4 +1,3 @@
-<!-- １、templateタグにはブラウザ上に表示させたい内容をHTMLで記述することが可能 -->
 <template>
   <div id="app">
     <PersonalHistory />
