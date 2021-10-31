@@ -17,13 +17,13 @@
           <div class="card-content">
             <p class="title">
               <!-- {{ userProfiles.name }}さんの自分史 -->
-              佐藤さんの自分史
+              {{ getMyHistory.title ? getMyHistory.title : getUserProfile.name + "さんの自分史" }}
             </p>
             <p class="subtitle">
               <span class="card">
                 <i class="fas fa-user" />
               </span>
-              現在の年齢：{{ getUserProfile.birthday ? calcAge(getUserProfile.birthday): "" }}歳
+              現在の年齢：{{ getUserProfile.birthday ? calcAge(getUserProfile.birthday) : "" }}歳
             </p>
           </div>
           <footer class="card-footer">
@@ -79,13 +79,16 @@ export default {
   computed: {
     getUserProfile: function() {
       return this.$store.getters.getUserProfile;
+    },
+    getMyHistory: function() {
+      return this.$store.getters.getMyHistory;
     }
   },
   methods: {
-    hideTimeLineModal() {
-      this.isTimeLineModalShown = false;
-      this.timeLineModalErrors = {};
-    },
+    // hideTimeLineModal() {
+    //   this.isTimeLineModalShown = false;
+    //   this.timeLineModalErrors = {};
+    // },
     // 生年月日から年齢を計算するためのフォーマットの修正
     formatDate(value) {
       const y = value.getFullYear();

@@ -63,10 +63,6 @@
         </form>
       </section>
       <footer class="modal-card-foot">
-        <!-- <button
-          class="button is-success"
-          @click="profileSubmit"
-        > -->
         <button
           class="button is-success"
           @click="updateProfile"
@@ -81,16 +77,6 @@
 <script>
 export default {
   name: "ProfileModal",
-  // props: {
-  //   profiles: {
-  //     type: Object,
-  //     required: true
-  //   },
-  //   errors: {
-  //     type: Object,
-  //     required: true
-  //   }
-  // },
   data() {
     return {
       profile: {
@@ -107,9 +93,6 @@ export default {
       formError: {},
     };
   },
-  // created() {
-  //   this.userProfiles = this.profiles;
-  // },
   methods: {
     updateProfile() {
       this.$store.dispatch("updateProfile", this.profile)

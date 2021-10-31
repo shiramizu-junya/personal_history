@@ -2,6 +2,7 @@
   <div class="modal">
     <div
       class="modal-background"
+      @click="timeLineModalFlagChange"
     />
     <div class="modal-card">
       <header class="modal-card-head">
@@ -55,11 +56,13 @@
       <footer class="modal-card-foot">
         <button
           class="button is-success"
+          @click="addTimeLine"
         >
           追加
         </button>
         <button
           class="button"
+          @click="timeLineModalFlagChange"
         >
           キャンセル
         </button>
@@ -71,5 +74,35 @@
 <script>
 export default {
   name: "TimeLineModal",
+  data() {
+    return{
+      timeline: {
+        age: "",
+        title: "",
+        episode: "",
+        happiness: "",
+      },
+      formError: {},
+    };
+  },
+  methods: {
+    timeLineModalFlagChange() {
+      this.$emit("timeLineModalFlagChange");
+    },
+    addTimeLine() {
+      this.$store.dispatch("addTimeLine", this.timeline)
+        .then(() => {
+          this.timeline.age = "";
+          this.timeline.title = "";
+          this.timeline.episode = "";
+          this.timeline.happiness = "";
+          this.formError = {};
+          this.$emit("addTimeLine");
+        })
+        .catch((error) => {
+          this.formError = error;
+        });
+    }
+  }
 };
 </script>

@@ -191,7 +191,7 @@
         <div class="field mb-5 published-field">
           <div class="published-title">
             <h5 class="label is-size-5">
-              公開・非公開 設定
+              公開範囲
             </h5>
           </div>
           <div class="publish-wrap">

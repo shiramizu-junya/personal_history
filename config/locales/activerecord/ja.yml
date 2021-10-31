@@ -3,6 +3,7 @@ ja:
     models:
       user: "ユーザー"
       event: "イベント"
+      my_history: "自分史"
     attributes:
       user:
         id: "ID"
@@ -16,6 +17,9 @@ ja:
         password_confirmation: "パスワード（確認用）"
         created_at: "登録日時"
         updated_at: "更新日時"
+      my_history:
+        status: "公開範囲"
+        title: "タイトル"
       event:
         id: "ID"
         age: "年齢"
