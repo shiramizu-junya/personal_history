@@ -48,6 +48,7 @@
             >
               <button
                 class="button is-add-event"
+                @click="addTimeLineFlagChange"
               >
                 イベント追加
               </button>
@@ -101,6 +102,9 @@ export default {
     },
     editMyHistoryFlagChange() {
       this.$emit("editMyHistoryFlagChange");
+    },
+    addTimeLineFlagChange() {
+      this.$emit("addTimeLineFlagChange");
     },
     // 生年月日から年齢を計算するためのフォーマットの修正
     formatDate(value) {

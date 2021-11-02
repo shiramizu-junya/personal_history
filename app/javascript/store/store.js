@@ -19,6 +19,8 @@ export default new Vuex.Store({
       status: null,
       title: null,
     },
+    // 自分史のイベント情報
+    events: [],
   },
   mutations: {
     // ユーザープロフィールを更新機能
@@ -28,9 +30,12 @@ export default new Vuex.Store({
     setMyHistory(state, my_history) {
       state.my_history = my_history;
     },
+    setEvent(state, event) {
+      state.events.push(event);
+    },
   },
   actions: {
-    // ユーザープロフィールを取得
+    // プロフィールを取得
     getUserProfile({ commit }) {
       return new Promise((resolve) => {
         axios.get("/api/profile").then((response) => {
@@ -57,7 +62,7 @@ export default new Vuex.Store({
           });
       });
     },
-    // 自分史のタイトルを追加
+    // 自分史タイトルを追加
     addMyHistoryTitle({ commit }, history) {
       return new Promise((resolve, reject) => {
         axios
@@ -75,7 +80,7 @@ export default new Vuex.Store({
           });
       });
     },
-    // 自分史のタイトルを編集
+    // 自分史タイトルを編集
     editMyHistoryTitle({ commit }, history) {
       return new Promise((resolve, reject) => {
         axios
@@ -84,6 +89,25 @@ export default new Vuex.Store({
           })
           .then((response) => {
             commit("setMyHistory", response.data);
+            resolve(response.data);
+          })
+          .catch((error) => {
+            if (error.response.data && error.response.data.errors) {
+              reject(error.response.data.errors);
+            }
+          });
+      });
+    },
+    // 自分史のイベントを追加
+    addTimeLine({ commit }, event) {
+      return new Promise((resolve, reject) => {
+        axios
+          .post("/api/events", {
+            history_id: this.state.my_history.id,
+            event,
+          })
+          .then((response) => {
+            commit("setEvent", response.data);
             resolve(response.data);
           })
           .catch((error) => {

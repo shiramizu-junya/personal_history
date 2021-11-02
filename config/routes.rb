@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]
-    resources :events, only: %i[create]
+    resources :events, only: %i[create update]
     resources :my_histories, only: %i[create update]
   end
 end

@@ -3,21 +3,26 @@
     <history-card
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
+      @addTimeLineFlagChange="addTimeLineFlagChange"
     />
     <edit-my-history-modal
       v-if="getMyHistory.title"
       :title="getMyHistory.title"
-      :class="{ 'is-active': editHistoryModalFlag }"
+      :class="{ 'is-active' : editHistoryModalFlag }"
       @editMyHistorySuccess="editMyHistoryFlagChange"
       @cancelEditMyHistoryTitle="editMyHistoryFlagChange"
     />
     <create-my-history-modal
       v-else
-      :class="{ 'is-active': myHistoryModalFlag }"
+      :class="{ 'is-active' : myHistoryModalFlag }"
       @addMyHistorySuccess="myHistoryFlagChange"
       @cancelMyHistoryTitle="myHistoryFlagChange"
     />
-    <time-line-modal />
+    <add-time-line-modal
+      :class="{ 'is-active' : addTimeLineFlag }"
+      @canselAddTimeLine="addTimeLineFlagChange"
+      @addTimeLineSuccess="addTimeLineFlagChange"
+    />
     <time-line />
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
@@ -28,7 +33,7 @@
 
 <script>
 import HistoryCard from "./HistoryCard.vue";
-import TimeLineModal from "./TimeLineModal.vue";
+import AddTimeLineModal from "./AddTimeLineModal.vue";
 import TimeLine from "./TimeLine.vue";
 import ProfileModal from "./ProfileModal.vue";
 import CreateMyHistoryModal from "./CreateMyHistoryModal.vue";
@@ -36,12 +41,13 @@ import EditMyHistoryModal from "./EditMyHistoryModal.vue";
 
 export default {
   name: "PersonalHistory",
-  components: { HistoryCard, TimeLineModal, TimeLine, ProfileModal, CreateMyHistoryModal, EditMyHistoryModal },
+  components: { HistoryCard, AddTimeLineModal, TimeLine, ProfileModal, CreateMyHistoryModal, EditMyHistoryModal },
   data() {
     return {
       profileModalFlag: false,
       myHistoryModalFlag: false,
       editHistoryModalFlag: false,
+      addTimeLineFlag: false,
     };
   },
   computed: {
@@ -59,7 +65,10 @@ export default {
   },
   methods: {
     profileAndTitleModalFlagChange() {
+      console.log(this.getUserProfile.birthday);
+      console.log(this.getUserProfile.gender);
       if(this.getUserProfile.birthday === null || this.getUserProfile.gender === null){
+        console.log("OK");
         this.profileModalFlag = !this.profileModalFlag;
       }else if(this.getMyHistory.title === null){
         this.myHistoryModalFlag = !this.myHistoryModalFlag;
@@ -74,7 +83,10 @@ export default {
     },
     editMyHistoryFlagChange() {
       this.editHistoryModalFlag = !this.editHistoryModalFlag;
-    }
+    },
+    addTimeLineFlagChange() {
+      this.addTimeLineFlag = !this.addTimeLineFlag;
+    },
   }
 };
 </script>
