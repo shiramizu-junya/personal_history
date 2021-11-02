@@ -16,7 +16,7 @@
             <label class="label">タイトル</label>
             <div class="control">
               <input
-                v-model="myHistory.title"
+                v-model="addMyHistory.title"
                 :class="{ 'error' : formError['title'] }"
                 class="input"
                 type="text"
@@ -55,10 +55,10 @@
 
 <script>
 export default {
-  name: "MyHistoryModal",
+  name: "CraetMyHistoryModal",
   data() {
     return {
-      myHistory: {
+      addMyHistory: {
         title: "",
       },
       formError: {},
@@ -66,10 +66,10 @@ export default {
   },
   methods: {
     addMyHistoryTitle() {
-      this.$store.dispatch("addMyHistoryTitle", this.myHistory)
+      this.$store.dispatch("addMyHistoryTitle", this.addMyHistory)
         .then(() => {
-          this.myHistory.title = "";
           this.formError = {};
+          this.addMyHistory.title = "";
           this.$emit("addMyHistorySuccess");
         })
         .catch((error) => {
@@ -78,7 +78,9 @@ export default {
     },
     cancelMyHistoryTitle() {
       this.$emit("cancelMyHistoryTitle");
-    }
+      this.formError = {};
+      this.addMyHistory.title = "";
+    },
   }
 };
 </script>

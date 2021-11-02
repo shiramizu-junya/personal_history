@@ -16,7 +16,6 @@
           </header>
           <div class="card-content">
             <p class="title">
-              <!-- {{ userProfiles.name }}さんの自分史 -->
               {{ getMyHistory.title ? getMyHistory.title : getUserProfile.name + "さんの自分史" }}
             </p>
             <p class="subtitle">
@@ -29,16 +28,24 @@
           <footer class="card-footer">
             <p class="card-footer-item">
               <button
+                v-if="getMyHistory.title"
                 class="button is-edit-title"
+                @click="editMyHistoryFlagChange"
               >
                 タイトル編集
               </button>
+              <button
+                v-else
+                class="button is-edit-title"
+                @click="myHistoryFlagChange"
+              >
+                タイトル追加
+              </button>
             </p>
-            <p class="card-footer-item">
-              <!-- <button
-                class="button is-add-event"
-                @click="isTimeLineModalShown = true"
-              > -->
+            <p
+              v-if="getMyHistory.title"
+              class="card-footer-item"
+            >
               <button
                 class="button is-add-event"
               >
@@ -89,6 +96,12 @@ export default {
     //   this.isTimeLineModalShown = false;
     //   this.timeLineModalErrors = {};
     // },
+    myHistoryFlagChange() {
+      this.$emit("myHistoryFlagChange");
+    },
+    editMyHistoryFlagChange() {
+      this.$emit("editMyHistoryFlagChange");
+    },
     // 生年月日から年齢を計算するためのフォーマットの修正
     formatDate(value) {
       const y = value.getFullYear();

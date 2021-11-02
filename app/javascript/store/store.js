@@ -57,7 +57,7 @@ export default new Vuex.Store({
           });
       });
     },
-    // 自分史を追加
+    // 自分史のタイトルを追加
     addMyHistoryTitle({ commit }, history) {
       return new Promise((resolve, reject) => {
         axios
@@ -67,6 +67,24 @@ export default new Vuex.Store({
           .then((response) => {
             commit("setMyHistory", response.data);
             resolve();
+          })
+          .catch((error) => {
+            if (error.response.data && error.response.data.errors) {
+              reject(error.response.data.errors);
+            }
+          });
+      });
+    },
+    // 自分史のタイトルを編集
+    editMyHistoryTitle({ commit }, history) {
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`/api/my_histories/${this.state.my_history.id}`, {
+            history,
+          })
+          .then((response) => {
+            commit("setMyHistory", response.data);
+            resolve(response.data);
           })
           .catch((error) => {
             if (error.response.data && error.response.data.errors) {
