@@ -99,7 +99,7 @@ export default new Vuex.Store({
       });
     },
     // 自分史のイベントを追加
-    addTimeLine({ commit }, event) {
+    addMyHistoryEvent({ commit }, event) {
       return new Promise((resolve, reject) => {
         axios
           .post("/api/events", {

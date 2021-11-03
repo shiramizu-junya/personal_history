@@ -3,7 +3,7 @@
     <history-card
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
-      @addTimeLineFlagChange="addTimeLineFlagChange"
+      @addEventFlagChange="addEventFlagChange"
     />
     <edit-my-history-modal
       v-if="getMyHistory.title"
@@ -18,10 +18,10 @@
       @addMyHistorySuccess="myHistoryFlagChange"
       @cancelMyHistoryTitle="myHistoryFlagChange"
     />
-    <add-time-line-modal
-      :class="{ 'is-active' : addTimeLineFlag }"
-      @canselAddTimeLine="addTimeLineFlagChange"
-      @addTimeLineSuccess="addTimeLineFlagChange"
+    <add-event-modal
+      :class="{ 'is-active' : addEventFlag }"
+      @canselAddEvent="addEventFlagChange"
+      @addEventSuccess="addEventFlagChange"
     />
     <time-line />
     <profile-modal
@@ -33,7 +33,7 @@
 
 <script>
 import HistoryCard from "./HistoryCard.vue";
-import AddTimeLineModal from "./AddTimeLineModal.vue";
+import AddEventModal from "./AddEventModal.vue";
 import TimeLine from "./TimeLine.vue";
 import ProfileModal from "./ProfileModal.vue";
 import CreateMyHistoryModal from "./CreateMyHistoryModal.vue";
@@ -41,13 +41,13 @@ import EditMyHistoryModal from "./EditMyHistoryModal.vue";
 
 export default {
   name: "PersonalHistory",
-  components: { HistoryCard, AddTimeLineModal, TimeLine, ProfileModal, CreateMyHistoryModal, EditMyHistoryModal },
+  components: { HistoryCard, AddEventModal, TimeLine, ProfileModal, CreateMyHistoryModal, EditMyHistoryModal },
   data() {
     return {
       profileModalFlag: false,
       myHistoryModalFlag: false,
       editHistoryModalFlag: false,
-      addTimeLineFlag: false,
+      addEventFlag: false,
     };
   },
   computed: {
@@ -84,8 +84,8 @@ export default {
     editMyHistoryFlagChange() {
       this.editHistoryModalFlag = !this.editHistoryModalFlag;
     },
-    addTimeLineFlagChange() {
-      this.addTimeLineFlag = !this.addTimeLineFlag;
+    addEventFlagChange() {
+      this.addEventFlag = !this.addEventFlag;
     },
   }
 };

@@ -2,7 +2,7 @@
   <div class="modal">
     <div
       class="modal-background"
-      @click="canselAddTimeLine"
+      @click="canselAddEvent"
     />
     <div class="modal-card">
       <header class="modal-card-head">
@@ -100,13 +100,13 @@
       <footer class="modal-card-foot">
         <button
           class="button is-success"
-          @click="addTimeLine"
+          @click="addMyHistoryEvent"
         >
           追加
         </button>
         <button
           class="button"
-          @click="canselAddTimeLine"
+          @click="canselAddEvent"
         >
           キャンセル
         </button>
@@ -130,26 +130,26 @@ export default {
     };
   },
   methods: {
-    addTimeLine() {
-      this.$store.dispatch("addTimeLine", this.addEvent)
+    addMyHistoryEvent() {
+      this.$store.dispatch("addMyHistoryEvent", this.addEvent)
         .then(() => {
           for (let key in this.addEvent) {
             this.addEvent[key] = "";
           }
           this.formError = {};
-          this.$emit("addTimeLineSuccess");
+          this.$emit("addEventSuccess");
         })
         .catch((error) => {
           this.formError = error;
           console.log(this.formError);
         });
     },
-    canselAddTimeLine() {
+    canselAddEvent() {
       for (let key in this.addEvent) {
         this.addEvent[key] = "";
       }
       this.formError = {};
-      this.$emit("canselAddTimeLine");
+      this.$emit("canselAddEvent");
     },
   }
 };
