@@ -4,34 +4,46 @@
       <div class="page">
         <div class="timeline">
           <!-- 一塊の自分史 ここから -->
-          <div class="timeline-group">
+          <div
+            v-for="event in getEvents"
+            :key="event.id"
+            class="timeline-group"
+          >
             <div
               class="timeline-age time is-size-5"
               aria-hidden="true"
             >
-              「35歳」の出来事
+              <!-- 「35歳」の出来事 -->
+              「{{ event.age }}歳」の出来事
             </div>
             <!-- 同年齢１個分の自分史 ここから -->
-            <div class="timeline-card ml-3 mb-5">
+            <div class="timeline-card ml-7 mb-5">
+              <div class="timeline-icon">
+                <span class="fullness has-text-weight-semibold">
+                  充実度
+                </span>
+                <span class="fullness-data has-text-weight-semibold">
+                  {{ event.happiness }}%
+                </span>
+              </div>
               <article class="media">
                 <div class="media-content">
                   <div class="content">
                     <div class="columns">
                       <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
                         <h4 class="title is-4">
-                          イベントタイトル
+                          <!-- イベントタイトル -->
+                          {{ event.title }}
                         </h4>
-                        <p class="has-text-weight-semibold is-size-5">
-                          充実度：30%
-                        </p>
                       </div>
                     </div>
                   </div>
                   <div class="content">
                     <div class="columns">
                       <p class="column timeline-episode">
-                        出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事
-                        出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事
+                        <!-- 出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事
+                        出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事出来事 -->
+                        {{ event.episode }}
                       </p>
                     </div>
                   </div>
@@ -53,7 +65,15 @@
             <!-- 同年齢１個分の自分史 ここまで -->
 
             <!-- 同年齢１個分の自分史 ここから -->
-            <div class="timeline-card ml-3 mb-5">
+            <div class="timeline-card ml-7 mb-5">
+              <div class="timeline-icon">
+                <span class="fullness has-text-weight-semibold">
+                  充実度
+                </span>
+                <span class="fullness-data has-text-weight-semibold">
+                  30%
+                </span>
+              </div>
               <article class="media">
                 <div class="media-content">
                   <div class="content">
@@ -62,9 +82,6 @@
                         <h4 class="title is-4">
                           イベントタイトル
                         </h4>
-                        <p class="has-text-weight-semibold is-size-5">
-                          充実度：30%
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -104,7 +121,15 @@
               「35歳」の出来事
             </div>
             <!-- 同年齢１個分の自分史 -->
-            <div class="timeline-card ml-3 mb-5">
+            <div class="timeline-card ml-7 mb-5">
+              <div class="timeline-icon">
+                <span class="fullness has-text-weight-semibold">
+                  充実度
+                </span>
+                <span class="fullness-data has-text-weight-semibold">
+                  30%
+                </span>
+              </div>
               <article class="media">
                 <div class="media-content">
                   <div class="content">
@@ -113,9 +138,6 @@
                         <h4 class="title is-4">
                           イベントタイトル
                         </h4>
-                        <p class="has-text-weight-semibold is-size-5">
-                          充実度：30%
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -144,7 +166,15 @@
             </div>
 
             <!-- 同年齢１個分の自分史 -->
-            <div class="timeline-card ml-3 mb-5">
+            <div class="timeline-card ml-7 mb-5">
+              <div class="timeline-icon">
+                <span class="fullness has-text-weight-semibold">
+                  充実度
+                </span>
+                <span class="fullness-data has-text-weight-semibold">
+                  30%
+                </span>
+              </div>
               <article class="media">
                 <div class="media-content">
                   <div class="content">
@@ -153,9 +183,6 @@
                         <h4 class="title is-4">
                           イベントタイトル
                         </h4>
-                        <p class="has-text-weight-semibold is-size-5">
-                          充実度：30%
-                        </p>
                       </div>
                     </div>
                   </div>
@@ -234,5 +261,10 @@
 <script>
 export default {
   name: "TimeLine",
+  computed: {
+    getEvents: function() {
+      return this.$store.getters.getEvents;
+    }
+  },
 };
 </script>

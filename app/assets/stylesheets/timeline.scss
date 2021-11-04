@@ -40,6 +40,34 @@
   padding: 1.25rem;
   box-sizing: border-box;
   position: relative;
+  &.ml-7 {
+    margin-left: 2rem;
+  }
+}
+
+.timeline-card .timeline-icon {
+  position: absolute;
+  left: -68px;
+  top: 58px;
+  border-radius: 100%;
+  text-align: center;
+  font-size: 1rem;
+  background: #4557bb;
+  color: #fff;
+  width: 62px;
+  height: 62px;
+  .fullness {
+    font-size: 13px;
+    line-height: 35px;
+    display: block;
+    text-align: center;
+  }
+  .fullness-data {
+    font-size: 20px;
+    line-height: 10px;
+    display: block;
+    text-align: center;
+  }
 }
 
 .content figure.timeline-image {
@@ -49,7 +77,7 @@
 
 .content h4 {
   font-size: 1.25em;
-  margin-bottom: 0.5em;
+  margin-bottom: 0em;
 }
 
 .timeline .columns:not(:last-child) {
