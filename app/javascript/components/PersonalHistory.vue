@@ -23,7 +23,9 @@
       @canselAddEvent="addEventFlagChange"
       @addEventSuccess="addEventFlagChange"
     />
-    <time-line />
+    <time-line
+      v-if="getEventsCount"
+    />
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
       @updateProfileSuccess="profileModalFlagChange"
@@ -56,6 +58,9 @@ export default {
     },
     getMyHistory: function() {
       return this.$store.getters.getMyHistory;
+    },
+    getEventsCount: function() {
+      return this.$store.getters.getEventsCount;
     }
   },
   mounted() {
@@ -65,10 +70,7 @@ export default {
   },
   methods: {
     profileAndTitleModalFlagChange() {
-      console.log(this.getUserProfile.birthday);
-      console.log(this.getUserProfile.gender);
       if(this.getUserProfile.birthday === null || this.getUserProfile.gender === null){
-        console.log("OK");
         this.profileModalFlag = !this.profileModalFlag;
       }else if(this.getMyHistory.title === null){
         this.myHistoryModalFlag = !this.myHistoryModalFlag;
