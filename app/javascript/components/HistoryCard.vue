@@ -61,29 +61,9 @@
 </template>
 
 <script>
-// import TimeLineModal from "./TimeLineModal.vue";
-// import TimeLine from "./TimeLine.vue";
 
 export default {
   name: "HistoryCard",
-  //   components: { TimeLineModal, TimeLine },
-  //   props: {
-  //     profiles: {
-  //       type: Object,
-  //       required: true
-  //     }
-  //   },
-  //   data() {
-  //     return {
-  //       isTimeLineModalShown: false,
-  //       userProfiles: null,
-  //       events: [],
-  //       timeLineModalErrors: {},
-  //     };
-  //   },
-  //   created() {
-  //     this.userProfiles = this.profiles;
-  //   },
   computed: {
     getUserProfile: function() {
       return this.$store.getters.getUserProfile;
@@ -93,10 +73,6 @@ export default {
     }
   },
   methods: {
-    // hideTimeLineModal() {
-    //   this.isTimeLineModalShown = false;
-    //   this.timeLineModalErrors = {};
-    // },
     myHistoryFlagChange() {
       this.$emit("myHistoryFlagChange");
     },

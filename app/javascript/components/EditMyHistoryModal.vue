@@ -89,9 +89,6 @@ export default {
       this.editMyHistory.title = this.getMyHistory.title;
       this.$emit("cancelEditMyHistoryTitle");
     },
-    // inputEvent(event) {
-    //   this.editMyHistory.title = event.target.value;
-    // }
   }
 };
 </script>

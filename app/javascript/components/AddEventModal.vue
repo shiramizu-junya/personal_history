@@ -141,7 +141,6 @@ export default {
         })
         .catch((error) => {
           this.formError = error;
-          console.log(this.formError);
         });
     },
     canselAddEvent() {
