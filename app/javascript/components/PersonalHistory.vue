@@ -24,7 +24,7 @@
       @addEventSuccess="addEventFlagChange"
     />
     <time-line
-      v-if="getEventsCount"
+      v-if="timeLineFlag"
     />
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
@@ -50,6 +50,7 @@ export default {
       myHistoryModalFlag: false,
       editHistoryModalFlag: false,
       addEventFlag: false,
+      timeLineFlag: false,
     };
   },
   computed: {
@@ -59,9 +60,9 @@ export default {
     getMyHistory: function() {
       return this.$store.getters.getMyHistory;
     },
-    getEventsCount: function() {
-      return this.$store.getters.getEventsCount;
-    }
+    getEvents: function() {
+      return this.$store.getters.getEvents;
+    },
   },
   mounted() {
     this.$store.dispatch("getUserProfile").then(() => {
@@ -88,7 +89,15 @@ export default {
     },
     addEventFlagChange() {
       this.addEventFlag = !this.addEventFlag;
+      this.changeTimeLineFlag();
     },
+    changeTimeLineFlag() {
+      if(this.$store.getters.getEventsCount){
+        this.timeLineFlag = true;
+      }else{
+        this.timeLineFlag = false;
+      }
+    }
   }
 };
 </script>

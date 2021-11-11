@@ -20,46 +20,7 @@ export default new Vuex.Store({
       title: null,
     },
     // 自分史のイベント情報
-    events: {
-      "25": {
-        age: 25,
-        data: [
-          {
-            id: 1,
-            age: 25,
-            title: "title_01",
-            episode: "episode_01",
-            happiness: 50,
-          },
-          {
-            id: 2,
-            age: 25,
-            title: "title_02",
-            episode: "episode_02",
-            happiness: 80,
-          },
-        ],
-      },
-      "30": {
-        age: 30,
-        data: [
-          {
-            id: 3,
-            age: 30,
-            title: "title_03",
-            episode: "episode_03",
-            happiness: -100,
-          },
-          {
-            id: 4,
-            age: 30,
-            title: "title_04",
-            episode: "episode_04",
-            happiness: -50,
-          },
-        ],
-      },
-    },
+    events: {},
   },
   mutations: {
     // ユーザープロフィールを更新機能
@@ -70,7 +31,16 @@ export default new Vuex.Store({
       state.my_history = my_history;
     },
     setEvent(state, event) {
-      state.events.push(event);
+      const age = event.age.toString();
+
+      if (Object.keys(state.events).includes(age)) {
+        state.events[age].data.push(event);
+      } else {
+        Vue.set(state.events, age, {});
+        state.events[age]["age"] = age;
+        Vue.set(state.events[age], "data", []);
+        state.events[age]["data"].push(event);
+      }
     },
   },
   actions: {
@@ -169,6 +139,6 @@ export default new Vuex.Store({
     },
     getEventsCount: function (state) {
       return Object.keys(state.events).length;
-    }
+    },
   },
 });
