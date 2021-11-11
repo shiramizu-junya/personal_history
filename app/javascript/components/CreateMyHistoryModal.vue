@@ -68,9 +68,9 @@ export default {
     addMyHistoryTitle() {
       this.$store.dispatch("addMyHistoryTitle", this.addMyHistory)
         .then(() => {
+          this.$emit("addMyHistorySuccess");
           this.formError = {};
           this.addMyHistory.title = "";
-          this.$emit("addMyHistorySuccess");
         })
         .catch((error) => {
           this.formError = error;
