@@ -20,7 +20,38 @@ export default new Vuex.Store({
       title: null,
     },
     // 自分史のイベント情報
-    events: {},
+    events: {
+      // "25": {
+      //   age: "25",
+      //   data: [
+      //     {
+      //       id: "1",
+      //       age: 25,
+      //       title: "title",
+      //       episode: "episode",
+      //       happiness: 50
+      //     },
+      //     {
+      //       id: "2",
+      //       age: 25,
+      //       title: "title_02",
+      //       episode: "episode_02",
+      //       happiness: 90
+      //     },
+      //   ]
+      // },
+      // "30": {
+      //   age: "30",
+      //   data: [
+      //     {
+
+      //     },
+      //     {
+
+      //     }
+      //   ]
+      // }
+    },
   },
   mutations: {
     // ユーザープロフィールを更新機能
@@ -137,7 +168,7 @@ export default new Vuex.Store({
     getEvents: function(state) {
       return state.events;
     },
-    getEventsCount: function (state) {
+    getEventsCount: function(state) {
       return Object.keys(state.events).length;
     },
   },

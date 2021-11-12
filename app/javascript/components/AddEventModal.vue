@@ -117,7 +117,7 @@
 
 <script>
 export default {
-  name: "AddTimeLineModal",
+  name: "AddEventModal",
   data() {
     return{
       addEvent: {

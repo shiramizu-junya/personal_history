@@ -7,7 +7,6 @@
     />
     <edit-my-history-modal
       v-if="getMyHistory.title"
-      :title="getMyHistory.title"
       :class="{ 'is-active' : editHistoryModalFlag }"
       @editMyHistorySuccess="editMyHistoryFlagChange"
       @cancelEditMyHistoryTitle="editMyHistoryFlagChange"
@@ -23,8 +22,14 @@
       @canselAddEvent="addEventFlagChange"
       @addEventSuccess="addEventFlagChange"
     />
+    <edit-event-modal
+      :class="{ 'is-active' : editEventFlag }"
+      :event="event"
+      @canselEditEvent="editEventFlagChange"
+    />
     <time-line
       v-if="timeLineFlag"
+      @editEventFlagChange="editEventFlagChange"
     />
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"
@@ -35,22 +40,33 @@
 
 <script>
 import HistoryCard from "./HistoryCard.vue";
-import AddEventModal from "./AddEventModal.vue";
-import TimeLine from "./TimeLine.vue";
 import ProfileModal from "./ProfileModal.vue";
 import CreateMyHistoryModal from "./CreateMyHistoryModal.vue";
 import EditMyHistoryModal from "./EditMyHistoryModal.vue";
+import TimeLine from "./TimeLine.vue";
+import AddEventModal from "./AddEventModal.vue";
+import EditEventModal from "./EditEventModal.vue";
 
 export default {
   name: "PersonalHistory",
-  components: { HistoryCard, AddEventModal, TimeLine, ProfileModal, CreateMyHistoryModal, EditMyHistoryModal },
+  components: {
+    HistoryCard,
+    ProfileModal,
+    CreateMyHistoryModal,
+    EditMyHistoryModal,
+    TimeLine,
+    AddEventModal,
+    EditEventModal,
+  },
   data() {
     return {
       profileModalFlag: false,
       myHistoryModalFlag: false,
       editHistoryModalFlag: false,
-      addEventFlag: false,
       timeLineFlag: false,
+      addEventFlag: false,
+      editEventFlag: false,
+      event: {},
     };
   },
   computed: {
@@ -97,6 +113,10 @@ export default {
       }else{
         this.timeLineFlag = false;
       }
+    },
+    editEventFlagChange(event = {}) {
+      this.event = event;
+      this.editEventFlag = !this.editEventFlag;
     }
   }
 };

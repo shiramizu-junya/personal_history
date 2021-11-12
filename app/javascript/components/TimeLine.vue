@@ -48,7 +48,10 @@
                   <nav class="level is-mobile">
                     <div class="level-left">
                       <div class="buttons">
-                        <button class="button is-primary">
+                        <button
+                          class="button is-primary"
+                          @click="editEventFlagChange(data)"
+                        >
                           編集
                         </button>
                         <button class="button is-link">
@@ -117,5 +120,10 @@ export default {
       return this.$store.getters.getEvents;
     }
   },
+  methods: {
+    editEventFlagChange(event) {
+      this.$emit("editEventFlagChange", event);
+    },
+  }
 };
 </script>
