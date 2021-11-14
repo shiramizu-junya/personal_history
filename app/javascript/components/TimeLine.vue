@@ -4,19 +4,19 @@
       <div class="page">
         <div class="timeline">
           <div
-            v-for="event in getEvents"
-            :key="event.age"
+            v-for="(events, key) in getEvents"
+            :key="key"
             class="timeline-group"
           >
             <div
               class="timeline-age time is-size-5"
               aria-hidden="true"
             >
-              「{{ event.age }}歳」の出来事
+              「{{ events.age }}歳」の出来事
             </div>
             <div
-              v-for="data in event.data"
-              :key="data.id"
+              v-for="(data, index) in events.data"
+              :key="index"
               class="timeline-card ml-7 mb-5"
             >
               <div class="timeline-icon">
@@ -50,7 +50,7 @@
                       <div class="buttons">
                         <button
                           class="button is-primary"
-                          @click="editEventFlagChange(data)"
+                          @click.stop="editEventFlagChange(key, index)"
                         >
                           編集
                         </button>
@@ -121,8 +121,8 @@ export default {
     }
   },
   methods: {
-    editEventFlagChange(event) {
-      this.$emit("editEventFlagChange", event);
+    editEventFlagChange(key, index) {
+      this.$emit("editEventFlagChange", key, index, true);
     },
   }
 };

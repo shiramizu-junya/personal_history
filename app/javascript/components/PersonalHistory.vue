@@ -67,7 +67,11 @@ export default {
       timeLineFlag: false,
       addEventFlag: false,
       editEventFlag: false,
-      event: {},
+      event: {
+        data: {},
+        key: null,
+        index: null,
+      },
     };
   },
   computed: {
@@ -118,7 +122,7 @@ export default {
     editEventFlagChange(key, index, flag = false) {
       if(flag){
         // lodashのcloneDeepによりオブジェクトをコピーにより「参照渡し」を「根渡し」に変える
-        this.event = _.cloneDeep(this.getEvents[key].data[index]);
+        this.event = { ...this.event, data: _.cloneDeep(this.getEvents[key].data[index]), key: key, index: index };
       }
       this.editEventFlag = !this.editEventFlag;
     }
