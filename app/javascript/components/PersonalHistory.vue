@@ -46,6 +46,7 @@ import EditMyHistoryModal from "./EditMyHistoryModal.vue";
 import TimeLine from "./TimeLine.vue";
 import AddEventModal from "./AddEventModal.vue";
 import EditEventModal from "./EditEventModal.vue";
+import _ from "lodash";
 
 export default {
   name: "PersonalHistory",
@@ -114,8 +115,11 @@ export default {
         this.timeLineFlag = false;
       }
     },
-    editEventFlagChange(event = {}) {
-      this.event = event;
+    editEventFlagChange(key, index, flag = false) {
+      if(flag){
+        // lodashのcloneDeepによりオブジェクトをコピーにより「参照渡し」を「根渡し」に変える
+        this.event = _.cloneDeep(this.getEvents[key].data[index]);
+      }
       this.editEventFlag = !this.editEventFlag;
     }
   }
