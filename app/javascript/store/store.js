@@ -1,6 +1,7 @@
 import Vue from "vue/dist/vue.esm";
 import Vuex from "vuex";
 import axios from "axios";
+import _ from "lodash";
 
 Vue.use(Vuex);
 
@@ -44,10 +45,8 @@ export default new Vuex.Store({
       //   age: "30",
       //   data: [
       //     {
-
       //     },
       //     {
-
       //     }
       //   ]
       // }
@@ -157,6 +156,33 @@ export default new Vuex.Store({
           });
       });
     },
+    // 自分史のイベントを編集
+    editEvent({ commit }, event) {
+      let data = _.cloneDeep(event.data);
+      let key = event.key;
+      let index = event.index;
+      delete data["id"];
+
+      return new Promise((resolve, reject) => {
+        axios
+          .patch(`/api/events/${event.data.id}`, {
+            event: data,
+          })
+          .then((response) => {
+            // commit("setEvent", response.data);
+            // resolve(response.data);
+            console.log(commit);
+            console.log(response);
+            console.log(key);
+            console.log(index);
+          })
+          .catch((error) => {
+            if (error.response.data && error.response.data.errors) {
+              reject(error.response.data.errors);
+            }
+          });
+      });
+    }
   },
   getters: {
     getUserProfile: function(state) {
