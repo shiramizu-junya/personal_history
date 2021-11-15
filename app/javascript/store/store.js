@@ -72,6 +72,31 @@ export default new Vuex.Store({
         state.events[age]["data"].push(event);
       }
     },
+    editEvent(state, { event, key, index }) {
+      // １、編集対象のデータのageと編集したデータのageが同じであれば、そのまま編集対象のデータを変更する
+      if (state.events[key].data[index].age === event.age) {
+        Vue.set(state.events[key].data, index, event);
+      } else {
+        // ２、編集対象のデータのageと編集したデータのageが違う場合
+        // 2-1：編集対象のdataの配列の要素を削除する
+        Vue.delete(state.events[key].data, index);
+        // 2-1-1：編集対象のdataを削除した際に、同年齢のdataの配列に要素がない場合は、同年齢のオブジェクトの塊ごと削除する
+        if (!state.events[key].data.length) {
+          Vue.delete(state.events, key, index);
+        }
+        // 2-2：編集したデータを編集したデータの年齢と同じオブジェクトの塊に追加する
+        // 2-2-1：編集したデータと同じ年齢の枠組みが存在するなら、そのまま配列の中に代入するだけ
+        if (Object.keys(state.events).includes(event.age.toString())) {
+          state.events[event.age.toString()].data.push(event);
+        } else {
+          // 2-2-2：編集したデータと同じ年齢の枠組みが存在しないなら、まずその枠組みを作ってから、代入する。
+          Vue.set(state.events, event.age.toString(), {});
+          state.events[event.age.toString()]["age"] = event.age.toString();
+          Vue.set(state.events[event.age.toString()], "data", []);
+          state.events[event.age.toString()]["data"].push(event);
+        }
+      }
+    }
   },
   actions: {
     // プロフィールを取得
@@ -169,14 +194,11 @@ export default new Vuex.Store({
             event: data,
           })
           .then((response) => {
-            // commit("setEvent", response.data);
-            // resolve(response.data);
-            console.log(commit);
-            console.log(response);
-            console.log(key);
-            console.log(index);
+            commit("editEvent", { event: response.data, key: key, index: index });
+            resolve();
           })
           .catch((error) => {
+            console.log("catch", error);
             if (error.response.data && error.response.data.errors) {
               reject(error.response.data.errors);
             }

@@ -143,11 +143,9 @@ export default {
   methods: {
     editEvent() {
       this.$store.dispatch("editEvent", this.editEventTarget)
-        .then((response) => {
-          // this.formError = {};
-          // this.editMyHistory.title = response.title;
-          // this.$emit("editMyHistorySuccess");
-          console.log(response);
+        .then(() => {
+          this.formError = {};
+          this.$emit("editEventSuccess");
         })
         .catch((error) => {
           this.formError = error;

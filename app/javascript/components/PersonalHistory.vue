@@ -25,6 +25,7 @@
     <edit-event-modal
       :class="{ 'is-active' : editEventFlag }"
       :event="event"
+      @editEventSuccess="editEventFlagChange"
       @canselEditEvent="editEventFlagChange"
     />
     <time-line
