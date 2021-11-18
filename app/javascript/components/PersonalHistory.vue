@@ -31,6 +31,7 @@
     <time-line
       v-if="timeLineFlag"
       @editEventFlagChange="editEventFlagChange"
+      @deleteEventSuccess="changeTimeLineFlag"
     />
     <profile-modal
       :class="{ 'is-active': profileModalFlag }"

@@ -5,7 +5,16 @@ import axios from "axios";
 import { csrfToken } from "rails-ujs";
 import VueAxiosPlugin from "./plugins/vue-axios";
 
-Vue.use(VueAxiosPlugin, { axios: axios, csrfToken: csrfToken });
+import VueJsDialog from "vuejs-dialog";
+
+Vue.use(
+  VueAxiosPlugin,
+  {
+    axios: axios,
+    csrfToken: csrfToken,
+  },
+);
+Vue.use( VueJsDialog );
 
 Vue.config.productionTip = false;
 

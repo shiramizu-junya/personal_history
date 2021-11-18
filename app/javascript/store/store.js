@@ -21,39 +21,9 @@ export default new Vuex.Store({
       title: null,
     },
     // 自分史のイベント情報
-    events: {
-      // "25": {
-      //   age: "25",
-      //   data: [
-      //     {
-      //       id: "1",
-      //       age: 25,
-      //       title: "title",
-      //       episode: "episode",
-      //       happiness: 50
-      //     },
-      //     {
-      //       id: "2",
-      //       age: 25,
-      //       title: "title_02",
-      //       episode: "episode_02",
-      //       happiness: 90
-      //     },
-      //   ]
-      // },
-      // "30": {
-      //   age: "30",
-      //   data: [
-      //     {
-      //     },
-      //     {
-      //     }
-      //   ]
-      // }
-    },
+    events: {},
   },
   mutations: {
-    // ユーザープロフィールを更新機能
     setUserProfile(state, user) {
       state.profile = user;
     },
@@ -73,6 +43,8 @@ export default new Vuex.Store({
       }
     },
     editEvent(state, { event, key, index }) {
+      let age = event.age.toString();
+
       // １、編集対象のデータのageと編集したデータのageが同じであれば、そのまま編集対象のデータを変更する
       if (state.events[key].data[index].age === event.age) {
         Vue.set(state.events[key].data, index, event);
@@ -86,15 +58,21 @@ export default new Vuex.Store({
         }
         // 2-2：編集したデータを編集したデータの年齢と同じオブジェクトの塊に追加する
         // 2-2-1：編集したデータと同じ年齢の枠組みが存在するなら、そのまま配列の中に代入するだけ
-        if (Object.keys(state.events).includes(event.age.toString())) {
-          state.events[event.age.toString()].data.push(event);
+        if (Object.keys(state.events).includes(age)) {
+          state.events[age].data.push(event);
         } else {
           // 2-2-2：編集したデータと同じ年齢の枠組みが存在しないなら、まずその枠組みを作ってから、代入する。
-          Vue.set(state.events, event.age.toString(), {});
-          state.events[event.age.toString()]["age"] = event.age.toString();
-          Vue.set(state.events[event.age.toString()], "data", []);
-          state.events[event.age.toString()]["data"].push(event);
+          Vue.set(state.events, age, {});
+          state.events[age]["age"] = age;
+          Vue.set(state.events[age], "data", []);
+          state.events[age]["data"].push(event);
         }
+      }
+    },
+    deleteEvent(state, { key, index }) {
+      Vue.delete(state.events[key].data, index);
+      if (!state.events[key].data.length) {
+        Vue.delete(state.events, key, index);
       }
     }
   },
@@ -194,7 +172,11 @@ export default new Vuex.Store({
             event: data,
           })
           .then((response) => {
-            commit("editEvent", { event: response.data, key: key, index: index });
+            commit("editEvent", {
+              event: response.data,
+              key: key,
+              index: index,
+            });
             resolve();
           })
           .catch((error) => {
@@ -204,7 +186,19 @@ export default new Vuex.Store({
             }
           });
       });
-    }
+    },
+    // 自分史のイベント削除
+    eventDelete({ commit }, { data, key, index }) {
+      return new Promise((resolve) => {
+        axios.delete(`/api/events/${data.id}`).then(() => {
+          commit("deleteEvent", {
+            key: key,
+            index: index,
+          });
+          resolve();
+        });
+      });
+    },
   },
   getters: {
     getUserProfile: function(state) {
@@ -219,5 +213,6 @@ export default new Vuex.Store({
     getEventsCount: function(state) {
       return Object.keys(state.events).length;
     },
+    comparisonAge: function() {},
   },
 });

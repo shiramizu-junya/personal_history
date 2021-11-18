@@ -54,7 +54,10 @@
                         >
                           編集
                         </button>
-                        <button class="button is-link">
+                        <button
+                          class="button is-link"
+                          @click.stop="eventDelete(data, key, index)"
+                        >
                           削除
                         </button>
                       </div>
@@ -113,6 +116,7 @@
 </template>
 
 <script>
+import "vuejs-dialog/dist/vuejs-dialog.min.css";
 export default {
   name: "TimeLine",
   computed: {
@@ -124,6 +128,54 @@ export default {
     editEventFlagChange(key, index) {
       this.$emit("editEventFlagChange", key, index, true);
     },
+    eventDelete(data, key, index){
+      let message = {
+        title: "最終確認",
+        body: `<h4>削除対象は下記です</h4><br>
+                <strong>年齢：${ data.age }歳</strong><br>
+                <strong>タイトル：${ data.title }</strong><br>
+                <strong>エピソード：${ data.episode }</strong><br>
+                <strong>充実度：${ data.happiness }</strong>
+                <br>
+                <br>
+                <p>本当に削除してもよろしいですか？</p>`
+      };
+
+      let options = {
+        html: true,
+        okText: "はい",
+        cancelText: "キャンセル",
+        animation: "zoom",
+        backdropClose: true,
+      };
+
+      this.$dialog.confirm(message, options)
+        .then(() => {
+          this.$store.dispatch("eventDelete", { data: data, key: key, index: index })
+            .then(() => {
+              this.$emit("deleteEventSuccess");
+            });
+        })
+        .catch(function () {
+        });
+    }
   }
 };
 </script>
+
+<style scoped>
+.dg-title {
+  margin: 0 0 10px 0;
+  padding: 0;
+  font-size: 18px;
+}
+
+.dg-content-body--has-title .dg-content {
+  font-size: 14px;
+}
+
+.dg-content {
+  font-size: 16px;
+  line-height: 1.3em;
+}
+</style>

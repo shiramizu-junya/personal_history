@@ -1,5 +1,5 @@
 class Api::EventsController < ApplicationController
-  before_action :set_event, only: %i[update]
+  before_action :set_event, only: %i[update destroy]
 
   def create
     @my_history = MyHistory.find(params[:history_id])
@@ -18,6 +18,11 @@ class Api::EventsController < ApplicationController
     else
       render json: { errors: @event.errors.keys.map { |key| [key, @event.errors.full_messages_for(key)]}.to_h }, status: :bad_request
     end
+  end
+
+  def destroy
+    @event.destroy!
+    render json: @event, each_serializer: EventSerializer, status: :ok
   end
 
   private
