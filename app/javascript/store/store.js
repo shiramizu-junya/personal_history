@@ -14,6 +14,8 @@ export default new Vuex.Store({
       gender: null,
       name: null,
     },
+    // カテゴリー情報
+    category: [],
     // 自分史の情報
     my_history: {
       id: null,
@@ -26,6 +28,11 @@ export default new Vuex.Store({
   mutations: {
     setUserProfile(state, user) {
       state.profile = user;
+    },
+    setCategory(state, category) {
+      for (let i = 0; i < category.length; i++) {
+        Vue.set(state.category, i, category[i].attributes);
+      }
     },
     setMyHistory(state, my_history) {
       state.my_history = my_history;
@@ -74,7 +81,7 @@ export default new Vuex.Store({
       if (!state.events[key].data.length) {
         Vue.delete(state.events, key, index);
       }
-    }
+    },
   },
   actions: {
     // プロフィールを取得
@@ -82,6 +89,15 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         axios.get("/api/profile").then((response) => {
           commit("setUserProfile", response.data);
+          resolve();
+        });
+      });
+    },
+    // カテゴリーを取得
+    getCategory({ commit }) {
+      return new Promise((resolve) => {
+        axios.get("/api/categories").then((response) => {
+          commit("setCategory", response.data);
           resolve();
         });
       });
@@ -165,6 +181,7 @@ export default new Vuex.Store({
       let key = event.key;
       let index = event.index;
       delete data["id"];
+      delete data["category_name"];
 
       return new Promise((resolve, reject) => {
         axios
@@ -180,7 +197,6 @@ export default new Vuex.Store({
             resolve();
           })
           .catch((error) => {
-            console.log("catch", error);
             if (error.response.data && error.response.data.errors) {
               reject(error.response.data.errors);
             }
@@ -204,6 +220,9 @@ export default new Vuex.Store({
     getUserProfile: function(state) {
       return state.profile;
     },
+    getCategory: function (state) {
+      return state.category;
+    },
     getMyHistory: function(state) {
       return state.my_history;
     },
@@ -213,6 +232,5 @@ export default new Vuex.Store({
     getEventsCount: function(state) {
       return Object.keys(state.events).length;
     },
-    comparisonAge: function() {},
   },
 });

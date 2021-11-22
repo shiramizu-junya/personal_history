@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_20_043829) do
+ActiveRecord::Schema.define(version: 2021_11_22_053908) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "age", null: false
     t.string "title", null: false
+    t.integer "category_id", null: false
     t.text "episode", null: false
+    t.string "memory_image"
     t.integer "happiness", null: false
     t.bigint "my_history_id", null: false
     t.datetime "created_at", precision: 6, null: false

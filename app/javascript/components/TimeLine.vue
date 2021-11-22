@@ -30,11 +30,14 @@
               <article class="media">
                 <div class="media-content">
                   <div class="content">
-                    <div class="columns">
+                    <div class="columns  is-mobile">
                       <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
                         <h4 class="title is-4">
                           {{ data.title }}
                         </h4>
+                      </div>
+                      <div class="column has-text-centered">
+                        <span class="tag is-warning">{{ data.category_name }}</span>
                       </div>
                     </div>
                   </div>
@@ -80,19 +83,31 @@
           </div>
           <div class="publish-wrap">
             <div class="control">
-              <label class="radio mb-2">
+              <label
+                class="radio mb-2"
+                for="published"
+              >
                 <input
+                  id="published"
+                  v-model="editMyHistory.status"
                   type="radio"
-                  name="question"
+                  name="status"
+                  value="published"
                 >
                 公開
               </label>
             </div>
             <div class="control">
-              <label class="radio">
+              <label
+                class="radio"
+                for="unpublished"
+              >
                 <input
+                  id="unpublished"
+                  v-model="editMyHistory.status"
                   type="radio"
-                  name="question"
+                  name="status"
+                  value="unpublished"
                 >
                 非公開
               </label>
@@ -119,10 +134,23 @@
 import "vuejs-dialog/dist/vuejs-dialog.min.css";
 export default {
   name: "TimeLine",
+  data() {
+    return {
+      editMyHistory: {
+        status: "",
+      },
+    };
+  },
   computed: {
     getEvents: function() {
       return this.$store.getters.getEvents;
+    },
+    getMyHistory: function() {
+      return this.$store.getters.getMyHistory;
     }
+  },
+  created() {
+    this.editMyHistory.status = this.getMyHistory.status;
   },
   methods: {
     editEventFlagChange(key, index) {
@@ -131,18 +159,10 @@ export default {
     eventDelete(data, key, index){
       let message = {
         title: "最終確認",
-        body: `<h4>削除対象は下記です</h4><br>
-                <strong>年齢：${ data.age }歳</strong><br>
-                <strong>タイトル：${ data.title }</strong><br>
-                <strong>エピソード：${ data.episode }</strong><br>
-                <strong>充実度：${ data.happiness }</strong>
-                <br>
-                <br>
-                <p>本当に削除してもよろしいですか？</p>`
+        body: "本当に削除してもよろしいですか？"
       };
 
       let options = {
-        html: true,
         okText: "はい",
         cancelText: "キャンセル",
         animation: "zoom",
