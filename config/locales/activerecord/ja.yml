@@ -23,6 +23,7 @@ ja:
       event:
         id: "ID"
         age: "年齢"
+        category_id: "カテゴリー"
         title: "タイトル"
         episode: "エピソード"
         happiness: "充実度"
