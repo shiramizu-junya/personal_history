@@ -220,7 +220,7 @@ export default new Vuex.Store({
     getUserProfile: function(state) {
       return state.profile;
     },
-    getCategory: function (state) {
+    getCategory: function(state) {
       return state.category;
     },
     getMyHistory: function(state) {
