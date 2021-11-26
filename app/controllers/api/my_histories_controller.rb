@@ -25,6 +25,6 @@ class Api::MyHistoriesController < ApplicationController
   end
 
   def my_history_params
-    params.require(:history).permit(:title, :status)
+    params.require(:my_history).permit(:title, :status)
   end
 end

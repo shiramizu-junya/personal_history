@@ -114,31 +114,44 @@
             </div>
           </div>
         </div>
-
-        <div class="field has-text-centered mb-5">
-          <div class="control">
-            <input
-              type="submit"
-              name="commit"
-              value="自分史作成"
-              class="button is-btn-yellow btn-design has-text-weight-semibold"
+        <div class="has-text-danger">
+          <ul>
+            <li
+              v-if="!!formError['status']"
             >
-          </div>
+              {{ formError["status"][0] }}
+            </li>
+          </ul>
         </div>
       </form>
+      <div class="field has-text-centered mb-5">
+        <div class="control">
+          <input
+            type="submit"
+            name="commit"
+            value="自分史作成"
+            class="button is-btn-yellow btn-design has-text-weight-semibold"
+            @click="editStatus"
+          >
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import "vuejs-dialog/dist/vuejs-dialog.min.css";
+import axios from "axios";
+
 export default {
   name: "TimeLine",
   data() {
     return {
       editMyHistory: {
-        status: "",
+        id: null,
+        status: null,
       },
+      formError: {}
     };
   },
   computed: {
@@ -150,13 +163,14 @@ export default {
     }
   },
   created() {
+    this.editMyHistory.id = this.getMyHistory.id;
     this.editMyHistory.status = this.getMyHistory.status;
   },
   methods: {
     editEventFlagChange(key, index) {
       this.$emit("editEventFlagChange", key, index, true);
     },
-    eventDelete(data, key, index){
+    eventDelete(data, key, index) {
       let message = {
         title: "最終確認",
         body: "本当に削除してもよろしいですか？"
@@ -178,7 +192,22 @@ export default {
         })
         .catch(function () {
         });
-    }
+    },
+    editStatus() {
+      axios
+        .patch(`/api/my_histories/${this.editMyHistory.id}`, {
+          status: this.editMyHistory.status,
+        })
+        .then((responce) => {
+          window.location.href = `http://localhost:3000/my_histories/${responce.data.id}`;
+        })
+        .catch((error) => {
+          console.log("error");
+          if (error.response.data && error.response.data.errors) {
+            this.formError = error.response.data.errors;
+          }
+        });
+    },
   }
 };
 </script>

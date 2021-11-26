@@ -121,11 +121,11 @@ export default new Vuex.Store({
       });
     },
     // 自分史タイトルを追加
-    addMyHistoryTitle({ commit }, history) {
+    addMyHistoryTitle({ commit }, my_history) {
       return new Promise((resolve, reject) => {
         axios
           .post("/api/my_histories", {
-            history,
+            my_history,
           })
           .then((response) => {
             commit("setMyHistory", response.data);
@@ -139,11 +139,11 @@ export default new Vuex.Store({
       });
     },
     // 自分史タイトルを編集
-    editMyHistoryTitle({ commit }, history) {
+    editMyHistoryTitle({ commit }, my_history) {
       return new Promise((resolve, reject) => {
         axios
           .patch(`/api/my_histories/${this.state.my_history.id}`, {
-            history,
+            my_history,
           })
           .then((response) => {
             commit("setMyHistory", response.data);
