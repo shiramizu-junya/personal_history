@@ -16,6 +16,6 @@ Rails.application.routes.draw do
     resource :profile, only: %i[show update]
     resources :categories, only: %i[index]
     resources :events, only: %i[create update destroy]
-    resources :my_histories, only: %i[create update]
+    resource :my_history, only: %i[create update]
   end
 end

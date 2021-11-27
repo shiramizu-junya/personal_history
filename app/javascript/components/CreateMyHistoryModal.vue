@@ -17,7 +17,7 @@
             <div class="control">
               <input
                 v-model="addMyHistory.title"
-                :class="{ 'error' : formError['title'] }"
+                :class="{ 'error' : formError['title'] || formError['exists'] }"
                 class="input"
                 type="text"
                 name="title"
@@ -29,6 +29,11 @@
                   v-if="!!formError['title']"
                 >
                   {{ formError["title"][0] }}
+                </li>
+                <li
+                  v-else-if="!!formError['exists']"
+                >
+                  {{ formError['exists'][0] }}
                 </li>
               </ul>
             </div>

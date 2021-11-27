@@ -2,7 +2,7 @@ class Api::EventsController < ApplicationController
   before_action :set_event, only: %i[update destroy]
 
   def create
-    @my_history = MyHistory.find(params[:history_id])
+    @my_history = current_user.my_history
     @event = @my_history.events.build(event_params)
 
     if @event.save

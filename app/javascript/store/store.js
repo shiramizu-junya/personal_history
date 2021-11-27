@@ -124,7 +124,7 @@ export default new Vuex.Store({
     addMyHistoryTitle({ commit }, my_history) {
       return new Promise((resolve, reject) => {
         axios
-          .post("/api/my_histories", {
+          .post("/api/my_history", {
             my_history,
           })
           .then((response) => {
@@ -142,7 +142,7 @@ export default new Vuex.Store({
     editMyHistoryTitle({ commit }, my_history) {
       return new Promise((resolve, reject) => {
         axios
-          .patch(`/api/my_histories/${this.state.my_history.id}`, {
+          .patch("/api/my_history", {
             my_history,
           })
           .then((response) => {

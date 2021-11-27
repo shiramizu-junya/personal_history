@@ -4,6 +4,7 @@ class MyHistory < ApplicationRecord
 
   validates :status, presence: true, inclusion: { in: %w[published unpublished], message: "を選択してください" }, allow_nil: true
   validates :title, presence: true, length: { maximum: 50 }, allow_nil: true
+  validates :user_id, uniqueness: true
 
   enum status: { published: 0, unpublished: 1 }
 end
