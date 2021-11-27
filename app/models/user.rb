@@ -1,17 +1,18 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
   mount_uploader :avatar, AvatarUploader
+  cattr_accessor :current_user
 
-  has_many :tracks, dependent: :destroy
-  has_many :events, through: :tracks
+  has_one :my_history, dependent: :destroy
+  has_many :events, through: :my_history
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, uniqueness: { case_sensitive: true }, presence: true
-  validates :age, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }, on: :update
-  validates :gender, inclusion: { in: %w[men women], message: "を選択してください" }, on: :update
+  validates :birthday, presence: true, birth_day: true, on: :update
+  validates :gender, inclusion: { in: %w[men women other no_answer], message: "を選択してください" }, on: :update
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
 
-  enum gender: { men: 0, women: 1 }
+  enum gender: { men: 0, women: 1, other: 2, no_answer: 3 }
 end

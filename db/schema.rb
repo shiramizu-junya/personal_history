@@ -10,30 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_09_060312) do
+ActiveRecord::Schema.define(version: 2021_11_21_054924) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.integer "age", null: false
+    t.string "title", null: false
+    t.integer "category_id", null: false
     t.text "episode", null: false
     t.integer "happiness", null: false
-    t.bigint "track_id", null: false
-    t.integer "history_age_id", null: false
+    t.bigint "my_history_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["track_id"], name: "index_events_on_track_id"
+    t.index ["my_history_id"], name: "index_events_on_my_history_id"
   end
 
-  create_table "tracks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
-    t.integer "published", null: false
+  create_table "my_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.integer "status", default: 0, null: false
+    t.string "title"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_tracks_on_user_id"
+    t.index ["user_id"], name: "index_my_histories_on_user_id", unique: true
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "name", null: false
     t.string "email", null: false
-    t.integer "age"
+    t.date "birthday"
     t.integer "gender"
     t.string "avatar"
     t.string "crypted_password"
@@ -46,6 +49,6 @@ ActiveRecord::Schema.define(version: 2021_09_09_060312) do
     t.index ["remember_me_token"], name: "index_users_on_remember_me_token"
   end
 
-  add_foreign_key "events", "tracks"
-  add_foreign_key "tracks", "users"
+  add_foreign_key "events", "my_histories"
+  add_foreign_key "my_histories", "users"
 end

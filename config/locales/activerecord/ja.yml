@@ -2,21 +2,39 @@ ja:
   activerecord:
     models:
       user: "ユーザー"
+      event: "イベント"
+      my_history: "自分史"
     attributes:
       user:
         id: "ID"
         name: "ユーザー名"
         email: "メールアドレス"
-        age: "年齢"
+        birthday: "生年月日"
         gender: "性別"
         avatar: "プロフィール画像"
         remember: "次回ログインを省略"
         password: "パスワード"
-        password_confirmation: "パスワード再入力"
+        password_confirmation: "パスワード（確認用）"
         created_at: "登録日時"
         updated_at: "更新日時"
+      my_history:
+        status: "公開範囲"
+        title: "タイトル"
+      event:
+        id: "ID"
+        age: "年齢"
+        category_id: "カテゴリー"
+        title: "タイトル"
+        episode: "エピソード"
+        happiness: "充実度"
   enums:
     user:
       gender:
         men: "男性"
         women: "女性"
+        other: "その他"
+        no_answer: "未回答"
+    my_history:
+      status:
+        published: "公開"
+        unpublished: "非公開"

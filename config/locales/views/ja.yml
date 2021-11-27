@@ -7,6 +7,8 @@ ja:
     edit: "更新"
     message:
       require_login: "ログインしてください。"
+      created: "%{item}を作成しました。"
+      my_history_crate: "%{item}の出来上がりです。いろんな人の自分史を見てみましょう。"
       updated: "%{item}を更新しました。"
       not_updated: "%{item}を更新できませんでした。"
       logged_in: "既にログイン済みです。"
@@ -24,11 +26,11 @@ ja:
       fail: "ログインに失敗しました。"
     destroy:
       success: "ログアウトしました。"
-  tracks:
+  my_histories:
     index:
-      title: "軌跡一覧"
+      title: "自分史一覧"
     new:
-      title: "軌跡新規作成"
+      title: "自分史作成"
   profiles:
     edit:
       title: "プロフィール編集"

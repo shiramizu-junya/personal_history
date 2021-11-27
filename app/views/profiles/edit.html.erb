@@ -27,20 +27,18 @@
         </div>
 
         <div class="field mb-5">
-          <%= f.label :age, class: "label" %>
+          <%= f.label :birthday, class: "label" %>
           <div class="control">
-            <%= f.number_field :age, class: "input is-sm-form-size #{error_if(f.object, :age)}", placeholder: "20" %>
+            <%= f.date_field :birthday, class: "input #{error_if(f.object, :birthday)}" %>
           </div>
-          <%= render "shared/error_messages", object: f.object, attribute: :age %>
+          <%= render "shared/error_messages", object: f.object, attribute: :birthday %>
         </div>
 
         <div class="field mb-5">
           <%= f.label :gender, class: "label" %>
-          <%= f.collection_radio_buttons :gender, User.genders_i18n, :first, :last, include_hidden: false do |b| %>
-            <%= content_tag(:div, class: "control") do %>
-              <%= b.radio_button(class: "radio") + b.label(class: "radio ml-2") %>
-            <% end %>
-          <% end %>
+          <div class="select">
+            <%= f.select :gender, User.genders_i18n.invert, { include_blank: "選択してください" }, {} %>
+          </div>
           <%= render "shared/error_messages", object: f.object, attribute: :gender %>
         </div>
 

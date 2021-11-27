@@ -28,6 +28,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 
 # アセット
 gem "bulma-rails"
+gem "bulma-extensions-rails"
 gem "carrierwave"
 gem "mini_magick"
 
@@ -38,8 +39,9 @@ gem "sorcery"
 gem "rails-i18n"
 
 # モデル
-gem "active_hash"
 gem "enum_help"
+gem "active_model_serializers"
+gem "active_hash"
 
 group :development, :test do
   # デバッグ

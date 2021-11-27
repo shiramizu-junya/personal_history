@@ -13,13 +13,12 @@ $file-cta-hover-color: #141222;
 
 // 独自変数
 $font-color: #272343;
-$font-color-hover: #3273dc;
+$font-color-hover: #ffe036;
 $background-color: #fafbfc;
 $background-color-sub1: #fff;
 $button-background-color: #ffe036;
 $button-background-color-sub1: #ffd803;
-$button-background-color-sub2: #f9bc60;
-$button-background-color-sub3: #faae2b;
+$border-color: #d4e3f2;
 
 
 /*==================================
@@ -27,7 +26,7 @@ $button-background-color-sub3: #faae2b;
 ==================================*/
 .wrap-content {
   background-color: $background-color;
-  .column {
+  .form-wrap {
     background-color: $background-color-sub1;
   }
 }
@@ -39,7 +38,8 @@ $button-background-color-sub3: #faae2b;
 }
 
 .form-wrap {
-  border: 3px solid $button-background-color;
+  border: 2px solid #bac8d6;
+  border-radius: 10px;
 }
 
 /*==================================
@@ -49,6 +49,13 @@ h1.ft-size-md {
   @media screen and (max-width: 350px) {
     font-size: 1.9rem;
   }
+}
+
+/*========================================
+  link
+========================================*/
+.btn-link {
+  color: #272343;
 }
 
 /*========================================
@@ -62,9 +69,9 @@ div.pd-sm {
       font-size: 0.9rem;
     }
   }
-  .has-link {
+  .has-link a{
     color: $font-color;
-    a:hover {
+    &:hover {
       color: $font-color-hover;
       text-decoration: underline;
     }
@@ -96,6 +103,14 @@ input.error {
   border: 1px solid #f14668;
 }
 
+textarea.error {
+  border: 1px solid #f14668;
+}
+
+.select select.error {
+  border: 1px solid #f14668;
+}
+
 /*==================================
   button
 ==================================*/
@@ -119,12 +134,12 @@ input.is-btn-signup {
 }
 
 input.is-btn-edit {
-  background-color: $button-background-color-sub2;
+  background-color: $button-background-color;
   border: none;
   &:hover {
     color: $button-hover-color;
     border: none;
-    background-color: $button-background-color-sub3;
+    background-color: $button-background-color-sub1;
     transition: 0.3s;
   }
 
@@ -132,7 +147,7 @@ input.is-btn-edit {
   &:focus,
   &[disabled] {
     color: $button-hover-color;
-    background-color: $button-background-color-sub3;
+    background-color: $button-background-color-sub1;
     border: none;
   }
 }

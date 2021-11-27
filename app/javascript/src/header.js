@@ -15,7 +15,7 @@ $(function () {
   $jsShowMsg.height(height);
   $jsShowMsg.css("line-height", `${height}px`);
   // replaceメソッドで空白を削除
-  if (msg.replace(/^[\s　]+|[\s　]+$/g, "").length) {
+  if (msg.replace(/^[\s ]+|[\s ]+$/g, "").length) {
     $jsShowMsg.slideToggle("slow");
     setTimeout(function () {
       $jsShowMsg.slideToggle("slow");

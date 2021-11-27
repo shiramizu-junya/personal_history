@@ -1,7 +1,7 @@
 <% content_for(:title, t(".title")) %>
 <main class="wrap-content">
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm form-wrap box is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+    <div class="column pd-sm form-wrap is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
       <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
       <%= form_with url: login_path, local: true do |f| %>
         <div class="field mb-5">
@@ -36,10 +36,10 @@
       <% end %>
       <div class="has-text-centered mb-4">
         <p class="mb-4 ft-size-sm has-link">
-          アカウントをお持ちでない方は<%= link_to "こちら", new_user_path %>
+          <%= link_to "アカウントをお持ちでない方はこちら", new_user_path %>
         </p>
         <p class="ft-size-sm has-link">
-          パスワードを忘れた方は<a href="#">こちら</a>
+          <a href="#">パスワードを忘れた方はこちら</a>
         </p>
       </div>
     </div>

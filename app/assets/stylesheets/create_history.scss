@@ -1,0 +1,92 @@
+/*========================================
+  自分史作成画面のcard
+========================================*/
+.card {
+  box-shadow: none;
+}
+
+.card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 500px;
+  .title {
+    padding: 10px 0;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    margin-top: 5px !important;
+  }
+}
+
+.card-header-title {
+  color: #272343;
+}
+
+/*========================================
+  自分史作成画面のbutton
+========================================*/
+.card-footer-item {
+  .button {
+    @media screen and (max-width: 400px) {
+      width: 100px;
+      box-sizing: border-box;
+      font-size: 0.9rem;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    padding: 0.6rem;
+  }
+}
+
+.is-edit-title {
+  background-color: #bae8e8;
+  border: none;
+  color: #272343;
+  font-weight: 600;
+  &:hover {
+    background-color: #94dbdb;
+    color: #141222;
+  }
+}
+
+.is-add-event {
+  background-color: #ffe036;
+  border: none;
+  font-weight: 600;
+
+  &:hover {
+    color: #141222;
+    border: none;
+    background-color: #ffd803;
+    transition: 0.3s;
+  }
+
+  &:active,
+  &:focus,
+  &[disabled] {
+    color: #141222;
+    background-color: #ffd803;
+    border: none;
+  }
+}
+
+/*========================================
+  自分史の「公開・非公開」設定
+========================================*/
+
+.published-field {
+  border: 2px dotted #888;
+  margin-top: 3rem !important;
+  .published-title {
+    padding: 0.75rem 1rem;
+  }
+  .publish-wrap {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 0.75rem;
+  }
+}

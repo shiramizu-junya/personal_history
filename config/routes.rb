@@ -9,5 +9,13 @@ Rails.application.routes.draw do
   # プロフィール関係
   resource :profile, only: %i[show edit update]
   # 軌跡関係
-  resources :tracks
+  resources :my_histories, only: %i[index new show update]
+  # resources :my_histories
+  # API通信関係
+  namespace :api, {format: "json"} do
+    resource :profile, only: %i[show update]
+    resources :categories, only: %i[index]
+    resources :events, only: %i[create update destroy]
+    resource :my_history, only: %i[create update]
+  end
 end
