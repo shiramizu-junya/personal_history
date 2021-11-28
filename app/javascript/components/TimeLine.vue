@@ -202,7 +202,6 @@ export default {
           window.location.href = `http://localhost:3000/my_histories/${responce.data.id}`;
         })
         .catch((error) => {
-          console.log("error");
           if (error.response.data && error.response.data.errors) {
             this.formError = error.response.data.errors;
           }
