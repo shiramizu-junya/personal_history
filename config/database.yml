@@ -51,6 +51,8 @@ test:
 #
 production:
   <<: *default
-  database: personal_history_production
-  username: personal_history
-  password: <%= ENV['PERSONAL_HISTORY_DATABASE_PASSWORD'] %>
+  database: <%= ENV['MYSQL_DATABASE'] %>
+  url: <%= ENV['MYSQL_URL'] %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
