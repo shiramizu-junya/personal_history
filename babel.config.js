@@ -18,55 +18,57 @@ module.exports = function(api) {
   return {
     presets: [
       isTestEnv && [
-        '@babel/preset-env',
+        "@babel/preset-env",
         {
           targets: {
-            node: 'current'
-          }
-        }
+            node: "current",
+          },
+        },
       ],
       (isProductionEnv || isDevelopmentEnv) && [
-        '@babel/preset-env',
+        "@babel/preset-env",
         {
           forceAllTransforms: true,
-          useBuiltIns: 'entry',
+          useBuiltIns: "entry",
           corejs: 3,
           modules: false,
-          exclude: ['transform-typeof-symbol']
-        }
-      ]
+          exclude: ["transform-typeof-symbol"],
+        },
+      ],
     ].filter(Boolean),
     plugins: [
-      'babel-plugin-macros',
-      '@babel/plugin-syntax-dynamic-import',
-      isTestEnv && 'babel-plugin-dynamic-import-node',
-      '@babel/plugin-transform-destructuring',
+      "babel-plugin-macros",
+      "@babel/plugin-syntax-dynamic-import",
+      isTestEnv && "babel-plugin-dynamic-import-node",
+      "@babel/plugin-transform-destructuring",
       [
-        '@babel/plugin-proposal-class-properties',
+        "@babel/plugin-proposal-class-properties",
         {
-          loose: true
-        }
+          loose: true,
+        },
       ],
       [
-        '@babel/plugin-proposal-object-rest-spread',
+        "@babel/plugin-proposal-object-rest-spread",
         {
-          useBuiltIns: true
-        }
+          useBuiltIns: true,
+        },
       ],
       [
-        '@babel/plugin-transform-runtime',
+        "@babel/plugin-transform-runtime",
         {
           helpers: false,
           regenerator: true,
-          corejs: false
-        }
+          corejs: false,
+        },
       ],
       [
-        '@babel/plugin-transform-regenerator',
+        "@babel/plugin-transform-regenerator",
         {
-          async: false
-        }
-      ]
-    ].filter(Boolean)
-  }
+          async: false,
+        },
+      ],
+      ["@babel/plugin-proposal-private-property-in-object", { loose: true }],
+      ["@babel/plugin-proposal-private-methods", { "loose": true }]
+    ].filter(Boolean),
+  };
 }
