@@ -1,5 +1,5 @@
 import Vue from "vue/dist/vue.esm";
-import App from "../App.vue";
+import App from "../app.vue";
 import store from "../store/store";
 import axios from "axios";
 import { csrfToken } from "rails-ujs";
