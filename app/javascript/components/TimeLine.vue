@@ -198,8 +198,10 @@ export default {
         .patch("/api/my_history", {
           status: this.editMyHistory.status,
         })
-        .then((responce) => {
-          window.location.href = `http://localhost:3000/my_histories/${responce.data.id}`;
+        .then((json) => {
+          if (json.data.redirect) {
+            window.location.href = json.data.redirect;
+          }
         })
         .catch((error) => {
           if (error.response.data && error.response.data.errors) {
