@@ -37,7 +37,15 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
   Bulmaカスタマイズ
 ========================================*/
 /* ブレークポイントの修正 */
+$gap: 32px !default;
+// タブレット：768px〜1024px
 $tablet: 768px !default;
+// デスクトップ：1025px〜1215px
+$desktop: 960px+(2 * $gap) + 1 !default;
+// ワイドスクリーン：1216px〜1407px
+$widescreen: 1152px+(2 * $gap) !default;
+// フルHD：1408px〜
+$fullhd: 1344px+(2 * $gap) !default;
 
 @import "header_footer";
 @import "parts";
@@ -45,3 +53,4 @@ $tablet: 768px !default;
 @import "bulma-extensions";
 @import "create_history";
 @import "timeline";
+@import "list_history"

@@ -1,0 +1,142 @@
+/*==================================
+  検索ボックス
+==================================*/
+.menu-label {
+  font-size: 1rem;
+}
+
+.select.list-search-box {
+  // width: 100%;
+  display: block;
+}
+
+.list-search-select {
+  width: 100%;
+}
+
+aside.menu {
+  padding-bottom: 2rem;
+  .menu-list {
+    line-height: 1.5;
+  }
+}
+
+.is-btn-search{
+  display: block !important;
+  width: 100%
+}
+
+aside.menu .menu-label {
+  font-weight: 700;
+}
+
+#history_list_column_left {
+  @media screen and (max-width: 1024px) {
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+  }
+}
+
+/*==================================
+  自分史一覧
+==================================*/
+article.post {
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E6EAEE;
+}
+
+article.post:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+#history_list #history_list_column_left{
+  background-color: #fff;
+  border-radius: 5px;
+  @media screen and (max-width: 450px) {
+    margin-left: 1.5rem;
+  }
+}
+
+#history_list_column_right {
+  padding-top: 0;
+  #history_list_column_right_top,
+  #history_list_column_right-center {
+    background-color: #fff;
+    border-radius: 5px;
+  }
+}
+
+#history_list_column_right_top {
+  display: flex;
+  justify-content: space-between;
+  color: #272343;
+  @media screen and (max-width: 450px) {
+    margin: 1.5rem;
+  }
+}
+
+.content p:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.media-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 700;
+  color: #272343;
+}
+
+.media-left img {
+  border-radius: 50%;
+}
+
+a.history_title {
+  color: #272343;
+  &:hover {
+    color: #6157a7;
+    text-decoration: underline;
+  }
+}
+
+#history_list_column_right_top {
+  @media screen and (max-width: 767px) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+#history_list_column_right_top {
+  @media screen and (max-width: 767px) {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+.like_comment_count {
+  display: flex;
+  flex-wrap: nowrap;
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    margin-left: 0;
+  }
+}
+
+/*==================================
+  ページネーション
+==================================*/
+
+.content ul {
+  list-style: none;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.content li+li {
+  margin-top: 0;
+}
+
+.pagination-list {
+  margin: 0;
+}
