@@ -38,6 +38,9 @@ gem "sorcery"
 # UI/UX
 gem "rails-i18n"
 
+# 検索
+gem 'ransack'
+
 # モデル
 gem "enum_help"
 gem "active_model_serializers"
@@ -52,6 +55,8 @@ group :development, :test do
   # テスト
   gem "rspec-rails"
   gem "factory_bot_rails"
+  # ダミーデータ
+  gem "faker"
 end
 
 group :development do

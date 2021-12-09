@@ -119,6 +119,8 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     faraday (1.7.0)
       faraday-em_http (~> 1.0)
       faraday-em_synchrony (~> 1.0)
@@ -243,6 +245,10 @@ GEM
       thor (>= 0.20.3, < 2.0)
     rainbow (3.0.0)
     rake (13.0.6)
+    ransack (2.4.2)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -364,6 +370,7 @@ DEPENDENCIES
   carrierwave
   enum_help
   factory_bot_rails
+  faker
   jbuilder (~> 2.7)
   listen (~> 3.2)
   mini_magick
@@ -375,6 +382,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.7)
   rails-i18n
   rails_best_practices
+  ransack
   rspec-rails
   rubocop
   rubocop-checkstyle_formatter
