@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # Topページ
   root "static_pages#top"
   # ユーザー登録関係
   resources :users, only: %i[new create]
@@ -10,7 +11,6 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   # 自分史関係
   resources :my_histories, only: %i[index new show]
-  # resources :my_histories
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]
