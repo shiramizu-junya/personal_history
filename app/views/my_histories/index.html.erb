@@ -3,10 +3,11 @@
   <h1 class="title has-text-centered my-6 ft-size-md"><%= t(".title") %></h1>
   <section class="container my-6">
     <div id="history_list" class="columns">
+      <!-- 検索ボックス -->
       <div id="history_list_column_left" class="column mr-5 is-3-tablet is-2-desktop">
         <aside class="menu">
           <p class="menu-label is-centered">
-            性別
+            <%= t(User.human_attribute_name(:gender)) %>
           </p>
           <div class="select list-search-box">
             <select class="list-search-select">
@@ -36,220 +37,16 @@
           <span id="history_number_of_full" class="has-text-weight-semibold">1 - 20件 / 104件</span>
         </div>
         <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
-          <article class="post">
-            <h3>
-              <a href="#" class="history_title">自分史タイトル</a>
-            </h3>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span>ユーザー名：</span>
-                    <span>佐藤</span>
-                  </p>
-                  <p>
-                    <span>年齢：</span>
-                    <span>30歳</span>
-                  </p>
-                  <p>
-                    <span>性別：</span>
-                    <span>男性</span>
-                  </p>
-                </div>
-              </div>
-              <div class="like_comment_count">
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-comments"></i> 1
-                  </span>
-                </div>
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-thumbs-up"></i> 1
-                  </span>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h3>
-              <a href="#" class="history_title">自分史タイトル</a>
-            </h3>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span>ユーザー名：</span>
-                    <span>佐藤</span>
-                  </p>
-                  <p>
-                    <span>年齢：</span>
-                    <span>30歳</span>
-                  </p>
-                  <p>
-                    <span>性別：</span>
-                    <span>男性</span>
-                  </p>
-                </div>
-              </div>
-              <div class="like_comment_count">
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-comments"></i> 1
-                  </span>
-                </div>
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-thumbs-up"></i> 1
-                  </span>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h3>
-              <a href="#" class="history_title">自分史タイトル</a>
-            </h3>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span>ユーザー名：</span>
-                    <span>佐藤</span>
-                  </p>
-                  <p>
-                    <span>年齢：</span>
-                    <span>30歳</span>
-                  </p>
-                  <p>
-                    <span>性別：</span>
-                    <span>男性</span>
-                  </p>
-                </div>
-              </div>
-              <div class="like_comment_count">
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-comments"></i> 1
-                  </span>
-                </div>
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-thumbs-up"></i> 1
-                  </span>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h3>
-              <a href="#" class="history_title">自分史タイトル</a>
-            </h3>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span>ユーザー名：</span>
-                    <span>佐藤</span>
-                  </p>
-                  <p>
-                    <span>年齢：</span>
-                    <span>30歳</span>
-                  </p>
-                  <p>
-                    <span>性別：</span>
-                    <span>男性</span>
-                  </p>
-                </div>
-              </div>
-              <div class="like_comment_count">
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-comments"></i> 1
-                  </span>
-                </div>
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-thumbs-up"></i> 1
-                  </span>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="post">
-            <h3>
-              <a href="#" class="history_title">自分史タイトル</a>
-            </h3>
-            <div class="media">
-              <div class="media-left">
-                <p class="image is-48x48">
-                  <img src="http://bulma.io/images/placeholders/128x128.png">
-                </p>
-              </div>
-              <div class="media-content">
-                <div class="content">
-                  <p>
-                    <span>ユーザー名：</span>
-                    <span>佐藤</span>
-                  </p>
-                  <p>
-                    <span>年齢：</span>
-                    <span>30歳</span>
-                  </p>
-                  <p>
-                    <span>性別：</span>
-                    <span>男性</span>
-                  </p>
-                </div>
-              </div>
-              <div class="like_comment_count">
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-comments"></i> 1
-                  </span>
-                </div>
-                <div class="media-right">
-                  <span class="has-text-grey-light">
-                    <i class="fa fa-thumbs-up"></i> 1
-                  </span>
-                </div>
-              </div>
-            </div>
-          </article>
+          <!-- 自分史一覧 -->
+          <% if @my_histories.present? %>
+            <%= render @my_histories %>
+          <% else %>
+            <p><%= t('.no_result') %></p>
+          <% end %>
         </div>
-
+        <!-- ページネーション -->
         <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-bottom">
-          <nav class="pagination is-rounded is-centered" role="navigation" aria-label="pagination">
-            <a class="pagination-previous">前へ</a>
-            <a class="pagination-next">次へ</a>
-            <ul class="pagination-list">
-              <li><a class="pagination-link" aria-label="Goto page 1">1</a></li>
-              <li><a class="pagination-link" aria-label="Goto page 2">2</a></li>
-              <li><a class="pagination-link is-current" aria-label="Page 3" aria-current="page">3</a></li>
-              <li><a class="pagination-link" aria-label="Goto page 4">4</a></li>
-              <li><a class="pagination-link" aria-label="Goto page 5">5</a></li>
-            </ul>
-          </nav>
+          <%== pagy_bulma_nav(@pagy) %>
         </div>
       </div>
     </div>

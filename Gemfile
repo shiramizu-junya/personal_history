@@ -38,6 +38,9 @@ gem "sorcery"
 # UI/UX
 gem "rails-i18n"
 
+# ページネーション
+gem 'pagy', '~> 5.6'
+
 # 検索
 gem 'ransack'
 
