@@ -29,6 +29,7 @@ ja:
   my_histories:
     index:
       title: "自分史一覧"
+      no_result: "自分史はありません。"
     new:
       title: "自分史作成"
   profiles:

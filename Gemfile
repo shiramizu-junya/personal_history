@@ -39,10 +39,10 @@ gem "sorcery"
 gem "rails-i18n"
 
 # ページネーション
-gem 'pagy', '~> 5.6'
+gem "pagy", "~> 5.6"
 
 # 検索
-gem 'ransack'
+gem "ransack"
 
 # モデル
 gem "enum_help"

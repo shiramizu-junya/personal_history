@@ -123,6 +123,20 @@ a.history_title {
   }
 }
 
+.image.is-64x64 {
+  height: 64px;
+  width: 64px;
+  @media screen and (max-width: 450px) {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+}
+
 /*==================================
   ページネーション
 ==================================*/

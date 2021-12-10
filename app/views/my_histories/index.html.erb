@@ -1,6 +1,8 @@
 <% content_for(:title, t(".title")) %>
 <main class="wrap-content">
-  <h1 class="title has-text-centered my-6 ft-size-md"><%= t(".title") %></h1>
+  <h1 class="title has-text-centered my-6 ft-size-md">
+    <%= t(".title") %>
+  </h1>
   <section class="container my-6">
     <div id="history_list" class="columns">
       <!-- 検索ボックス -->
@@ -33,15 +35,14 @@
       </div>
       <div class="column is-8-tablet is-9-desktop" id="history_list_column_right">
         <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
-          <span id="history_number_of_case" class="has-text-weight-semibold">20件の自分史が見つかりました</span>
-          <span id="history_number_of_full" class="has-text-weight-semibold">1 - 20件 / 104件</span>
+          <%= render "my_history_count", pagy: @pagy %>
         </div>
         <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
           <!-- 自分史一覧 -->
           <% if @my_histories.present? %>
             <%= render @my_histories %>
           <% else %>
-            <p><%= t('.no_result') %></p>
+            <p class="has-text-centered subtitle is-5"><%= t(".no_result") %></p>
           <% end %>
         </div>
         <!-- ページネーション -->
