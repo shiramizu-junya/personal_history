@@ -37,6 +37,42 @@ aside.menu .menu-label {
   }
 }
 
+#history_list_column_left input[type="number"] {
+  box-shadow: 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  max-width: 100%;
+  width: 100%;
+  background-color: #f6f5f4;
+  border-radius: 4px;
+  color: #363636;
+  border: 1px solid #dbdbdb;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+  &::placeholder {
+    color: #BCBBBA;
+  }
+  &:hover {
+    border-color: #b5b5b5;
+  }
+  &:focus {
+    border-color: #3273dc;
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  }
+}
+
+#history_list_column_left .search_range {
+  writing-mode: vertical-rl;
+  margin: 0 auto;
+}
+
 /*==================================
   自分史一覧
 ==================================*/

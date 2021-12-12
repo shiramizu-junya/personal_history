@@ -7,34 +7,37 @@
     <div id="history_list" class="columns">
       <!-- 検索ボックス -->
       <div id="history_list_column_left" class="column mr-5 is-3-tablet is-2-desktop">
-        <aside class="menu">
-          <p class="menu-label is-centered">
-            <%= t(User.human_attribute_name(:gender)) %>
-          </p>
-          <div class="select list-search-box">
-            <select class="list-search-select">
-              <option>男性</option>
-              <option>女性</option>
-            </select>
+        <%= search_form_for @q, url: my_histories_path do |f| %>
+          <aside class="menu">
+            <p class="menu-label is-centered">
+              <%= t(User.human_attribute_name(:gender)) %>
+            </p>
+            <div class="select list-search-box">
+              <%= f.select :user_gender_eq, User.genders_i18n.invert.map{|key, value| [key, User.genders[value]]}, { include_blank: "指定なし" }, { class: "list-search-select" } %>
+            </div>
+            <p class="menu-label is-centered">
+              <%= t("defaults.age") %>
+            </p>
+            <div class="field">
+              <div class="control">
+                <%= f.number_field :user_birthday_convert_age_gteq, placeholder: "〇〇歳以上" %>
+              </div>
+              <div class="has-text-centered search_range my-2 has-text-weight-semibold">〜</div>
+              <div class="control">
+                <%= f.number_field :user_birthday_convert_age_lteq, placeholder: "〇〇歳以下" %>
+              </div>
+            </div>
+          </aside>
+          <div class="field has-text-centered mb-4">
+            <div class="control is-centered">
+              <%= f.submit class: "button is-btn-search has-text-weight-semibold" %>
+            </div>
           </div>
-          <p class="menu-label is-centered">
-            年齢
-          </p>
-          <div class="select list-search-box">
-            <select class="list-search-select">
-              <option>0歳</option>
-              <option>100歳</option>
-            </select>
-          </div>
-        </aside>
-        <div class="field has-text-centered mb-4">
-          <div class="control is-centered">
-            <input type="submit" name="commit" value="検索" class="button is-btn-search has-text-weight-semibold" data-disable-with="検索">
-          </div>
-        </div>
+        <% end %>
       </div>
       <div class="column is-8-tablet is-9-desktop" id="history_list_column_right">
         <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
+          <!-- 自分史件数 -->
           <%= render "my_history_count", pagy: @pagy %>
         </div>
         <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
