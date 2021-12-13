@@ -5,6 +5,7 @@ ja:
     logout: "ログアウト"
     signup: "新規登録"
     edit: "更新"
+    age: "年齢"
     message:
       require_login: "ログインしてください。"
       created: "%{item}を作成しました。"
@@ -29,6 +30,7 @@ ja:
   my_histories:
     index:
       title: "自分史一覧"
+      no_result: "自分史はありません。"
     new:
       title: "自分史作成"
   profiles:

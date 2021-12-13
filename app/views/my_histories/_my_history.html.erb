@@ -1,0 +1,41 @@
+<article class="post">
+  <h3>
+    <%= link_to my_history.title, "#", class: "history_title" %>
+  </h3>
+  <div class="media">
+    <div class="media-left">
+      <p class="image is-64x64">
+        <%= image_tag my_history.user.avatar.url, size: "64x64" %>
+      </p>
+    </div>
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <span>ユーザー名 : </span>
+          <span><%= my_history.user.name %></span>
+        </p>
+        <p>
+          <span>年齢 : </span>
+          <span><%= my_history.user.calc_age %> 歳</span>
+        </p>
+        <p>
+          <span>性別 : </span>
+          <span><%= my_history.user.gender_i18n %></span>
+        </p>
+      </div>
+    </div>
+    <!-- コメント・いいね数 -->
+    <div class="like_comment_count">
+      <div class="media-right">
+        <span class="has-text-grey-light">
+          <i class="fa fa-comments"></i> 1
+        </span>
+      </div>
+      <div class="media-right">
+        <span class="has-text-grey-light">
+          <i class="fa fa-thumbs-up"></i> 1
+        </span>
+      </div>
+    </div>
+  </div>
+</article>

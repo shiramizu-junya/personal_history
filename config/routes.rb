@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  # Topページ
   root "static_pages#top"
   # ユーザー登録関係
   resources :users, only: %i[new create]
@@ -8,9 +9,8 @@ Rails.application.routes.draw do
   delete "logout", to: "user_sessions#destroy"
   # プロフィール関係
   resource :profile, only: %i[show edit update]
-  # 軌跡関係
-  resources :my_histories, only: %i[index new show update]
-  # resources :my_histories
+  # 自分史関係
+  resources :my_histories, only: %i[index new show]
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]

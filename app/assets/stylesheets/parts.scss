@@ -115,7 +115,8 @@ textarea.error {
   button
 ==================================*/
 input.is-btn-login,
-input.is-btn-signup {
+input.is-btn-signup,
+input.is-btn-search {
   background-color: $button-background-color;
   border: none;
   &:hover {

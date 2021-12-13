@@ -15,7 +15,9 @@ class Api::MyHistoriesController < ApplicationController
 
   def update
     if @my_history.update(my_history_params)
-      render json: @my_history, each_serializer: MyHistorySerializer, status: :ok
+      respond_to do |format|
+        format.json { render json: { redirect: my_history_url(@my_history) } }
+      end
     else
       render json: { errors: @my_history.errors.keys.map { |key| [key, @my_history.errors.full_messages_for(key)]}.to_h }, status: :bad_request
     end

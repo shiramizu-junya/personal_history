@@ -1,4 +1,32 @@
-<main class="Site-content">
-  <h1>軌跡一覧画面</h1>
-  <p>Find me in app/views/tracks/index.html.erb</p>
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <h1 class="title has-text-centered my-6 ft-size-md">
+    <%= t(".title") %>
+  </h1>
+  <section class="container my-6">
+    <div id="history_list" class="columns">
+      <!-- 検索ボックス -->
+      <div id="history_list_column_left" class="column mr-5 is-3-tablet is-2-desktop">
+        <%= render "search_form", q: @q, url: my_histories_path %>
+      </div>
+      <div class="column is-8-tablet is-9-desktop" id="history_list_column_right">
+        <!-- 自分史件数 -->
+        <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
+          <%= render "my_history_count", pagy: @pagy %>
+        </div>
+        <!-- 自分史一覧 -->
+        <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
+          <% if @my_histories.present? %>
+            <%= render @my_histories %>
+          <% else %>
+            <p class="has-text-centered subtitle is-5"><%= t(".no_result") %></p>
+          <% end %>
+        </div>
+        <!-- ページネーション -->
+        <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-bottom">
+          <%== pagy_bulma_nav(@pagy) %>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>

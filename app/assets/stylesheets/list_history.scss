@@ -1,0 +1,192 @@
+/*==================================
+  検索ボックス
+==================================*/
+.menu-label {
+  font-size: 1rem;
+}
+
+.select.list-search-box {
+  // width: 100%;
+  display: block;
+}
+
+.list-search-select {
+  width: 100%;
+}
+
+aside.menu {
+  padding-bottom: 2rem;
+  .menu-list {
+    line-height: 1.5;
+  }
+}
+
+.is-btn-search{
+  display: block !important;
+  width: 100%
+}
+
+aside.menu .menu-label {
+  font-weight: 700;
+}
+
+#history_list_column_left {
+  @media screen and (max-width: 1024px) {
+    margin-left: 1.3rem;
+    margin-right: 1.3rem;
+  }
+}
+
+#history_list_column_left input[type="number"] {
+  box-shadow: 0 0.0625em 0.125em rgba(10, 10, 10, 0.05);
+  max-width: 100%;
+  width: 100%;
+  background-color: #f6f5f4;
+  border-radius: 4px;
+  color: #363636;
+  border: 1px solid #dbdbdb;
+  display: inline-flex;
+  font-size: 1rem;
+  height: 2.5em;
+  justify-content: flex-start;
+  line-height: 1.5;
+  padding-bottom: calc(0.5em - 1px);
+  padding-left: calc(0.75em - 1px);
+  padding-right: calc(0.75em - 1px);
+  padding-top: calc(0.5em - 1px);
+  position: relative;
+  vertical-align: top;
+  &::placeholder {
+    color: #BCBBBA;
+  }
+  &:hover {
+    border-color: #b5b5b5;
+  }
+  &:focus {
+    border-color: #3273dc;
+    box-shadow: 0 0 0 0.125em rgba(50, 115, 220, 0.25);
+  }
+}
+
+#history_list_column_left .search_range {
+  writing-mode: vertical-rl;
+  margin: 0 auto;
+}
+
+/*==================================
+  自分史一覧
+==================================*/
+article.post {
+  margin: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #E6EAEE;
+}
+
+article.post:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+#history_list #history_list_column_left{
+  background-color: #fff;
+  border-radius: 5px;
+  @media screen and (max-width: 450px) {
+    margin-left: 1.5rem;
+  }
+}
+
+#history_list_column_right {
+  padding-top: 0;
+  #history_list_column_right_top,
+  #history_list_column_right-center {
+    background-color: #fff;
+    border-radius: 5px;
+  }
+}
+
+#history_list_column_right_top {
+  display: flex;
+  justify-content: space-between;
+  color: #272343;
+  @media screen and (max-width: 450px) {
+    margin: 1.5rem;
+  }
+}
+
+.content p:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.media-content p {
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 700;
+  color: #272343;
+}
+
+.media-left img {
+  border-radius: 50%;
+}
+
+a.history_title {
+  color: #272343;
+  &:hover {
+    color: #6157a7;
+    text-decoration: underline;
+  }
+}
+
+#history_list_column_right_top {
+  @media screen and (max-width: 767px) {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+#history_list_column_right_top {
+  @media screen and (max-width: 767px) {
+    text-align: center;
+    flex-direction: column;
+  }
+}
+
+.like_comment_count {
+  display: flex;
+  flex-wrap: nowrap;
+  @media screen and (max-width: 767px){
+    flex-direction: column;
+    margin-left: 0;
+  }
+}
+
+.image.is-64x64 {
+  height: 64px;
+  width: 64px;
+  @media screen and (max-width: 450px) {
+    height: 48px;
+    width: 48px;
+  }
+}
+
+.image img {
+  height: 100%;
+  width: 100%;
+}
+
+/*==================================
+  ページネーション
+==================================*/
+
+.content ul {
+  list-style: none;
+  margin-top: 0;
+  margin-left: 0;
+}
+
+.content li+li {
+  margin-top: 0;
+}
+
+.pagination-list {
+  margin: 0;
+}
