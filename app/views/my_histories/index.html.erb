@@ -7,41 +7,15 @@
     <div id="history_list" class="columns">
       <!-- 検索ボックス -->
       <div id="history_list_column_left" class="column mr-5 is-3-tablet is-2-desktop">
-        <%= search_form_for @q, url: my_histories_path do |f| %>
-          <aside class="menu">
-            <p class="menu-label is-centered">
-              <%= t(User.human_attribute_name(:gender)) %>
-            </p>
-            <div class="select list-search-box">
-              <%= f.select :user_gender_eq, User.genders_i18n.invert.map{|key, value| [key, User.genders[value]]}, { include_blank: "指定なし" }, { class: "list-search-select" } %>
-            </div>
-            <p class="menu-label is-centered">
-              <%= t("defaults.age") %>
-            </p>
-            <div class="field">
-              <div class="control">
-                <%= f.number_field :user_birthday_convert_age_gteq, placeholder: "〇〇歳以上" %>
-              </div>
-              <div class="has-text-centered search_range my-2 has-text-weight-semibold">〜</div>
-              <div class="control">
-                <%= f.number_field :user_birthday_convert_age_lteq, placeholder: "〇〇歳以下" %>
-              </div>
-            </div>
-          </aside>
-          <div class="field has-text-centered mb-4">
-            <div class="control is-centered">
-              <%= f.submit class: "button is-btn-search has-text-weight-semibold" %>
-            </div>
-          </div>
-        <% end %>
+        <%= render "search_form", q: @q, url: my_histories_path %>
       </div>
       <div class="column is-8-tablet is-9-desktop" id="history_list_column_right">
+        <!-- 自分史件数 -->
         <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
-          <!-- 自分史件数 -->
           <%= render "my_history_count", pagy: @pagy %>
         </div>
+        <!-- 自分史一覧 -->
         <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
-          <!-- 自分史一覧 -->
           <% if @my_histories.present? %>
             <%= render @my_histories %>
           <% else %>

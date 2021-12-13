@@ -1,5 +1,5 @@
 Ransack.configure do |config|
-  # xx歳以上（年月日以前）
+  # xx歳以上（年月日以下）
   config.add_predicate "convert_age_gteq",
     arel_predicate: "lteq",
     formatter: -> (v) { v.years.ago.to_date },
@@ -7,7 +7,7 @@ Ransack.configure do |config|
     type: :integer,
     compounds: false
 
-  # xx歳以下（年月日以降）
+  # xx歳以下（年月日以上）
   config.add_predicate "convert_age_lteq",
     arel_predicate: "gteq",
     formatter: -> (v) { ((v + 1).years.ago + 1.day).to_date },
