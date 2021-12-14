@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_21_054924) do
+ActiveRecord::Schema.define(version: 2021_12_14_053143) do
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "age", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_054924) do
   end
 
   create_table "my_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "uuid", null: false
     t.integer "status", default: 0, null: false
     t.string "title"
     t.bigint "user_id", null: false
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_054924) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "uuid", null: false
     t.string "name", null: false
     t.string "email", null: false
     t.date "birthday"
