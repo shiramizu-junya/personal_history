@@ -195,7 +195,7 @@ export default {
     },
     editStatus() {
       axios
-        .patch("/api/my_history", {
+        .patch(`/my_histories/${this.editMyHistory.id}`, {
           status: this.editMyHistory.status,
         })
         .then((json) => {
