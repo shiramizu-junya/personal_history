@@ -50,6 +50,27 @@ h1.ft-size-md {
   }
 }
 
+h1.title,
+h2.subtitle {
+  position: relative;
+  padding: 0 0 20px;
+}
+
+h1.title,
+h2.subtitle {
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    display: block;
+    width: 40px;
+    height: 5px;
+    background-color: #50C8A7;
+    margin-left: -20px;
+  }
+}
+
 /*========================================
   link
 ========================================*/
