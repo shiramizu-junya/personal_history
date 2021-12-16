@@ -88,6 +88,15 @@ export default {
     },
   },
   mounted() {
+    // 新規作成 or 編集で取得するデータを変える
+    let last_path_name = window.location.pathname.split("/").pop();
+    if(last_path_name === "edit"){
+      // 自分史の情報とイベント情報
+      this.$store.dispatch("getMyHistory").then(() => {
+        this.changeTimeLineFlag();
+      });
+    }
+
     this.$store.dispatch("getUserProfile").then(() => {
       this.profileAndTitleModalFlagChange();
     });

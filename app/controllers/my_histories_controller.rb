@@ -12,6 +12,8 @@ class MyHistoriesController < ApplicationController
 
   def new; end
 
+  def edit; end
+
   def update
     if @my_history.update(my_history_params)
       render json: { redirect: my_history_url(@my_history.uuid) }

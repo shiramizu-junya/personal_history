@@ -1,8 +1,12 @@
 class Api::MyHistoriesController < ApplicationController
-  before_action :set_my_history, only: %i[update]
+  before_action :set_my_history, only: %i[edit update]
+
+  def edit
+    render json: @my_history, each_serializer: MyHistorySerializer, include: %i[events], status: :ok
+  end
 
   def create
-    return render json: {:errors=>{:exists=>["既に自分史は作成済みです。"]}}, status: :bad_request if current_user.my_history.present?
+    return render json: { errors: { exists: ["既に自分史は作成済みです。"] } }, status: :bad_request if current_user.my_history.present?
 
     @my_history = current_user.build_my_history(my_history_params)
 

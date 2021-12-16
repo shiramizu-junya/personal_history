@@ -33,6 +33,8 @@ ja:
       no_result: "自分史はありません。"
     new:
       title: "自分史作成"
+    edit:
+      title: "自分史編集"
   profiles:
     edit:
       title: "プロフィール編集"
