@@ -3,7 +3,7 @@
     <div class="columns my-6 is-centered is-mobile">
       <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-half-fullhd">
         <h1 class="title has-text-centered mb-5">
-          自分史作成
+          {{ textJudgementFlag ? "自分史作成" : "自分史編集" }}
         </h1>
         <div class="card">
           <header class="card-header">
@@ -63,6 +63,13 @@
 <script>
 export default {
   name: "HistoryCard",
+  props: {
+    textJudgementFlag:
+    {
+      type: Boolean,
+      required: true,
+    },
+  },
   computed: {
     getUserProfile: function() {
       return this.$store.getters.getUserProfile;

@@ -1,6 +1,7 @@
 <template>
   <div>
     <history-card
+      :text-judgement-flag="textJudgementFlag"
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
       @addEventFlagChange="addEventFlagChange"
@@ -30,6 +31,7 @@
     />
     <time-line
       v-if="timeLineFlag"
+      :text-judgement-flag="textJudgementFlag"
       @editEventFlagChange="editEventFlagChange"
       @deleteEventSuccess="changeTimeLineFlag"
     />
@@ -69,6 +71,7 @@ export default {
       timeLineFlag: false,
       addEventFlag: false,
       editEventFlag: false,
+      textJudgementFlag: true,
       event: {
         data: {},
         key: null,
@@ -95,6 +98,7 @@ export default {
       this.$store.dispatch("getMyHistory").then(() => {
         this.changeTimeLineFlag();
       });
+      this.textJudgementFlag = false;
     }
 
     this.$store.dispatch("getUserProfile").then(() => {
