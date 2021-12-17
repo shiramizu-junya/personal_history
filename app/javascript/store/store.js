@@ -49,6 +49,21 @@ export default new Vuex.Store({
         state.events[age]["data"].push(event);
       }
     },
+    setEventEdit(state, events) {
+      for (let i = 0; i < events.length; i++){
+        let event = events[i];
+        const age = event.age.toString();
+
+        if (Object.keys(state.events).includes(age)) {
+          state.events[age].data.push(event);
+        } else {
+          Vue.set(state.events, age, {});
+          state.events[age]["age"] = age;
+          Vue.set(state.events[age], "data", []);
+          state.events[age]["data"].push(event);
+        }
+      }
+    },
     editEvent(state, { event, key, index }) {
       let age = event.age.toString();
 
@@ -84,6 +99,20 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    // 自分史とイベントを取得
+    getMyHistory({ commit }) {
+      return new Promise((resolve) => {
+        axios.get("/api/my_history/edit").then((response) => {
+          let my_history = {};
+          my_history["id"] = response.data.id;
+          my_history["status"] = response.data.status;
+          my_history["title"] = response.data.title;
+          commit("setEventEdit", response.data.events);
+          commit("setMyHistory", my_history);
+          resolve();
+        });
+      });
+    },
     // プロフィールを取得
     getUserProfile({ commit }) {
       return new Promise((resolve) => {
@@ -217,19 +246,19 @@ export default new Vuex.Store({
     },
   },
   getters: {
-    getUserProfile: function(state) {
+    getUserProfile: function (state) {
       return state.profile;
     },
-    getCategory: function(state) {
+    getCategory: function (state) {
       return state.category;
     },
-    getMyHistory: function(state) {
+    getMyHistory: function (state) {
       return state.my_history;
     },
-    getEvents: function(state) {
+    getEvents: function (state) {
       return state.events;
     },
-    getEventsCount: function(state) {
+    getEventsCount: function (state) {
       return Object.keys(state.events).length;
     },
   },

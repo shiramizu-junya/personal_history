@@ -1,6 +1,7 @@
 <template>
   <div>
     <history-card
+      :text-judgement-flag="textJudgementFlag"
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
       @addEventFlagChange="addEventFlagChange"
@@ -30,6 +31,7 @@
     />
     <time-line
       v-if="timeLineFlag"
+      :text-judgement-flag="textJudgementFlag"
       @editEventFlagChange="editEventFlagChange"
       @deleteEventSuccess="changeTimeLineFlag"
     />
@@ -69,6 +71,7 @@ export default {
       timeLineFlag: false,
       addEventFlag: false,
       editEventFlag: false,
+      textJudgementFlag: true,
       event: {
         data: {},
         key: null,
@@ -88,6 +91,16 @@ export default {
     },
   },
   mounted() {
+    // 新規作成 or 編集で取得するデータを変える
+    let last_path_name = window.location.pathname.split("/").pop();
+    if(last_path_name === "edit"){
+      // 自分史の情報とイベント情報
+      this.$store.dispatch("getMyHistory").then(() => {
+        this.changeTimeLineFlag();
+      });
+      this.textJudgementFlag = false;
+    }
+
     this.$store.dispatch("getUserProfile").then(() => {
       this.profileAndTitleModalFlagChange();
     });

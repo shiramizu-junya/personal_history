@@ -129,7 +129,7 @@
           <input
             type="submit"
             name="commit"
-            value="自分史作成"
+            :value="textSelect"
             class="button is-btn-yellow btn-design has-text-weight-semibold"
             @click="editStatus"
           >
@@ -145,6 +145,13 @@ import axios from "axios";
 
 export default {
   name: "TimeLine",
+  props: {
+    textJudgementFlag:
+    {
+      type: Boolean,
+      required: true,
+    },
+  },
   data() {
     return {
       editMyHistory: {
@@ -160,6 +167,9 @@ export default {
     },
     getMyHistory: function() {
       return this.$store.getters.getMyHistory;
+    },
+    textSelect: function() {
+      return this.textJudgementFlag ? "自分史作成" : "自分史更新";
     }
   },
   created() {
@@ -195,7 +205,7 @@ export default {
     },
     editStatus() {
       axios
-        .patch("/api/my_history", {
+        .patch(`/my_histories/${this.editMyHistory.id}`, {
           status: this.editMyHistory.status,
         })
         .then((json) => {
