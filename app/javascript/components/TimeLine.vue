@@ -129,7 +129,7 @@
           <input
             type="submit"
             name="commit"
-            :value="testSelect"
+            :value="textSelect"
             class="button is-btn-yellow btn-design has-text-weight-semibold"
             @click="editStatus"
           >
@@ -168,7 +168,7 @@ export default {
     getMyHistory: function() {
       return this.$store.getters.getMyHistory;
     },
-    testSelect: function() {
+    textSelect: function() {
       return this.textJudgementFlag ? "自分史作成" : "自分史更新";
     }
   },
