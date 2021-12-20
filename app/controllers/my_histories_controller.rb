@@ -5,7 +5,7 @@ class MyHistoriesController < ApplicationController
 
   def index
     @q = MyHistory.ransack(params[:q])
-    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).order(created_at: :desc))
+    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).published.order(created_at: :desc))
   end
 
   def show; end
