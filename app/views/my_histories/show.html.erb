@@ -1,4 +1,242 @@
-<main class="Site-content">
-  <h1>自分史詳細画面</h1>
-  <p>Find me in app/views/tracks/index.html.erb</p>
+<main class="wrap-content">
+  <h1 class="title has-text-centered my-6 ft-size-md">
+    <%= @my_history.title %>
+  </h1>
+  <!-- グラフ -->
+  <div class="columns is-centered">
+    <div class="column graph-area is-10-mobile is-three-fifths-tablet is-10-desktop is-10-widescreen is-8-fullhd" id="history_list_column_right-center" id="history_list_column_right">
+      <canvas id="myChart" width="400px" height="200px"></canvas>
+      <div class="field is-grouped is-centered mt-5">
+          <p class="control">
+            <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip">
+              <span class="icon">
+                <i class="fas fa-download"></i>
+              </span>
+              <span>ダウンロード</span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+              <span>
+                ツイート
+              </span>
+            </a>
+          </p>
+          <p class="control">
+            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+              <span class="icon">
+                <i class="far fa-heart"></i>
+              </span>
+              <span>
+                いいね
+              </span>
+            </a>
+          </p>
+        </div>
+    </div>
+  </div>
+  <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
+  <!-- 出来事一覧 -->
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+      <div class="page">
+        <div class="timeline">
+          <div class="timeline-group">
+            <div class="timeline-age time is-size-5" aria-hidden="true">
+              「25歳」の出来事
+            </div>
+            <div class="timeline-card ml-7 mb-5">
+              <div class="timeline-icon">
+                <span class="fullness has-text-weight-semibold">
+                  充実度
+                </span>
+                <span class="fullness-data has-text-weight-semibold">
+                  30%
+                </span>
+              </div>
+              <article class="media">
+                <div class="media-content">
+                  <div class="content">
+                    <div class="columns  is-mobile">
+                      <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
+                        <h4 class="title is-4">
+                          タイトル
+                        </h4>
+                      </div>
+                      <div class="column has-text-centered">
+                        <span class="tag is-warning">カテゴリー名</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="content">
+                    <div class="columns">
+                      <p class="column timeline-episode">
+                        エピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソード
+                        エピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソード
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- コメントエリア -->
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+      <!-- コメント表示 -->
+      <section id="main" >
+        <div class="msg-info">
+          <div class="avatar-img">
+            <img src="/assets/seeds/avatar_1.jpg" alt="" class="avatar"><br>
+          </div>
+          <div class="avatar-info">
+            ユーザー名：佐藤健<br>
+            年齢：23歳<br>
+            性別：男<br>
+          </div>
+        </div>
+        <div class="area-bord" id="js-scroll-bottom">
+          <div class="msg-cnt msg-left">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_3.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+              <br>
+              <span class="mt-2 date">佐藤はるき <br> 2021/10/30</span>
+            </p>
+          </div>
+          <div class="msg-cnt msg-right">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_4.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
+              <br>
+              <span class="mt-2 has-text-right date">田中健 <br> 2021/10/30</span>
+            </p>
+
+            <div class="dropdown is-right dropdown-right is-active">
+              <div class="dropdown-trigger">
+                <span class="icon is-small">
+                  <i class="fa fa-ellipsis-h edit-comment-icon" aria-hidden="true"></i>
+                </span>
+              </div>
+              <div class="dropdown-menu dropdown-right-menu" id="dropdown-menu5" role="menu">
+                <div class="dropdown-content">
+                  <div class="dropdown-item">
+                    <button class="button is-primary is-small mr-2">編集</button>
+                    <button class="button is-link is-small">削除</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="msg-cnt msg-left">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_5.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
+              <span class="mt-2 date">2021/10/30</span>
+            </p>
+          </div>
+          <div class="msg-cnt msg-right">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_1.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
+              <span class="mt-2 has-text-right date">2021/10/30</span>
+            </p>
+          </div>
+          <div class="msg-cnt msg-left">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_2.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
+              <span class="mt-2 date">2021/10/30</span>
+            </p>
+          </div>
+          <div class="msg-cnt msg-right">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_4.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
+              <span class="mt-2 has-text-right date">2021/10/30</span>
+            </p>
+          </div>
+          <div class="msg-cnt msg-left">
+            <div class="avatar">
+              <img src="/assets/seeds/avatar_3.jpg" alt="" class="avatar">
+            </div>
+            <p class="msg-inrTxt">
+              <span class="triangle"></span>
+              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
+              <span class="mt-2 date">2021/10/30</span>
+            </p>
+          </div>
+        </div>
+        <div class="area-send-msg">
+          <textarea name="" id="" cols="30" rows="3"></textarea>
+          <input type="submit" value="送信" class="button is-btn-edit btn-design has-text-weight-semibold">
+        </div>
+      </section>
+    </div>
+  </div>
 </main>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+const myChart = new Chart(ctx, {
+    type: 'line', // グラフの種類
+    data: {
+        labels: ['0', '10', '20', '30', '40', '50'], // グラフの横軸
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+</script>

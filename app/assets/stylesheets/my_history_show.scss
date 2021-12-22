@@ -1,0 +1,175 @@
+/*========================================
+  グラフ
+========================================*/
+.graph-area {
+  border: 3px solid #eff2f6;
+  border-radius: 5px;
+}
+
+.graph-area .field.is-grouped {
+  justify-content: center;
+}
+
+/*========================================
+  SNS、いいね、ダウンロードボタン
+========================================*/
+.button.button-twitter {
+  background-color: #f3f7fa;
+  &:hover {
+    background-color: #d3dce3;
+  }
+}
+
+.button-twitter {
+  color: #55ACEE;
+  &:hover {
+    color: #55ACEE;
+  }
+}
+
+
+/*========================================
+  コメント表示エリア
+========================================*/
+.msg-info {
+  background: #eff2f6;
+  padding: 15px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: row;
+}
+
+.msg-info .avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 40px;
+}
+
+.msg-info .avatar-img {
+  text-align: center;
+  width: 100px;
+}
+
+.msg-info .avatar-info {
+  padding-left: 15px;
+  width: 500px;
+  color: #272343;
+  font-weight: bold;
+}
+
+.area-bord {
+  height: 700px;
+  overflow-y: scroll;
+  background: #eff2f6;
+  padding: 15px;
+}
+
+.area-send-msg {
+  background: #eff2f6;
+  padding: 15px;
+  overflow: hidden;
+}
+
+.area-send-msg textarea {
+  width: 100%;
+  background: white;
+  height: 100px;
+  padding: 15px;
+}
+
+.area-bord .msg-cnt {
+  width: 80%;
+  overflow: hidden;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.area-bord .msg-cnt .avatar {
+  width: 5%;
+  overflow: hidden;
+  float: left;
+}
+
+.area-bord .msg-cnt .avatar img {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  float: left;
+}
+
+.area-bord .msg-cnt .msg-inrTxt {
+  width: 85%;
+  float: left;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 0 0 0 25px;
+  position: relative;
+}
+
+.area-bord .msg-cnt.msg-left .msg-inrTxt {
+  background: #f6e2df;
+}
+
+.area-bord .msg-cnt.msg-left .msg-inrTxt>.triangle {
+  position: absolute;
+  left: -20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 15px solid #f6e2df;
+  border-left: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.area-bord .msg-cnt.msg-right {
+  float: right;
+  position: relative;
+}
+
+.area-bord .msg-cnt.msg-right .msg-inrTxt {
+  background: #d2eaf0;
+  margin: 0 25px 0 0;
+}
+
+.area-bord .msg-cnt.msg-right .msg-inrTxt>.triangle {
+  position: absolute;
+  right: -20px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-left: 15px solid #d2eaf0;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+}
+
+.area-bord .msg-cnt.msg-right .msg-inrTxt {
+  float: right;
+}
+
+.area-bord .msg-cnt.msg-right .avatar {
+  float: right;
+}
+
+.date {
+  display: block;
+}
+
+.area-bord .dropdown {
+  cursor: pointer;
+}
+
+.area-bord .dropdown-menu {
+  min-width: 9rem;
+}
+
+.dropdown-right {
+  position: absolute;
+  right: 1.3%;
+  top: 50%;
+}
+
+.dropdown.dropdown-right .dropdown-right-menu {
+  top: -140%;
+  right: 210%;
+}

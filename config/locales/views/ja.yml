@@ -13,6 +13,7 @@ ja:
       updated: "%{item}を更新しました。"
       not_updated: "%{item}を更新できませんでした。"
       logged_in: "既にログイン済みです。"
+      unpublished: "非公開の自分史です。"
   users:
     new:
       title: "ユーザー登録"
@@ -33,6 +34,8 @@ ja:
       no_result: "自分史はありません。"
     new:
       title: "自分史作成"
+    show:
+      title: "「%{name}」さんの自分史"
     edit:
       title: "自分史編集"
   profiles:

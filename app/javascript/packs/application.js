@@ -9,7 +9,11 @@ require("channels");
 require("jquery");
 require("../src/header");
 require("../src/image_preview");
+require("chart.js/auto");
 import "@fortawesome/fontawesome-free/js/all";
+import Chart from "chart.js/auto";
+
+global.Chart = Chart;
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)

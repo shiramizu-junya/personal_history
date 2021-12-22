@@ -8,7 +8,14 @@ class MyHistoriesController < ApplicationController
     @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).published.order(created_at: :desc))
   end
 
-  def show; end
+  def show
+    @my_history = MyHistory.find_by(uuid: params[:id])
+    @user = @my_history.user
+    @events = @my_history.events
+    if @my_history.unpublished?
+      redirect_to my_histories_path, danger: t("defaults.message.unpublished")
+    end
+  end
 
   def new; end
 
