@@ -3,45 +3,41 @@
     <%= @my_history.title %>
   </h1>
   <!-- グラフ -->
-  <div class="columns is-centered">
-    <div class="column graph-area is-10-mobile is-three-fifths-tablet is-10-desktop is-10-widescreen is-8-fullhd" id="history_list_column_right-center" id="history_list_column_right">
+  <div class="columns is-centered is-mobile">
+    <div class="column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd" id="history_list_column_right-center" id="history_list_column_right">
       <canvas id="myChart" width="400px" height="200px"></canvas>
-      <div class="field is-grouped is-centered mt-5">
-          <p class="control">
-            <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.9.3/bulma-0.9.3.zip">
-              <span class="icon">
-                <i class="fas fa-download"></i>
-              </span>
-              <span>ダウンロード</span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-              <span class="icon">
-                <i class="fab fa-twitter"></i>
-              </span>
-              <span>
-                ツイート
-              </span>
-            </a>
-          </p>
-          <p class="control">
-            <a class="bd-tw-button button" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-              <span class="icon">
-                <i class="far fa-heart"></i>
-              </span>
-              <span>
-                いいね
-              </span>
-            </a>
-          </p>
+      <div class="columns is-centered">
+        <div class="field is-grouped mt-5">
+          <div class="column has-text-centered">
+            <p class="control">
+              <a class="button is-primary" href="#">
+                <span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>
+                <span>ダウンロード</span>
+              </a>
+            </p>
+          </div>
+          <div class="column has-text-centered">
+            <p class="control">
+              <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+                <span class="icon">
+                  <i class="fab fa-twitter"></i>
+                </span>
+                <span>
+                  ツイート
+                </span>
+              </a>
+            </p>
+          </div>
         </div>
+      </div>
     </div>
   </div>
   <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
   <!-- 出来事一覧 -->
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
         <div class="timeline">
           <div class="timeline-group">
@@ -60,13 +56,13 @@
               <article class="media">
                 <div class="media-content">
                   <div class="content">
-                    <div class="columns  is-mobile">
+                    <div class="columns">
                       <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
                         <h4 class="title is-4">
                           タイトル
                         </h4>
                       </div>
-                      <div class="column has-text-centered">
+                      <div class="column has-text-centered category-tag">
                         <span class="tag is-warning">カテゴリー名</span>
                       </div>
                     </div>
@@ -89,7 +85,7 @@
   </div>
   <!-- コメントエリア -->
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <!-- コメント表示 -->
       <section id="main" >
         <div class="msg-info">
