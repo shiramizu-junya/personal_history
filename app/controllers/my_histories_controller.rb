@@ -10,11 +10,12 @@ class MyHistoriesController < ApplicationController
 
   def show
     @my_history = MyHistory.find_by(uuid: params[:id])
-    @user = @my_history.user
-    @events = @my_history.events
-    if @my_history.unpublished?
+    if @my_history.unpublished? && current_user.id != @my_history.user_id
       redirect_to my_histories_path, danger: t("defaults.message.unpublished")
     end
+    @user = @my_history.user
+    events = @my_history.events.order(age: :asc)
+    @group_events = Event.group_events_by_age(events)
   end
 
   def new; end

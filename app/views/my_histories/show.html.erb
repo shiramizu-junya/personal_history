@@ -4,8 +4,13 @@
   </h1>
   <!-- グラフ -->
   <div class="columns is-centered is-mobile">
-    <div class="column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd" id="history_list_column_right-center" id="history_list_column_right">
-      <canvas id="myChart" width="400px" height="200px"></canvas>
+    <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd">
+      <canvas id="myChart"></canvas>
+    </div>
+  </div>
+
+  <div class="columns is-centered is-mobile">
+    <div class="column is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd">
       <div class="columns is-centered">
         <div class="field is-grouped mt-5">
           <div class="column has-text-centered">
@@ -34,52 +39,12 @@
       </div>
     </div>
   </div>
-  <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
   <!-- 出来事一覧 -->
+  <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
   <div class="columns my-6 is-centered is-mobile">
     <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
-        <div class="timeline">
-          <div class="timeline-group">
-            <div class="timeline-age time is-size-5" aria-hidden="true">
-              「25歳」の出来事
-            </div>
-            <div class="timeline-card ml-7 mb-5">
-              <div class="timeline-icon">
-                <span class="fullness has-text-weight-semibold">
-                  充実度
-                </span>
-                <span class="fullness-data has-text-weight-semibold">
-                  30%
-                </span>
-              </div>
-              <article class="media">
-                <div class="media-content">
-                  <div class="content">
-                    <div class="columns">
-                      <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
-                        <h4 class="title is-4">
-                          タイトル
-                        </h4>
-                      </div>
-                      <div class="column has-text-centered category-tag">
-                        <span class="tag is-warning">カテゴリー名</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="content">
-                    <div class="columns">
-                      <p class="column timeline-episode">
-                        エピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソード
-                        エピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソードエピソード
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </article>
-            </div>
-          </div>
-        </div>
+        <%= render "event", group_events: @group_events %>
       </div>
     </div>
   </div>
@@ -93,9 +58,9 @@
             <img src="/assets/seeds/avatar_1.jpg" alt="" class="avatar"><br>
           </div>
           <div class="avatar-info">
-            ユーザー名：佐藤健<br>
-            年齢：23歳<br>
-            性別：男<br>
+            ユーザー名：<%= @user.name %><br>
+            年齢：<%= @user.calc_age %><br>
+            性別：<%= @user.gender_i18n %><br>
           </div>
         </div>
         <div class="area-bord" id="js-scroll-bottom">
@@ -199,40 +164,39 @@
 </main>
 
 <script>
-const ctx = document.getElementById('myChart');
+$(function () {
 
-const myChart = new Chart(ctx, {
-    type: 'line', // グラフの種類
-    data: {
-        labels: ['0', '10', '20', '30', '40', '50'], // グラフの横軸
+  const ctx = document.getElementById("myChart");
+
+  // 文字の大きさ
+  Chart.defaults.font.size = 16;
+
+  const myChart = new Chart(ctx, {
+      type: "line",
+      data: {
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
+          label: "充実度",
+          data: [
+            { x: '10', y: 5 },
+            { x: '13', y: -20 },
+            { x: '16', y: 10 },
+            { x: '17', y: 30 },
+            { x: '20', y: 100 },
+            { x: '25', y: -100 },
+            { x: '26', y: 15 },
+            { x: '30', y: 50 },
+          ],
+          backgroundColor: "rgba(255, 99, 132, 0.2)",
+          borderColor: "rgba(255, 99, 132, 1)",
+          borderWidth: 1,
+          tension: 0.1
         }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+      }
+  });
+
 });
 </script>

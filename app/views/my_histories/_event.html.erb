@@ -1,0 +1,46 @@
+<% for key, events in group_events %>
+  <div class="timeline">
+    <div class="timeline-group">
+      <div class="timeline-age time is-size-5" aria-hidden="true">
+        「<%= key %>歳」の出来事
+      </div>
+      <% for event in events %>
+        <div class="timeline-card ml-7 mb-5">
+          <div class="timeline-icon">
+            <span class="fullness has-text-weight-semibold">
+              充実度
+            </span>
+            <span class="fullness-data has-text-weight-semibold">
+              <%= event.happiness %>%
+            </span>
+          </div>
+          <article class="media">
+            <div class="media-content">
+              <div class="content">
+                <div class="columns">
+                  <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
+                    <h4 class="title is-4">
+                      <%= event.title %>
+                    </h4>
+                  </div>
+                  <div class="column has-text-centered category-tag">
+                    <span class="tag is-warning">
+                      <%= event.category.name %>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="content">
+                <div class="columns">
+                  <p class="column timeline-episode">
+                    <%= event.episode %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
