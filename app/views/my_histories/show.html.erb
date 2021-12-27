@@ -39,6 +39,7 @@
       </div>
     </div>
   </div>
+
   <!-- 出来事一覧 -->
   <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
   <div class="columns my-6 is-centered is-mobile">
@@ -48,14 +49,15 @@
       </div>
     </div>
   </div>
+
   <!-- コメントエリア -->
   <div class="columns my-6 is-centered is-mobile">
     <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-      <!-- コメント表示 -->
       <section id="main" >
         <div class="msg-info">
           <div class="avatar-img">
-            <img src="/assets/seeds/avatar_1.jpg" alt="" class="avatar"><br>
+            <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
+            <br>
           </div>
           <div class="avatar-info">
             ユーザー名：<%= @user.name %><br>
