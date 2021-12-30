@@ -6,7 +6,7 @@
     <title><%= page_title(yield(:title)) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= Gon::Base.render_data %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_pack_tag "application" %>
   </head>
