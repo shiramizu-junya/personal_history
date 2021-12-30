@@ -8,39 +8,52 @@
       <canvas id="myChart"></canvas>
     </div>
   </div>
-
-  <div class="columns is-centered">
-    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
-      <p class="control">
-        <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-          <span class="icon">
-            <i class="fab fa-twitter"></i>
-          </span>
-          <span>
-            ツイート
-          </span>
-        </a>
-      </p>
-    </div>
-    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
-      <p class="control">
-        <a class="button is-primary" href="#">
-          <span class="icon">
-            <i class="fas fa-download"></i>
-          </span>
-          <span>ダウンロード</span>
-        </a>
-      </p>
-    </div>
-    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
-      <p class="control like-control">
-        <a class="button button-like" href="#">
-          <span class="icon">
-            <i class="far fa-thumbs-up"></i>
-          </span>
-          <span>いいね</span>
-        </a>
-      </p>
+  <!-- 各種リンク -->
+  <div class="container is-max-widescreen">
+    <div>
+      <div class="columns is-justify-content-space-around">
+        <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
+          <p class="control">
+            <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+              <span>
+                ツイート
+              </span>
+            </a>
+          </p>
+        </div>
+        <% if current_user.own?(@my_history) %>
+          <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
+            <p class="control">
+              <a class="button is-primary" href="#">
+                <span class="icon">
+                  <i class="fas fa-download"></i>
+                </span>
+                <span>ダウンロード</span>
+              </a>
+            </p>
+          </div>
+        <% end %>
+        <% if current_user.own?(@my_history)%>
+          <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
+            <p class="control">
+              <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button is-warning" %>
+            </p>
+          </div>
+        <% end %>
+        <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
+          <p class="control like-control">
+            <a class="button button-like" href="#">
+              <span class="icon">
+                <i class="far fa-thumbs-up"></i>
+              </span>
+              <span>いいね</span>
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -49,7 +62,13 @@
   <div class="columns my-6 is-centered is-mobile">
     <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
-        <%= render "event", group_events: @group_events %>
+        <% if @group_events.empty? %>
+          <p class="is-size-4 has-text-centered">
+            出来事はありません。
+          </p>
+        <% else %>
+          <%= render "event", group_events: @group_events %>
+        <% end %>
       </div>
     </div>
   </div>
@@ -172,18 +191,16 @@
 <script>
 const ctx = document.getElementById("myChart");
 
-const myChart = new Chart(ctx, {
+Chart.defaults.font.size = 15;
+
+new Chart(ctx, {
   type: "line",
   data: {
-    /* グラフのx軸 */
-    // labels: ['11', '16', '23', '27', '32', '48', '58'],
     datasets: [{
       /* グラフ全体のラベル */
       label: "充実度",
       /* グラフのデータ(x軸 & y軸) */
-      data: [{ x: "11", y: 60}, {x:"16", y: 35}, {x: "23", y: 24}, {x:"27", y: 80}, {x:"32", y: 39}, {x:"48", y: 34}, {x:"58", y: -99}],
-      /* グラフのy軸 */
-      // data: [60, 35, 24, 80, 39, 34, -99],
+      data: gon.graph_events,
       /* 背景色 */
       backgroundColor: "rgba(255, 99, 132, 0.2)",
       /* 枠線色 */
@@ -229,5 +246,4 @@ const myChart = new Chart(ctx, {
     },
   },
 });
-
 </script>

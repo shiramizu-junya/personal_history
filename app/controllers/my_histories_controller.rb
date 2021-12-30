@@ -15,7 +15,8 @@ class MyHistoriesController < ApplicationController
     end
     @user = @my_history.user
     events = @my_history.events.order(age: :asc)
-    @group_events = Event.group_events_by_age(events)
+    @group_events = events.group_by &:age
+    gon.graph_events = Event.age_happiness_average(@group_events)
   end
 
   def new; end
