@@ -18,4 +18,8 @@ class User < ApplicationRecord
   before_create -> { self.uuid = SecureRandom.uuid }
 
   enum gender: { men: 0, women: 1, other: 2, no_answer: 3 }
+
+  def own?(object)
+    id == object.user_id
+  end
 end
