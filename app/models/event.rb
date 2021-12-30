@@ -9,18 +9,13 @@ class Event < ApplicationRecord
   validates :episode, presence: :true, length: { maximum: 65_535 }
   validates :happiness, presence: :true, numericality: { only_integer: true, greater_than_or_equal_to: -100, less_than_or_equal_to: 100 }
 
-  def self.group_events_by_age(events)
-    group_events = {}
-
-    events.each do |event|
-      age = event.age
-
-      if group_events.has_key?(age)
-        group_events[age] << event
-      else
-        group_events[age] = [event]
-      end
+  def self.age_happiness_average(group_events)
+    graph_events = []
+    group_events.each do |key, events|
+      average_happiness = ((events.sum &:happiness) / (events.count)).floor
+      event_hash = { "x" => key.to_s, "y" => average_happiness }
+      graph_events.push(event_hash)
     end
-    group_events
+    graph_events
   end
 end
