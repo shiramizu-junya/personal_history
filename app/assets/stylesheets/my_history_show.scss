@@ -10,11 +10,32 @@
   justify-content: center;
 }
 
+.chart-container {
+  position: relative;
+  width: 80vw;
+  height: 77vh;
+  @media screen and (max-width: 1024px) {
+    width: 80vw;
+    height: 50vh;
+  }
+  @media screen and (max-width: 767px) {
+    width: 80vw;
+    height: 50vh;
+  }
+}
+
+#myChart {
+  @media screen and (max-width: 1024px) {
+    height: 470px !important;
+  }
+}
+
 /*========================================
   SNS、いいね、ダウンロードボタン
 ========================================*/
 .button.button-twitter {
   background-color: #f3f7fa;
+
   &:hover {
     background-color: #d3dce3;
   }
@@ -22,10 +43,16 @@
 
 .button-twitter {
   color: #55ACEE;
+
   &:hover {
     color: #55ACEE;
   }
 }
+
+.button-like {
+  background-color: #F3F7FA;
+}
+
 
 /*========================================
   自分史
