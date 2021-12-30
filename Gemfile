@@ -46,6 +46,7 @@ gem "ransack"
 
 # グラフ
 gem "chart-js-rails"
+gem "gon"
 
 # モデル
 gem "enum_help"
