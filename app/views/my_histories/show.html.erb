@@ -9,34 +9,38 @@
     </div>
   </div>
 
-  <div class="columns is-centered is-mobile">
-    <div class="column is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd">
-      <div class="columns is-centered">
-        <div class="field is-grouped mt-5">
-          <div class="column has-text-centered">
-            <p class="control">
-              <a class="button is-primary" href="#">
-                <span class="icon">
-                  <i class="fas fa-download"></i>
-                </span>
-                <span>ダウンロード</span>
-              </a>
-            </p>
-          </div>
-          <div class="column has-text-centered">
-            <p class="control">
-              <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-                <span class="icon">
-                  <i class="fab fa-twitter"></i>
-                </span>
-                <span>
-                  ツイート
-                </span>
-              </a>
-            </p>
-          </div>
-        </div>
-      </div>
+  <div class="columns is-centered">
+    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
+      <p class="control">
+        <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+          <span>
+            ツイート
+          </span>
+        </a>
+      </p>
+    </div>
+    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
+      <p class="control">
+        <a class="button is-primary" href="#">
+          <span class="icon">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>ダウンロード</span>
+        </a>
+      </p>
+    </div>
+    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop is-1-widescreen is-1-fullhd">
+      <p class="control like-control">
+        <a class="button button-like" href="#">
+          <span class="icon">
+            <i class="far fa-thumbs-up"></i>
+          </span>
+          <span>いいね</span>
+        </a>
+      </p>
     </div>
   </div>
 
@@ -68,7 +72,7 @@
         <div class="area-bord" id="js-scroll-bottom">
           <div class="msg-cnt msg-left">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_3.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -79,7 +83,7 @@
           </div>
           <div class="msg-cnt msg-right">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_4.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -107,7 +111,7 @@
           </div>
           <div class="msg-cnt msg-left">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_5.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -117,7 +121,7 @@
           </div>
           <div class="msg-cnt msg-right">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_1.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -127,7 +131,7 @@
           </div>
           <div class="msg-cnt msg-left">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_2.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -137,7 +141,7 @@
           </div>
           <div class="msg-cnt msg-right">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_4.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -147,7 +151,7 @@
           </div>
           <div class="msg-cnt msg-left">
             <div class="avatar">
-              <img src="/assets/seeds/avatar_3.jpg" alt="" class="avatar">
+              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
             <p class="msg-inrTxt">
               <span class="triangle"></span>
@@ -166,39 +170,64 @@
 </main>
 
 <script>
-$(function () {
+const ctx = document.getElementById("myChart");
 
-  const ctx = document.getElementById("myChart");
-
-  // 文字の大きさ
-  Chart.defaults.font.size = 16;
-
-  const myChart = new Chart(ctx, {
-      type: "line",
-      data: {
-        datasets: [{
-          label: "充実度",
-          data: [
-            { x: '10', y: 5 },
-            { x: '13', y: -20 },
-            { x: '16', y: 10 },
-            { x: '17', y: 30 },
-            { x: '20', y: 100 },
-            { x: '25', y: -100 },
-            { x: '26', y: 15 },
-            { x: '30', y: 50 },
-          ],
-          backgroundColor: "rgba(255, 99, 132, 0.2)",
-          borderColor: "rgba(255, 99, 132, 1)",
-          borderWidth: 1,
-          tension: 0.1
-        }]
+const myChart = new Chart(ctx, {
+  type: "line",
+  data: {
+    /* グラフのx軸 */
+    // labels: ['11', '16', '23', '27', '32', '48', '58'],
+    datasets: [{
+      /* グラフ全体のラベル */
+      label: "充実度",
+      /* グラフのデータ(x軸 & y軸) */
+      data: [{ x: "11", y: 60}, {x:"16", y: 35}, {x: "23", y: 24}, {x:"27", y: 80}, {x:"32", y: 39}, {x:"48", y: 34}, {x:"58", y: -99}],
+      /* グラフのy軸 */
+      // data: [60, 35, 24, 80, 39, 34, -99],
+      /* 背景色 */
+      backgroundColor: "rgba(255, 99, 132, 0.2)",
+      /* 枠線色 */
+      borderColor: "rgb(255, 99, 132)",
+      /* ポイントを塗りつぶす色 */
+      pointBackgroundColor: "rgb(255, 99, 132)",
+      /* ポイントの枠線色 */
+      pointBorderColor: "#fff",
+      /* ホバー時のポイントの背景色 */
+      pointHoverBackgroundColor: "#fff",
+      /* ホバー時のポイントの枠線色 */
+      pointHoverBorderColor: "rgb(255, 99, 132)",
+    }],
+  },
+  //オプションの設定
+  options: {
+    scales: { // 軸設定
+      x: {
+        display: true,
+        title: {
+          display: true,
+          text: "年齢"
+        },
       },
-      options: {
+      y: {
+        display: true,
+        title: {
+          display: true,
+          text: "充実度"
+        },
+        min: -100,
+        max: 100,
+      }
+    },
+    elements: {
+      line: {
+        /* 枠線の太さ */
+        borderWidth: 1,
+        tension: 0.1,
         responsive: true,
         maintainAspectRatio: false,
-      }
-  });
-
+      },
+    },
+  },
 });
+
 </script>
