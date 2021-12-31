@@ -26,29 +26,32 @@
             <%= image_tag @user.avatar.url, class: "js-preview-image prev-img" %>
           </figure>
         </div>
-        <div class="mb-5">
-          <h5 class="mb-2"><%= t("my_histories.index.title") %></h5>
-          <table class="table">
-            <thead>
-              <tr>
-                <th><%= t(MyHistory.human_attribute_name(:title)) %></th>
-                <th><%= t(MyHistory.human_attribute_name(:status)) %></th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  <%= link_to @my_history.title, my_history_path(@my_history.uuid), class: "my_page_history" %>
-                </td>
-                <td><%= @my_history.status_i18n %></td>
-                <td>
-                  <%= link_to t("defaults.edit"), edit_my_history_path(@my_history.uuid), class: "button is-btn-search has-text-weight-semibold" %>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+
+          <div class="mb-5">
+            <h5 class="mb-2"><%= t("my_histories.index.title") %></h5>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th><%= t(MyHistory.human_attribute_name(:title)) %></th>
+                  <th><%= t(MyHistory.human_attribute_name(:status)) %></th>
+                  <th></th>
+                </tr>
+              </thead>
+              <% if @my_history %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= link_to @my_history.title, my_history_path(@my_history.uuid), class: "my_page_history" %>
+                    </td>
+                    <td><%= @my_history.status_i18n %></td>
+                    <td>
+                      <%= link_to t("defaults.edit"), edit_my_history_path(@my_history.uuid), class: "button is-btn-search has-text-weight-semibold" %>
+                    </td>
+                  </tr>
+                </tbody>
+              <% end %>
+            </table>
+          </div>
       </div>
     </div>
   </div>
