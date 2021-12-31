@@ -5,10 +5,19 @@ class MyHistoriesController < ApplicationController
 
   def index
     @q = MyHistory.ransack(params[:q])
-    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).order(created_at: :desc))
+    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).published.order(created_at: :desc))
   end
 
-  def show; end
+  def show
+    @my_history = MyHistory.find_by(uuid: params[:id])
+    if @my_history.unpublished? && !current_user.own?(@my_history)
+      redirect_to my_histories_path, danger: t("defaults.message.unpublished")
+    end
+    @user = @my_history.user
+    events = @my_history.events.order(age: :asc)
+    @group_events = events.group_by &:age
+    gon.graph_events = Event.age_happiness_average(@group_events)
+  end
 
   def new; end
 
