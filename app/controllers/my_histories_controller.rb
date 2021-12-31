@@ -10,7 +10,7 @@ class MyHistoriesController < ApplicationController
 
   def show
     @my_history = MyHistory.find_by(uuid: params[:id])
-    if @my_history.unpublished? && current_user.id != @my_history.user_id
+    if @my_history.unpublished? && !current_user.own?(@my_history)
       redirect_to my_histories_path, danger: t("defaults.message.unpublished")
     end
     @user = @my_history.user
