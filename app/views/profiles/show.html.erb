@@ -1,2 +1,55 @@
-<h1>Profiles#show</h1>
-<p>Find me in app/views/profiles/show.html.erb</p>
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm form-wrap is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+      <h1 class="title has-text-centered mb-5 ft-size-md"><%= t(".title") %></h1>
+      <div class="content">
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t(User.human_attribute_name(:name)) %></h5>
+          <p class="mypage"><%= @user.name %></p>
+        </div>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t(User.human_attribute_name(:email)) %></h5>
+          <p class="mypage"><%= @user.email %></p>
+        </div>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t(User.human_attribute_name(:birthday)) %></h5>
+          <p class="mypage"><%= @user.birthday %></p>
+        </div>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t(User.human_attribute_name(:gender)) %></h5>
+          <p class="mypage"><%= @user.gender_i18n %></p>
+        </div>
+        <div class="mb-5">
+          <h5><%= t(User.human_attribute_name(:avatar)) %></h5>
+          <figure class="image is-128x128 mb-5 ml-4">
+            <%= image_tag @user.avatar.url, class: "js-preview-image prev-img" %>
+          </figure>
+        </div>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t("my_histories.index.title") %></h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t(MyHistory.human_attribute_name(:title)) %></th>
+                <th><%= t(MyHistory.human_attribute_name(:status)) %></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <%= link_to @my_history.title, my_history_path(@my_history.uuid), class: "my_page_history" %>
+                </td>
+                <td><%= @my_history.status_i18n %></td>
+                <td>
+                  <%= link_to t("defaults.edit"), edit_my_history_path(@my_history.uuid), class: "button is-btn-search has-text-weight-semibold" %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
