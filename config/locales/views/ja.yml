@@ -6,6 +6,7 @@ ja:
     signup: "新規登録"
     edit: "更新"
     age: "年齢"
+    edit: "編集"
     message:
       require_login: "ログインしてください。"
       created: "%{item}を作成しました。"
@@ -39,6 +40,8 @@ ja:
     edit:
       title: "自分史編集"
   profiles:
+    show:
+      title: "マイページ"
     edit:
       title: "プロフィール編集"
       profile: "プロフィール"

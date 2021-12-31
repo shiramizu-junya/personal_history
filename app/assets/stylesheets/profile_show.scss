@@ -1,0 +1,20 @@
+.content h5,
+.mypage {
+  color: #272343;
+}
+
+.table thead tr th{
+  color: #272343;
+}
+
+.table tbody tr td {
+  color: #272343;
+}
+
+a.my_page_history {
+  color: #272343;
+  &:hover {
+    color: #6157a7;
+    text-decoration: underline;
+  }
+}
