@@ -8,15 +8,25 @@
       <canvas id="myChart"></canvas>
     </div>
   </div>
+
   <!-- 各種リンク -->
   <div class="container is-max-widescreen">
     <%= render "link", my_history: @my_history %>
   </div>
 
   <!-- 出来事一覧 -->
-  <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
+  <div>
+    <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
+      出来事一覧
+      <% if current_user.own?(@my_history) %>
+        <span class="show-page-edit-link">
+          <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
+        </span>
+      <% end %>
+    </h2>
+  </div>
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column my_history_list pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
         <% if @group_events.empty? %>
           <p class="is-size-4 has-text-centered">
@@ -145,14 +155,12 @@
 </main>
 
 <script>
-const ctx = document.getElementById("myChart");
-
-Chart.defaults.font.size = 15;
-
-new Chart(ctx, {
-  type: "line",
-  data: {
-    datasets: [{
+$(function () {
+  const ctx = document.getElementById("myChart");
+  const type = "line";
+  let datasets = [
+    {
+      fill: false,
       /* グラフ全体のラベル */
       label: "充実度",
       /* グラフのデータ(x軸 & y軸) */
@@ -163,43 +171,59 @@ new Chart(ctx, {
       borderColor: "rgb(255, 99, 132)",
       /* ポイントを塗りつぶす色 */
       pointBackgroundColor: "rgb(255, 99, 132)",
-      /* ポイントの枠線色 */
-      pointBorderColor: "#fff",
+      /* ポイントの太さ */
+      pointBorderWidth: 2,
+      pointHoverRadius: 5,
       /* ホバー時のポイントの背景色 */
       pointHoverBackgroundColor: "#fff",
       /* ホバー時のポイントの枠線色 */
       pointHoverBorderColor: "rgb(255, 99, 132)",
-    }],
-  },
-  //オプションの設定
-  options: {
-    scales: { // 軸設定
-      x: {
-        display: true,
-        title: {
-          display: true,
-          text: "年齢"
-        },
-      },
-      y: {
-        display: true,
-        title: {
-          display: true,
-          text: "充実度"
-        },
-        min: -100,
-        max: 100,
-      }
+      lineTension: 0,
     },
-    elements: {
-      line: {
-        /* 枠線の太さ */
-        borderWidth: 1,
-        tension: 0.1,
-        responsive: true,
-        maintainAspectRatio: false,
+  ];
+  const scales = {
+    x: {
+      display: true,
+      title: {
+        display: true,
+        text: "年齢",
       },
     },
-  },
+    y: {
+      display: true,
+      title: {
+        display: true,
+        text: "充実度",
+      },
+      min: -100,
+      max: 100,
+    },
+  };
+  const elements = {
+    line: {
+      /* 枠線の太さ */
+      borderWidth: 2,
+      tension: 0.1,
+      responsive: true,
+      maintainAspectRatio: false,
+    },
+  };
+  Chart.defaults.font.size = 15;
+
+  new Chart(ctx, {
+    type: type,
+    data: {
+      datasets: datasets,
+    },
+    options: {
+      scales: scales,
+      elements: elements,
+      onResize: function (chart, size) {
+        if (window.innerWidth <= 767) {
+          Chart.defaults.font.size = 10;
+        }
+      },
+    },
+  });
 });
 </script>
