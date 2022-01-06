@@ -28,22 +28,33 @@
 /*========================================
   SNS、いいね、編集、ダウンロードボタン
 ========================================*/
-.button.button-twitter {
-  background-color: #f3f7fa;
+a.button-like {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  box-sizing: border-box;
+  color: #acacb1;
+  border-radius: 50%;
+  // position: relative;
   &:hover {
-    background-color: #d3dce3;
+    color: none;
+  }
+  @media screen and (max-width: 767px) {
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 
-.button-twitter {
-  color: #55ACEE;
+.svg-inline--fa.fa-w-16.like-icon {
+  width: 2rem;
+  height: 2rem;
   &:hover {
-    color: #55ACEE;
+    color: #929298;
   }
-}
-
-.button-like {
-  background-color: #F3F7FA;
+  @media screen and (max-width: 767px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 }
 
 .my-history-subtitle {
@@ -57,7 +68,7 @@
 
 .show-page-edit-link{
   position: absolute;
-  top: -20px;
+  top: -17px;
   bottom: 0;
   left: 35;
 }
@@ -69,11 +80,60 @@
   border-radius: 100%;
   line-height: 50px;
   margin-left: 20px;
-  background-color: #FAFBFC;
-  border: 1px solid #ffdd57;
+  background-color: #ffdd57;
+  border: none;
   &:hover {
-    background-color: #ffdd57;
-    border: 1px solid #ffdd57;
+    background-color: #ffd803;
+  }
+}
+
+#page-top {
+  position: relative;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  font-weight: 700;
+  background: #656463;
+  border-radius: 100%;
+  text-decoration: none;
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  cursor: pointer;
+  transition: .8s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background-color: #1da1f3;
+  &:hover {
+    background-color: #1A8CD8;
+  }
+  @media screen and (max-width: 767px) {
+    bottom: 80px;
+    right: 13px;
+  }
+}
+
+.fa-twitter {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 24px;
+}
+
+.twitter-text {
+  font-size: 15px;
+  position: absolute;
+  top: 35px;
+  left: 7px;
+}
+
+.button-download {
+  @media screen and (max-width: 767px) {
+    font-size: 0.8rem;
   }
 }
 
@@ -194,11 +254,8 @@
   float: left;
   border-radius: 5px;
   padding: 10px;
-  margin: 0 0 0 25px;
+  margin: 0 0 0 20px;
   position: relative;
-  @media screen and (max-width: 1024px) {
-    margin: 0 0 0 20px;
-  }
   @media screen and (max-width: 767px) {
     width: 75%;
   }
@@ -226,10 +283,7 @@
 
 .area-bord .msg-cnt.msg-right .msg-inrTxt {
   background: #d2eaf0;
-  margin: 0 25px 0 0;
-  @media screen and (max-width: 767px) {
-    margin: 0 20px 0 0;
-  }
+  margin: 0 20px 0 0;
 }
 
 .area-bord .msg-cnt.msg-right .msg-inrTxt>.triangle {

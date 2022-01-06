@@ -8,12 +8,7 @@
       <canvas id="myChart"></canvas>
     </div>
   </div>
-
-  <!-- 各種リンク -->
-  <div class="container is-max-widescreen">
-    <%= render "link", my_history: @my_history %>
-  </div>
-
+  <%= render "link", my_history: @my_history %>
   <!-- 出来事一覧 -->
   <div>
     <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
@@ -86,8 +81,8 @@
               <div class="dropdown-menu dropdown-right-menu" id="dropdown-menu5" role="menu">
                 <div class="dropdown-content">
                   <div class="dropdown-item">
-                    <button class="button is-primary is-small mr-2">編集</button>
-                    <button class="button is-link is-small">削除</button>
+                    <button class="button is-primary is-small mr-2 has-text-weight-semibold">編集</button>
+                    <button class="button is-link is-small has-text-weight-semibold">削除</button>
                   </div>
                 </div>
               </div>
@@ -152,6 +147,13 @@
       </section>
     </div>
   </div>
+  <!-- Twitter -->
+  <div id="page-top">
+    <div>
+      <i class="fab fa-twitter"></i>
+    </div>
+    <span class="twitter-text">ツイート</span>
+  </div>
 </main>
 
 <script>
@@ -183,14 +185,19 @@ $(function () {
   ];
   const scales = {
     x: {
-      display: true,
       title: {
         display: true,
         text: "年齢",
+        color: "#272343",
+        font: {
+          family: "Comic Sans MS",
+          weight: "bold",
+          lineHeight: 1.2,
+        },
+        padding: {top: 10, right: -100, bottom: 10, left: 0},
       },
     },
     y: {
-      display: true,
       title: {
         display: true,
         text: "充実度",
@@ -208,7 +215,7 @@ $(function () {
       maintainAspectRatio: false,
     },
   };
-  Chart.defaults.font.size = 15;
+  Chart.defaults.font.size = 20;
 
   new Chart(ctx, {
     type: type,

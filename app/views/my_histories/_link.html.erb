@@ -1,38 +1,19 @@
-<div>
-  <div class="columns is-justify-content-space-around">
-    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
-      <p class="control">
-        <a class="bd-tw-button button button-twitter" data-social-network="Twitter" data-social-action="tweet" data-social-target="https://bulma.io" target="_blank" href="https://twitter.com/intent/tweet?text=Bulma: a modern CSS framework based on Flexbox&amp;hashtags=bulmaio&amp;url=https://bulma.io&amp;via=jgthms">
-          <span class="icon">
-            <i class="fab fa-twitter"></i>
-          </span>
-          <span>
-            ツイート
-          </span>
-        </a>
-      </p>
+<div class="columns is-multiline is-justify-content-space-around is-align-items-center is-mobile">
+  <% if current_user.own?(my_history) %>
+    <div class="column has-text-centered is-4-mobile is-3-tablet is-1-desktop">
+      <a class="button button-download is-primary" href="#">
+        <span class="icon">
+          <i class="fas fa-download"></i>
+        </span>
+        <span>ダウンロード</span>
+      </a>
     </div>
-    <% if current_user.own?(my_history) %>
-      <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
-        <p class="control">
-          <a class="button is-primary" href="#">
-            <span class="icon">
-              <i class="fas fa-download"></i>
-            </span>
-            <span>ダウンロード</span>
-          </a>
-        </p>
-      </div>
-    <% end %>
-    <div class="column has-text-centered is-12-mobile is-3-tablet is-1-desktop">
-      <p class="control like-control">
-        <a class="button button-like" href="#">
-          <span class="icon">
-            <i class="far fa-thumbs-up"></i>
-          </span>
-          <span>いいね</span>
-        </a>
-      </p>
-    </div>
+  <% end %>
+  <div class="column has-text-centered is-4-mobile is-3-tablet is-1-desktop">
+    <a class="button-like" href="#">
+      <span class="icon">
+        <i class="far fa-thumbs-up like-icon"></i>
+      </span>
+    </a>
   </div>
 </div>
