@@ -1,6 +1,6 @@
 <template>
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-half-fullhd">
+    <div class="column pd-sm is-10-mobile is-10-tablet is-two-fifths-desktop is-two-thirds-widescreen is-9-fullhd">
       <div class="page">
         <div class="timeline">
           <div

@@ -28,35 +28,6 @@
 /*========================================
   SNS、いいね、編集、ダウンロードボタン
 ========================================*/
-a.button-like {
-  display: inline-block;
-  width: 2rem;
-  height: 2rem;
-  box-sizing: border-box;
-  color: #acacb1;
-  border-radius: 50%;
-  // position: relative;
-  &:hover {
-    color: none;
-  }
-  @media screen and (max-width: 767px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-
-.svg-inline--fa.fa-w-16.like-icon {
-  width: 2rem;
-  height: 2rem;
-  &:hover {
-    color: #929298;
-  }
-  @media screen and (max-width: 767px) {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-}
-
 .my-history-subtitle {
   position: relative;
 }
@@ -87,7 +58,7 @@ a.button-like {
   }
 }
 
-#page-top {
+#twitter {
   position: relative;
   position: fixed;
   bottom: 20px;
@@ -111,9 +82,18 @@ a.button-like {
   &:hover {
     background-color: #1A8CD8;
   }
+  @media screen and (max-width: 768px) {
+    right: 10px;
+  }
   @media screen and (max-width: 767px) {
-    bottom: 80px;
+    bottom: 95px;
     right: 13px;
+  }
+  @media screen and (max-width: 414px) {
+    right: 7px;
+  }
+  @media screen and (max-width: 375px) {
+    right: 3px;
   }
 }
 
@@ -135,6 +115,64 @@ a.button-like {
   @media screen and (max-width: 767px) {
     font-size: 0.8rem;
   }
+}
+
+#like {
+  position: relative;
+  position: fixed;
+  bottom: 20px;
+  right: 150px;
+  font-weight: 700;
+  background: #656463;
+  border-radius: 100%;
+  text-decoration: none;
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  cursor: pointer;
+  transition: .8s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background-color: #51C8A7;
+  &:hover {
+    background-color: #3bbc98;
+  }
+  @media screen and (max-width: 1024px) {
+    bottom: 20px;
+    left: 20px;
+  }
+  @media screen and (max-width: 768px) {
+    bottom: 20px;
+    left: 10px;
+  }
+  @media screen and (max-width: 767px) {
+    bottom: 95px;
+    left: 13px;
+  }
+  @media screen and (max-width: 414px) {
+    left: 7px;
+  }
+  @media screen and (max-width: 375px) {
+    left: 3px;
+  }
+}
+
+.like-icon {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 24px;
+}
+
+.like-text {
+  font-size: 15px;
+  position: absolute;
+  top: 35px;
+  left: 12px;
 }
 
 /*========================================

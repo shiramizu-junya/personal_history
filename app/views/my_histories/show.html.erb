@@ -21,7 +21,7 @@
     </h2>
   </div>
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column my_history_list pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column my_history_list pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-9-fullhd">
       <div class="page">
         <% if @group_events.empty? %>
           <p class="is-size-4 has-text-centered">
@@ -36,7 +36,7 @@
 
   <!-- コメントエリア -->
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-9-fullhd">
       <section id="main" >
         <div class="msg-info">
           <div class="avatar-img">
@@ -147,8 +147,14 @@
       </section>
     </div>
   </div>
-  <!-- Twitter -->
-  <div id="page-top">
+  <!-- いいね・Twitter -->
+  <div id="like">
+    <div>
+      <i class="fas fa-thumbs-up like-icon"></i>
+    </div>
+    <span class="like-text">いいね</span>
+  </div>
+  <div id="twitter">
     <div>
       <i class="fab fa-twitter"></i>
     </div>
@@ -201,6 +207,13 @@ $(function () {
       title: {
         display: true,
         text: "充実度",
+        color: "#272343",
+        font: {
+          family: "Comic Sans MS",
+          weight: "bold",
+          lineHeight: 1.2,
+        },
+        padding: {top: 10, right: -100, bottom: 10, left: 0},
       },
       min: -100,
       max: 100,
