@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resource :profile, only: %i[show edit update]
   # 自分史関係
   resources :my_histories, only: %i[index show new edit update]
+  # いいね
+  resources :likes, only: %i[create destroy]
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]

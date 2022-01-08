@@ -1,0 +1,3 @@
+<%= link_to likes_path(my_history_id: my_history.id), id: "js-like-button-#{my_history.id}", class:"like-btn", method: :post, remote: true do %>
+  <i class="fas fa-thumbs-up like-icon like"></i>
+<% end %>

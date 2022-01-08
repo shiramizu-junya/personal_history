@@ -8,7 +8,8 @@
       <canvas id="myChart"></canvas>
     </div>
   </div>
-  <%= render "link", my_history: @my_history %>
+  <!-- ダウンロードボタン -->
+  <%= render "download", my_history: @my_history %>
   <!-- 出来事一覧 -->
   <div>
     <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
@@ -33,7 +34,6 @@
       </div>
     </div>
   </div>
-
   <!-- コメントエリア -->
   <div class="columns my-6 is-centered is-mobile">
     <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-9-fullhd">
@@ -147,13 +147,12 @@
       </section>
     </div>
   </div>
-  <!-- いいね・Twitter -->
+  <!-- いいねボタン -->
   <div id="like">
-    <div>
-      <i class="fas fa-thumbs-up like-icon"></i>
-    </div>
+    <%= render "like_button", my_history: @my_history %>
     <span class="like-text">いいね</span>
   </div>
+  <!-- Twitter -->
   <div id="twitter">
     <div>
       <i class="fab fa-twitter"></i>
@@ -202,6 +201,11 @@ $(function () {
         },
         padding: {top: 10, right: -100, bottom: 10, left: 0},
       },
+      ticks: {
+        callback: function(value) {
+          return value +  "歳";
+        }
+      }
     },
     y: {
       title: {
@@ -217,6 +221,11 @@ $(function () {
       },
       min: -100,
       max: 100,
+      ticks: {
+        callback: function(value) {
+          return value + "%";
+        }
+      }
     },
   };
   const elements = {
