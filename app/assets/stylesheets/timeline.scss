@@ -70,6 +70,12 @@
   }
 }
 
+@media screen and (min-width: 768px) {
+  div#time-line-icon-show {
+    top: 30px;
+  }
+}
+
 .content figure.timeline-image {
   margin: 0;
   text-align: center;
