@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_07_051013) do
+ActiveRecord::Schema.define(version: 2022_01_09_112238) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
+    t.string "body"
+    t.bigint "user_id", null: false
+    t.bigint "my_history_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["my_history_id"], name: "index_comments_on_my_history_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
 
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "age", null: false
@@ -63,6 +73,8 @@ ActiveRecord::Schema.define(version: 2022_01_07_051013) do
     t.index ["uuid"], name: "index_users_on_uuid", unique: true
   end
 
+  add_foreign_key "comments", "my_histories"
+  add_foreign_key "comments", "users"
   add_foreign_key "events", "my_histories"
   add_foreign_key "likes", "my_histories"
   add_foreign_key "likes", "users"
