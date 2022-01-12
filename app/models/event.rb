@@ -10,11 +10,11 @@ class Event < ApplicationRecord
   validates :happiness, presence: :true, numericality: { only_integer: true, greater_than_or_equal_to: -100, less_than_or_equal_to: 100 }
 
   def self.age_happiness_average(group_events)
-    graph_events = []
+    graph_events = {}
     group_events.each do |key, events|
       average_happiness = ((events.sum &:happiness) / (events.count)).floor
-      event_hash = { "x" => key.to_s, "y" => average_happiness }
-      graph_events.push(event_hash)
+      event_hash = { key => average_happiness }
+      graph_events.merge!(event_hash)
     end
     graph_events
   end
