@@ -19,7 +19,10 @@ $font-color-sub1: #ffd803;
 /*========================================
   header
 ========================================*/
-// フラッシュメッセージ
+a.navbar-item img {
+  max-height: 2.5rem;
+}
+
 .msg-slide {
   position: fixed;
   top: 0;

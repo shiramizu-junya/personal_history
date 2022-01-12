@@ -123,7 +123,6 @@
   bottom: 20px;
   right: 150px;
   font-weight: 700;
-  background: #656463;
   border-radius: 100%;
   text-decoration: none;
   color: #fff;
@@ -137,27 +136,16 @@
   z-index: 99;
   opacity: 1;
   visibility: visible;
-  background-color: #51C8A7;
+  background-color: #7791b3;
   &:hover {
-    background-color: #3bbc98;
-  }
-  @media screen and (max-width: 1024px) {
-    bottom: 20px;
-    left: 20px;
+    background-color: #627fa7;
   }
   @media screen and (max-width: 768px) {
-    bottom: 20px;
-    left: 10px;
-  }
-  @media screen and (max-width: 767px) {
-    bottom: 95px;
-    left: 13px;
+    right: 135px;
   }
   @media screen and (max-width: 414px) {
-    left: 7px;
-  }
-  @media screen and (max-width: 375px) {
-    left: 3px;
+    bottom: 95px;
+    right: 90px;
   }
 }
 
@@ -172,7 +160,7 @@ a.unlike-btn {
   display: block;
   width: 100%;
   height: 100%;
-  color: #FF766E;
+  color: tomato;
 }
 
 .like-icon {
@@ -248,8 +236,12 @@ a.unlike-btn {
   overflow-y: scroll;
   background: #eff2f6;
   padding: 15px;
+  @media screen and (max-width: 1024px) {
+    height: 500px;
+  }
   @media screen and (max-width: 767px) {
     padding: 5px;
+    height: 400px;
   }
 }
 
@@ -286,7 +278,7 @@ a.unlike-btn {
   @media screen and (max-width: 1024px) {
     width: 5%;
   }
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 820px) {
     width: 7%;
   }
   @media screen and (max-width: 767px) {
@@ -302,14 +294,21 @@ a.unlike-btn {
 }
 
 .area-bord .msg-cnt .msg-inrTxt {
-  width: 85%;
+  max-width: calc(100% - 30%);
+  min-width: calc(50% + 5%);
   float: left;
   border-radius: 5px;
   padding: 10px;
   margin: 0 0 0 20px;
   position: relative;
+  @media screen and (max-width: 1024px) {
+    max-width: calc(100% - 30%);
+    min-width: 50%;
+  }
   @media screen and (max-width: 767px) {
-    width: 75%;
+    max-width: calc(100% - 20%);
+    min-width: 55%;
+    margin: 0 0 0 5px;
   }
 }
 
@@ -336,6 +335,9 @@ a.unlike-btn {
 .area-bord .msg-cnt.msg-right .msg-inrTxt {
   background: #d2eaf0;
   margin: 0 20px 0 0;
+  @media screen and (max-width: 767px) {
+    margin: 0 5px 0 0px;
+  }
 }
 
 .area-bord .msg-cnt.msg-right .msg-inrTxt>.triangle {
@@ -378,4 +380,23 @@ a.unlike-btn {
 .dropdown.dropdown-right .dropdown-right-menu {
   top: -140%;
   right: 210%;
+}
+
+.no-comment-area {
+  height: 100%;
+  color: #272343;
+}
+
+.user-name-left {
+  margin-right: 10px;
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+  }
+}
+
+.user-name-right {
+  margin-left: 10px;
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+  }
 }
