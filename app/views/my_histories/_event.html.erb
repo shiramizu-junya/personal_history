@@ -1,10 +1,10 @@
-<% for key, events in group_events %>
+<% group_events.each do |key, events| %>
   <div class="timeline">
     <div class="timeline-group">
       <div class="timeline-age time is-size-5" aria-hidden="true">
         「<%= key %>歳」の出来事
       </div>
-      <% for event in events %>
+      <% events.each do |event| %>
         <div class="timeline-card ml-7 mb-5">
           <div id="time-line-icon-show" class="timeline-icon">
             <span class="fullness has-text-weight-semibold">
@@ -24,7 +24,7 @@
                     </h4>
                   </div>
                   <div class="column has-text-centered category-tag">
-                    <span class="tag is-warning">
+                    <span class="tag is-warning has-text-weight-bold">
                       <%= event.category.name %>
                     </span>
                   </div>
@@ -33,7 +33,7 @@
               <div class="content">
                 <div class="columns">
                   <p class="column timeline-episode">
-                    <%= event.episode %>
+                    <%= simple_format(event.episode, {}, wrapper_tag: "span") %>
                   </p>
                 </div>
               </div>
