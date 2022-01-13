@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   # プロフィール関係
   resource :profile, only: %i[show edit update]
   # 自分史関係
-  resources :my_histories, only: %i[index show new edit update]
-  # いいね
+  resources :my_histories, only: %i[index show new edit update], shallow: true do
+    # コメント関係
+    resources :comments, only: %i[create destroy]
+  end
+  # いいね関係
   resources :likes, only: %i[create destroy]
   # API通信関係
   namespace :api, {format: "json"} do

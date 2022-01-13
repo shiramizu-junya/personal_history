@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :events, through: :my_history
   has_many :likes, dependent: :destroy
   has_many :like_my_histories, through: :likes, source: :my_history
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, uniqueness: { case_sensitive: true }, presence: true

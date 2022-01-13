@@ -4,6 +4,7 @@ ja:
       user: "ユーザー"
       event: "イベント"
       my_history: "自分史"
+      comment: "コメント"
     attributes:
       user:
         id: "ID"
@@ -27,6 +28,9 @@ ja:
         title: "タイトル"
         episode: "エピソード"
         happiness: "充実度"
+      comment:
+        id: "ID"
+        body: "コメント"
   enums:
     user:
       gender:

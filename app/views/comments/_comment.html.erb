@@ -1,0 +1,60 @@
+<% if current_user.own?(comment) %>
+  <div class="msg-cnt msg-right">
+    <div class="avatar">
+      <%= image_tag comment.user.avatar.url, class: "avatar" %>
+    </div>
+    <p class="msg-inrTxt">
+      <span class="triangle"></span>
+      <span class="has-text-right" style="display: inline-block; width: 100%;">
+        <%= simple_format(comment.body, { class: "comment-text" }, { wrapper_tag: "span" }) %>
+      </span>
+      <br>
+      <span class="mt-2 has-text-right date">
+        <span>
+          <i class="far fa-clock"></i>
+          <%= "#{time_ago_in_words(comment.created_at)}前" %>
+        </span>
+        <span class="user-name-right">
+          <i class="far fa-user"></i>
+          <%= comment.user.name %>
+        </span>
+      </span>
+    </p>
+    <div class="dropdown is-right dropdown-right is-active is-align-items-center">
+      <div class="dropdown-trigger">
+        <span class="icon is-small">
+          <i class="fa fa-ellipsis-h edit-comment-icon" aria-hidden="true"></i>
+        </span>
+      </div>
+      <div class="dropdown-menu dropdown-right-menu" id="dropdown-menu5" role="menu">
+        <div class="dropdown-content">
+          <div class="dropdown-item">
+            <button class="button is-primary is-small mr-2 has-text-weight-semibold">編集</button>
+            <button class="button is-link is-small has-text-weight-semibold">削除</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <div class="msg-cnt msg-left">
+    <div class="avatar">
+      <img src="/assets/no_image.png" alt="" class="avatar">
+    </div>
+    <p class="msg-inrTxt">
+      <span class="triangle"></span>
+      <%= simple_format(comment.body, {}, wrapper_tag: "span") %>
+      <br>
+      <span class="mt-2 date">
+        <span class="user-name-left">
+          <i class="far fa-user"></i>
+          <%= comment.user.name %>
+        </span>
+        <span>
+          <i class="far fa-clock"></i>
+          <%= "#{time_ago_in_words(comment.created_at)}前" %>
+        </span>
+      </span>
+    </p>
+  </div>
+<% end %>
