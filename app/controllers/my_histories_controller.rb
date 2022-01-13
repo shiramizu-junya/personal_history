@@ -1,7 +1,7 @@
 class MyHistoriesController < ApplicationController
   include Pagy::Backend
   before_action :set_my_history, only: %i[update]
-  skip_before_action :require_login, only: %i[index]
+  skip_before_action :require_login, only: %i[index show]
 
   def index
     @q = MyHistory.ransack(params[:q])
@@ -14,7 +14,7 @@ class MyHistoriesController < ApplicationController
       redirect_to my_histories_path, danger: t("defaults.message.unpublished")
     end
     @comment = Comment.new
-    @comments = @my_history.comments.includes(:user).order(created_at: :desc)
+    @comments = @my_history.comments.includes(:user).order(created_at: :asc)
     @user = @my_history.user
     @group_events = @my_history.events.order(age: :asc).group_by &:age
     @graph_events = Event.age_happiness_average(@group_events)

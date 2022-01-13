@@ -9,12 +9,14 @@
     </div>
   </div>
   <!-- ダウンロードボタン -->
-  <%= render "download", my_history: @my_history %>
+  <% if logged_in? && current_user.own?(@my_history) %>
+    <%= render "download" %>
+  <% end %>
   <!-- 出来事一覧 -->
   <div>
     <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
       出来事一覧
-      <% if current_user.own?(@my_history) %>
+      <% if logged_in? && current_user.own?(@my_history) %>
         <span class="show-page-edit-link">
           <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
         </span>
@@ -34,37 +36,36 @@
       </div>
     </div>
   </div>
-  <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-      <section id="main">
-        <div class="msg-info">
-          <div class="avatar-img">
-            <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
-            <br>
+  <% if logged_in? %>
+    <div class="columns my-6 is-centered is-mobile">
+      <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+        <section id="main">
+          <div class="msg-info">
+            <div class="avatar-img">
+              <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
+              <br>
+            </div>
+            <div class="avatar-info">
+              ユーザー名：<%= @user.name %><br>
+              年齢：<%= @user.calc_age %>歳<br>
+              性別：<%= @user.gender_i18n %><br>
+            </div>
           </div>
-          <div class="avatar-info">
-            ユーザー名：<%= @user.name %><br>
-            年齢：<%= @user.calc_age %>歳<br>
-            性別：<%= @user.gender_i18n %><br>
-          </div>
-        </div>
-        <!-- コメントエリア -->
-        <%= render "comments/comments", { comments: @comments } %>
-          <%
-=begin%>
-<%
-=end%>
-
-        <!-- コメント入力フォーム -->
-        <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
-      </section>
+            <!-- コメントエリア -->
+            <%= render "comments/comments", { comments: @comments } %>
+            <!-- コメント入力フォーム -->
+            <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
+        </section>
+      </div>
     </div>
-  </div>
+  <% end %>
   <!-- いいねボタン -->
-  <div id="like">
-    <%= render "like_button", my_history: @my_history %>
-    <span class="like-text">いいね</span>
-  </div>
+  <% if logged_in? %>
+    <div id="like">
+      <%= render "like_button", my_history: @my_history %>
+      <span class="like-text">いいね</span>
+    </div>
+  <% end %>
   <!-- Twitter -->
   <div id="twitter">
     <div>
