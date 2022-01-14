@@ -1,5 +1,5 @@
 <% if current_user.own?(comment) %>
-  <div class="msg-cnt msg-right">
+  <div class="msg-cnt msg-right" id="comment-<%= comment.id %>">
     <div class="avatar">
       <%= image_tag comment.user.avatar.url, class: "avatar" %>
     </div>
@@ -22,15 +22,15 @@
     </p>
     <div class="dropdown is-right dropdown-right is-active is-align-items-center">
       <div class="dropdown-trigger">
-        <span class="icon is-small">
+        <span id="js-comment-edit-icon" class="icon is-small">
           <i class="fa fa-ellipsis-h edit-comment-icon" aria-hidden="true"></i>
         </span>
       </div>
-      <div class="dropdown-menu dropdown-right-menu" id="dropdown-menu5" role="menu">
+      <div id="js-comment-edit-menu" class="dropdown-menu dropdown-right-menu" role="menu" style="display: none;">
         <div class="dropdown-content">
           <div class="dropdown-item">
-            <button class="button is-primary is-small mr-2 has-text-weight-semibold">編集</button>
-            <button class="button is-link is-small has-text-weight-semibold">削除</button>
+            <a class="button is-primary is-small mr-2 has-text-weight-semibold" data-confirm="コメントを削除しますか?" data-remote="true" rel="nofollow" data-method="" href="#">編集</a>
+            <%= link_to "削除", comment_path(comment), class: "button is-link is-small has-text-weight-semibold js-delete-comment-button", method: :delete, data: { confirm: t("defaults.message.delete_confirm") }, remote: true %>
           </div>
         </div>
       </div>
