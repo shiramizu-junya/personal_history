@@ -1,13 +1,17 @@
+require("jquery");
 import Chart from "chart.js/auto";
 global.Chart = Chart;
-window.addEventListener("DOMContentLoaded", function () {
+
+$(function() {
   const ctx = document.getElementById("myChart");
+  // debugger;
   const type = "line";
-  let datasets = [
-    {
+  let datasets = {
+    labels: JSON.parse(ctx.dataset.labels),
+    datasets: [{
       /* グラフ全体のラベル */
       label: "充実度",
-      /* グラフのデータ(x軸 & y軸) */
+      /* グラフのデータ */
       data: JSON.parse(ctx.dataset.data),
       /* 背景色 */
       backgroundColor: "rgba(255, 99, 132, 0.2)",
@@ -23,8 +27,8 @@ window.addEventListener("DOMContentLoaded", function () {
       /* ホバー時のポイントの枠線色 */
       pointHoverBorderColor: "rgb(255, 99, 132)",
       lineTension: 0,
-    },
-  ];
+    }]
+  };
   const scales = {
     x: {
       title: {
@@ -40,11 +44,13 @@ window.addEventListener("DOMContentLoaded", function () {
       },
       ticks: {
         callback: function (value) {
-          return value + "歳";
+          return `${this.getLabelForValue(value)}歳`;
         },
       },
     },
     y: {
+      min: -100,
+      max: 100,
       title: {
         display: true,
         text: "充実度",
@@ -56,10 +62,10 @@ window.addEventListener("DOMContentLoaded", function () {
         },
         padding: { top: 10, right: -100, bottom: 10, left: 0 },
       },
-      min: -100,
-      max: 100,
       ticks: {
+        stepSize: 20,
         callback: function (value) {
+          // console.log(this.getMinMax());
           return value + "%";
         },
         color: function (context) {
@@ -93,10 +99,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   new Chart(ctx, {
     type: type,
-    data: {
-      labels: JSON.parse(ctx.dataset.labels),
-      datasets: datasets,
-    },
+    data: datasets,
     options: {
       scales: scales,
       elements: elements,
@@ -112,10 +115,10 @@ window.addEventListener("DOMContentLoaded", function () {
           // マーカーによって変更するもの
           callbacks: {
             title: function (tooltipItem) {
-              return `${tooltipItem[0].parsed.x}歳`;
+              return `${tooltipItem[0].label}歳`;
             },
             label: function (tooltipItem) {
-              return `充実度:${tooltipItem.parsed.y}%`;
+              return `充実度:${tooltipItem.formattedValue}%`;
             },
           },
         },
