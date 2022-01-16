@@ -1,0 +1,13 @@
+<div class="area-bord js-scroll-comment-area" id="js-scroll-bottom">
+  <% if comments.present? %>
+    <%= render comments %>
+  <% else %>
+    <div id="js-no-comment-area" class="columns is-mobile is-vcentered no-comment-area">
+      <div class="column">
+        <p class="has-text-centered is-size-5 has-text-weight-semibold">
+          コメントはありません
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>

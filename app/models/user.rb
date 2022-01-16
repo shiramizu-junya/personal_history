@@ -5,6 +5,9 @@ class User < ApplicationRecord
 
   has_one :my_history, dependent: :destroy
   has_many :events, through: :my_history
+  has_many :likes, dependent: :destroy
+  has_many :like_my_histories, through: :likes, source: :my_history
+  has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 10 }
   validates :email, uniqueness: { case_sensitive: true }, presence: true
@@ -19,7 +22,23 @@ class User < ApplicationRecord
 
   enum gender: { men: 0, women: 1, other: 2, no_answer: 3 }
 
+  # ログイン済みユーザーが作成したobjectか判定
   def own?(object)
     id == object.user_id
+  end
+
+  # いいね追加
+  def like(my_history)
+    like_my_histories << my_history
+  end
+
+  # いいね削除
+  def unlike(my_history)
+    like_my_histories.destroy(my_history)
+  end
+
+  # いいね済み判定
+  def like?(my_history)
+    like_my_histories.include?(my_history)
   end
 end

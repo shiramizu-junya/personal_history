@@ -1,0 +1,24 @@
+<% if @comment.errors.present? %>
+  $("#new_comment_area").prepend("<%= j(render('shared/error_messages', object: @comment, attribute: :body)) %>");
+  $("#js-new-comment-body").addClass("error");
+<% else %>
+  var container = document.getElementById('js-scroll-bottom');
+  // 下までスクロールする
+  function scrollToBottom(){
+    container.scrollTop = container.scrollHeight;
+  };
+  // 一番下までスクロールしているかどうか
+  function isScrollBottom() {
+    return container.scrollHeight === container.scrollTop + container.offsetHeight;
+  };
+  // 一番下までスクロールされていれば、追加後も一番下までスクロールする
+  if (isScrollBottom()) {
+    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment)) %>");
+    scrollToBottom();
+  }else{
+    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment)) %>");
+  }
+  $("#js-no-comment-area").remove();;
+  $("#js-new-comment-body").val('').removeClass("error");
+  $("#error_message").remove();
+<% end %>

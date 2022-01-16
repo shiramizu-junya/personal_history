@@ -1,0 +1,5 @@
+<% if current_user.like?(my_history) %>
+  <%= render "unlike", { my_history: my_history } %>
+<% else %>
+  <%= render "like", { my_history: my_history } %>
+<% end %>

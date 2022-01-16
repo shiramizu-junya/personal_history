@@ -86,7 +86,7 @@ h2.subtitle {
 ========================================*/
 div.pd-sm {
   padding: 1.5rem;
-  @media screen and (max-width: 350px) {
+  @media screen and (max-width: 767px) {
     padding: 1rem;
     .ft-size-sm {
       font-size: 0.9rem;

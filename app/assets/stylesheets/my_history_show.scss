@@ -12,53 +12,134 @@
 
 .chart-container {
   position: relative;
-  width: 80vw;
-  height: 80vh;
-  @media screen and (max-width: 1024px) {
-    width: 80vw;
-    height: 50vh;
-  }
+  width: 100%;
+  height: 100%;
   @media screen and (max-width: 767px) {
-    width: 80vw;
-    height: 50vh;
+    padding: 0;
+    height: 200px;
   }
 }
 
 #myChart {
-  @media screen and (max-width: 1024px) {
-    height: 470px !important;
-  }
+  width: 100% !important;
+  height: 100% !important;
 }
 
 /*========================================
-  SNS、いいね、ダウンロードボタン
+  各種ボタン
 ========================================*/
-.button.button-twitter {
-  background-color: #f3f7fa;
+.my-history-subtitle {
+  position: relative;
+}
 
+.show-page-edit-link {
+  width: 66px;
+  height: 66px;
+}
+
+.show-page-edit-link{
+  position: absolute;
+  top: -17px;
+  bottom: 0;
+  left: 35;
+}
+
+.my-history-edit {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+  line-height: 50px;
+  margin-left: 20px;
+  background-color: #ffdd57;
+  border: none;
   &:hover {
-    background-color: #d3dce3;
+    background-color: #ffd803;
   }
 }
 
-.button-twitter {
-  color: #55ACEE;
-
-  &:hover {
-    color: #55ACEE;
+.button-download {
+  @media screen and (max-width: 767px) {
+    font-size: 0.8rem;
   }
 }
 
-.button-like {
-  background-color: #F3F7FA;
+#like {
+  position: relative;
+  position: fixed;
+  bottom: 20px;
+  right: 50px;
+  font-weight: 700;
+  border-radius: 100%;
+  text-decoration: none;
+  color: #fff;
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  cursor: pointer;
+  transition: .8s;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 99;
+  opacity: 1;
+  visibility: visible;
+  background-color: #7791b3;
+  &:hover {
+    background-color: #627fa7;
+  }
+  @media screen and (max-width: 414px) {
+    bottom: 95px;
+    right: 10px;
+  }
 }
 
+a.like-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+}
+
+a.unlike-btn {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: tomato;
+}
+
+.like-icon {
+  font-size: 25px;
+  position: absolute;
+  top: 10px;
+  left: 24px;
+}
+
+.like-text {
+  font-size: 15px;
+  position: absolute;
+  top: 35px;
+  left: 12px;
+}
+
+#graph-download-button {
+  background-color: #4557BB;
+  &:hover {
+    background-color: #3b4ba3;
+  }
+}
 
 /*========================================
   自分史
 ========================================*/
 .media-content .category-tag {
   text-align: left !important;
+}
+
+.my_history_list.pd-sm {
+  padding: 0 1.5rem;
+  @media screen and (max-width: 767px) {
+    padding: 0 1rem;
+  }
 }
 
 /*========================================
@@ -71,6 +152,9 @@
   margin-bottom: 15px;
   display: flex;
   flex-direction: row;
+  @media screen and (max-width: 767px) {
+    padding: 7px;
+  }
 }
 
 .msg-info .avatar {
@@ -78,8 +162,8 @@
   height: 80px;
   border-radius: 40px;
   @media screen and (max-width: 767px) {
-    width: 50px;
-    height: 50px;
+    width: 65px;
+    height: 65px;
   }
 }
 
@@ -87,8 +171,7 @@
   text-align: center;
   width: 100px;
   @media screen and (max-width: 767px) {
-    width: 60%;
-    height: 100%;
+    width: 65%;
   }
 }
 
@@ -104,8 +187,12 @@
   overflow-y: scroll;
   background: #eff2f6;
   padding: 15px;
+  @media screen and (max-width: 1024px) {
+    height: 500px;
+  }
   @media screen and (max-width: 767px) {
     padding: 5px;
+    height: 400px;
   }
 }
 
@@ -127,7 +214,7 @@
   overflow: hidden;
   margin-bottom: 30px;
   position: relative;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1024px) {
     width: 95%;
   }
 }
@@ -136,7 +223,16 @@
   width: 5%;
   overflow: hidden;
   float: left;
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 1500px) {
+    width: 8%;
+  }
+  @media screen and (max-width: 1024px) {
+    width: 5%;
+  }
+  @media screen and (max-width: 820px) {
+    width: 7%;
+  }
+  @media screen and (max-width: 767px) {
     width: 15%;
   }
 }
@@ -149,15 +245,21 @@
 }
 
 .area-bord .msg-cnt .msg-inrTxt {
-  width: 85%;
+  max-width: calc(100% - 30%);
+  min-width: calc(50% + 5%);
   float: left;
   border-radius: 5px;
   padding: 10px;
-  margin: 0 0 0 25px;
+  margin: 0 0 0 20px;
   position: relative;
+  @media screen and (max-width: 1024px) {
+    max-width: calc(100% - 30%);
+    min-width: 50%;
+  }
   @media screen and (max-width: 767px) {
-    width: 80%;
-    margin: 0 0 0 10px;
+    max-width: calc(100% - 20%);
+    min-width: 55%;
+    margin: 0 0 0 5px;
   }
 }
 
@@ -183,10 +285,9 @@
 
 .area-bord .msg-cnt.msg-right .msg-inrTxt {
   background: #d2eaf0;
-  margin: 0 25px 0 0;
+  margin: 0 20px 0 0;
   @media screen and (max-width: 767px) {
-    width: 80%;
-    margin: 0 10px 0 0;
+    margin: 0 5px 0 0px;
   }
 }
 
@@ -213,8 +314,11 @@
   display: block;
 }
 
-.area-bord .dropdown {
+.area-bord .icon {
   cursor: pointer;
+  &:hover {
+    color: #7d7d7d;
+  }
 }
 
 .area-bord .dropdown-menu {
@@ -224,14 +328,45 @@
 .dropdown-right {
   position: absolute;
   right: 1.3%;
-  top: 50%;
+  top: 60%;
+  @media screen and (max-width: 1024px) {
+    right: 0.7%;
+  }
+  @media screen and (max-width: 820px) {
+    right: 0.9%;
+  }
   @media screen and (max-width: 767px) {
-    right: 4%;
-    top: 25%;
+    right: 3.1%;
+  }
+  @media screen and (max-width: 390px) {
+    right: 3.6%;
   }
 }
 
 .dropdown.dropdown-right .dropdown-right-menu {
-  top: -140%;
-  right: 210%;
+  top: -170%;
+  right: 250%;
+}
+
+.no-comment-area {
+  height: 100%;
+  color: #272343;
+}
+
+.user-name-left {
+  margin-right: 10px;
+  @media screen and (max-width: 767px) {
+    margin-right: 0;
+  }
+}
+
+.user-name-right {
+  margin-left: 10px;
+  @media screen and (max-width: 767px) {
+    margin-left: 0;
+  }
+}
+
+.comment-text {
+  display: block;
 }

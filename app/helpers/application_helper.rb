@@ -10,4 +10,33 @@ module ApplicationHelper
   def error_if(object, attribute)
     object.errors.include?(attribute) ? "error" : ""
   end
+
+  def default_meta_tags
+    {
+      site: "つづる自分史 | 人生を振り返る旅に出よう",
+      title: "つづる自分史 | 人生を振り返る旅に出よう",
+      reverse: true,
+      charset: "utf-8",
+      separator: "|",
+      description: "人生を振り返る旅に出よう",
+      keywords: "自分史",
+      canonical: request.original_url,
+      noindex: ! Rails.env.production?,
+      icon: image_url("favicon/favicon.ico"),
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: "website",
+        url: request.original_url,
+        image: image_url("ogp/ogp.png"),
+        locale: "ja_JP",
+      },
+      twitter: {
+        card: "summary_large_image",
+        site: "@webpg_jun",
+        image: image_url("ogp/ogp.png")
+      }
+    }
+  end
 end

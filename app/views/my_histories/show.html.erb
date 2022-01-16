@@ -1,22 +1,31 @@
+<% content_for(:title, "#{@user.name}さんの自分史") %>
 <main class="wrap-content">
-  <h1 class="title has-text-centered my-6 ft-size-md">
+  <h1 class="title my-history-title has-text-centered my-6 ft-size-md">
     <%= @my_history.title %>
   </h1>
   <!-- グラフ -->
   <div class="columns is-centered is-mobile">
     <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd">
-      <canvas id="myChart"></canvas>
+      <canvas id="myChart" data-labels="<%= @graph_events.keys %>" data-data="<%= @graph_events.values %>"></canvas>
     </div>
   </div>
-  <!-- 各種リンク -->
-  <div class="container is-max-widescreen">
-    <%= render "link", my_history: @my_history %>
-  </div>
-
+  <!-- ダウンロードボタン -->
+  <% if logged_in? && current_user.own?(@my_history) %>
+    <%= render "download" %>
+  <% end %>
   <!-- 出来事一覧 -->
-  <h2 class="title subtitle has-text-centered my-6 ft-size-md">出来事一覧</h2>
+  <div>
+    <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
+      出来事一覧
+      <% if logged_in? && current_user.own?(@my_history) %>
+        <span class="show-page-edit-link">
+          <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
+        </span>
+      <% end %>
+    </h2>
+  </div>
   <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+    <div class="column my_history_list pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
         <% if @group_events.empty? %>
           <p class="is-size-4 has-text-centered">
@@ -28,178 +37,35 @@
       </div>
     </div>
   </div>
-
-  <!-- コメントエリア -->
-  <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-      <section id="main" >
-        <div class="msg-info">
-          <div class="avatar-img">
-            <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
-            <br>
-          </div>
-          <div class="avatar-info">
-            ユーザー名：<%= @user.name %><br>
-            年齢：<%= @user.calc_age %><br>
-            性別：<%= @user.gender_i18n %><br>
-          </div>
-        </div>
-        <div class="area-bord" id="js-scroll-bottom">
-          <div class="msg-cnt msg-left">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキスト
+  <% if logged_in? %>
+    <div class="columns my-6 is-centered is-mobile">
+      <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+        <section id="main">
+          <div class="msg-info">
+            <div class="avatar-img">
+              <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
               <br>
-              <span class="mt-2 date">佐藤はるき <br> 2021/10/30</span>
-            </p>
-          </div>
-          <div class="msg-cnt msg-right">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
             </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
-              <br>
-              <span class="mt-2 has-text-right date">田中健 <br> 2021/10/30</span>
-            </p>
-
-            <div class="dropdown is-right dropdown-right is-active">
-              <div class="dropdown-trigger">
-                <span class="icon is-small">
-                  <i class="fa fa-ellipsis-h edit-comment-icon" aria-hidden="true"></i>
-                </span>
-              </div>
-              <div class="dropdown-menu dropdown-right-menu" id="dropdown-menu5" role="menu">
-                <div class="dropdown-content">
-                  <div class="dropdown-item">
-                    <button class="button is-primary is-small mr-2">編集</button>
-                    <button class="button is-link is-small">削除</button>
-                  </div>
-                </div>
-              </div>
+            <div class="avatar-info">
+              ユーザー名：<%= @user.name %><br>
+              年齢：<%= @user.calc_age %>歳<br>
+              性別：<%= @user.gender_i18n %><br>
             </div>
-
           </div>
-          <div class="msg-cnt msg-left">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
-              <span class="mt-2 date">2021/10/30</span>
-            </p>
-          </div>
-          <div class="msg-cnt msg-right">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
-              <span class="mt-2 has-text-right date">2021/10/30</span>
-            </p>
-          </div>
-          <div class="msg-cnt msg-left">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
-              <span class="mt-2 date">2021/10/30</span>
-            </p>
-          </div>
-          <div class="msg-cnt msg-right">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキ
-              <span class="mt-2 has-text-right date">2021/10/30</span>
-            </p>
-          </div>
-          <div class="msg-cnt msg-left">
-            <div class="avatar">
-              <img src="/assets/no_image.png" alt="" class="avatar">
-            </div>
-            <p class="msg-inrTxt">
-              <span class="triangle"></span>
-              サンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサンプルテキストサ
-              <span class="mt-2 date">2021/10/30</span>
-            </p>
-          </div>
-        </div>
-        <div class="area-send-msg">
-          <textarea name="" id="" cols="30" rows="3"></textarea>
-          <input type="submit" value="送信" class="button is-btn-edit btn-design has-text-weight-semibold">
-        </div>
-      </section>
+            <!-- コメントエリア -->
+            <%= render "comments/comments", { comments: @comments } %>
+            <!-- コメント入力フォーム -->
+            <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
+        </section>
+      </div>
     </div>
-  </div>
+  <% end %>
+  <!-- いいねボタン -->
+  <% if logged_in? %>
+    <div id="like">
+      <%= render "like_button", my_history: @my_history %>
+      <span class="like-text">いいね</span>
+    </div>
+  <% end %>
 </main>
-
-<script>
-const ctx = document.getElementById("myChart");
-
-Chart.defaults.font.size = 15;
-
-new Chart(ctx, {
-  type: "line",
-  data: {
-    datasets: [{
-      /* グラフ全体のラベル */
-      label: "充実度",
-      /* グラフのデータ(x軸 & y軸) */
-      data: gon.graph_events,
-      /* 背景色 */
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
-      /* 枠線色 */
-      borderColor: "rgb(255, 99, 132)",
-      /* ポイントを塗りつぶす色 */
-      pointBackgroundColor: "rgb(255, 99, 132)",
-      /* ポイントの枠線色 */
-      pointBorderColor: "#fff",
-      /* ホバー時のポイントの背景色 */
-      pointHoverBackgroundColor: "#fff",
-      /* ホバー時のポイントの枠線色 */
-      pointHoverBorderColor: "rgb(255, 99, 132)",
-    }],
-  },
-  //オプションの設定
-  options: {
-    scales: { // 軸設定
-      x: {
-        display: true,
-        title: {
-          display: true,
-          text: "年齢"
-        },
-      },
-      y: {
-        display: true,
-        title: {
-          display: true,
-          text: "充実度"
-        },
-        min: -100,
-        max: 100,
-      }
-    },
-    elements: {
-      line: {
-        /* 枠線の太さ */
-        borderWidth: 1,
-        tension: 0.1,
-        responsive: true,
-        maintainAspectRatio: false,
-      },
-    },
-  },
-});
-</script>
+<%= javascript_pack_tag "graph/application" %>

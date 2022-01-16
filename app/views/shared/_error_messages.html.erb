@@ -1,5 +1,5 @@
 <% if object.errors.include?(attribute) %>
-  <div class="has-text-danger">
+  <div id="error_message" class="has-text-danger">
     <ul>
       <li><%= object.errors.full_messages_for(attribute).first %></li>
     </ul>

@@ -44,14 +44,13 @@ gem "pagy", "~> 5.6"
 # 検索
 gem "ransack"
 
-# グラフ
-gem "chart-js-rails"
-gem "gon"
-
 # モデル
 gem "enum_help"
 gem "active_model_serializers"
 gem "active_hash"
+
+# SEO
+gem "meta-tags"
 
 group :development, :test do
   # デバッグ

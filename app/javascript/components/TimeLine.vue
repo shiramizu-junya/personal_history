@@ -1,6 +1,9 @@
 <template>
-  <div class="columns my-6 is-centered is-mobile">
-    <div class="column pd-sm is-10-mobile is-three-quarters-tablet is-two-fifths-desktop is-two-thirds-widescreen is-half-fullhd">
+  <div
+    id="vue-time-line"
+    class="columns my-6 is-centered is-mobile"
+  >
+    <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
       <div class="page">
         <div class="timeline">
           <div
@@ -30,22 +33,25 @@
               <article class="media">
                 <div class="media-content">
                   <div class="content">
-                    <div class="columns  is-mobile">
+                    <div class="columns">
                       <div class="column is-9-tablet is-10-desktop is-10-widescreen is-10-fullhd">
                         <h4 class="title is-4">
                           {{ data.title }}
                         </h4>
                       </div>
-                      <div class="column has-text-centered">
-                        <span class="tag is-warning">{{ data.category_name }}</span>
+                      <div class="column has-text-centered category-tag">
+                        <span class="tag is-warning has-text-weight-bold">
+                          {{ data.category_name }}
+                        </span>
                       </div>
                     </div>
                   </div>
                   <div class="content">
                     <div class="columns">
-                      <p class="column timeline-episode">
-                        {{ data.episode }}
-                      </p>
+                      <p
+                        class="column timeline-episode"
+                        v-text="data.episode"
+                      />
                     </div>
                   </div>
                   <nav class="level is-mobile">
