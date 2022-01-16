@@ -26,7 +26,7 @@
 }
 
 /*========================================
-  SNS、いいね、編集、ダウンロードボタン
+  各種ボタン
 ========================================*/
 .my-history-subtitle {
   position: relative;
@@ -58,59 +58,6 @@
   }
 }
 
-#twitter {
-  position: relative;
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  font-weight: 700;
-  background: #656463;
-  border-radius: 100%;
-  text-decoration: none;
-  color: #fff;
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  cursor: pointer;
-  transition: .8s;
-  opacity: 0;
-  visibility: hidden;
-  z-index: 99;
-  opacity: 1;
-  visibility: visible;
-  background-color: #1da1f3;
-  &:hover {
-    background-color: #1A8CD8;
-  }
-  @media screen and (max-width: 768px) {
-    right: 10px;
-  }
-  @media screen and (max-width: 767px) {
-    bottom: 95px;
-    right: 13px;
-  }
-  @media screen and (max-width: 414px) {
-    right: 7px;
-  }
-  @media screen and (max-width: 375px) {
-    right: 3px;
-  }
-}
-
-.fa-twitter {
-  font-size: 25px;
-  position: absolute;
-  top: 10px;
-  left: 24px;
-}
-
-.twitter-text {
-  font-size: 15px;
-  position: absolute;
-  top: 35px;
-  left: 7px;
-}
-
 .button-download {
   @media screen and (max-width: 767px) {
     font-size: 0.8rem;
@@ -121,7 +68,7 @@
   position: relative;
   position: fixed;
   bottom: 20px;
-  right: 150px;
+  right: 50px;
   font-weight: 700;
   border-radius: 100%;
   text-decoration: none;
@@ -140,12 +87,9 @@
   &:hover {
     background-color: #627fa7;
   }
-  @media screen and (max-width: 768px) {
-    right: 135px;
-  }
   @media screen and (max-width: 414px) {
     bottom: 95px;
-    right: 90px;
+    right: 10px;
   }
 }
 

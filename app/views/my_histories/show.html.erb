@@ -1,3 +1,4 @@
+<% content_for(:title, "#{@user.name}さんの自分史") %>
 <main class="wrap-content">
   <h1 class="title my-history-title has-text-centered my-6 ft-size-md">
     <%= @my_history.title %>
@@ -66,12 +67,5 @@
       <span class="like-text">いいね</span>
     </div>
   <% end %>
-  <!-- Twitter -->
-  <div id="twitter">
-    <div>
-      <i class="fab fa-twitter"></i>
-    </div>
-    <span class="twitter-text">ツイート</span>
-  </div>
 </main>
 <%= javascript_pack_tag "graph/application" %>

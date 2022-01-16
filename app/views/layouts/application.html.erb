@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= page_title(yield(:title)) %></title>
-    <%= favicon_link_tag("favicon/favicon.ico") %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= display_meta_tags(default_meta_tags) %>
+    <%= favicon_link_tag("favicon/favicon.ico") %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_pack_tag "application" %>
   </head>

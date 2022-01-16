@@ -49,6 +49,9 @@ gem "enum_help"
 gem "active_model_serializers"
 gem "active_hash"
 
+# SEO
+gem "meta-tags"
+
 group :development, :test do
   # デバッグ
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
