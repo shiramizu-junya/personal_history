@@ -8,6 +8,7 @@ ja:
     age: "年齢"
     edit: "編集"
     post: "投稿"
+    password_reset: "パスワードリセット"
     message:
       require_login: "ログインしてください。"
       created: "%{item}を作成しました。"
@@ -26,6 +27,8 @@ ja:
   user_sessions:
     new:
       title: "ログイン"
+      to_register_page: "アカウントをお持ちでない方はこちら"
+      password_forget: "パスワードをお忘れの方はこちら"
     create:
       success: "ログインしました。"
       fail: "ログインに失敗しました。"
@@ -50,3 +53,14 @@ ja:
       select_file: "ファイルを選択"
     show:
       title: "マイページ"
+  password_resets:
+    new:
+      title: "パスワードリセット申請"
+      submit: "送信"
+    edit:
+      title: "パスワードリセット"
+    create:
+      success: "パスワードリセット手順を送信しました"
+    update:
+      success: "パスワードを変更しました"
+      fail: "パスワードの変更に失敗しました"

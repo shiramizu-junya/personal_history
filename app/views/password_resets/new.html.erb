@@ -1,0 +1,24 @@
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm form-wrap is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+      <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
+      <%= form_with url: password_resets_path, local: true do |f| %>
+        <div class="field mb-5">
+          <%= f.label :email, User.human_attribute_name(:email), class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.email_field :email, class: "input", placeholder: "***@example.com" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+        <div class="field has-text-centered mb-5">
+          <div class="control">
+            <%= f.submit t("password_resets.new.submit"), class: "button is-btn-login btn-design has-text-weight-semibold" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

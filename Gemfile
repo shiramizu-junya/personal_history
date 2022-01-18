@@ -52,6 +52,9 @@ gem "active_hash"
 # SEO
 gem "meta-tags"
 
+# 環境毎の定数管理
+gem "config"
+
 group :development, :test do
   # デバッグ
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
@@ -63,6 +66,8 @@ group :development, :test do
   gem "factory_bot_rails"
   # ダミーデータ
   gem "faker"
+  # メール
+  gem "letter_opener_web"
 end
 
 group :development do

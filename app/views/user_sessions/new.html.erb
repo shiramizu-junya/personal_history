@@ -36,10 +36,10 @@
       <% end %>
       <div class="has-text-centered mb-4">
         <p class="mb-4 ft-size-sm has-link">
-          <%= link_to "アカウントをお持ちでない方はこちら", new_user_path %>
+          <%= link_to t( ".to_register_page"), new_user_path %>
         </p>
         <p class="ft-size-sm has-link">
-          <a href="#">パスワードを忘れた方はこちら</a>
+          <%= link_to (t ".password_forget"), new_password_reset_path %>
         </p>
       </div>
     </div>

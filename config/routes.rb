@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Topページ
   root "static_pages#top"
   # ユーザー登録関係
@@ -14,6 +15,7 @@ Rails.application.routes.draw do
     # コメント関係
     resources :comments, only: %i[create destroy]
   end
+  resources :password_resets, only: %i[new create edit update]
   # いいね関係
   resources :likes, only: %i[create destroy]
   # API通信関係

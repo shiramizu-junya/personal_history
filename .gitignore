@@ -43,3 +43,7 @@ yarn-debug.log*
 
 # image
 app/assets/images/seeds/*
+
+config/settings.local.yml
+config/settings/*.local.yml
+config/environments/*.local.yml
