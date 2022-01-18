@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     # コメント関係
     resources :comments, only: %i[create destroy]
   end
+  # パスワードリマインダー
   resources :password_resets, only: %i[new create edit update]
   # いいね関係
   resources :likes, only: %i[create destroy]

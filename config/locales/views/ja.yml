@@ -4,7 +4,7 @@ ja:
     register: "登録"
     logout: "ログアウト"
     signup: "新規登録"
-    edit: "更新"
+    update: "更新"
     age: "年齢"
     edit: "編集"
     post: "投稿"
