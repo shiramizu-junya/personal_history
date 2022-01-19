@@ -16,6 +16,7 @@ module ApplicationHelper
       site: "つづる自分史 | 人生を振り返る旅に出よう",
       title: "つづる自分史 | 人生を振り返る旅に出よう",
       reverse: true,
+      separator: "|",
       charset: "utf-8",
       separator: "|",
       description: "人生を振り返る旅に出よう",
@@ -23,6 +24,10 @@ module ApplicationHelper
       canonical: request.original_url,
       noindex: ! Rails.env.production?,
       icon: image_url("favicon/favicon.ico"),
+      icon: [
+        { href: image_url("favicon/favicon.ico") },
+        # { href: image_url('icon.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/jpg' },
+      ],
       og: {
         site_name: :site,
         title: :title,

@@ -55,6 +55,9 @@ gem "meta-tags"
 # 環境毎の定数管理
 gem "config"
 
+# 外部ストレージ設定
+gem "fog-aws"
+
 group :development, :test do
   # デバッグ
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
