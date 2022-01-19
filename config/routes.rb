@@ -22,7 +22,6 @@ Rails.application.routes.draw do
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]
-    resources :categories, only: %i[index]
     resources :events, only: %i[create update destroy]
     resource :my_history, only: %i[edit create update]
   end

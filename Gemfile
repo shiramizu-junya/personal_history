@@ -47,7 +47,6 @@ gem "ransack"
 # モデル
 gem "enum_help"
 gem "active_model_serializers"
-gem "active_hash"
 
 # SEO
 gem "meta-tags"

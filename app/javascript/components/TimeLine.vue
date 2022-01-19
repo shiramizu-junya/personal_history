@@ -39,11 +39,6 @@
                           {{ data.title }}
                         </h4>
                       </div>
-                      <div class="column has-text-centered category-tag">
-                        <span class="tag is-warning has-text-weight-bold">
-                          {{ data.category_name }}
-                        </span>
-                      </div>
                     </div>
                   </div>
                   <div class="content">

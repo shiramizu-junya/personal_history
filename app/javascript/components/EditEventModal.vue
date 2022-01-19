@@ -57,43 +57,6 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">カテゴリー</label>
-            <div
-              class="select"
-            >
-              <select
-                v-if="editEventTarget.data"
-                id="category"
-                v-model="editEventTarget.data.category_id"
-                :class="{ 'error' : formError['category_id'] }"
-                name="category_id"
-              >
-                <option
-                  disabled
-                  value=""
-                >
-                  選択して下さい
-                </option>
-                <option
-                  v-for="category in getCategorie"
-                  :key="category.id"
-                  :value="category.id"
-                >
-                  {{ category.name }}
-                </option>
-              </select>
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['category_id']"
-                >
-                  {{ formError["category_id"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="field">
             <label class="label">エピソード</label>
             <div class="control">
               <textarea
@@ -171,11 +134,6 @@ export default {
       editEventTarget: {},
       formError: {}
     };
-  },
-  computed: {
-    getCategorie: function() {
-      return this.$store.getters.getCategory;
-    },
   },
   watch: {
     event: function(newEvent){

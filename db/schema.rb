@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2022_01_17_064059) do
   create_table "events", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.integer "age", null: false
     t.string "title", null: false
-    t.integer "category_id", null: false
     t.text "episode", null: false
     t.integer "happiness", null: false
     t.bigint "my_history_id", null: false

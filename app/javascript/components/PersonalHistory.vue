@@ -104,9 +104,6 @@ export default {
     this.$store.dispatch("getUserProfile").then(() => {
       this.profileAndTitleModalFlagChange();
     });
-
-    this.$store.dispatch("getCategory").then(() => {
-    });
   },
   methods: {
     profileAndTitleModalFlagChange() {
