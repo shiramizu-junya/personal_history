@@ -13,8 +13,7 @@ Vue.use(
     csrfToken: csrfToken,
   },
 );
-Vue.use( VueJsDialog );
-
+Vue.use(VueJsDialog);
 Vue.config.productionTip = false;
 
 document.addEventListener("DOMContentLoaded", () => {

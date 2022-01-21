@@ -12,48 +12,60 @@
       </header>
       <section class="modal-card-body">
         <form>
-          <div class="field">
-            <label class="label">年齢</label>
-            <div class="control">
-              <input
-                v-if="editEventTarget.data"
-                v-model="editEventTarget.data.age"
-                :class="{ 'error' : formError['age'] }"
-                class="input"
-                type="number"
-                name="age"
-              >
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="field">
+                <label class="label">年齢</label>
+                <div class="control">
+                  <input
+                    v-if="editEventTarget.data"
+                    v-model="editEventTarget.data.age"
+                    :class="{ 'error' : formError['age'] }"
+                    class="input"
+                    type="number"
+                    name="age"
+                  >
+                </div>
+                <p class="help">
+                  現在年齢より過去の年齢を入力してください。
+                </p>
+                <div class="has-text-danger">
+                  <ul>
+                    <li
+                      v-if="!!formError['age']"
+                    >
+                      {{ formError["age"][0] }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['age']"
-                >
-                  {{ formError["age"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">タイトル</label>
-            <div class="control">
-              <input
-                v-if="editEventTarget.data"
-                v-model="editEventTarget.data.title"
-                :class="{ 'error' : formError['title'] }"
-                class="input"
-                type="text"
-                name="title"
-              >
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['title']"
-                >
-                  {{ formError["title"][0] }}
-                </li>
-              </ul>
+            <div class="column">
+              <div class="field">
+                <label class="label">タイトル</label>
+                <div class="control">
+                  <input
+                    v-if="editEventTarget.data"
+                    v-model="editEventTarget.data.title"
+                    :class="{ 'error' : formError['title'] }"
+                    class="input"
+                    type="text"
+                    name="title"
+                  >
+                </div>
+                <p class="help">
+                  100% 〜 -100%まで入力できます。
+                </p>
+                <div class="has-text-danger">
+                  <ul>
+                    <li
+                      v-if="!!formError['title']"
+                    >
+                      {{ formError["title"][0] }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div class="field">
