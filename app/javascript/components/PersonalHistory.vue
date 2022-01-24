@@ -1,7 +1,11 @@
 <template>
   <div>
-    <history-card
+    <graph
       :text-judgement-flag="textJudgementFlag"
+      :graph-label="graphLabel"
+      :graph-data="graphData"
+    />
+    <history-card
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
       @addEventFlagChange="addEventFlagChange"
@@ -43,6 +47,7 @@
 </template>
 
 <script>
+import Graph from "./Graph.vue";
 import HistoryCard from "./HistoryCard.vue";
 import ProfileModal from "./ProfileModal.vue";
 import CreateMyHistoryModal from "./CreateMyHistoryModal.vue";
@@ -55,6 +60,7 @@ import _ from "lodash";
 export default {
   name: "PersonalHistory",
   components: {
+    Graph,
     HistoryCard,
     ProfileModal,
     CreateMyHistoryModal,
@@ -77,6 +83,8 @@ export default {
         key: null,
         index: null,
       },
+      graphLabel: [],
+      graphData: [],
     };
   },
   computed: {
@@ -89,6 +97,12 @@ export default {
     getEvents: function() {
       return this.$store.getters.getEvents;
     },
+    getGraphLabel: function() {
+      return this.$store.getters.getGraphLabel;
+    },
+    getGraphData: function() {
+      return this.$store.getters.getGraphData;
+    }
   },
   mounted() {
     // 新規作成 or 編集で取得するデータを変える
@@ -96,6 +110,8 @@ export default {
     if(last_path_name === "edit"){
       // 自分史の情報とイベント情報
       this.$store.dispatch("getMyHistory").then(() => {
+        this.graphLabel = this.getGraphLabel;
+        this.graphData = this.getGraphData;
         this.changeTimeLineFlag();
       });
       this.textJudgementFlag = false;

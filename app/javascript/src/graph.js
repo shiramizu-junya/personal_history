@@ -4,7 +4,6 @@ global.Chart = Chart;
 
 $(function() {
   const ctx = document.getElementById("myChart");
-  // debugger;
   const type = "line";
   let datasets = {
     labels: JSON.parse(ctx.dataset.labels),
@@ -65,7 +64,6 @@ $(function() {
       ticks: {
         stepSize: 20,
         callback: function (value) {
-          // console.log(this.getMinMax());
           return value + "%";
         },
         color: function (context) {

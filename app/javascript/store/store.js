@@ -21,6 +21,8 @@ export default new Vuex.Store({
     },
     // 自分史のイベント情報
     events: {},
+    graph_label: [],
+    graph_data: [],
   },
   mutations: {
     setUserProfile(state, user) {
@@ -28,6 +30,10 @@ export default new Vuex.Store({
     },
     setMyHistory(state, my_history) {
       state.my_history = my_history;
+    },
+    setGraphEvents(state, graph_events) {
+      state.graph_label = Object.keys(graph_events);
+      state.graph_data = Object.values(graph_events);
     },
     setEvent(state, event) {
       const age = event.age.toString();
@@ -42,7 +48,7 @@ export default new Vuex.Store({
       }
     },
     setEventEdit(state, events) {
-      for (let i = 0; i < events.length; i++){
+      for (let i = 0; i < events.length; i++) {
         let event = events[i];
         const age = event.age.toString();
 
@@ -101,6 +107,7 @@ export default new Vuex.Store({
           my_history["title"] = response.data.title;
           commit("setEventEdit", response.data.events);
           commit("setMyHistory", my_history);
+          commit("setGraphEvents", response.data.graph_events);
           resolve();
         });
       });
@@ -239,6 +246,12 @@ export default new Vuex.Store({
     },
     getEventsCount: function (state) {
       return Object.keys(state.events).length;
+    },
+    getGraphLabel: function (state) {
+      return state.graph_label;
+    },
+    getGraphData: function (state) {
+      return state.graph_data;
     },
   },
 });
