@@ -21,8 +21,6 @@ export default new Vuex.Store({
     },
     // 自分史のイベント情報
     events: {},
-    graph_label: [],
-    graph_data: [],
   },
   mutations: {
     setUserProfile(state, user) {
@@ -107,8 +105,7 @@ export default new Vuex.Store({
           my_history["title"] = response.data.title;
           commit("setEventEdit", response.data.events);
           commit("setMyHistory", my_history);
-          commit("setGraphEvents", response.data.graph_events);
-          resolve();
+          resolve(response.data.graph_events);
         });
       });
     },
@@ -246,12 +243,6 @@ export default new Vuex.Store({
     },
     getEventsCount: function (state) {
       return Object.keys(state.events).length;
-    },
-    getGraphLabel: function (state) {
-      return state.graph_label;
-    },
-    getGraphData: function (state) {
-      return state.graph_data;
     },
   },
 });

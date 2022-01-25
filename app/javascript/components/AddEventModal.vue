@@ -147,10 +147,12 @@ export default {
     addMyHistoryEvent() {
       this.$store.dispatch("addMyHistoryEvent", this.addEvent)
         .then(() => {
-          for (let key in this.addEvent) {
-            this.addEvent[key] = "";
-          }
+          this.addEvent["age"] = "";
+          this.addEvent["title"] = "";
+          this.addEvent["episode"] = "";
+          this.addEvent["happiness"] = "";
           this.formError = {};
+          this.$emit("addEventSuccessGetGraphData");
           this.$emit("addEventSuccess");
         })
         .catch((error) => {

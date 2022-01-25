@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="columns my-6 is-centered is-mobile">
+    <div class="columns mt-2 mb-1 is-centered is-mobile">
       <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
         <h1 class="title has-text-centered mb-5">
           {{ textJudgementFlag ? "自分史作成" : "自分史編集" }}
@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="columns is-centered is-mobile">
-      <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-9-fullhd">
+      <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-11-fullhd">
         <LineChart v-bind="lineChartProps" />
       </div>
     </div>
@@ -17,7 +17,7 @@
 
 <script>
 import { LineChart, useLineChart } from "vue-chart-3";
-import { ref, computed } from "@vue/composition-api";
+import { computed } from "@vue/composition-api";
 import { Chart, registerables } from "chart.js";
 Chart.register(...registerables);
 
@@ -44,16 +44,6 @@ export default {
     }
   },
   setup(props) {
-    /* propsを受け取ることができる */
-    console.log(props.graphData);
-    Chart.defaults.font.size = 20;
-    /*
-      ref は引数を受け取り、value プロパティを持つオブジェクトに包んで返します。
-      このオブジェクトは、reactive 変数の値へのアクセスや変異に使用することができます。
-    */
-    let label = ref(this.getGraphLabel);
-    let data = ref(this.getGraphData);
-
     const options = computed(() => ({
       scales: {
         x: {
@@ -143,15 +133,17 @@ export default {
       onResize: function () {
         if (window.innerWidth <= 767) {
           Chart.defaults.font.size = 10;
+        }else{
+          Chart.defaults.font.size = 20;
         }
       },
     }));
 
     let chartData = computed(() => ({
-      labels: label.value, // 動的に変える
+      labels: props.graphLabel,
       datasets: [
         {
-          data: data.value, // 動的に変える
+          data: props.graphData,
           label: "充実度",
           backgroundColor: "rgba(255, 99, 132, 0.2)",
           borderColor: "rgb(255, 99, 132)",
@@ -171,16 +163,6 @@ export default {
     });
 
     return { lineChartProps, lineChartRef };
-  },
-  computed: {
-    getGraphLabel: function() {
-      console.log("getGraphLabel");
-      return this.$store.getters.getGraphLabel;
-    },
-    getGraphData: function() {
-      console.log("getGraphData");
-      return this.$store.getters.getGraphData;
-    },
   },
 };
 </script>

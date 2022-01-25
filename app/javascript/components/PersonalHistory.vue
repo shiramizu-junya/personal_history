@@ -25,6 +25,7 @@
     <add-event-modal
       :class="{ 'is-active' : addEventFlag }"
       @canselAddEvent="addEventFlagChange"
+      @addEventSuccessGetGraphData="getGraphData"
       @addEventSuccess="addEventFlagChange"
     />
     <edit-event-modal
@@ -56,6 +57,7 @@ import TimeLine from "./TimeLine.vue";
 import AddEventModal from "./AddEventModal.vue";
 import EditEventModal from "./EditEventModal.vue";
 import _ from "lodash";
+import axios from "axios";
 
 export default {
   name: "PersonalHistory",
@@ -97,26 +99,18 @@ export default {
     getEvents: function() {
       return this.$store.getters.getEvents;
     },
-    getGraphLabel: function() {
-      return this.$store.getters.getGraphLabel;
-    },
-    getGraphData: function() {
-      return this.$store.getters.getGraphData;
-    }
   },
   mounted() {
     // 新規作成 or 編集で取得するデータを変える
     let last_path_name = window.location.pathname.split("/").pop();
     if(last_path_name === "edit"){
-      // 自分史の情報とイベント情報
-      this.$store.dispatch("getMyHistory").then(() => {
-        this.graphLabel = this.getGraphLabel;
-        this.graphData = this.getGraphData;
+      this.$store.dispatch("getMyHistory").then((graph_data) => {
+        this.graphLabel = Object.keys(graph_data);
+        this.graphData = Object.values(graph_data);
         this.changeTimeLineFlag();
       });
       this.textJudgementFlag = false;
     }
-
     this.$store.dispatch("getUserProfile").then(() => {
       this.profileAndTitleModalFlagChange();
     });
@@ -156,6 +150,12 @@ export default {
         this.event = { ...this.event, data: _.cloneDeep(this.getEvents[key].data[index]), key: key, index: index };
       }
       this.editEventFlag = !this.editEventFlag;
+    },
+    getGraphData() {
+      axios.get("/api/my_history/graph_data").then((response) => {
+        this.graphLabel = Object.keys(response.data);
+        this.graphData = Object.values(response.data);
+      });
     }
   }
 };

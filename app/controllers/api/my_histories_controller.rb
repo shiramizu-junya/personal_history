@@ -1,5 +1,5 @@
 class Api::MyHistoriesController < ApplicationController
-  before_action :set_my_history, only: %i[edit update]
+  before_action :set_my_history, only: %i[edit update graph_data]
 
   def edit
     render json: @my_history, each_serializer: MyHistorySerializer, include: %i[events], status: :ok
@@ -23,6 +23,12 @@ class Api::MyHistoriesController < ApplicationController
     else
       render json: { errors: @my_history.errors.keys.map { |key| [key, @my_history.errors.full_messages_for(key)]}.to_h }, status: :bad_request
     end
+  end
+
+  def graph_data
+    group_events = @my_history.events.order(age: :asc).group_by &:age
+    @graph_events = Event.age_happiness_average(group_events)
+    render json: @graph_events, status: :ok
   end
 
   private
