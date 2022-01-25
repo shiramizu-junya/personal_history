@@ -198,6 +198,7 @@ export default {
         .then(() => {
           this.$store.dispatch("eventDelete", { data: data, key: key, index: index })
             .then(() => {
+              this.$emit("deleteEventSuccessGetGraphData");
               this.$emit("deleteEventSuccess");
             });
         })

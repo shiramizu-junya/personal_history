@@ -157,6 +157,7 @@ export default {
       this.$store.dispatch("editEvent", this.editEventTarget)
         .then(() => {
           this.formError = {};
+          this.$emit("editEventSuccessGetGraphData");
           this.$emit("editEventSuccess");
         })
         .catch((error) => {

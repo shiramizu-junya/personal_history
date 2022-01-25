@@ -31,6 +31,7 @@
     <edit-event-modal
       :class="{ 'is-active' : editEventFlag }"
       :event="event"
+      @editEventSuccessGetGraphData="getGraphData"
       @editEventSuccess="editEventFlagChange"
       @canselEditEvent="editEventFlagChange"
     />
@@ -38,6 +39,7 @@
       v-if="timeLineFlag"
       :text-judgement-flag="textJudgementFlag"
       @editEventFlagChange="editEventFlagChange"
+      @deleteEventSuccessGetGraphData="getGraphData"
       @deleteEventSuccess="changeTimeLineFlag"
     />
     <profile-modal
