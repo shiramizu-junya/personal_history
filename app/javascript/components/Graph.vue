@@ -44,6 +44,7 @@ export default {
     }
   },
   setup(props) {
+    // console.log(props);
     const options = computed(() => ({
       scales: {
         x: {
@@ -148,7 +149,7 @@ export default {
       },
     }));
 
-    let plugins = computed(() => ({
+    let plugins = [{
       id: "custom_canvas_background_color",
       beforeDraw: (chart) => {
         const ctx = chart.canvas.getContext("2d");
@@ -158,7 +159,7 @@ export default {
         ctx.fillRect(0, 0, chart.width, chart.height);
         ctx.restore();
       },
-    }));
+    }];
 
     let chartData = computed(() => ({
       labels: props.graphLabel,
