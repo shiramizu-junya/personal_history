@@ -8,7 +8,7 @@
       </div>
     </div>
     <div class="columns is-centered is-mobile">
-      <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-11-fullhd">
+      <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-10-fullhd">
         <LineChart v-bind="lineChartProps" />
       </div>
     </div>
@@ -62,6 +62,15 @@ export default {
             callback: function (value) {
               return `${this.getLabelForValue(value)}歳`;
             },
+            color: function () {
+              return "#484848";
+            },
+          },
+          grid: {
+            drawBorder: false,
+            color: function () {
+              return "#adadb0";
+            },
           },
         },
         y: {
@@ -87,7 +96,7 @@ export default {
               if (context.tick.value === 0) {
                 return "#4557BB";
               }
-              return "#6A6A6A";
+              return "#484848";
             },
           },
           grid: {
@@ -96,7 +105,7 @@ export default {
               if (context.tick.value === 0) {
                 return "#4557BB";
               }
-              return "#E1E1E2";
+              return "#adadb0";
             },
           },
         },
@@ -139,6 +148,18 @@ export default {
       },
     }));
 
+    let plugins = computed(() => ({
+      id: "custom_canvas_background_color",
+      beforeDraw: (chart) => {
+        const ctx = chart.canvas.getContext("2d");
+        ctx.save();
+        ctx.globalCompositeOperation = "destination-over";
+        ctx.fillStyle = "#fff";
+        ctx.fillRect(0, 0, chart.width, chart.height);
+        ctx.restore();
+      },
+    }));
+
     let chartData = computed(() => ({
       labels: props.graphLabel,
       datasets: [
@@ -160,6 +181,7 @@ export default {
     let { lineChartProps, lineChartRef } = useLineChart({
       chartData,
       options,
+      plugins
     });
 
     return { lineChartProps, lineChartRef };
@@ -177,7 +199,7 @@ export default {
   justify-content: center;
 }
 
-.chart-container {
+div.chart-container {
   position: relative;
   width: 100%;
   height: 100%;
@@ -193,7 +215,7 @@ export default {
 }
 
 canvas {
-  height: 760px;
+  height: 595px;
   @media screen and (max-width: 1024px) {
     height: 400px;
   }
