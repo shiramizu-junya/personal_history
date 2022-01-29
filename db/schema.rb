@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_064059) do
+ActiveRecord::Schema.define(version: 2022_01_26_050620) do
 
   create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin", force: :cascade do |t|
     t.string "body"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_064059) do
     t.string "uuid", null: false
     t.integer "status", default: 0, null: false
     t.string "title"
+    t.string "graph_image"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
