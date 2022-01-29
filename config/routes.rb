@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     resource :my_history, only: %i[edit create update] do
       collection do
         get :graph_data
+        patch :graph_image_upload
       end
     end
   end

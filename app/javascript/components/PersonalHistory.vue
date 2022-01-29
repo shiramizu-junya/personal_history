@@ -4,6 +4,8 @@
       :text-judgement-flag="textJudgementFlag"
       :graph-label="graphLabel"
       :graph-data="graphData"
+      :graph-image-flag="graphImageFlag"
+      @changeGraphImageFlag="changeGraphImageFlag"
     />
     <history-card
       @myHistoryFlagChange="myHistoryFlagChange"
@@ -82,6 +84,7 @@ export default {
       addEventFlag: false,
       editEventFlag: false,
       textJudgementFlag: true,
+      graphImageFlag: false,
       event: {
         data: {},
         key: null,
@@ -157,7 +160,11 @@ export default {
       axios.get("/api/my_history/graph_data").then((response) => {
         this.graphLabel = Object.keys(response.data);
         this.graphData = Object.values(response.data);
+        this.graphImageFlag = true;
       });
+    },
+    changeGraphImageFlag() {
+      this.graphImageFlag = false;
     }
   }
 };

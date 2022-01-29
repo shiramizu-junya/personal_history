@@ -42,15 +42,15 @@
             </div>
             <div class="column">
               <div class="field">
-                <label class="label">タイトル</label>
+                <label class="label">充実度</label>
                 <div class="control">
                   <input
                     v-if="editEventTarget.data"
-                    v-model="editEventTarget.data.title"
-                    :class="{ 'error' : formError['title'] }"
+                    v-model="editEventTarget.data.happiness"
+                    :class="{ 'error' : formError['happiness'] }"
                     class="input"
-                    type="text"
-                    name="title"
+                    type="number"
+                    name="happiness"
                   >
                 </div>
                 <p class="help">
@@ -59,13 +59,35 @@
                 <div class="has-text-danger">
                   <ul>
                     <li
-                      v-if="!!formError['title']"
+                      v-if="!!formError['happiness']"
                     >
-                      {{ formError["title"][0] }}
+                      {{ formError["happiness"][0] }}
                     </li>
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">タイトル</label>
+            <div class="control">
+              <input
+                v-if="editEventTarget.data"
+                v-model="editEventTarget.data.title"
+                :class="{ 'error' : formError['title'] }"
+                class="input"
+                type="text"
+                name="title"
+              >
+            </div>
+            <div class="has-text-danger">
+              <ul>
+                <li
+                  v-if="!!formError['title']"
+                >
+                  {{ formError["title"][0] }}
+                </li>
+              </ul>
             </div>
           </div>
           <div class="field">
@@ -85,28 +107,6 @@
                   v-if="!!formError['episode']"
                 >
                   {{ formError["episode"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">充実度</label>
-            <div class="control">
-              <input
-                v-if="editEventTarget.data"
-                v-model="editEventTarget.data.happiness"
-                :class="{ 'error' : formError['happiness'] }"
-                class="input"
-                type="number"
-                name="happiness"
-              >
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['happiness']"
-                >
-                  {{ formError["happiness"][0] }}
                 </li>
               </ul>
             </div>

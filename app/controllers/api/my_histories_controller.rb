@@ -1,5 +1,5 @@
 class Api::MyHistoriesController < ApplicationController
-  before_action :set_my_history, only: %i[edit update graph_data]
+  before_action :set_my_history, only: %i[edit update graph_data graph_image_upload]
 
   def edit
     render json: @my_history, each_serializer: MyHistorySerializer, include: %i[events], status: :ok
@@ -29,6 +29,12 @@ class Api::MyHistoriesController < ApplicationController
     group_events = @my_history.events.order(age: :asc).group_by &:age
     @graph_events = Event.age_happiness_average(group_events)
     render json: @graph_events, status: :ok
+  end
+
+  def graph_image_upload
+    @my_history.graph_image = params[:my_history][:graph_image]
+    @my_history.save!
+    head :ok
   end
 
   private

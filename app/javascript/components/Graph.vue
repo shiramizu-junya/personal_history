@@ -17,8 +17,9 @@
 
 <script>
 import { LineChart, useLineChart } from "vue-chart-3";
-import { computed } from "@vue/composition-api";
+import { computed, watchEffect, ref } from "@vue/composition-api";
 import { Chart, registerables } from "chart.js";
+import axios from "axios";
 Chart.register(...registerables);
 
 export default {
@@ -41,10 +42,16 @@ export default {
     {
       type: Array,
       required: true,
+    },
+    graphImageFlag:
+    {
+      type: Boolean,
+      required: true,
     }
   },
-  setup(props) {
-    // console.log(props);
+  setup(props, context) {
+    let imgData = ref(null);
+
     const options = computed(() => ({
       scales: {
         x: {
@@ -185,7 +192,27 @@ export default {
       plugins
     });
 
-    return { lineChartProps, lineChartRef };
+    watchEffect(
+      () => {
+        if(props.graphImageFlag){
+          setTimeout(function() {
+            imgData.value = lineChartRef.value.chartInstance.toBase64Image("image/jpeg", 1);
+            let obj = {
+              my_history: {
+                graph_image: imgData.value
+              }
+            };
+            axios
+              .patch("/api/my_history/graph_image_upload",
+                obj,
+              ).then(() => {
+                context.emit("changeGraphImageFlag");
+              });
+          }, 1000);
+        }
+      }
+    );
+    return { lineChartProps, lineChartRef, imgData };
   },
 };
 </script>
@@ -216,7 +243,10 @@ div.chart-container {
 }
 
 canvas {
-  height: 595px;
+  height: 750px;
+  @media screen and (max-width: 1500px) {
+    height: 600px;
+  }
   @media screen and (max-width: 1024px) {
     height: 400px;
   }

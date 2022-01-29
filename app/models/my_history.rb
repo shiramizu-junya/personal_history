@@ -1,4 +1,5 @@
 class MyHistory < ApplicationRecord
+  mount_base64_uploader :graph_image, GraphImageUploader
   belongs_to :user
   has_many :events, dependent: :destroy
   has_many :likes, dependent: :destroy
