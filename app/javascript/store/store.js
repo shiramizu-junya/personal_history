@@ -2,7 +2,6 @@ import Vue from "vue/dist/vue.esm";
 import Vuex from "vuex";
 import axios from "axios";
 import _ from "lodash";
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -14,8 +13,6 @@ export default new Vuex.Store({
       gender: null,
       name: null,
     },
-    // カテゴリー情報
-    category: [],
     // 自分史の情報
     my_history: {
       id: null,
@@ -29,13 +26,12 @@ export default new Vuex.Store({
     setUserProfile(state, user) {
       state.profile = user;
     },
-    setCategory(state, category) {
-      for (let i = 0; i < category.length; i++) {
-        Vue.set(state.category, i, category[i].attributes);
-      }
-    },
     setMyHistory(state, my_history) {
       state.my_history = my_history;
+    },
+    setGraphEvents(state, graph_events) {
+      state.graph_label = Object.keys(graph_events);
+      state.graph_data = Object.values(graph_events);
     },
     setEvent(state, event) {
       const age = event.age.toString();
@@ -50,7 +46,7 @@ export default new Vuex.Store({
       }
     },
     setEventEdit(state, events) {
-      for (let i = 0; i < events.length; i++){
+      for (let i = 0; i < events.length; i++) {
         let event = events[i];
         const age = event.age.toString();
 
@@ -109,7 +105,7 @@ export default new Vuex.Store({
           my_history["title"] = response.data.title;
           commit("setEventEdit", response.data.events);
           commit("setMyHistory", my_history);
-          resolve();
+          resolve(response.data.graph_events);
         });
       });
     },
@@ -118,15 +114,6 @@ export default new Vuex.Store({
       return new Promise((resolve) => {
         axios.get("/api/profile").then((response) => {
           commit("setUserProfile", response.data);
-          resolve();
-        });
-      });
-    },
-    // カテゴリーを取得
-    getCategory({ commit }) {
-      return new Promise((resolve) => {
-        axios.get("/api/categories").then((response) => {
-          commit("setCategory", response.data);
           resolve();
         });
       });
@@ -210,7 +197,6 @@ export default new Vuex.Store({
       let key = event.key;
       let index = event.index;
       delete data["id"];
-      delete data["category_name"];
 
       return new Promise((resolve, reject) => {
         axios
@@ -248,9 +234,6 @@ export default new Vuex.Store({
   getters: {
     getUserProfile: function (state) {
       return state.profile;
-    },
-    getCategory: function (state) {
-      return state.category;
     },
     getMyHistory: function (state) {
       return state.my_history;

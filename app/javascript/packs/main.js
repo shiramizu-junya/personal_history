@@ -5,7 +5,11 @@ import axios from "axios";
 import { csrfToken } from "rails-ujs";
 import VueAxiosPlugin from "./plugins/vue-axios";
 import VueJsDialog from "vuejs-dialog";
+import { Chart, registerables } from "chart.js";
+import VueCompositionAPI from "@vue/composition-api";
 
+Chart.register(...registerables);
+Vue.use(VueCompositionAPI);
 Vue.use(
   VueAxiosPlugin,
   {
@@ -13,8 +17,7 @@ Vue.use(
     csrfToken: csrfToken,
   },
 );
-Vue.use( VueJsDialog );
-
+Vue.use(VueJsDialog);
 Vue.config.productionTip = false;
 
 document.addEventListener("DOMContentLoaded", () => {

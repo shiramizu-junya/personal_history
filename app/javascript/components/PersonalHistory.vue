@@ -1,7 +1,13 @@
 <template>
   <div>
-    <history-card
+    <graph
       :text-judgement-flag="textJudgementFlag"
+      :graph-label="graphLabel"
+      :graph-data="graphData"
+      :graph-image-flag="graphImageFlag"
+      @changeGraphImageFlag="changeGraphImageFlag"
+    />
+    <history-card
       @myHistoryFlagChange="myHistoryFlagChange"
       @editMyHistoryFlagChange="editMyHistoryFlagChange"
       @addEventFlagChange="addEventFlagChange"
@@ -21,11 +27,13 @@
     <add-event-modal
       :class="{ 'is-active' : addEventFlag }"
       @canselAddEvent="addEventFlagChange"
+      @addEventSuccessGetGraphData="getGraphData"
       @addEventSuccess="addEventFlagChange"
     />
     <edit-event-modal
       :class="{ 'is-active' : editEventFlag }"
       :event="event"
+      @editEventSuccessGetGraphData="getGraphData"
       @editEventSuccess="editEventFlagChange"
       @canselEditEvent="editEventFlagChange"
     />
@@ -33,6 +41,7 @@
       v-if="timeLineFlag"
       :text-judgement-flag="textJudgementFlag"
       @editEventFlagChange="editEventFlagChange"
+      @deleteEventSuccessGetGraphData="getGraphData"
       @deleteEventSuccess="changeTimeLineFlag"
     />
     <profile-modal
@@ -43,6 +52,7 @@
 </template>
 
 <script>
+import Graph from "./Graph.vue";
 import HistoryCard from "./HistoryCard.vue";
 import ProfileModal from "./ProfileModal.vue";
 import CreateMyHistoryModal from "./CreateMyHistoryModal.vue";
@@ -51,10 +61,12 @@ import TimeLine from "./TimeLine.vue";
 import AddEventModal from "./AddEventModal.vue";
 import EditEventModal from "./EditEventModal.vue";
 import _ from "lodash";
+import axios from "axios";
 
 export default {
   name: "PersonalHistory",
   components: {
+    Graph,
     HistoryCard,
     ProfileModal,
     CreateMyHistoryModal,
@@ -72,11 +84,14 @@ export default {
       addEventFlag: false,
       editEventFlag: false,
       textJudgementFlag: true,
+      graphImageFlag: false,
       event: {
         data: {},
         key: null,
         index: null,
       },
+      graphLabel: [],
+      graphData: [],
     };
   },
   computed: {
@@ -94,18 +109,15 @@ export default {
     // 新規作成 or 編集で取得するデータを変える
     let last_path_name = window.location.pathname.split("/").pop();
     if(last_path_name === "edit"){
-      // 自分史の情報とイベント情報
-      this.$store.dispatch("getMyHistory").then(() => {
+      this.$store.dispatch("getMyHistory").then((graph_data) => {
+        this.graphLabel = Object.keys(graph_data);
+        this.graphData = Object.values(graph_data);
         this.changeTimeLineFlag();
       });
       this.textJudgementFlag = false;
     }
-
     this.$store.dispatch("getUserProfile").then(() => {
       this.profileAndTitleModalFlagChange();
-    });
-
-    this.$store.dispatch("getCategory").then(() => {
     });
   },
   methods: {
@@ -143,6 +155,16 @@ export default {
         this.event = { ...this.event, data: _.cloneDeep(this.getEvents[key].data[index]), key: key, index: index };
       }
       this.editEventFlag = !this.editEventFlag;
+    },
+    getGraphData() {
+      axios.get("/api/my_history/graph_data").then((response) => {
+        this.graphLabel = Object.keys(response.data);
+        this.graphData = Object.values(response.data);
+        this.graphImageFlag = true;
+      });
+    },
+    changeGraphImageFlag() {
+      this.graphImageFlag = false;
     }
   }
 };

@@ -39,11 +39,6 @@
                           {{ data.title }}
                         </h4>
                       </div>
-                      <div class="column has-text-centered category-tag">
-                        <span class="tag is-warning has-text-weight-bold">
-                          {{ data.category_name }}
-                        </span>
-                      </div>
                     </div>
                   </div>
                   <div class="content">
@@ -203,6 +198,7 @@ export default {
         .then(() => {
           this.$store.dispatch("eventDelete", { data: data, key: key, index: index })
             .then(() => {
+              this.$emit("deleteEventSuccessGetGraphData");
               this.$emit("deleteEventSuccess");
             });
         })

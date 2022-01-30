@@ -12,27 +12,62 @@
       </header>
       <section class="modal-card-body">
         <form>
-          <div class="field">
-            <label class="label">年齢</label>
-            <div class="control">
-              <input
-                v-model="addEvent.age"
-                :class="{ 'error' : formError['age'] }"
-                class="input"
-                type="number"
-                name="age"
-              >
+          <div class="columns is-mobile">
+            <div class="column">
+              <div class="field">
+                <label class="label">年齢</label>
+                <div class="control">
+                  <input
+                    v-model="addEvent.age"
+                    :class="{ 'error' : formError['age'] }"
+                    class="input"
+                    type="number"
+                    name="age"
+                  >
+                </div>
+                <p class="help">
+                  現在年齢より過去の年齢を入力してください。
+                </p>
+                <div class="has-text-danger">
+                  <ul>
+                    <li
+                      v-if="!!formError['age']"
+                    >
+                      {{ formError["age"][0] }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['age']"
-                >
-                  {{ formError["age"][0] }}
-                </li>
-              </ul>
+
+            <div class="column">
+              <div class="field">
+                <label class="label">充実度</label>
+                <div class="control">
+                  <input
+                    v-model="addEvent.happiness"
+                    :class="{ 'error' : formError['happiness'] }"
+                    class="input"
+                    type="number"
+                    name="happiness"
+                  >
+                </div>
+                <p class="help">
+                  100% 〜 -100%まで入力できます。
+                </p>
+                <div class="has-text-danger">
+                  <ul>
+                    <li
+                      v-if="!!formError['happiness']"
+                    >
+                      {{ formError["happiness"][0] }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
+
           <div class="field">
             <label class="label">タイトル</label>
             <div class="control">
@@ -55,42 +90,6 @@
             </div>
           </div>
           <div class="field">
-            <label class="label">カテゴリー</label>
-            <div
-              class="select"
-            >
-              <select
-                id="category"
-                v-model="addEvent.category_id"
-                :class="{ 'error' : formError['category_id'] }"
-                name="category_id"
-              >
-                <option
-                  disabled
-                  value=""
-                >
-                  選択して下さい
-                </option>
-                <option
-                  v-for="category in getCategorie"
-                  :key="category.id"
-                  :value="category.id"
-                >
-                  {{ category.name }}
-                </option>
-              </select>
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['category_id']"
-                >
-                  {{ formError["category_id"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="field">
             <label class="label">エピソード</label>
             <div class="control">
               <textarea
@@ -106,27 +105,6 @@
                   v-if="!!formError['episode']"
                 >
                   {{ formError["episode"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="field">
-            <label class="label">充実度</label>
-            <div class="control">
-              <input
-                v-model="addEvent.happiness"
-                :class="{ 'error' : formError['happiness'] }"
-                class="input"
-                type="number"
-                name="happiness"
-              >
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['happiness']"
-                >
-                  {{ formError["happiness"][0] }}
                 </li>
               </ul>
             </div>
@@ -159,26 +137,22 @@ export default {
       addEvent: {
         age: "",
         title: "",
-        category_id: "",
         episode: "",
         happiness: "",
       },
       formError: {},
     };
   },
-  computed: {
-    getCategorie: function() {
-      return this.$store.getters.getCategory;
-    },
-  },
   methods: {
     addMyHistoryEvent() {
       this.$store.dispatch("addMyHistoryEvent", this.addEvent)
         .then(() => {
-          for (let key in this.addEvent) {
-            this.addEvent[key] = "";
-          }
+          this.addEvent["age"] = "";
+          this.addEvent["title"] = "";
+          this.addEvent["episode"] = "";
+          this.addEvent["happiness"] = "";
           this.formError = {};
+          this.$emit("addEventSuccessGetGraphData");
           this.$emit("addEventSuccess");
         })
         .catch((error) => {
@@ -186,9 +160,10 @@ export default {
         });
     },
     canselAddEvent() {
-      for (let key in this.addEvent) {
-        this.addEvent[key] = "";
-      }
+      this.addEvent.age = "";
+      this.addEvent.title = "";
+      this.addEvent.episode = "";
+      this.addEvent.happiness = "";
       this.formError = {};
       this.$emit("canselAddEvent");
     },

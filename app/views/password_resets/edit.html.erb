@@ -1,0 +1,36 @@
+<% content_for(:title, t(".title")) %>
+<main class="wrap-content">
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm form-wrap is-10-mobile is-three-fifths-tablet is-two-fifths-desktop is-two-fifths-widescreen is-one-third-fullhd">
+      <h1 class="title has-text-centered mb-5"><%= t(".title") %></h1>
+      <%= form_with model: @user, url: password_reset_path(@token), local: true do |f| %>
+        <div class="field mb-5">
+          <%= f.label :password, class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.password_field :password, class: "input #{error_if(f.object, :password)}", placeholder: "password" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :password %>
+          <p class="help has-text-grey-dark">＊半角英数字8文字以上で入力してください</p>
+        </div>
+        <div class="field mb-5">
+          <%= f.label :password_confirmation, class: "label" %>
+          <div class="control has-icons-left">
+            <%= f.password_field :password_confirmation, class: "input #{error_if(f.object, :password_confirmation)}", placeholder: "password" %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-lock"></i>
+            </span>
+          </div>
+          <%= render "shared/error_messages", object: f.object, attribute: :password_confirmation %>
+        </div>
+        <div class="field has-text-centered mb-4">
+          <div class="control is-centered">
+            <%= f.submit t("defaults.update"), class: "button is-btn-signup btn-design has-text-weight-semibold" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

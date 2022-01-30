@@ -4,30 +4,30 @@ global.Chart = Chart;
 
 $(function() {
   const ctx = document.getElementById("myChart");
-  // debugger;
-  const type = "line";
   let datasets = {
     labels: JSON.parse(ctx.dataset.labels),
-    datasets: [{
-      /* グラフ全体のラベル */
-      label: "充実度",
-      /* グラフのデータ */
-      data: JSON.parse(ctx.dataset.data),
-      /* 背景色 */
-      backgroundColor: "rgba(255, 99, 132, 0.2)",
-      /* 枠線色 */
-      borderColor: "rgb(255, 99, 132)",
-      /* ポイントを塗りつぶす色 */
-      pointBackgroundColor: "rgb(255, 99, 132)",
-      /* ポイントの太さ */
-      pointBorderWidth: 5,
-      pointHoverRadius: 5,
-      /* ホバー時のポイントの背景色 */
-      pointHoverBackgroundColor: "#fff",
-      /* ホバー時のポイントの枠線色 */
-      pointHoverBorderColor: "rgb(255, 99, 132)",
-      lineTension: 0,
-    }]
+    datasets: [
+      {
+        /* グラフ全体のラベル */
+        label: "充実度",
+        /* グラフのデータ */
+        data: JSON.parse(ctx.dataset.data),
+        /* 背景色 */
+        backgroundColor: "rgba(255, 99, 132, 0.2)",
+        /* 枠線色 */
+        borderColor: "rgb(255, 99, 132)",
+        /* ポイントを塗りつぶす色 */
+        pointBackgroundColor: "rgb(255, 99, 132)",
+        /* ポイントの太さ */
+        pointBorderWidth: 5,
+        pointHoverRadius: 5,
+        /* ホバー時のポイントの背景色 */
+        pointHoverBackgroundColor: "#fff",
+        /* ホバー時のポイントの枠線色 */
+        pointHoverBorderColor: "rgb(255, 99, 132)",
+        lineTension: 0,
+      },
+    ],
   };
   const scales = {
     x: {
@@ -45,6 +45,15 @@ $(function() {
       ticks: {
         callback: function (value) {
           return `${this.getLabelForValue(value)}歳`;
+        },
+        color: function () {
+          return "#484848";
+        },
+      },
+      grid: {
+        drawBorder: false,
+        color: function () {
+          return "#adadb0";
         },
       },
     },
@@ -65,14 +74,13 @@ $(function() {
       ticks: {
         stepSize: 20,
         callback: function (value) {
-          // console.log(this.getMinMax());
           return value + "%";
         },
         color: function (context) {
           if (context.tick.value === 0) {
             return "#4557BB";
           }
-          return "#6A6A6A";
+          return "#484848";
         },
       },
       grid: {
@@ -81,7 +89,7 @@ $(function() {
           if (context.tick.value === 0) {
             return "#4557BB";
           }
-          return "#E1E1E2";
+          return "#adadb0";
         },
       },
     },
@@ -95,10 +103,20 @@ $(function() {
       maintainAspectRatio: false,
     },
   };
-  Chart.defaults.font.size = 20;
+  const plugin = {
+    id: "custom_canvas_background_color",
+    beforeDraw: (chart) => {
+      const ctx = chart.canvas.getContext("2d");
+      ctx.save();
+      ctx.globalCompositeOperation = "destination-over";
+      ctx.fillStyle = "#fff";
+      ctx.fillRect(0, 0, chart.width, chart.height);
+      ctx.restore();
+    },
+  };
 
   new Chart(ctx, {
-    type: type,
+    type: "line",
     data: datasets,
     options: {
       scales: scales,
@@ -122,12 +140,23 @@ $(function() {
             },
           },
         },
+        chartAreaBorder: {
+          borderColor: "red",
+          borderWidth: 2,
+          borderDash: [5, 5],
+          borderDashOffset: 2,
+        },
       },
       onResize: function () {
         if (window.innerWidth <= 767) {
           Chart.defaults.font.size = 10;
+        } else {
+          Chart.defaults.font.size = 20;
         }
       },
+      responsive: true,
+      maintainAspectRatio: false,
     },
+    plugins: [plugin],
   });
 });

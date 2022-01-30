@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Topページ
   root "static_pages#top"
   # ユーザー登録関係
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create destroy]
   # ログイン/ログアウト関係
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
@@ -14,13 +15,19 @@ Rails.application.routes.draw do
     # コメント関係
     resources :comments, only: %i[create destroy]
   end
+  # パスワードリマインダー
+  resources :password_resets, only: %i[new create edit update]
   # いいね関係
   resources :likes, only: %i[create destroy]
   # API通信関係
   namespace :api, {format: "json"} do
     resource :profile, only: %i[show update]
-    resources :categories, only: %i[index]
     resources :events, only: %i[create update destroy]
-    resource :my_history, only: %i[edit create update]
+    resource :my_history, only: %i[edit create update] do
+      collection do
+        get :graph_data
+        patch :graph_image_upload
+      end
+    end
   end
 end

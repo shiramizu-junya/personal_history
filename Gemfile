@@ -30,6 +30,7 @@ gem "bootsnap", ">= 1.4.2", require: false
 gem "bulma-rails"
 gem "bulma-extensions-rails"
 gem "carrierwave"
+gem "carrierwave-base64"
 gem "mini_magick"
 
 # 認証
@@ -47,10 +48,15 @@ gem "ransack"
 # モデル
 gem "enum_help"
 gem "active_model_serializers"
-gem "active_hash"
 
 # SEO
 gem "meta-tags"
+
+# 環境毎の定数管理
+gem "config"
+
+# 外部ストレージ設定
+gem "fog-aws"
 
 group :development, :test do
   # デバッグ
@@ -63,6 +69,8 @@ group :development, :test do
   gem "factory_bot_rails"
   # ダミーデータ
   gem "faker"
+  # メール
+  gem "letter_opener_web"
 end
 
 group :development do
