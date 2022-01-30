@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Topページ
   root "static_pages#top"
   # ユーザー登録関係
-  resources :users, only: %i[new create]
+  resources :users, only: %i[new create destroy]
   # ログイン/ログアウト関係
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"

@@ -8,6 +8,7 @@ ja:
     age: "年齢"
     edit: "編集"
     post: "投稿"
+    withdraw: "退会"
     password_reset: "パスワードリセット"
     message:
       require_login: "ログインしてください。"
@@ -24,6 +25,9 @@ ja:
     create:
       success: "ユーザー登録が完了しました。"
       fail: "ユーザー登録に失敗しました。"
+    destroy:
+      withdraw_function: "退会機能"
+      success: "退会が完了しました。ご利用ありがとうございました。"
   user_sessions:
     new:
       title: "ログイン"

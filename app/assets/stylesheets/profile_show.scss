@@ -13,8 +13,18 @@
 
 a.my_page_history {
   color: #272343;
+  text-decoration: underline;
   &:hover {
     color: #6157a7;
-    text-decoration: underline;
+    text-decoration: none;
+  }
+}
+
+.withdraw {
+  color: #272343;
+  text-decoration: underline;
+  &:hover {
+    color: #6157a7;
+    text-decoration: none;
   }
 }

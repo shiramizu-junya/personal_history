@@ -20,6 +20,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    user = User.find_by(uuid: params[:id])
+    user.destroy!
+    redirect_to root_url, success: t(".success")
+  end
+
   private
 
   def user_params

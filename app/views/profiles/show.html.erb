@@ -27,31 +27,35 @@
           </figure>
         </div>
 
-          <div class="mb-5">
-            <h5 class="mb-2"><%= t("my_histories.index.title") %></h5>
-            <table class="table">
-              <thead>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t("my_histories.index.title") %></h5>
+          <table class="table">
+            <thead>
+              <tr>
+                <th><%= t(MyHistory.human_attribute_name(:title)) %></th>
+                <th><%= t(MyHistory.human_attribute_name(:status)) %></th>
+                <th></th>
+              </tr>
+            </thead>
+            <% if @my_history %>
+              <tbody>
                 <tr>
-                  <th><%= t(MyHistory.human_attribute_name(:title)) %></th>
-                  <th><%= t(MyHistory.human_attribute_name(:status)) %></th>
-                  <th></th>
+                  <td>
+                    <%= link_to @my_history.title, my_history_path(@my_history.uuid), class: "my_page_history" %>
+                  </td>
+                  <td><%= @my_history.status_i18n %></td>
+                  <td>
+                    <%= link_to t("defaults.edit"), edit_my_history_path(@my_history.uuid), class: "button is-btn-search has-text-weight-semibold" %>
+                  </td>
                 </tr>
-              </thead>
-              <% if @my_history %>
-                <tbody>
-                  <tr>
-                    <td>
-                      <%= link_to @my_history.title, my_history_path(@my_history.uuid), class: "my_page_history" %>
-                    </td>
-                    <td><%= @my_history.status_i18n %></td>
-                    <td>
-                      <%= link_to t("defaults.edit"), edit_my_history_path(@my_history.uuid), class: "button is-btn-search has-text-weight-semibold" %>
-                    </td>
-                  </tr>
-                </tbody>
-              <% end %>
-            </table>
-          </div>
+              </tbody>
+            <% end %>
+          </table>
+        </div>
+        <div class="mb-5">
+          <h5 class="mb-2"><%= t("users.destroy.withdraw_function") %></h5>
+          <%= link_to t("defaults.withdraw"), user_path(@user.uuid), class: "withdraw", method: :delete, data: { confirm: "【確認】\n退会されますと、全てのデータが削除されます。\n本当に退会しますか？" } %>
+        </div>
       </div>
     </div>
   </div>
