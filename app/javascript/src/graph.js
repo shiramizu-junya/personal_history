@@ -147,7 +147,8 @@ $(function() {
           borderDashOffset: 2,
         },
       },
-      onResize: function () {
+      onResize: function (node, size) {
+        node.canvas.parentNode.style.height = `${size.width / 2}px`;
         if (window.innerWidth <= 767) {
           Chart.defaults.font.size = 10;
         } else {

@@ -9,7 +9,10 @@
     </div>
     <div class="columns is-centered is-mobile">
       <div class="chart-container column graph-area is-11-mobile is-11-tablet is-9-desktop is-9-widescreen is-10-fullhd">
-        <LineChart v-bind="lineChartProps" />
+        <LineChart
+          v-bind="lineChartProps"
+          class="myChart"
+        />
       </div>
     </div>
   </div>
@@ -147,7 +150,8 @@ export default {
           },
         },
       },
-      onResize: function () {
+      onResize: function (node, size) {
+        node.canvas.parentNode.style.height = `${size.width / 2}px`;
         if (window.innerWidth <= 767) {
           Chart.defaults.font.size = 10;
         }else{
@@ -217,41 +221,9 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .graph-area {
   border: 3px solid #eff2f6;
   border-radius: 5px;
-}
-
-.graph-area .field.is-grouped {
-  justify-content: center;
-}
-
-div.chart-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  @media screen and (max-width: 767px) {
-    padding: 0;
-    height: 250px;
-  }
-}
-
-#myChart {
-  width: 100% !important;
-  height: 100% !important;
-}
-
-canvas {
-  height: 750px;
-  @media screen and (max-width: 1500px) {
-    height: 600px;
-  }
-  @media screen and (max-width: 1024px) {
-    height: 400px;
-  }
-  @media screen and (max-width: 767px) {
-    height: 250px;
-  }
 }
 </style>
