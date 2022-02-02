@@ -1,11 +1,11 @@
 /*========================================
   自分史作成画面のcard
 ========================================*/
-.card {
+.my-history-card.card {
   box-shadow: none;
 }
 
-.card-content {
+.my-history-content.card-content {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -22,14 +22,14 @@
   }
 }
 
-.card-header-title {
+.my-history-header-title.card-header-title {
   color: #272343;
 }
 
 /*========================================
   自分史作成画面のbutton
 ========================================*/
-.card-footer-item {
+.my-history-footer-item.card-footer-item {
   .button {
     @media screen and (max-width: 400px) {
       width: 100px;
