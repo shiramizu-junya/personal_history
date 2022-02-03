@@ -4,8 +4,8 @@ class MyHistoriesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @q = MyHistory.ransack(params[:q])
-    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).published.order(created_at: :desc))
+    @q = MyHistory.includes(:user).published.left_outer_joins(:likes).group('my_histories.id').select('my_histories.*, COUNT(likes.my_history_id)').ransack(params[:q])
+    @pagy, @my_histories = pagy(@q.result(distinct: true).order("COUNT(likes.my_history_id) DESC"))
   end
 
   def show
