@@ -1,6 +1,9 @@
 {
   "name": "personal_history",
   "private": true,
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
     "lint": "yarn run eslint --ext .vue --ext .js app/javascript"
   },
