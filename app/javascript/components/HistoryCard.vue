@@ -47,7 +47,7 @@
                 class="button is-add-event"
                 @click="addEventFlagChange"
               >
-                イベント追加
+                出来事追加
               </button>
             </p>
           </footer>

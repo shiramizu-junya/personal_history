@@ -169,3 +169,10 @@ export default {
   }
 };
 </script>
+
+<style>
+.modal-card-title {
+  color: #272343;
+  font-weight: 700;
+}
+</style>

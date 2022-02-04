@@ -21,6 +21,7 @@
                 class="input"
                 type="text"
                 name="title"
+                placeholder="自分史のタイトルを入力してください"
               >
             </div>
             <div class="has-text-danger">

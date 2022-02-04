@@ -7,7 +7,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">
-          イベント編集
+          出来事の編集
         </p>
       </header>
       <section class="modal-card-body">
@@ -24,6 +24,7 @@
                     class="input"
                     type="number"
                     name="age"
+                    placeholder="出来事が起こった年齢は？"
                   >
                 </div>
                 <p class="help">
@@ -51,6 +52,7 @@
                     class="input"
                     type="number"
                     name="happiness"
+                    placeholder="どれぐらい充実していた？"
                   >
                 </div>
                 <p class="help">
@@ -78,6 +80,7 @@
                 class="input"
                 type="text"
                 name="title"
+                placeholder="出来事のタイトルを入力してください"
               >
             </div>
             <div class="has-text-danger">
@@ -99,6 +102,7 @@
                 :class="{ 'error' : formError['episode'] }"
                 class="textarea"
                 name="episode"
+                placeholder="出来事のエピソードを入力してください"
               />
             </div>
             <div class="has-text-danger">
