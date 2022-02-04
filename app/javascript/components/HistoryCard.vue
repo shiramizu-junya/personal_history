@@ -2,16 +2,16 @@
   <div>
     <div class="columns my-6 is-centered is-mobile">
       <div class="column pd-sm is-10-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-        <div class="card">
-          <header class="card-header">
-            <h4 class="card-header-title title is-4">
+        <div class="my-history-card card">
+          <header class="my-history-title card-header">
+            <h4 class="my-history-header-title card-header-title title is-4">
               <span class="icon mr-1">
                 <i class="fas fa-tag" />
               </span>
               自分史タイトル
             </h4>
           </header>
-          <div class="card-content">
+          <div class="my-history-content card-content">
             <p class="title">
               {{ getMyHistory.title ? getMyHistory.title : getUserProfile.name + "さんの自分史" }}
             </p>
@@ -22,8 +22,8 @@
               現在の年齢：{{ getUserProfile.birthday ? calcAge(getUserProfile.birthday) : "" }}歳
             </p>
           </div>
-          <footer class="card-footer">
-            <p class="card-footer-item">
+          <footer class="my-history-footer card-footer">
+            <p class="my-history-footer-item card-footer-item">
               <button
                 v-if="getMyHistory.title"
                 class="button is-edit-title"
@@ -47,7 +47,7 @@
                 class="button is-add-event"
                 @click="addEventFlagChange"
               >
-                イベント追加
+                出来事追加
               </button>
             </p>
           </footer>

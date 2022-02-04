@@ -87,7 +87,7 @@ article.post:last-child {
 }
 
 #history_list #history_list_column_left{
-  background-color: #fff;
+  background-color: #e5eaef;
   border-radius: 5px;
   @media screen and (max-width: 450px) {
     margin-left: 1.5rem;
@@ -98,7 +98,7 @@ article.post:last-child {
   padding-top: 0;
   #history_list_column_right_top,
   #history_list_column_right-center {
-    background-color: #fff;
+    background-color: #e5eaef;
     border-radius: 5px;
   }
 }
@@ -170,6 +170,24 @@ a.history_title {
 .image img {
   height: 100%;
   width: 100%;
+}
+
+.content figure {
+  margin: 0;
+}
+
+.media-content .title {
+  font-size: 1.2rem;
+  @media screen and (max-width: 1024px) {
+    font-size: 1.3rem;
+  }
+  @media screen and (max-width: 767px) {
+    font-size: 1.5rem;
+  }
+}
+
+.my-history-list {
+  min-height: 500px;
 }
 
 /*==================================

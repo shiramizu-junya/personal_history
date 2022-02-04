@@ -25,15 +25,6 @@ $fa-font-path: "@fortawesome/fontawesome-free/webfonts";
 @import "@fortawesome/fontawesome-free/scss/v4-shims";
 
 /*========================================
-  リセットCSS
-========================================*/
-/* 画面の右にできる余白を削除 */
-.wrap {
-  width: 100%;
-  overflow: hidden;
-}
-
-/*========================================
   Bulmaカスタマイズ
 ========================================*/
 /* ブレークポイントの修正 */
@@ -56,3 +47,16 @@ $fullhd: 1344px+(2 * $gap) !default;
 @import "list_history";
 @import "my_history_show";
 @import "profile_show";
+
+/*========================================
+  リセットCSS
+========================================*/
+/* 画面の右にできる余白を削除 */
+.wrap {
+  width: 100%;
+  overflow: hidden;
+}
+
+.columns {
+  margin-top: 0;
+}

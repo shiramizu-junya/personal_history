@@ -11,11 +11,13 @@
       </div>
       <div class="column is-8-tablet is-9-desktop" id="history_list_column_right">
         <!-- 自分史件数 -->
-        <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
-          <%= render "my_history_count", pagy: @pagy %>
+        <div class="columns">
+          <div class="column conten mb-5 is-12-tablet is-12-desktop" id="history_list_column_right_top">
+            <%= render "my_history_count", pagy: @pagy %>
+          </div>
         </div>
         <!-- 自分史一覧 -->
-        <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-center">
+        <div class="columns is-mobile is-multiline is-centered my-history-list is-align-items-center">
           <% if @my_histories.present? %>
             <%= render @my_histories %>
           <% else %>
@@ -23,14 +25,16 @@
           <% end %>
         </div>
         <!-- ページネーション -->
-        <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-bottom">
-          <%== pagy_bulma_nav(@pagy) %>
+        <div class="columns">
+          <div class="column content is-12-tablet is-12-desktop" id="history_list_column_right-bottom">
+            <%== pagy_bulma_nav(@pagy) %>
+          </div>
         </div>
       </div>
     </div>
   </section>
   <div id="twitter">
-    <%= link_to "http://twitter.com/share?url=https://tsuzuru-jibunshi.com/&text=あなたも自分史を残してみませんか？&hashtags=自分史,つづる自分史&lang=ja", target: '_blank', rel: "noopener noreferrer", class: "twitter-link" do %>
+    <%= link_to "https://twitter.com/intent/tweet?text=あなたも自分史を残してみませんか？%0a%23自分史%20%23つづる自分史%0a&url=https://www.tsuzuru-jibunshi.com/", target: '_blank', rel: "noopener noreferrer", class: "twitter-link" do %>
       <i class="fab fa-twitter"></i>
     <% end %>
     <span class="twitter-text">ツイート</span>
