@@ -40,18 +40,10 @@
   <% if logged_in? %>
     <div class="columns my-6 is-centered is-mobile">
       <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+        <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
+          コメント
+        </h2>
         <section id="main">
-          <div class="msg-info">
-            <div class="avatar-img">
-              <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
-              <br>
-            </div>
-            <div class="avatar-info">
-              ユーザー名：<%= @user.name %><br>
-              年齢：<%= @user.calc_age %>歳<br>
-              性別：<%= @user.gender_i18n %><br>
-            </div>
-          </div>
             <!-- コメントエリア -->
             <%= render "comments/comments", { comments: @comments } %>
             <!-- コメント入力フォーム -->

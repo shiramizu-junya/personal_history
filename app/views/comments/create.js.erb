@@ -1,3 +1,4 @@
+$("#error_message").remove();
 <% if @comment.errors.present? %>
   $("#new_comment_area").prepend("<%= j(render('shared/error_messages', object: @comment, attribute: :body)) %>");
   $("#js-new-comment-body").addClass("error");
@@ -20,5 +21,4 @@
   }
   $("#js-no-comment-area").remove();;
   $("#js-new-comment-body").val('').removeClass("error");
-  $("#error_message").remove();
 <% end %>

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   # 自分史関係
   resources :my_histories, only: %i[index show new edit update], shallow: true do
     # コメント関係
-    resources :comments, only: %i[create destroy]
+    resources :comments, only: %i[create update destroy]
   end
   # パスワードリマインダー
   resources :password_resets, only: %i[new create edit update]
