@@ -7,11 +7,11 @@
     <%= simple_format(comment.body, { class: "js-comment-content" }, wrapper_tag: "span") %>
     <br>
     <span class="mt-2 date">
-      <span class="user-name-left">
+      <span class="comment-left">
         <i class="far fa-user"></i>
         <%= comment.user.name %>
       </span>
-      <span>
+      <span class="comment-left">
         <i class="far fa-clock"></i>
         <%= l comment.created_at, format: :default %>
       </span>

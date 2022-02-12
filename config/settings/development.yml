@@ -1,2 +1,4 @@
 default_url_options:
   host: "localhost:3000"
+service:
+  url: "http://localhost:3000"

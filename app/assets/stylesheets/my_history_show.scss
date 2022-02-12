@@ -68,7 +68,7 @@
   position: relative;
   position: fixed;
   bottom: 20px;
-  right: 50px;
+  right: 20px;
   font-weight: 700;
   border-radius: 100%;
   text-decoration: none;
@@ -126,6 +126,42 @@ a.unlike-btn {
   &:hover {
     background-color: #3b4ba3;
   }
+}
+
+#twitter-show {
+    position: relative;
+    position: fixed;
+    bottom: 20px;
+    right: 120px;
+    font-weight: 700;
+    background: #656463;
+    border-radius: 100%;
+    text-decoration: none;
+    color: #fff;
+    width: 70px;
+    height: 70px;
+    text-align: center;
+    cursor: pointer;
+    transition: .8s;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+    background-color: #1da1f3;
+    .twitter-link {
+      color: #fff;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &:hover {
+      background-color: #1A8CD8;
+    }
+    @media screen and (max-width: 767px) {
+      bottom: 180px;
+      right: 10px;
+    }
 }
 
 /*========================================
@@ -336,7 +372,7 @@ a.unlike-btn {
   }
 }
 
-.user-name-left {
+.comment-left {
   margin-right: 10px;
   @media screen and (max-width: 767px) {
     margin-right: 0;
