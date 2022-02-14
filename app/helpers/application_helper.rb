@@ -29,11 +29,9 @@ module ApplicationHelper
         site_name: :site,
         title: :title,
         description: :description,
-        # ↓を「article」に変える。
-        type: "website", # ページのタイプを記載 → トップページ：content=”website”、トップページ以外：content=”article”
+        type: "website",
         url: request.original_url,
-        # ↓を変更する。（絶対パス）
-        image: image_url("ogp/ogp_twitter_card.png"), # SNSでシェアされた場合に表示される画像を設定
+        image: image_url("ogp/ogp_twitter_card.png"),
         locale: "ja_JP",
       },
       twitter: {
