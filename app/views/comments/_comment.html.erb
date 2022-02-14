@@ -1,11 +1,10 @@
 <div class="msg-cnt msg-left" id="comment-<%= comment.id %>">
   <div class="avatar">
-    <img src="/assets/no_image.png" alt="" class="avatar">
+    <%= image_tag comment.user.avatar.url %>
   </div>
   <p id="js-comment-<%= comment.id %>" class="msg-inrTxt">
     <span class="triangle"></span>
     <%= simple_format(comment.body, { class: "js-comment-content" }, wrapper_tag: "span") %>
-    <br>
     <span class="mt-2 date">
       <span class="comment-left">
         <i class="far fa-user"></i>
@@ -15,9 +14,17 @@
         <i class="far fa-clock"></i>
         <%= l comment.created_at, format: :default %>
       </span>
+      <% if logged_in? && current_user.own?(comment) %>
+        <span class="comment-left">
+          <a href="">
+            <i class="fab fa-twitter"></i>
+          </a>
+        </span>
+      <% end %>
     </span>
   </p>
-  <% if current_user.own?(comment) %>
+  <% if logged_in? && current_user.own?(comment) %>
+    <!-- コメント編集・削除ボタン -->
     <div id="js-dropdown-<%= comment.id %>" class="dropdown is-left dropdown-left is-active is-align-items-center">
       <div class="dropdown-trigger">
         <span id="js-comment-edit-icon" class="icon is-small">
@@ -33,18 +40,19 @@
         </div>
       </div>
     </div>
+    <!-- コメント編集フォーム -->
+    <div id="js-textarea-comment-box-<%= comment.id %>" class="field comment-edit-field" style="display: none;">
+      <div class="control comment-edit-form">
+        <textarea id="js-textarea-comment-<%= comment.id %>" class="textarea" row="2" col="30"><%= comment.body %></textarea>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
+        </div>
+        <div class="control">
+          <button class="button is-success is-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
+        </div>
+      </div>
+    </div>
   <% end %>
-  <div id="js-textarea-comment-box-<%= comment.id %>" class="field comment-edit-field" style="display: none;">
-    <div class="control comment-edit-form">
-      <textarea id="js-textarea-comment-<%= comment.id %>" class="textarea" row="2" col="30"><%= comment.body %></textarea>
-    </div>
-    <div class="field is-grouped">
-      <div class="control">
-        <button class="button js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
-      </div>
-      <div class="control">
-        <button class="button is-success is-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
-      </div>
-    </div>
-  </div>
 </div>

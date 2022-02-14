@@ -38,21 +38,22 @@
       </div>
     </div>
   </div>
-  <% if logged_in? %>
-    <div class="columns my-6 is-centered is-mobile">
-      <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-        <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
-          コメント
-        </h2>
-        <section id="main">
-          <!-- コメントエリア -->
-          <%= render "comments/comments", { comments: @comments } %>
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+      <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
+        コメント
+      </h2>
+      <section id="main">
+        <!-- コメントエリア -->
+        <%= render "comments/comments", { comments: @comments } %>
+        <% if logged_in? %>
           <!-- コメント入力フォーム -->
           <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
-        </section>
-      </div>
+        <% end %>
+      </section>
     </div>
-  <% end %>
+  </div>
+
   <!-- いいねボタン -->
   <% if logged_in? %>
     <div id="like">
