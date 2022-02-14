@@ -29,7 +29,7 @@ ja:
       success: "ユーザー登録が完了しました。"
       fail: "ユーザー登録に失敗しました。"
     destroy:
-      withdraw_function: "退会機能"
+      withdraw_function: "退会処理"
       success: "退会が完了しました。ご利用ありがとうございました。"
   user_sessions:
     new:
