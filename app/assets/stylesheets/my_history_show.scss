@@ -68,7 +68,7 @@
   position: relative;
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 120px;
   font-weight: 700;
   border-radius: 100%;
   text-decoration: none;
@@ -88,7 +88,7 @@
     background-color: #627fa7;
   }
   @media screen and (max-width: 414px) {
-    bottom: 95px;
+    bottom: 180px;
     right: 10px;
   }
 }
@@ -132,7 +132,7 @@ a.unlike-btn {
     position: relative;
     position: fixed;
     bottom: 20px;
-    right: 120px;
+    right: 20px;
     font-weight: 700;
     background: #656463;
     border-radius: 100%;
@@ -159,7 +159,7 @@ a.unlike-btn {
       background-color: #1A8CD8;
     }
     @media screen and (max-width: 767px) {
-      bottom: 180px;
+      bottom: 95px;
       right: 10px;
     }
 }

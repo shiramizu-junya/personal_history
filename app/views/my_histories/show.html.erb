@@ -53,15 +53,6 @@
       </div>
     </div>
   <% end %>
-  <!-- Twitter -->
-  <% if logged_in? && current_user.own?(@my_history) %>
-    <div id="twitter-show">
-      <%= link_to "https://twitter.com/intent/tweet?text=「#{@user.name}」さんの自分史はこちら%0a&url=https://www.tsuzuru-jibunshi.com/my_histories/#{@my_history.uuid}%0a&hashtags=自分史,つづる自分史%0a", target: "_blank", rel: "noopener noreferrer", class: "twitter-link" do %>
-        <i class="fab fa-twitter twitter-fixed"></i>
-      <% end %>
-      <span class="twitter-text">ツイート</span>
-    </div>
-  <% end %>
   <!-- いいねボタン -->
   <% if logged_in? %>
     <div id="like">
@@ -69,5 +60,12 @@
       <span class="like-text">いいね</span>
     </div>
   <% end %>
+  <!-- Twitter -->
+  <div id="twitter-show">
+    <%= link_to "https://twitter.com/intent/tweet?text=「#{@user.name}」さんの自分史はこちら%0a&url=https://www.tsuzuru-jibunshi.com/my_histories/#{@my_history.uuid}%0a&hashtags=自分史,つづる自分史%0a", target: "_blank", rel: "noopener noreferrer", class: "twitter-link" do %>
+      <i class="fab fa-twitter twitter-fixed"></i>
+    <% end %>
+    <span class="twitter-text">ツイート</span>
+  </div>
 </main>
 <%= javascript_pack_tag "graph/application" %>
