@@ -1,4 +1,5 @@
 <% content_for(:title, "#{@user.name}さんの自分史") %>
+<% set_meta_tags(og: { type: "article", image: Settings.service.url + @my_history.graph_image_url }) %>
 <main class="wrap-content">
   <h1 class="title my-history-title has-text-centered my-6 ft-size-md">
     <%= @my_history.title %>
@@ -37,29 +38,22 @@
       </div>
     </div>
   </div>
-  <% if logged_in? %>
-    <div class="columns my-6 is-centered is-mobile">
-      <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
-        <section id="main">
-          <div class="msg-info">
-            <div class="avatar-img">
-              <%= image_tag @user.avatar.url, size: "64x64", class: "avatar" %>
-              <br>
-            </div>
-            <div class="avatar-info">
-              ユーザー名：<%= @user.name %><br>
-              年齢：<%= @user.calc_age %>歳<br>
-              性別：<%= @user.gender_i18n %><br>
-            </div>
-          </div>
-            <!-- コメントエリア -->
-            <%= render "comments/comments", { comments: @comments } %>
-            <!-- コメント入力フォーム -->
-            <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
-        </section>
-      </div>
+  <div class="columns my-6 is-centered is-mobile">
+    <div class="column pd-sm is-11-mobile is-11-tablet is-two-fifths-desktop is-two-thirds-widescreen is-7-fullhd">
+      <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
+        コメント
+      </h2>
+      <section id="main">
+        <!-- コメントエリア -->
+        <%= render "comments/comments", { comments: @comments } %>
+        <% if logged_in? %>
+          <!-- コメント入力フォーム -->
+          <%= render "comments/form", { my_history: @my_history, comment: @comment } %>
+        <% end %>
+      </section>
     </div>
-  <% end %>
+  </div>
+
   <!-- いいねボタン -->
   <% if logged_in? %>
     <div id="like">
@@ -67,5 +61,12 @@
       <span class="like-text">いいね</span>
     </div>
   <% end %>
+  <!-- Twitter -->
+  <div id="twitter-show">
+    <%= link_to "https://twitter.com/intent/tweet?text=「#{@user.name}」さんの自分史はこちら%0a%23自分史%20%23つづる自分史%0a&url=https://www.tsuzuru-jibunshi.com/my_histories/#{@my_history.uuid}", target: "_blank", rel: "noopener noreferrer", class: "twitter-link" do %>
+      <i class="fab fa-twitter twitter-fixed"></i>
+    <% end %>
+    <span class="twitter-text">ツイート</span>
+  </div>
 </main>
 <%= javascript_pack_tag "graph/application" %>

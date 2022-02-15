@@ -1,2 +1,4 @@
 default_url_options:
   host: "https://www.tsuzuru-jibunshi.com/"
+service:
+  url: "https://www.tsuzuru-jibunshi.com"

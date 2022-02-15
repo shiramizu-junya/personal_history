@@ -9,6 +9,7 @@ require("channels");
 require("jquery");
 require("../src/header");
 require("../src/image_preview");
+require("../src/edit_comment");
 import "@fortawesome/fontawesome-free/js/all";
 
 // Uncomment to copy all static images under ../images to the output folder and reference

@@ -61,13 +61,13 @@
           <%= render "shared/error_messages", object: f.object, attribute: :avatar %>
         </div>
 
-        <figure class="image is-128x128 mb-5 ml-4">
+        <figure class="image is-128x128 mb-5 ml-1">
           <%= image_tag @user.avatar.url, class: "js-preview-image prev-img" %>
         </figure>
 
         <div class="field has-text-centered mb-4">
           <div class="control is-centered">
-            <%= f.submit t("defaults.edit"), class: "button is-btn-edit btn-design has-text-weight-semibold" %>
+            <%= f.submit t("defaults.update"), class: "button is-btn-edit btn-design has-text-weight-semibold" %>
           </div>
         </div>
       <% end %>

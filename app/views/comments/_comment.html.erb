@@ -1,60 +1,58 @@
-<% if current_user.own?(comment) %>
-  <div class="msg-cnt msg-right" id="comment-<%= comment.id %>">
-    <div class="avatar">
-      <%= image_tag comment.user.avatar.url, class: "avatar" %>
-    </div>
-    <p class="msg-inrTxt">
-      <span class="triangle"></span>
-      <span class="has-text-right" style="display: inline-block; width: 100%;">
-        <%= simple_format(comment.body, { class: "comment-text" }, { wrapper_tag: "span" }) %>
+<div class="msg-cnt msg-left" id="comment-<%= comment.id %>">
+  <div class="avatar">
+    <%= image_tag comment.user.avatar.url %>
+  </div>
+  <p id="js-comment-<%= comment.id %>" class="msg-inrTxt">
+    <span class="triangle"></span>
+    <%= simple_format(comment.body, { class: "js-comment-content" }, wrapper_tag: "span") %>
+    <span class="mt-2 date">
+      <span class="comment-left">
+        <i class="far fa-user"></i>
+        <%= comment.user.name %>
       </span>
-      <br>
-      <span class="mt-2 has-text-right date">
-        <span>
-          <i class="far fa-clock"></i>
-          <%= "#{time_ago_in_words(comment.created_at)}前" %>
-        </span>
-        <span class="user-name-right">
-          <i class="far fa-user"></i>
-          <%= comment.user.name %>
-        </span>
+      <span class="comment-left">
+        <i class="far fa-clock"></i>
+        <%= l(comment.created_at, format: :default) %>
       </span>
-    </p>
-    <div class="dropdown is-right dropdown-right is-active is-align-items-center">
+      <% if logged_in? && current_user.own?(comment) %>
+        <span class="comment-left">
+          <%= link_to "https://twitter.com/intent/tweet?text=「#{comment.my_history_create_user.name}」さんの自分史にコメントしました。%0a#{comment.newline_replace(comment.body)}%0a%0a%23自分史%20%23つづる自分史%0a&url=https://www.tsuzuru-jibunshi.com/my_histories/#{comment.my_history.uuid}", target: "_blank", rel: "noopener noreferrer", id: "js-comment-twitter-#{comment.id}", class: "twitter-link" do %>
+            <i class="fab fa-twitter"></i>
+          <% end %>
+        </span>
+      <% end %>
+    </span>
+  </p>
+  <% if logged_in? && current_user.own?(comment) %>
+    <!-- コメント編集・削除ボタン -->
+    <div id="js-dropdown-<%= comment.id %>" class="dropdown is-left dropdown-left is-active is-align-items-center">
       <div class="dropdown-trigger">
         <span id="js-comment-edit-icon" class="icon is-small">
           <i class="fa fa-ellipsis-h edit-comment-icon" aria-hidden="true"></i>
         </span>
       </div>
-      <div id="js-comment-edit-menu" class="dropdown-menu dropdown-right-menu" role="menu" style="display: none;">
+      <div id="js-comment-edit-menu-<%= comment.id %>" class="js-comment-edit-menu dropdown-menu dropdown-left-menu" role="menu" style="display: none;">
         <div class="dropdown-content">
           <div class="dropdown-item">
-            <a class="button is-primary is-small mr-2 has-text-weight-semibold" data-confirm="コメントを削除しますか?" data-remote="true" rel="nofollow" data-method="" href="#">編集</a>
+            <a class="button is-primary is-small mr-2 has-text-weight-semibold js-edit-comment-button" data-comment-id="<%= comment.id %>">編集</a>
             <%= link_to "削除", comment_path(comment), class: "button is-link is-small has-text-weight-semibold js-delete-comment-button", method: :delete, data: { confirm: t("defaults.message.delete_confirm") }, remote: true %>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% else %>
-  <div class="msg-cnt msg-left">
-    <div class="avatar">
-      <img src="/assets/no_image.png" alt="" class="avatar">
+    <!-- コメント編集フォーム -->
+    <div id="js-textarea-comment-box-<%= comment.id %>" class="field comment-edit-field" style="display: none;">
+      <div class="control comment-edit-form">
+        <textarea id="js-textarea-comment-<%= comment.id %>" class="textarea" row="2" col="30"><%= comment.body %></textarea>
+      </div>
+      <div class="field is-grouped">
+        <div class="control">
+          <button class="button js-button-comment-update" data-comment-id="<%= comment.id %>">更新</button>
+        </div>
+        <div class="control">
+          <button class="button is-success is-light js-button-edit-comment-cancel" data-comment-id="<%= comment.id %>">キャンセル</button>
+        </div>
+      </div>
     </div>
-    <p class="msg-inrTxt">
-      <span class="triangle"></span>
-      <%= simple_format(comment.body, {}, wrapper_tag: "span") %>
-      <br>
-      <span class="mt-2 date">
-        <span class="user-name-left">
-          <i class="far fa-user"></i>
-          <%= comment.user.name %>
-        </span>
-        <span>
-          <i class="far fa-clock"></i>
-          <%= "#{time_ago_in_words(comment.created_at)}前" %>
-        </span>
-      </span>
-    </p>
-  </div>
-<% end %>
+  <% end %>
+</div>

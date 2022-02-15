@@ -7,7 +7,7 @@
           <% end %>
         </figure>
       </div>
-    <div class="card-content" style="background-color: #FAFBFC;">
+    <div class="my-history-show card-content" style="background-color: #FAFBFC;">
       <div class="media">
         <div class="media-left">
           <figure class="image is-48x48">
@@ -15,8 +15,18 @@
           </figure>
         </div>
         <div class="media-content">
-          <p class="title is-5"><%= my_history.title %></p>
-          <p class="subtitle is-6"><%= my_history.user.name %></p>
+          <p>
+            <span class="my-history-title-left">
+              <i class="fas fa-book-open"></i>
+              <span class="title is-5"><%= my_history.title %></span>
+            </span>
+          </p>
+          <p>
+            <span class="user-name-left">
+              <i class="fas fa-user"></i>
+              <span class="subtitle is-6"><%= my_history.user.name %></span>
+            </span>
+          </p>
         </div>
       </div>
     </div>

@@ -13,14 +13,14 @@ module ApplicationHelper
 
   def default_meta_tags
     {
-      site: "つづる自分史",
-      title: "人生を振り返る旅に出よう",
+      site: "つづる自分史 | 人生を振り返る旅に出よう",
+      title: "つづる自分史 | 人生を振り返る旅に出よう",
       reverse: true,
       charset: "utf-8",
       separator: "|",
-      description: "つづる自分史は人生を振り返ることができるアプリです。自分の人生を振り返ってみませんか？",
+      description: "「つづる自分史」は人生を振り返ることができるアプリです。自分の人生を振り返ってみませんか？",
       keywords: "つづる自分史, 自分史, 自分史アプリ, 人生",
-      canonical: request.original_url,
+      canonical: "https://www.tsuzuru-jibunshi.com/",
       icon: [
         { href: image_url("favicon/favicon.ico") },
         { href: image_url("favicon/ogp_apple_touch_icon.png"), rel: "apple-touch-icon", sizes: "180x180", type: "image/jpg" }
@@ -37,7 +37,6 @@ module ApplicationHelper
       twitter: {
         card: "summary_large_image",
         site: "@webpg_jun",
-        image: image_url("ogp/ogp_twitter_card.png")
       }
     }
   end

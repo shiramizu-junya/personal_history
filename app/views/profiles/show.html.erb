@@ -14,7 +14,7 @@
         </div>
         <div class="mb-5">
           <h5 class="mb-2"><%= t(User.human_attribute_name(:birthday)) %></h5>
-          <p class="mypage"><%= @user.birthday %></p>
+          <p class="mypage"><%= l(@user.birthday, format: :default) %></p>
         </div>
         <div class="mb-5">
           <h5 class="mb-2"><%= t(User.human_attribute_name(:gender)) %></h5>
@@ -22,7 +22,7 @@
         </div>
         <div class="mb-5">
           <h5><%= t(User.human_attribute_name(:avatar)) %></h5>
-          <figure class="image is-128x128 mb-5 ml-4">
+          <figure class="image is-128x128 mb-5 ml-1">
             <%= image_tag @user.avatar.url, class: "js-preview-image prev-img" %>
           </figure>
         </div>
