@@ -6,8 +6,10 @@ class CommentsController < ApplicationController
 
   def update
     @comment = current_user.comments.find(params[:id])
+    @uuid = @comment.my_history.uuid
+    @name= @comment.my_history_create_user.name
     if @comment.update(comment_update_params)
-      render json: { comment: @comment }, status: :ok
+      render json: { comment: @comment, uuid: @uuid, name: @name }, status: :ok
     else
       render json: { comment: @comment, errors: { messages: @comment.errors.full_messages } }, status: :bad_request
     end

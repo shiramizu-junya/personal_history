@@ -12,13 +12,13 @@
       </span>
       <span class="comment-left">
         <i class="far fa-clock"></i>
-        <%= l comment.created_at, format: :default %>
+        <%= l(comment.created_at, format: :default) %>
       </span>
       <% if logged_in? && current_user.own?(comment) %>
         <span class="comment-left">
-          <a href="">
+          <%= link_to "https://twitter.com/intent/tweet?text=「#{comment.my_history_create_user.name}」さんの自分史にコメントしました。%0a#{comment.body}%0a%0a%23自分史%20%23つづる自分史%0a&url=https://www.tsuzuru-jibunshi.com/my_histories/#{comment.my_history.uuid}", target: "_blank", rel: "noopener noreferrer", id: "js-comment-twitter-#{comment.id}", class: "twitter-link" do %>
             <i class="fab fa-twitter"></i>
-          </a>
+          <% end %>
         </span>
       <% end %>
     </span>
