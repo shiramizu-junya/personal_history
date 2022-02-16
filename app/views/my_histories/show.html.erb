@@ -1,5 +1,9 @@
 <% content_for(:title, "#{@user.name}さんの自分史") %>
-<% set_meta_tags(og: { type: "article", image: @my_history.graph_image_url }) %>
+<% if @my_history.graph_image? %>
+  <% set_meta_tags(og: { type: "article", image: "#{Settings.service.url}#{@my_history.graph_image_url}" }) %>
+<% else %>
+  <% set_meta_tags(og: { type: "article", image: "#{Settings.service.url}/assets/#{@my_history.graph_image_url}" }) %>
+<% end %>
 <main class="wrap-content">
   <h1 class="title my-history-title has-text-centered my-6 ft-size-md">
     <%= @my_history.title %>
