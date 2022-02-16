@@ -49,7 +49,7 @@
       </h2>
       <section id="main">
         <!-- コメントエリア -->
-        <%= render "comments/comments", { comments: @comments } %>
+        <%= render "comments/comments", { comments: @comments, my_history: @my_history } %>
         <% if logged_in? %>
           <!-- コメント入力フォーム -->
           <%= render "comments/form", { my_history: @my_history, comment: @comment } %>

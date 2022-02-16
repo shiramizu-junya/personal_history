@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   def create
+    @my_history = MyHistory.find_by(uuid: params[:comment][:uuid])
     @comment = current_user.comments.build(comment_params)
     @comment.save
   end

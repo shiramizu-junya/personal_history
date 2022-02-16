@@ -14,10 +14,10 @@ $("#error_message").remove();
   };
   // 一番下までスクロールされていれば、追加後も一番下までスクロールする
   if (isScrollBottom()) {
-    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment)) %>");
+    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment, my_history: @my_history)) %>");
     scrollToBottom();
   }else{
-    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment)) %>");
+    $(".js-scroll-comment-area").append("<%= j(render('comments/comment', comment: @comment, my_history: @my_history)) %>");
   }
   $("#js-no-comment-area").remove();;
   $("#js-new-comment-body").val('').removeClass("error");

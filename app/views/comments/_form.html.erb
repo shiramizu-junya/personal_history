@@ -1,6 +1,7 @@
 <div class="area-send-msg">
   <%= form_with model: comment, url: [my_history, comment], id: "new_comment_area" do |f| %>
     <%= f.text_area :body, id: "js-new-comment-body", row: 3, col: 30 %>
+    <%= f.hidden_field :uuid, value: my_history.uuid%>
     <%= f.submit t("defaults.post"), class: "button is-btn-edit btn-design has-text-weight-semibold" %>
   <% end %>
 </div>

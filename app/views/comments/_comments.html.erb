@@ -1,6 +1,6 @@
 <div class="area-bord js-scroll-comment-area" id="js-scroll-bottom">
   <% if comments.present? %>
-    <%= render comments %>
+    <%= render partial: "comments/comment", collection: comments, locals: { my_history: my_history } %>
   <% else %>
     <div id="js-no-comment-area" class="columns is-mobile is-vcentered no-comment-area">
       <div class="column">
