@@ -22,6 +22,9 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d"
+  static_pages:
+    terms:
+      title: "利用規約"
   users:
     new:
       title: "ユーザー登録"
