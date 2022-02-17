@@ -30,4 +30,6 @@ Rails.application.routes.draw do
       end
     end
   end
+  # 利用規約・プライバシーポリシー
+  get "terms", to: "static_pages#terms"
 end
