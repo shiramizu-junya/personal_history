@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # Topページ
   root "static_pages#top"
+  # 利用規約・プライバシーポリシー
+  get "terms", to: "static_pages#terms"
+  get "privacy", to: "static_pages#privacy"
   # ユーザー登録関係
   resources :users, only: %i[new create destroy]
   # ログイン/ログアウト関係
@@ -30,6 +33,4 @@ Rails.application.routes.draw do
       end
     end
   end
-  # 利用規約・プライバシーポリシー
-  get "terms", to: "static_pages#terms"
 end

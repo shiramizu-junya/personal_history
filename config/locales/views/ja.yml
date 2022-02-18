@@ -25,6 +25,8 @@ ja:
   static_pages:
     terms:
       title: "利用規約"
+    privacy:
+      title: "プライバシーポリシー"
   users:
     new:
       title: "ユーザー登録"
