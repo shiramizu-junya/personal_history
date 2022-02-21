@@ -1,0 +1,39 @@
+#fv {
+  padding: 2rem 1.5rem;
+  border-bottom: 5px solid #272343;
+  margin-bottom: 0;
+  background-color: #E3F6F5;
+  .column {
+    @media screen and (max-width: 1024px) {
+      margin: 0 auto;
+    }
+  }
+}
+
+#fv .top-heading::after {
+  content: none;
+}
+
+#function {
+  background-color: #eff3f6;
+  .column {
+    @media screen and (max-width: 1024px) {
+      margin: 0 auto;
+    }
+  }
+}
+
+#feature {
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+/*========================================
+  ボタン
+========================================*/
+// #fv .button-top {
+//   height: 50px;
+//   padding: 0 30px;
+//   font-size: 20px;
+//   margin-top: 60px;
+// }

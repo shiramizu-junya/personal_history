@@ -1,2 +1,60 @@
-<h1>StaticPages#top</h1>
-<p>Find me in app/views/static_pages/top.html.erb</p>
+<main class="wrap-content">
+  <section id="fv" class="section content">
+    <div class="columns is-centered">
+      <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-widescreen is-4-fullhd">
+        <h1 class="title is-1 top-heading has-text-weight-bold">人生を振り返る旅に出よう</h1>
+        <p class="has-text-black">
+          「つづる自分史」は人生を振り返ることができるサービスです。
+          <br>
+          出来事を登録するだけで、あなたの人生をグラフ化します。
+          <br>
+          あなたも自分史を残してみませんか？
+        </p>
+        <div class="buttons is-centered">
+          <%= link_to "今すぐ始める", new_user_path, class: "button is-medium button-top is-centered mt-6" %>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-widescreen is-3-fullhd">
+        <%= image_tag "top/top_01.png" %>
+      </div>
+    </div>
+  </section>
+  <section id="function" class="section content">
+    <h2 class="title subtitle has-text-centered">
+      サービスの特徴
+    </h2>
+    <div class="columns is-desktop is-centered is-vcentered is-3">
+      <div class="column is-centered is-12-mobile is-8-tablet is-3-desktop">
+        <div id="feature" class="has-text-centered p-3">
+          <h5 class="title is-5">自分史を登録するだけで、自動でグラフ化</h3>
+          <%= image_tag "top/top_02.png", class: "mb-4" %>
+          <p class="has-text-black">
+            人生の軌跡を登録すると、あなたの人生をグラフで表します。
+            作成したグラフはダウンロード可能。「自己紹介」「就活・転職活動」などでご利用いただけます。
+          </p>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-8-tablet is-3-desktop mx-auto">
+        <div id="feature" class="has-text-centered p-3">
+          <h5 class="title is-5">みんなの人生を覗いてみよう</h3>
+          <%= image_tag "top/top_03.png", class: "mb-4" %>
+          <p class="has-text-black">
+            公開されている自分史は、誰でも閲覧可能。あなたの悩みを解消するヒントが隠されているかも。
+            コメントで交流して、みんなの人生をより豊かにしよう。
+          </p>
+        </div>
+      </div>
+      <div class="column is-12-mobile is-8-tablet is-3-desktop mx-auto">
+        <div id="feature" class="has-text-centered p-3">
+          <h5 class="title is-5">あなたの自分史をTwitterへ共有</h3>
+          <%= image_tag "top/top_04.png", class: "mb-4" %>
+          <p class="has-text-black">
+            作成したグラフをOGPとしてTwitterへ共有可能。
+            あなたの人生に興味を持つ人が現れるかも。
+            SNSを利用して、積極的に交流しよう。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

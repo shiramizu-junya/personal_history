@@ -38,6 +38,7 @@ $widescreen: 1152px+(2 * $gap) !default;
 // フルHD：1408px〜
 $fullhd: 1344px+(2 * $gap) !default;
 
+@import "top";
 @import "header_footer";
 @import "parts";
 @import "bulma";
