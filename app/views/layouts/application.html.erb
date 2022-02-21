@@ -10,6 +10,9 @@
     <%= favicon_link_tag("favicon/favicon.ico") %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_pack_tag "application" %>
+    <% if Rails.env.production? %>
+      <%= render "layouts/google_analytics" %>
+    <% end %>
   </head>
 
   <body class="wrap">
