@@ -60,7 +60,7 @@
                         </button>
                         <button
                           class="button is-link"
-                          @click.stop="eventDelete(data, key, index)"
+                          @click="eventDelete(data, key, index)"
                         >
                           削除
                         </button>
@@ -182,28 +182,13 @@ export default {
       this.$emit("editEventFlagChange", key, index, true);
     },
     eventDelete(data, key, index) {
-      let message = {
-        title: "最終確認",
-        body: "本当に削除してもよろしいですか？"
-      };
-
-      let options = {
-        okText: "はい",
-        cancelText: "キャンセル",
-        animation: "zoom",
-        backdropClose: true,
-      };
-
-      this.$dialog.confirm(message, options)
-        .then(() => {
-          this.$store.dispatch("eventDelete", { data: data, key: key, index: index })
-            .then(() => {
-              this.$emit("deleteEventSuccessGetGraphData");
-              this.$emit("deleteEventSuccess");
-            });
-        })
-        .catch(function () {
-        });
+      if(confirm("本当に削除してよろしいですか?")){
+        this.$store.dispatch("eventDelete", { data: data, key: key, index: index })
+          .then(() => {
+            this.$emit("deleteEventSuccessGetGraphData");
+            this.$emit("deleteEventSuccess");
+          });
+      }
     },
     editStatus() {
       axios
