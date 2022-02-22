@@ -3,8 +3,8 @@ class ApplicationController < ActionController::Base
   before_action :require_login
   before_action :set_current_user
 
-  if true #Rails.env.production?
-    # rescue_from Exception, with: :render_500
+  if Rails.env.production?
+    rescue_from Exception, with: :render_500
     rescue_from ActiveRecord::RecordNotFound, with: :render_404
   end
 

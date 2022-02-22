@@ -14,6 +14,8 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(fog_provider
                                           fog_region: "ap-northeast-1")
 
 SitemapGenerator::Sitemap.create do
+  # トップページ
+  add root_path, priority: 1, changefreq: "daily"
   # 自分史一覧
-  add my_histories_path, priority: 1, changefreq: "daily"
+  add my_histories_path, priority: 0.7, changefreq: "daily"
 end
