@@ -151,7 +151,12 @@ export default {
         },
       },
       onResize: function (node, size) {
-        node.canvas.parentNode.style.height = `${size.width / 2}px`;
+        if (window.innerWidth <= 1024) {
+          node.canvas.parentNode.style.height = `${size.width / 1.4}px`;
+        } else {
+          node.canvas.parentNode.style.height = `${size.width / 2}px`;
+        }
+        // node.canvas.parentNode.style.height = `${size.width / 2}px`;
         if (window.innerWidth <= 767) {
           Chart.defaults.font.size = 10;
         }else{
