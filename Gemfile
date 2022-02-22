@@ -51,6 +51,7 @@ gem "active_model_serializers"
 
 # SEO
 gem "meta-tags"
+gem "sitemap_generator"
 
 # 環境毎の定数管理
 gem "config"
