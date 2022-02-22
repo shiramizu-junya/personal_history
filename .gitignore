@@ -48,3 +48,7 @@ app/assets/images/seeds/*
 config/settings.local.yml
 config/settings/*.local.yml
 config/environments/*.local.yml
+
+# sitemap
+public/sitemap.xml
+public/sitemap.xml.gz

@@ -380,6 +380,8 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     sexp_processor (4.15.3)
+    sitemap_generator (6.2.1)
+      builder (~> 3.0)
     sorcery (0.16.1)
       bcrypt (~> 3.1)
       oauth (~> 0.5, >= 0.5.5)
@@ -465,6 +467,7 @@ DEPENDENCIES
   rubocop-checkstyle_formatter
   rubocop-rails
   sass-rails (>= 6)
+  sitemap_generator
   sorcery
   spring
   spring-watcher-listen (~> 2.0.0)

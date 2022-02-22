@@ -1,1 +1,2 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+https://s3-ap-northeast-1.amazonaws.com/tsuzuru-jibunshi/sitemaps/sitemap.xml.gz
