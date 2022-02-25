@@ -10,6 +10,7 @@ ja:
     post: "投稿"
     withdraw: "退会"
     password_reset: "パスワードリセット"
+    no_registration: "%{item}は登録されていません"
     message:
       require_login: "ログインしてください。"
       created: "%{item}を作成しました。"
