@@ -5,6 +5,6 @@ class BirthDayValidator < ActiveModel::EachValidator
     return record.errors.add(:birthday, "は未来の日付を入力できません") if value.future?
 
     age = record.calc_age
-    record.errors.add(:birthday, "は0歳以上100歳以下で選択してください") if age <= 0 || age >= 100
+    record.errors.add(:birthday, "は0歳以上100歳以下で選択してください") if age < 0 || age > 100
   end
 end
