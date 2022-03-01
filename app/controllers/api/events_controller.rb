@@ -8,7 +8,7 @@ class Api::EventsController < ApplicationController
     if @event.save
       render json: @event, each_serializer: EventSerializer, status: :ok
     else
-      render json: { errors: @event.errors.keys.map { |key| [key, @event.errors.full_messages_for(key)]}.to_h }, status: :bad_request
+      render json: { errors: @event.errors.keys.index_with { |key| @event.errors.full_messages_for(key) } }, status: :bad_request
     end
   end
 
@@ -16,7 +16,7 @@ class Api::EventsController < ApplicationController
     if @event.update(event_params)
       render json: @event, each_serializer: EventSerializer, status: :ok
     else
-      render json: { errors: @event.errors.keys.map { |key| [key, @event.errors.full_messages_for(key)]}.to_h }, status: :bad_request
+      render json: { errors: @event.errors.keys.index_with { |key| @event.errors.full_messages_for(key) } }, status: :bad_request
     end
   end
 

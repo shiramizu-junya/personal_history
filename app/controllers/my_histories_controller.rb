@@ -4,7 +4,7 @@ class MyHistoriesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @q = MyHistory.includes(:user).published.left_outer_joins(:likes).group('my_histories.id').select('my_histories.*, COUNT(likes.my_history_id)').ransack(params[:q])
+    @q = MyHistory.includes(:user).published.left_outer_joins(:likes).group("my_histories.id").select("my_histories.*, COUNT(likes.my_history_id)").ransack(params[:q])
     @pagy, @my_histories = pagy(@q.result(distinct: true).order("COUNT(likes.my_history_id) DESC"))
   end
 
@@ -28,7 +28,7 @@ class MyHistoriesController < ApplicationController
     if @my_history.update(my_history_params)
       render json: { redirect: my_history_url(@my_history.uuid) }
     else
-      render json: { errors: @my_history.errors.keys.map { |key| [key, @my_history.errors.full_messages_for(key)]}.to_h }, status: :bad_request
+      render json: { errors: @my_history.errors.keys.index_with { |key| @my_history.errors.full_messages_for(key) } }, status: :bad_request
     end
   end
 

@@ -48,6 +48,7 @@ class GraphImageUploader < CarrierWave::Uploader::Base
   end
 
   protected
+
   # ファイル名をuniqueに設定
   def secure_token
     var = :"@#{mounted_as}_secure_token"
