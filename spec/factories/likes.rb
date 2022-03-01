@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :like do
-    user { nil }
-    my_history { nil }
+    user_id { 1 }
+    my_history_id { 1 }
   end
 end
