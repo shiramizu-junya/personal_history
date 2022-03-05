@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :event do
-    age { 30 }
+    age { 10 }
     title { "タイトル" }
     episode { "エピソード" }
-    happiness { 30 }
+    happiness { 50 }
     association :my_history
   end
 end
