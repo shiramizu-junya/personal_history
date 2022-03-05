@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Users#new", type: :system do
+RSpec.describe "Users", type: :system do
   describe "ユーザー登録ページ" do
     context "ユーザー登録前" do
       context "正常系" do
@@ -70,8 +70,6 @@ RSpec.describe "Users#new", type: :system do
           click_button("登録")
           expect(page).to have_content("パスワード（確認用）とパスワードの入力が一致しません")
         end
-
-
       end
     end
   end
