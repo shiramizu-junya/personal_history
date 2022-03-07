@@ -66,4 +66,5 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # ログインのモジュールの読み込み
   config.include LoginMacros
+  config.include MyHistoryPreparation
 end
