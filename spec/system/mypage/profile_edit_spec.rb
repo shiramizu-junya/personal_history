@@ -4,12 +4,21 @@ RSpec.describe "Profile#edit", type: :system do
   let(:user) { create(:user, birthday: nil, gender: nil) }
 
   describe "プロフィール編集" do
-    before { login_as(user) }
-    let(:my_history) do
-      ->(title_flag = false, my_history_flag = false) { my_history_as(title_flag, my_history_flag) }
+
+    context "ログイン前" do
+      context "正常系" do
+        it "ページにアクセスできないこと" do
+          visit(edit_profile_path)
+          expect(page).to have_content("ログインしてください。")
+        end
+      end
     end
 
     context "ログイン後" do
+      before { login_as(user) }
+    let(:my_history) do
+      ->(title_flag = false, my_history_flag = false) { my_history_as(title_flag, my_history_flag) }
+    end
       context "正常系" do
         it "自分史を作成していない場合は、生年月日と性別が存在しないこと" do
           sleep(5)

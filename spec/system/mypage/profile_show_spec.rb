@@ -4,12 +4,21 @@ RSpec.describe "Profile#show", type: :system do
   let(:user) { create(:user, birthday: nil, gender: nil) }
 
   describe "マイページ" do
-    before { login_as(user) }
-    let(:my_history) do
-      ->(title_flag = false, my_history_flag = false) { my_history_as(title_flag, my_history_flag) }
+    context "ログイン前" do
+      context "正常系" do
+        it "ページにアクセスできないこと" do
+          visit(profile_path)
+          expect(page).to have_content("ログインしてください。")
+        end
+      end
     end
 
     context "ログイン後", js: true do
+      before { login_as(user) }
+      let(:my_history) do
+        ->(title_flag = false, my_history_flag = false) { my_history_as(title_flag, my_history_flag) }
+      end
+
       it "ユーザー名、メールアドレス、退会リンクが表示されていること" do
         sleep(5)
         find(".navbar-link").hover
