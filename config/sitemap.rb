@@ -19,4 +19,8 @@ SitemapGenerator::Sitemap.create do
   add root_path, priority: 1, changefreq: "daily"
   # 自分史一覧
   add my_histories_path, priority: 0.7, changefreq: "daily"
+  # 自分史詳細
+  MyHistory.where(status: 0).find_each do |history|
+    add my_history_path(history.uuid), priority: 0.8, lastmod: history.updated_at, changefreq: "daily"
+  end
 end

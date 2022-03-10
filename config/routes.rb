@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  # サイトマップ
+  get "sitemap", to: redirect("https://s3-ap-northeast-1.amazonaws.com/tsuzuru-jibunshi/sitemaps/sitemap.xml.gz")
   # Topページ
   root "static_pages#top"
   # 利用規約・プライバシーポリシー
