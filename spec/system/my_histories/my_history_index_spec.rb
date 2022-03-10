@@ -18,7 +18,7 @@ RSpec.describe "MyHistory#index", type: :system do
           create_list(:my_history, 5, status: :unpublished)
           visit(my_histories_path)
           expect(page).to have_content("20件の自分史が見つかりました")
-          expect(page).to have_content("1 - 20件 / 21件")
+          expect(page).to have_content("1 - 20件 / 25件")
           expect(page).to have_content("ツイート")
         end
 
