@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
 
   def show
     @my_history = @user.my_history
-    # binding.pry
   end
 
   def edit; end

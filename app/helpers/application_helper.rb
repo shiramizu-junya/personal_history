@@ -32,11 +32,11 @@ module ApplicationHelper
         type: "website",
         url: request.original_url,
         image: image_url("ogp/ogp_twitter_card.png"),
-        locale: "ja_JP",
+        locale: "ja_JP"
       },
       twitter: {
         card: "summary_large_image",
-        site: "@webpg_jun",
+        site: "@webpg_jun"
       }
     }
   end

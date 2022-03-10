@@ -4,15 +4,15 @@ class ApplicationController < ActionController::Base
   before_action :set_current_user
 
   if Rails.env.production?
-    rescue_from Exception, with: :render_500
-    rescue_from ActiveRecord::RecordNotFound, with: :render_404
+    rescue_from Exception, with: :render_internal_server_error
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found
   end
 
   private
 
   def set_current_user
     # クラスメソッドとして、現在ログインしているユーザーのレコードを取得できるようにする
-    User.current_user = self.current_user
+    User.current_user = current_user
   end
 
   def not_authenticated
@@ -25,19 +25,19 @@ class ApplicationController < ActionController::Base
     redirect_to my_histories_path, danger: t("defaults.message.logged_in") if logged_in?
   end
 
-  def render_500(e = nil)
+  def render_internal_server_error(err = nil)
     logger.error("=========エラー発生 : ここから===========")
-    logger.error(e.message)
-    logger.error(e.backtrace.join("\n"))
+    logger.error(err.message)
+    logger.error(err.backtrace.join("\n"))
     logger.error("=========エラー発生 : ここまで===========")
-    render file: Rails.root.join("public", "500.html"), status: :internal_server_error, layout: false, content_type: "text/html"
+    render file: Rails.root.join("public/500.html"), status: :internal_server_error, layout: false, content_type: "text/html"
   end
 
-  def render_404(e = nil)
+  def render_not_found(err = nil)
     logger.error("=========エラー発生 : ここから===========")
-    logger.error(e.message)
-    logger.error(e.backtrace.join("\n"))
+    logger.error(err.message)
+    logger.error(err.backtrace.join("\n"))
     logger.error("=========エラー発生 : ここまで===========")
-    render file: Rails.root.join("public", "404.html"), status: :not_found, layout: false, content_type: "text/html"
+    render file: Rails.root.join("public/404.html"), status: :not_found, layout: false, content_type: "text/html"
   end
 end

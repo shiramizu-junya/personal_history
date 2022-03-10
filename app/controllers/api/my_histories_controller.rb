@@ -13,7 +13,7 @@ class Api::MyHistoriesController < ApplicationController
     if @my_history.save
       render json: @my_history, each_serializer: MyHistorySerializer, status: :ok
     else
-      render json: { errors: @my_history.errors.keys.map { |key| [key, @my_history.errors.full_messages_for(key)]}.to_h }, status: :bad_request
+      render json: { errors: @my_history.errors.keys.index_with { |key| @my_history.errors.full_messages_for(key) } }, status: :bad_request
     end
   end
 
@@ -21,12 +21,12 @@ class Api::MyHistoriesController < ApplicationController
     if @my_history.update(my_history_params)
       render json: @my_history, each_serializer: MyHistorySerializer, status: :ok
     else
-      render json: { errors: @my_history.errors.keys.map { |key| [key, @my_history.errors.full_messages_for(key)]}.to_h }, status: :bad_request
+      render json: { errors: @my_history.errors.keys.index_with { |key| @my_history.errors.full_messages_for(key) } }, status: :bad_request
     end
   end
 
   def graph_data
-    group_events = @my_history.events.order(age: :asc).group_by &:age
+    group_events = @my_history.events.order(age: :asc).group_by(&:age)
     @graph_events = Event.age_happiness_average(group_events)
     render json: @graph_events, status: :ok
   end
