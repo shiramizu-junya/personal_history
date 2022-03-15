@@ -70,3 +70,13 @@ https://www.tsuzuru-jibunshi.com/
 
 [![Image from Gyazo](https://i.gyazo.com/8a2bf28901681d210a1eef870c55c4a0.png)](https://gyazo.com/8a2bf28901681d210a1eef870c55c4a0)
 
+https://app.diagrams.net/?src=about#G1VuTSIdLMgvtgosmCS90aHUxXr0jZjm2B
+
+## 画面遷移図
+
+[![Image from Gyazo](https://i.gyazo.com/50701a02cf01336ac2f2f58897cb4a31.png)](https://gyazo.com/50701a02cf01336ac2f2f58897cb4a31)
+
+https://www.figma.com/file/tpd5guOIGeBcx2N1hK30O4/Wireframe?node-id=0%3A1
+
+
+
