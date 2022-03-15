@@ -72,7 +72,7 @@ https://www.tsuzuru-jibunshi.com/
 
 https://app.diagrams.net/?src=about#G1VuTSIdLMgvtgosmCS90aHUxXr0jZjm2B
 
-## 画面遷移図
+## ■ 画面遷移図
 
 [![Image from Gyazo](https://i.gyazo.com/50701a02cf01336ac2f2f58897cb4a31.png)](https://gyazo.com/50701a02cf01336ac2f2f58897cb4a31)
 
