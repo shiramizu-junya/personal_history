@@ -10,8 +10,17 @@
           <br>
           あなたも自分史を残してみませんか？
         </p>
-        <div class="buttons is-centered">
-          <%= link_to "今すぐ始める", new_user_path, class: "button is-medium button-top is-centered mt-6" %>
+        <div class="columns is-mobile is-vcentered is-justify-content-center">
+          <div class="column is-centered">
+            <div class="buttons">
+              <%= link_to "今すぐ始める", new_user_path, class: "button is-medium button-top is-centered mt-6" %>
+            </div>
+          </div>
+          <div class="column is-centered">
+            <div class="buttons">
+              <%= link_to "自分史一覧", my_histories_path, class: "button is-medium button-top is-centered mt-6" %>
+            </div>
+          </div>
         </div>
       </div>
       <div class="column is-12-mobile is-6-tablet is-4-desktop is-4-widescreen is-3-fullhd">
