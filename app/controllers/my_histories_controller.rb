@@ -4,8 +4,9 @@ class MyHistoriesController < ApplicationController
   skip_before_action :require_login, only: %i[index show]
 
   def index
-    @q = MyHistory.includes(:user).published.left_outer_joins(:likes).group("my_histories.id").select("my_histories.*, COUNT(likes.my_history_id)").ransack(params[:q])
-    @pagy, @my_histories = pagy(@q.result(distinct: true).order("COUNT(likes.my_history_id) DESC"))
+    # 公開されている自分史を、「いいね」が多い順に取得する。
+    @q = MyHistory.published.ransack(params[:q])
+    @pagy, @my_histories = pagy(@q.result(distinct: true).includes(:user).order_of_most_likes)
   end
 
   def show
