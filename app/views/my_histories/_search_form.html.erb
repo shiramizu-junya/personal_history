@@ -4,10 +4,10 @@
       <%= t(User.human_attribute_name(:gender)) %>
     </p>
     <div class="select list-search-box">
-      <%= f.select :user_gender_eq, User.genders_i18n.invert.map{|key, value| [key, User.genders[value]]}, { include_blank: "指定なし" }, { class: "list-search-select" } %>
+      <%= f.select(:user_gender_eq, User.genders_i18n.invert.map{ |key, value| [key, User.genders[value]] }, { include_blank: "指定なし" }, { class: "list-search-select" }) %>
     </div>
     <p class="menu-label is-centered">
-      <%= t("defaults.age") %>
+      <%= t("my_histories.index.search_age") %>
     </p>
     <div class="field">
       <div class="control">

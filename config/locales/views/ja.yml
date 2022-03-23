@@ -5,7 +5,6 @@ ja:
     logout: "ログアウト"
     signup: "新規登録"
     update: "更新"
-    age: "年齢"
     edit: "編集"
     post: "投稿"
     withdraw: "退会"
@@ -50,6 +49,7 @@ ja:
   my_histories:
     index:
       title: "自分史一覧"
+      search_age: "年齢"
       no_result: "自分史はありません。"
     new:
       title: "自分史作成"
