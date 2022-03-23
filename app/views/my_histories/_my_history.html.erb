@@ -1,34 +1,34 @@
 <div class="column is-11-mobile is-6-tablet is-3-desktop is-3-widescreen is-3-fullhd">
-  <div class="card">
+  <%= link_to my_history_path(my_history.uuid) do %>
+    <div class="card">
       <div class="card-image">
         <figure class="image is-5by3">
-          <%= link_to my_history_path(my_history.uuid) do %>
-            <%= image_tag my_history.graph_image.url %>
-          <% end %>
+          <%= image_tag my_history.graph_image.url %>
         </figure>
       </div>
-    <div class="my-history-show card-content" style="background-color: #FAFBFC;">
-      <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <%= image_tag my_history.user.avatar.url %>
-          </figure>
-        </div>
-        <div class="media-content">
-          <p>
-            <span class="my-history-title-left">
-              <i class="fas fa-book-open"></i>
-              <span class="title is-5"><%= my_history.title %></span>
-            </span>
-          </p>
-          <p>
-            <span class="user-name-left">
-              <i class="fas fa-user"></i>
-              <span class="subtitle is-6"><%= my_history.user.name %></span>
-            </span>
-          </p>
+      <div class="my-history-show card-content" style="background-color: #FAFBFC;">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <%= image_tag my_history.user.avatar.url %>
+            </figure>
+          </div>
+          <div class="media-content">
+            <p>
+              <span class="my-history-title-left">
+                <i class="fas fa-book-open"></i>
+                <span class="title is-5"><%= my_history.title %></span>
+              </span>
+            </p>
+            <p>
+              <span class="user-name-left">
+                <i class="fas fa-user"></i>
+                <span class="subtitle is-6"><%= my_history.user.name %></span>
+              </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  <% end %>
 </div>
