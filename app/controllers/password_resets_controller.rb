@@ -1,10 +1,13 @@
 class PasswordResetsController < ApplicationController
   skip_before_action :require_login
 
-  def new; end
+  def new
+    login_decision
+  end
 
   def create
     @user = User.find_by(email: params[:email])
+    # レシーバがnilの時は例外が発生するため、メソッドを実行しない
     @user&.deliver_reset_password_instructions!
     redirect_to login_path, success: t(".success")
   end
