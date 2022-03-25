@@ -7,7 +7,7 @@
         <div class="field mb-5">
           <%= f.label :name, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.text_field :name, class: "input #{error_if(f.object, :name)}", placeholder: "たなか たろう" %>
+            <%= f.text_field :name, class: "input #{ error_if(f.object, :name) }", placeholder: "たなか たろう" %>
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -18,7 +18,7 @@
         <div class="field mb-5">
           <%= f.label :email, class: "label" %>
           <div class="control has-icons-left">
-            <%= f.email_field :email, class: "input #{error_if(f.object, :email)}", placeholder: "***@example.com" %>
+            <%= f.email_field :email, class: "input #{ error_if(f.object, :email) }", placeholder: "***@example.com" %>
             <span class="icon is-small is-left">
               <i class="fas fa-envelope"></i>
             </span>
@@ -29,7 +29,7 @@
         <div class="field mb-5">
           <%= f.label :birthday, class: "label" %>
           <div class="control">
-            <%= f.date_field :birthday, class: "input #{error_if(f.object, :birthday)}" %>
+            <%= f.date_field :birthday, class: "input #{ error_if(f.object, :birthday) }" %>
           </div>
           <%= render "shared/error_messages", object: f.object, attribute: :birthday %>
         </div>
