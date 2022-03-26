@@ -4,7 +4,6 @@ import store from "../store/store";
 import axios from "axios";
 import { csrfToken } from "rails-ujs";
 import VueAxiosPlugin from "./plugins/vue-axios";
-import VueJsDialog from "vuejs-dialog";
 import { Chart, registerables } from "chart.js";
 import VueCompositionAPI from "@vue/composition-api";
 
@@ -17,7 +16,7 @@ Vue.use(
     csrfToken: csrfToken,
   },
 );
-Vue.use(VueJsDialog);
+// true の場合の方が開発者向けのメッセージがコンソールに表示
 Vue.config.productionTip = false;
 
 document.addEventListener("DOMContentLoaded", () => {

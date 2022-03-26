@@ -1,9 +1,8 @@
 class Api::ProfilesController < ApplicationController
-  before_action :set_profile, only: %i[show]
-  before_action :set_user, only: %i[update]
+  before_action :set_user, only: %i[show update]
 
   def show
-    render json: @user
+    render json: @user, each_serializer: UserSerializer, status: :ok
   end
 
   def update
@@ -15,10 +14,6 @@ class Api::ProfilesController < ApplicationController
   end
 
   private
-
-  def set_profile
-    @user = User.select(:id, :name, :birthday, :gender).find(current_user.id)
-  end
 
   def set_user
     @user = User.find(current_user.id)
