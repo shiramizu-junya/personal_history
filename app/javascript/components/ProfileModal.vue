@@ -23,7 +23,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['birthday']"
+                  v-if="formError['birthday']"
                 >
                   {{ formError["birthday"][0] }}
                 </li>
@@ -53,7 +53,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['gender']"
+                  v-if="formError['gender']"
                 >
                   {{ formError["gender"][0] }}
                 </li>

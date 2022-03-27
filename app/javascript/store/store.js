@@ -177,7 +177,6 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         axios
           .post("/api/events", {
-            history_id: this.state.my_history.id,
             event,
           })
           .then((response) => {
