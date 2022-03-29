@@ -7,6 +7,7 @@ export default VueAxiosPlugin.install = function(Vue, { axios, csrfToken }) {
   }
 
   if (typeof csrfToken === "function") {
+    // CSRFトークンに設定
     axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken();
   }
 

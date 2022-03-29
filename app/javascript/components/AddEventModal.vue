@@ -12,6 +12,29 @@
       </header>
       <section class="modal-card-body">
         <form>
+          <div class="field">
+            <label class="label">タイトル</label>
+            <div class="control">
+              <input
+                v-model="addEvent.title"
+                :class="{ 'error' : formError['title'] }"
+                class="input"
+                type="text"
+                name="title"
+                placeholder="出来事のタイトルを入力してください"
+              >
+            </div>
+            <div class="has-text-danger">
+              <ul>
+                <li
+                  v-if="formError['title']"
+                >
+                  {{ formError["title"][0] }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div class="columns is-mobile">
             <div class="column">
               <div class="field">
@@ -32,7 +55,7 @@
                 <div class="has-text-danger">
                   <ul>
                     <li
-                      v-if="!!formError['age']"
+                      v-if="formError['age']"
                     >
                       {{ formError["age"][0] }}
                     </li>
@@ -60,7 +83,7 @@
                 <div class="has-text-danger">
                   <ul>
                     <li
-                      v-if="!!formError['happiness']"
+                      v-if="formError['happiness']"
                     >
                       {{ formError["happiness"][0] }}
                     </li>
@@ -70,28 +93,6 @@
             </div>
           </div>
 
-          <div class="field">
-            <label class="label">タイトル</label>
-            <div class="control">
-              <input
-                v-model="addEvent.title"
-                :class="{ 'error' : formError['title'] }"
-                class="input"
-                type="text"
-                name="title"
-                placeholder="出来事のタイトルを入力してください"
-              >
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['title']"
-                >
-                  {{ formError["title"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
           <div class="field">
             <label class="label">エピソード</label>
             <div class="control">
@@ -106,7 +107,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['episode']"
+                  v-if="formError['episode']"
                 >
                   {{ formError["episode"][0] }}
                 </li>

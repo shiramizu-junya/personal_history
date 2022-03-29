@@ -12,6 +12,30 @@
       </header>
       <section class="modal-card-body">
         <form>
+          <div class="field">
+            <label class="label">タイトル</label>
+            <div class="control">
+              <input
+                v-if="editEventTarget.data"
+                v-model="editEventTarget.data.title"
+                :class="{ 'error' : formError['title'] }"
+                class="input"
+                type="text"
+                name="title"
+                placeholder="出来事のタイトルを入力してください"
+              >
+            </div>
+            <div class="has-text-danger">
+              <ul>
+                <li
+                  v-if="!!formError['title']"
+                >
+                  {{ formError["title"][0] }}
+                </li>
+              </ul>
+            </div>
+          </div>
+
           <div class="columns is-mobile">
             <div class="column">
               <div class="field">
@@ -41,6 +65,7 @@
                 </div>
               </div>
             </div>
+
             <div class="column">
               <div class="field">
                 <label class="label">充実度</label>
@@ -70,29 +95,7 @@
               </div>
             </div>
           </div>
-          <div class="field">
-            <label class="label">タイトル</label>
-            <div class="control">
-              <input
-                v-if="editEventTarget.data"
-                v-model="editEventTarget.data.title"
-                :class="{ 'error' : formError['title'] }"
-                class="input"
-                type="text"
-                name="title"
-                placeholder="出来事のタイトルを入力してください"
-              >
-            </div>
-            <div class="has-text-danger">
-              <ul>
-                <li
-                  v-if="!!formError['title']"
-                >
-                  {{ formError["title"][0] }}
-                </li>
-              </ul>
-            </div>
-          </div>
+
           <div class="field">
             <label class="label">エピソード</label>
             <div class="control">

@@ -141,7 +141,6 @@
 </template>
 
 <script>
-import "vuejs-dialog/dist/vuejs-dialog.min.css";
 import axios from "axios";
 
 export default {

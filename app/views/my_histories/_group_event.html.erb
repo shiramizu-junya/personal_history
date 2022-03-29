@@ -1,0 +1,10 @@
+<% group_events.each do |key, events| %>
+  <div class="timeline">
+    <div class="timeline-group">
+      <div class="timeline-age time is-size-5" aria-hidden="true">
+        「<%= key %>歳」の出来事
+      </div>
+      <%= render partial: "event", collection: events %>
+    </div>
+  </div>
+<% end %>

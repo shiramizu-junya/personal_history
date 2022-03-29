@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 10 }
-  validates :email, uniqueness: { case_sensitive: true }, presence: true
+  validates :email, presence: true, uniqueness: { case_sensitive: true }
   validates :birthday, presence: true, birth_day: true, on: :update
   validates :gender, inclusion: { in: %w[men women other no_answer], message: "を選択してください" }, on: :update
   validates :password, length: { minimum: 8 }, if: -> { new_record? || changes[:crypted_password] }

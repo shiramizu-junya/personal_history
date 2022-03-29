@@ -5,6 +5,7 @@ global.Chart = Chart;
 $(function() {
   const ctx = document.getElementById("myChart");
   let datasets = {
+    // JSONデータをJSのオブジェクトに変換
     labels: JSON.parse(ctx.dataset.labels),
     datasets: [
       {

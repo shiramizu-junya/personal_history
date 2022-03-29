@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   # いいね関係
   resources :likes, only: %i[create destroy]
   # API通信関係
-  namespace :api, {format: "json"} do
+  namespace :api, { format: "json" } do
     resource :profile, only: %i[show update]
     resources :events, only: %i[create update destroy]
     resource :my_history, only: %i[edit create update] do

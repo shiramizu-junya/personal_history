@@ -7,6 +7,11 @@
 <main class="wrap-content">
   <h1 class="title my-history-title has-text-centered my-6 ft-size-md">
     <%= @my_history.title %>
+    <% if logged_in? && current_user.own?(@my_history) %>
+      <span class="show-page-edit-link">
+        <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
+      </span>
+    <% end %>
   </h1>
   <!-- グラフ -->
   <div class="columns is-centered is-mobile">
@@ -22,11 +27,15 @@
   <div>
     <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
       出来事一覧
-      <% if logged_in? && current_user.own?(@my_history) %>
+      <%
+=begin%>
+ <% if logged_in? && current_user.own?(@my_history) %>
         <span class="show-page-edit-link">
           <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
         </span>
       <% end %>
+<%
+=end%>
     </h2>
   </div>
   <div class="columns my-6 is-centered is-mobile">
@@ -37,7 +46,7 @@
             出来事はありません。
           </p>
         <% else %>
-          <%= render "event", group_events: @group_events %>
+          <%= render "group_event", group_events: @group_events %>
         <% end %>
       </div>
     </div>

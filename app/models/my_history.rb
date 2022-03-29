@@ -12,4 +12,8 @@ class MyHistory < ApplicationRecord
   before_create -> { self.uuid = SecureRandom.uuid }
 
   enum status: { published: 0, unpublished: 1 }
+
+  scope :order_of_most_likes, -> {
+    left_outer_joins(:likes).group("my_histories.id").select("my_histories.*, COUNT(likes.my_history_id)").order("COUNT(likes.my_history_id) DESC")
+  }
 end
