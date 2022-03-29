@@ -6,6 +6,5 @@ class MyHistorySerializer < ActiveModel::Serializer
   def graph_events
     group_events = object.events.order(age: :asc).group_by(&:age)
     Event.age_happiness_average(group_events)
-    # graph_events = Event.age_happiness_average(group_events)
   end
 end

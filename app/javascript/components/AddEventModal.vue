@@ -32,7 +32,7 @@
                 <div class="has-text-danger">
                   <ul>
                     <li
-                      v-if="!!formError['age']"
+                      v-if="formError['age']"
                     >
                       {{ formError["age"][0] }}
                     </li>
@@ -60,7 +60,7 @@
                 <div class="has-text-danger">
                   <ul>
                     <li
-                      v-if="!!formError['happiness']"
+                      v-if="formError['happiness']"
                     >
                       {{ formError["happiness"][0] }}
                     </li>
@@ -85,7 +85,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['title']"
+                  v-if="formError['title']"
                 >
                   {{ formError["title"][0] }}
                 </li>
@@ -106,7 +106,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['episode']"
+                  v-if="formError['episode']"
                 >
                   {{ formError["episode"][0] }}
                 </li>

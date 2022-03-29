@@ -27,7 +27,7 @@
             <div class="has-text-danger">
               <ul>
                 <li
-                  v-if="!!formError['title']"
+                  v-if="formError['title']"
                 >
                   {{ formError["title"][0] }}
                 </li>

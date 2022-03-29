@@ -192,9 +192,11 @@ export default new Vuex.Store({
     },
     // 自分史のイベントを編集
     editEvent({ commit }, event) {
+      // クローンしないと「event.data.id」と「event: data」が連動して、idが完全に得るので困る
       let data = _.cloneDeep(event.data);
       let key = event.key;
       let index = event.index;
+      // ストロングパラメーターでidを許容していないので削除
       delete data["id"];
 
       return new Promise((resolve, reject) => {
