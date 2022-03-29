@@ -6,7 +6,9 @@ RSpec.describe "MyHistory#index", type: :system do
       context "正常系" do
         it "一覧ページにアクセスできること" do
           visit(root_path)
-          click_link("自分史一覧")
+          within ".navbar-menu" do
+            click_link("自分史一覧")
+          end
           expect(current_path).to eq my_histories_path
           expect(page).to have_content "自分史はありません"
           expect(page).to have_content "0件の自分史が見つかりました"

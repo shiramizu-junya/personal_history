@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   add_flash_types :success, :danger
   before_action :require_login
-  before_action :set_current_user
 
   if Rails.env.production?
     rescue_from Exception, with: :render_internal_server_error
@@ -9,11 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   private
-
-  def set_current_user
-    # クラスメソッドとして、現在ログインしているユーザーのレコードを取得できるようにする
-    User.current_user = current_user
-  end
 
   def not_authenticated
     flash[:danger] = t("defaults.message.require_login")
