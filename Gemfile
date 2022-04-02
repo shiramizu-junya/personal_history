@@ -58,7 +58,6 @@ gem "config"
 
 # 外部ストレージ設定
 gem "fog-aws"
-gem "aws-sdk"
 
 group :development, :test do
   # デバッグ
