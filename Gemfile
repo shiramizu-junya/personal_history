@@ -84,7 +84,6 @@ group :development do
   # Lintチェック
   gem "rubocop", require: false
   gem "rubocop-rails", require: false
-  gem "rubocop-checkstyle_formatter", require: false
   gem "rails_best_practices"
   # エラー画面のカスタマイズ、ブラウザ上でirbを使えるようにする
   gem "better_errors" # render better error page
