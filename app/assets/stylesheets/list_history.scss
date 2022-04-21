@@ -207,6 +207,9 @@ a.history_title {
   max-width: 115px;
   max-height: 23px;
   overflow: hidden;
+  @media screen and (max-width: 450px) {
+    max-width: 230px;
+  }
 }
 
 .user-name-left {
@@ -222,6 +225,9 @@ a.history_title {
   max-width: 115px;
   max-height: 23px;
   overflow: hidden;
+  @media screen and (max-width: 450px) {
+    max-width: 230px;
+  }
 }
 
 
