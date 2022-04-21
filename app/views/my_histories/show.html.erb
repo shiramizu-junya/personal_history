@@ -27,15 +27,6 @@
   <div>
     <h2 class="title subtitle my-history-subtitle has-text-centered my-6 ft-size-md">
       出来事一覧
-      <%
-=begin%>
- <% if logged_in? && current_user.own?(@my_history) %>
-        <span class="show-page-edit-link">
-          <%= link_to "編集", edit_my_history_path(@my_history.uuid), class: "button my-history-edit" %>
-        </span>
-      <% end %>
-<%
-=end%>
     </h2>
   </div>
   <div class="columns my-6 is-centered is-mobile">

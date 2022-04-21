@@ -194,6 +194,37 @@ a.history_title {
   padding: 1.5rem 0.8rem;
 }
 
+.my-history-title-left {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.history-title {
+  display: inline-block;
+  max-width: 115px;
+  max-height: 23px;
+  overflow: hidden;
+}
+
+.user-name-left {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 5px;
+  }
+}
+
+.user-name {
+  display: inline-block;
+  max-width: 115px;
+  max-height: 23px;
+  overflow: hidden;
+}
+
+
 /*==================================
   ページネーション
 ==================================*/
