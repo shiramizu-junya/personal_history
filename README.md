@@ -50,7 +50,7 @@ https://www.tsuzuru-jibunshi.com/
 ## ■ 使用技術
 
 #### バックエンド
-- Ruby 2.7.2
+- Ruby 3.0.3
 - Rails 6.0.4.1
 
 #### フロントエンド
@@ -77,6 +77,3 @@ https://app.diagrams.net/?src=about#G1VuTSIdLMgvtgosmCS90aHUxXr0jZjm2B
 [![Image from Gyazo](https://i.gyazo.com/50701a02cf01336ac2f2f58897cb4a31.png)](https://gyazo.com/50701a02cf01336ac2f2f58897cb4a31)
 
 https://www.figma.com/file/tpd5guOIGeBcx2N1hK30O4/Wireframe?node-id=0%3A1
-
-
-
