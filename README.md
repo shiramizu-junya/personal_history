@@ -22,7 +22,7 @@ https://www.tsuzuru-jibunshi.com/
 このアプリを通して、人生をポジティブに捉える人が１人でも増えてくれると嬉しいと思っています。
 
 ## ■ 執筆記事
-- Qiita LGTM 57
+- Qiita LGTM 142
   👉 https://qiita.com/junya__ya/items/ff5008052c0ebf626901
 
 ## ■ 主なページと機能
