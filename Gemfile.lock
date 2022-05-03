@@ -72,8 +72,8 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    bootsnap (1.7.7)
-      msgpack (~> 1.0)
+    bootsnap (1.11.1)
+      msgpack (~> 1.2)
     builder (3.2.4)
     bullet (6.1.5)
       activesupport (>= 3.0.0)
@@ -237,7 +237,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.1.0)
     minitest (5.14.4)
-    msgpack (1.4.2)
+    msgpack (1.5.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -426,6 +426,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-20
+  x86_64-darwin-21
   x86_64-linux
 
 DEPENDENCIES
@@ -474,7 +475,7 @@ DEPENDENCIES
   webpacker (~> 4.0)
 
 RUBY VERSION
-   ruby 2.7.2p137
+   ruby 3.0.3p157
 
 BUNDLED WITH
    2.2.7
